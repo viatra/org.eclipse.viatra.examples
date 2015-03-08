@@ -1,0 +1,90 @@
+/*******************************************************************************
+ * Copyright (c) 2010-2015, Andras Szabolcs Nagy, Abel Hegedus, Akos Horvath, Zoltan Ujhelyi and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * Contributors:
+ *   Andras Szabolcs Nagy - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.viatra.dse.examples.bpmn.patterns
+
+import "org.eclipse.viatra.dse.examples.bpmn"
+
+pattern createResource(RTV : ResourceTypeVariant) {
+	ResourceTypeVariant(RTV);
+}
+
+pattern variantAllocatedToTask(T : Task, RTV : ResourceTypeVariant) {
+	Task.variant(T, RTV);
+}
+
+pattern allocateTaskToVariant(T : Task, RTV : ResourceTypeVariant) {
+	neg find variantAllocatedToTask(T, _);
+	Task.resourceNeeded(T, RT);
+	ResourceType.variants(RT, RTV);
+}
+
+private pattern inFlow(Element : BaseElement, Flow : SequenceFlow) {
+	BaseElement.inFlows(Element, Flow);
+}
+
+private pattern outFlow(Element : BaseElement, Flow : SequenceFlow) {
+	BaseElement.outFlows(Element, Flow);
+}
+
+pattern makeParallel(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
+	SimplifiedBPMN(Root);
+	Task.outFlows(T1, out);
+	SequenceFlow.isDataFlow(out, false);
+	SequenceFlow.target(out, T2);
+	T1 != T2;
+	1 == count find inFlow(T2, _);
+	1 == count find outFlow(T1, _);
+}
+
+private pattern
+parallelGatewayOutFlow(PG : ParallelGateway, Flow : SequenceFlow) {
+	ParallelGateway.outFlows(PG, Flow);
+}
+
+pattern makeSequential(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
+	SimplifiedBPMN(Root);
+	ParallelGateway.outFlows.target(pg, T1);
+	ParallelGateway.outFlows.target(pg, T2);
+	T1 != T2;
+	N == count find parallelGatewayOutFlow(pg, _);
+	N == 2;
+	Task.outFlows.target(T1, pg2);
+	Task.outFlows.target(T2, pg2);
+}
+
+pattern unassignedTask(T : Task) {
+	neg find variantAllocatedToTask(T, _);
+}
+
+pattern instanceOfVariant(RI : ResourceInstance, RTV : ResourceTypeVariant) {
+	ResourceInstance.resourceTypeVariant(RI, RTV);
+}
+
+pattern absenceOfResourceInstances(RTV : ResourceTypeVariant) {
+	neg find instanceOfVariant(_, RTV);
+	Task.variant(_, RTV);
+}
+
+pattern unrequiredResourceInstance(RI : ResourceInstance) {
+	ResourceInstance.resourceTypeVariant(RI, RTV);
+	neg find taskNeedsVariant(_, RTV);
+}
+
+private pattern taskNeedsVariant(T : Task, RTV : ResourceTypeVariant) {
+	Task.variant(T, RTV);
+}
+
+pattern enoughResourceInstances() {
+	neg find absenceOfResourceInstances(_);
+}
+
+pattern everyTaskHasVariant() {
+	neg find unassignedTask(_);
+}

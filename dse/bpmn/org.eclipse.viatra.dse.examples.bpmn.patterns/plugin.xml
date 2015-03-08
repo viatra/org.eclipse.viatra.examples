@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="org.eclipse.viatra.dse.examples.bpmn.patterns.Patterns" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.bpmn.patterns.Patterns" id="org.eclipse.viatra.dse.examples.bpmn.patterns.Patterns"/>
+  </extension>
+</plugin>
