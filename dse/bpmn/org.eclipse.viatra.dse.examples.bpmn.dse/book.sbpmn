@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.viatra.dse.examples.bpmn:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.viatra.dse.examples.bpmn="org.eclipse.viatra.dse.examples.bpmn">
+  <tasks name="Receive book request" outFlows="//@sequenceFlows.1" inFlows="//@sequenceFlows.0" executionTime="11" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Get book status" outFlows="//@sequenceFlows.2" inFlows="//@sequenceFlows.1 //@sequenceFlows.12" executionTime="8" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="On loan reply" outFlows="//@sequenceFlows.7" inFlows="//@sequenceFlows.3" executionTime="11" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Cancel request" outFlows="//@sequenceFlows.10" inFlows="//@sequenceFlows.8" executionTime="13" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Request hold" outFlows="//@sequenceFlows.11" inFlows="//@sequenceFlows.9" executionTime="17" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Hold reply" outFlows="//@sequenceFlows.12" inFlows="//@sequenceFlows.11" executionTime="12" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Checkout book" outFlows="//@sequenceFlows.5" inFlows="//@sequenceFlows.4" executionTime="18" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Checkout reply" outFlows="//@sequenceFlows.6" inFlows="//@sequenceFlows.5" executionTime="12" resourceNeeded="//@resourceTypes.0"/>
+  <startEvents name="StartEvent" outFlows="//@sequenceFlows.0"/>
+  <endEvents name="EndEvent" inFlows="//@sequenceFlows.6 //@sequenceFlows.10"/>
+  <gateways name="Is book on loan" outFlows="//@sequenceFlows.3 //@sequenceFlows.4" inFlows="//@sequenceFlows.2"/>
+  <gateways name="Cancel request" outFlows="//@sequenceFlows.8 //@sequenceFlows.9" inFlows="//@sequenceFlows.7"/>
+  <sequenceFlows source="//@startEvents.0" target="//@tasks.0" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.0" target="//@tasks.1" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.1" target="//@gateways.0" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@gateways.0" target="//@tasks.2" propability="25" isDataFlow="true"/>
+  <sequenceFlows source="//@gateways.0" target="//@tasks.6" propability="75" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.6" target="//@tasks.7" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.7" target="//@endEvents.0" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.2" target="//@gateways.1" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@gateways.1" target="//@tasks.3" propability="90" isDataFlow="true"/>
+  <sequenceFlows source="//@gateways.1" target="//@tasks.4" propability="10" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.3" target="//@endEvents.0" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.4" target="//@tasks.5" propability="1" isDataFlow="true"/>
+  <sequenceFlows source="//@tasks.5" target="//@tasks.1" propability="1" isDataFlow="true"/>
+  <resourceTypes name="WS" usedByTasks="//@tasks.0 //@tasks.2 //@tasks.3 //@tasks.5 //@tasks.7">
+    <variants name="WsFast" efficiency="0.75"/>
+    <variants name="WsMedium"/>
+    <variants name="WsSlow" efficiency="1.2"/>
+  </resourceTypes>
+  <resourceTypes name="Sql" usedByTasks="//@tasks.1 //@tasks.4 //@tasks.6">
+    <variants name="SqlFast" efficiency="0.75"/>
+    <variants name="SqlMedium"/>
+    <variants name="SqlSlow" efficiency="1.2"/>
+  </resourceTypes>
+</org.eclipse.viatra.dse.examples.bpmn:Root>

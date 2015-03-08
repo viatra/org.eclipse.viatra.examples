@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.viatra.dse.examples.bpmn:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.viatra.dse.examples.bpmn="org.eclipse.viatra.dse.examples.bpmn">
+  <tasks name="Invoice In" outFlows="//@sequenceFlows.1" inFlows="//@sequenceFlows.0" executionTime="11" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Check invoice" outFlows="//@sequenceFlows.2" inFlows="//@sequenceFlows.1" executionTime="5" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Create new entry" outFlows="//@sequenceFlows.5" inFlows="//@sequenceFlows.3" executionTime="15" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Insert invoice" outFlows="//@sequenceFlows.9" inFlows="//@sequenceFlows.7" executionTime="17" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Insert  customer" outFlows="//@sequenceFlows.10" inFlows="//@sequenceFlows.8" executionTime="17" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Mismatch checking" outFlows="//@sequenceFlows.12" inFlows="//@sequenceFlows.4" executionTime="12" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Block invoice" outFlows="//@sequenceFlows.15" inFlows="//@sequenceFlows.13" executionTime="11" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Invoice out" outFlows="//@sequenceFlows.16" inFlows="//@sequenceFlows.11 //@sequenceFlows.14 //@sequenceFlows.15" executionTime="6" resourceNeeded="//@resourceTypes.0"/>
+  <startEvents name="StartEvent" outFlows="//@sequenceFlows.0"/>
+  <endEvents name="EndEvent" inFlows="//@sequenceFlows.16"/>
+  <gateways name="Is invoice Present" outFlows="//@sequenceFlows.3 //@sequenceFlows.4" inFlows="//@sequenceFlows.2"/>
+  <gateways name="Mismach checking" outFlows="//@sequenceFlows.13 //@sequenceFlows.14" inFlows="//@sequenceFlows.12"/>
+  <gateways name="Dummy" outFlows="//@sequenceFlows.6" inFlows="//@sequenceFlows.5"/>
+  <parallelGateways name="pgw" outFlows="//@sequenceFlows.7 //@sequenceFlows.8" inFlows="//@sequenceFlows.6" diverging="true"/>
+  <parallelGateways name="pgw" outFlows="//@sequenceFlows.11" inFlows="//@sequenceFlows.9 //@sequenceFlows.10"/>
+  <sequenceFlows source="//@startEvents.0" target="//@tasks.0" propability="1"/>
+  <sequenceFlows source="//@tasks.0" target="//@tasks.1" propability="1"/>
+  <sequenceFlows source="//@tasks.1" target="//@gateways.0" propability="1"/>
+  <sequenceFlows source="//@gateways.0" target="//@tasks.2" propability="40"/>
+  <sequenceFlows source="//@gateways.0" target="//@tasks.5" propability="60"/>
+  <sequenceFlows source="//@tasks.2" target="//@gateways.2" propability="1"/>
+  <sequenceFlows source="//@gateways.2" target="//@parallelGateways.0" propability="1"/>
+  <sequenceFlows source="//@parallelGateways.0" target="//@tasks.3" propability="1"/>
+  <sequenceFlows source="//@parallelGateways.0" target="//@tasks.4" propability="1"/>
+  <sequenceFlows source="//@tasks.3" target="//@parallelGateways.1" propability="1"/>
+  <sequenceFlows source="//@tasks.4" target="//@parallelGateways.1" propability="1"/>
+  <sequenceFlows source="//@parallelGateways.1" target="//@tasks.7" propability="1"/>
+  <sequenceFlows source="//@tasks.5" target="//@gateways.1" propability="1"/>
+  <sequenceFlows source="//@gateways.1" target="//@tasks.6" propability="30"/>
+  <sequenceFlows source="//@gateways.1" target="//@tasks.7" propability="70"/>
+  <sequenceFlows source="//@tasks.6" target="//@tasks.7" propability="1"/>
+  <sequenceFlows source="//@tasks.7" target="//@endEvents.0" propability="1"/>
+  <resourceTypes name="WS" usedByTasks="//@tasks.0 //@tasks.1 //@tasks.7">
+    <variants name="WS"/>
+  </resourceTypes>
+  <resourceTypes name="Sql" usedByTasks="//@tasks.2 //@tasks.3 //@tasks.4 //@tasks.5 //@tasks.6">
+    <variants name="SqlFast" efficiency="0.75"/>
+    <variants name="SqlMedium"/>
+    <variants name="SqlSlow" efficiency="1.2"/>
+  </resourceTypes>
+</org.eclipse.viatra.dse.examples.bpmn:Root>

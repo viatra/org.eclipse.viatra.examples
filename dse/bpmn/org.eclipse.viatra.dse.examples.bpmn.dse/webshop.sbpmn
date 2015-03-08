@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<org.eclipse.viatra.dse.examples.bpmn:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.viatra.dse.examples.bpmn="org.eclipse.viatra.dse.examples.bpmn">
+  <tasks name="Authorize" outFlows="//@sequenceFlows.0" inFlows="//@sequenceFlows.8" executionTime="12" resourceNeeded="//@resourceTypes.0"/>
+  <tasks name="Purchase" outFlows="//@sequenceFlows.9" inFlows="//@sequenceFlows.1" executionTime="24" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Recommend" outFlows="//@sequenceFlows.5" inFlows="//@sequenceFlows.3" executionTime="15" resourceNeeded="//@resourceTypes.2"/>
+  <tasks name="FetchData" outFlows="//@sequenceFlows.6" inFlows="//@sequenceFlows.4" executionTime="10" resourceNeeded="//@resourceTypes.1"/>
+  <tasks name="Log" outFlows="//@sequenceFlows.7" inFlows="//@sequenceFlows.6" executionTime="12" resourceNeeded="//@resourceTypes.2"/>
+  <startEvents name="StartEvent" outFlows="//@sequenceFlows.8"/>
+  <endEvents name="EndEvent" inFlows="//@sequenceFlows.9 //@sequenceFlows.10"/>
+  <gateways name="Gateway" outFlows="//@sequenceFlows.1 //@sequenceFlows.2" inFlows="//@sequenceFlows.0"/>
+  <parallelGateways name="DivergingParallelGateway" outFlows="//@sequenceFlows.3 //@sequenceFlows.4" inFlows="//@sequenceFlows.2" diverging="true"/>
+  <parallelGateways name="ConvergingParallelGateway" outFlows="//@sequenceFlows.10" inFlows="//@sequenceFlows.5 //@sequenceFlows.7"/>
+  <sequenceFlows source="//@tasks.0" target="//@gateways.0" propability="1"/>
+  <sequenceFlows source="//@gateways.0" target="//@tasks.1" propability="33"/>
+  <sequenceFlows source="//@gateways.0" target="//@parallelGateways.0" propability="66"/>
+  <sequenceFlows source="//@parallelGateways.0" target="//@tasks.2" propability="1"/>
+  <sequenceFlows source="//@parallelGateways.0" target="//@tasks.3" propability="1"/>
+  <sequenceFlows source="//@tasks.2" target="//@parallelGateways.1" propability="1"/>
+  <sequenceFlows source="//@tasks.3" target="//@tasks.4" propability="1"/>
+  <sequenceFlows source="//@tasks.4" target="//@parallelGateways.1" propability="1"/>
+  <sequenceFlows source="//@startEvents.0" target="//@tasks.0" propability="1"/>
+  <sequenceFlows source="//@tasks.1" target="//@endEvents.0" propability="1"/>
+  <sequenceFlows source="//@parallelGateways.1" target="//@endEvents.0" propability="1"/>
+  <resourceTypes name="WS" usedByTasks="//@tasks.0">
+    <variants name="WS"/>
+  </resourceTypes>
+  <resourceTypes name="Sql" usedByTasks="//@tasks.1 //@tasks.3">
+    <variants name="SqlFast" efficiency="0.75"/>
+    <variants name="SqlMedium"/>
+  </resourceTypes>
+  <resourceTypes name="NoSql" usedByTasks="//@tasks.2 //@tasks.4">
+    <variants name="NoSqlFast" efficiency="0.75"/>
+    <variants name="NoSqlMedium"/>
+  </resourceTypes>
+</org.eclipse.viatra.dse.examples.bpmn:Root>
