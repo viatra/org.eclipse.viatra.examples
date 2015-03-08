@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="simplifiedbpmn" nsURI="org.eclipse.viatra.dse.examples.bpmn"
+    nsPrefix="org.eclipse.viatra.dse.examples.bpmn">
+  <eClassifiers xsi:type="ecore:EClass" name="SimplifiedBPMN">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="startEvents" upperBound="-1"
+        eType="#//StartEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="endEvents" upperBound="-1"
+        eType="#//EndEvent" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="gateways" upperBound="-1"
+        eType="#//Gateway" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parallelGateways" upperBound="-1"
+        eType="#//ParallelGateway" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sequenceFlows" upperBound="-1"
+        eType="#//SequenceFlow" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceTypes" upperBound="-1"
+        eType="#//ResourceType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//BaseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="executionTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceNeeded" eType="#//ResourceType"
+        eOpposite="#//ResourceType/usedByTasks"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variant" eType="#//ResourceTypeVariant"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StartEvent" eSuperTypes="#//BaseElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EndEvent" eSuperTypes="#//BaseElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceFlow">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" eType="#//BaseElement"
+        eOpposite="#//BaseElement/outFlows"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" eType="#//BaseElement"
+        eOpposite="#//BaseElement/inFlows"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="propability" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isDataFlow" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Gateway" eSuperTypes="#//BaseElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ParallelGateway" eSuperTypes="#//BaseElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="diverging" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BaseElement" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outFlows" upperBound="-1"
+        eType="#//SequenceFlow" eOpposite="#//SequenceFlow/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inFlows" upperBound="-1"
+        eType="#//SequenceFlow" eOpposite="#//SequenceFlow/target"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceType" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usedByTasks" upperBound="-1"
+        eType="#//Task" eOpposite="#//Task/resourceNeeded"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variants" upperBound="-1"
+        eType="#//ResourceTypeVariant" containment="true" eOpposite="#//ResourceTypeVariant/type"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceTypeVariant" eType="#//ResourceTypeVariant"
+        eOpposite="#//ResourceTypeVariant/instances"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ResourceTypeVariant" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="efficiency" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
+        defaultValueLiteral="1.0"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instances" upperBound="-1"
+        eType="#//ResourceInstance" containment="true" eOpposite="#//ResourceInstance/resourceTypeVariant"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//ResourceType"
+        eOpposite="#//ResourceType/variants"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
