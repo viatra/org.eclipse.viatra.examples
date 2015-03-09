@@ -7,14 +7,14 @@
   <foreignModel>simplifiedbpmn.ecore</foreignModel>
   <genPackages prefix="Simplifiedbpmn" basePackage="org.eclipse.viatra.dse.examples"
       disposableProviderFactory="true" ecorePackage="simplifiedbpmn.ecore#/">
-    <genClasses ecoreClass="simplifiedbpmn.ecore#//Root">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/tasks"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/startEvents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/endEvents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/gateways"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/parallelGateways"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/sequenceFlows"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//Root/resourceTypes"/>
+    <genClasses ecoreClass="simplifiedbpmn.ecore#//SimplifiedBPMN">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/tasks"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/startEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/endEvents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/gateways"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/parallelGateways"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/sequenceFlows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference simplifiedbpmn.ecore#//SimplifiedBPMN/resourceTypes"/>
     </genClasses>
     <genClasses ecoreClass="simplifiedbpmn.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute simplifiedbpmn.ecore#//Task/executionTime"/>

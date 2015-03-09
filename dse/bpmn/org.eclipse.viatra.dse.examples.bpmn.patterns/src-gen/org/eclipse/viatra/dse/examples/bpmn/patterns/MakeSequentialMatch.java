@@ -1,12 +1,12 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import java.util.Arrays;
 import java.util.List;
 import org.eclipse.incquery.runtime.api.IPatternMatch;
 import org.eclipse.incquery.runtime.api.impl.BasePatternMatch;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**
@@ -70,7 +70,7 @@ public abstract class MakeSequentialMatch extends BasePatternMatch {
     	return true;
     }
     if ("Root".equals(parameterName) ) {
-    	this.fRoot = (SimplifiedBPMN) newValue;
+    	this.fRoot = (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) newValue;
     	return true;
     }
     return false;

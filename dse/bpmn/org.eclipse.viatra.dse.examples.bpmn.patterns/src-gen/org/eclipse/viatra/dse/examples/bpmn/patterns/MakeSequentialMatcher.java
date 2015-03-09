@@ -1,6 +1,5 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +14,7 @@ import org.eclipse.incquery.runtime.matchers.tuple.Tuple;
 import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**
@@ -283,7 +283,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected /* Set<SimplifiedBPMN> */Object rawAccumulateAllValuesOfRoot(final Object[] parameters) {
+  protected Set<SimplifiedBPMN> rawAccumulateAllValuesOfRoot(final Object[] parameters) {
     Set<SimplifiedBPMN> results = new HashSet<SimplifiedBPMN>();
     rawAccumulateAllValues(POSITION_ROOT, parameters, results);
     return results;
@@ -294,7 +294,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot() {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot() {
     return rawAccumulateAllValuesOfRoot(emptyArray());
   }
   
@@ -303,7 +303,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot(final MakeSequentialMatch partialMatch) {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot(final MakeSequentialMatch partialMatch) {
     return rawAccumulateAllValuesOfRoot(partialMatch.toArray());
   }
   
@@ -312,7 +312,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot(final Task pT1, final Task pT2) {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot(final Task pT1, final Task pT2) {
     return rawAccumulateAllValuesOfRoot(new Object[]{
     pT1, 
     pT2, 
@@ -323,7 +323,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   @Override
   protected MakeSequentialMatch tupleToMatch(final Tuple t) {
     try {
-    	return MakeSequentialMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T1), (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T2), (SimplifiedBPMN) t.get(POSITION_ROOT));
+    	return MakeSequentialMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T1), (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T2), (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) t.get(POSITION_ROOT));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -333,7 +333,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   @Override
   protected MakeSequentialMatch arrayToMatch(final Object[] match) {
     try {
-    	return MakeSequentialMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return MakeSequentialMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) match[POSITION_ROOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -343,7 +343,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   @Override
   protected MakeSequentialMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return MakeSequentialMatch.newMutableMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return MakeSequentialMatch.newMutableMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) match[POSITION_ROOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;

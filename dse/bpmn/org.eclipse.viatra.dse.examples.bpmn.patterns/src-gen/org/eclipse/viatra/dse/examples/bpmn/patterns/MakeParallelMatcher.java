@@ -1,6 +1,5 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +14,7 @@ import org.eclipse.incquery.runtime.matchers.tuple.Tuple;
 import org.eclipse.incquery.runtime.util.IncQueryLoggingUtil;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**
@@ -282,7 +282,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  protected /* Set<SimplifiedBPMN> */Object rawAccumulateAllValuesOfRoot(final Object[] parameters) {
+  protected Set<SimplifiedBPMN> rawAccumulateAllValuesOfRoot(final Object[] parameters) {
     Set<SimplifiedBPMN> results = new HashSet<SimplifiedBPMN>();
     rawAccumulateAllValues(POSITION_ROOT, parameters, results);
     return results;
@@ -293,7 +293,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot() {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot() {
     return rawAccumulateAllValuesOfRoot(emptyArray());
   }
   
@@ -302,7 +302,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot(final MakeParallelMatch partialMatch) {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot(final MakeParallelMatch partialMatch) {
     return rawAccumulateAllValuesOfRoot(partialMatch.toArray());
   }
   
@@ -311,7 +311,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public /* Set<SimplifiedBPMN> */Object getAllValuesOfRoot(final Task pT1, final Task pT2) {
+  public Set<SimplifiedBPMN> getAllValuesOfRoot(final Task pT1, final Task pT2) {
     return rawAccumulateAllValuesOfRoot(new Object[]{
     pT1, 
     pT2, 
@@ -322,7 +322,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
   @Override
   protected MakeParallelMatch tupleToMatch(final Tuple t) {
     try {
-    	return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T1), (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T2), (SimplifiedBPMN) t.get(POSITION_ROOT));
+    	return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T1), (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) t.get(POSITION_T2), (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) t.get(POSITION_ROOT));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -332,7 +332,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
   @Override
   protected MakeParallelMatch arrayToMatch(final Object[] match) {
     try {
-    	return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) match[POSITION_ROOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -342,7 +342,7 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
   @Override
   protected MakeParallelMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return MakeParallelMatch.newMutableMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return MakeParallelMatch.newMutableMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) match[POSITION_T2], (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) match[POSITION_ROOT]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;

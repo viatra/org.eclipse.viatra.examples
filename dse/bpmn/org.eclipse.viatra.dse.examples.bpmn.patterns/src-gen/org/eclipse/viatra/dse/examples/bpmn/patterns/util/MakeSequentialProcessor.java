@@ -1,8 +1,8 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.incquery.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**

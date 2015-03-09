@@ -1,6 +1,5 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import com.google.common.collect.Sets;
 import java.util.Arrays;
 import java.util.List;
@@ -64,7 +63,7 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
   
   @Override
   public MakeParallelMatch newMatch(final Object... parameters) {
-    return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) parameters[0], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) parameters[1], (SimplifiedBPMN) parameters[2]);
+    return MakeParallelMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) parameters[0], (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) parameters[1], (org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN) parameters[2]);
   }
   
   private static class LazyHolder {
@@ -90,7 +89,7 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("Root", ""));
+      return Arrays.asList(new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("Root", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN"));
     }
     
     @Override
