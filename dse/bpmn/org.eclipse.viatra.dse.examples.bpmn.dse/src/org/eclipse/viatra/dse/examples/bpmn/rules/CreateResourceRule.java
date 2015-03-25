@@ -17,6 +17,7 @@ import org.eclipse.viatra.dse.api.TransformationRule;
 import org.eclipse.viatra.dse.api.TransformationRule.ActivationCostProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
@@ -24,21 +25,22 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
 
 /**
- *  This rule creates resource instance.
+ * This rule creates resource instance.
+ * 
  * @author Andras Szabolcs Nagy
  */
 public class CreateResourceRule {
 
-    public static TransformationRule<CreateResourceMatch> createRule() throws IncQueryException {
-        TransformationRule<CreateResourceMatch> rule = new TransformationRule<CreateResourceMatch>(CreateResourceQuerySpecification.instance(), new CreateResourceProcessor() {
+    public static TransformationRule<CreateResourceMatch, CreateResourceMatcher> createRule() throws IncQueryException {
+        TransformationRule<CreateResourceMatch, CreateResourceMatcher> rule = new TransformationRule<CreateResourceMatch, CreateResourceMatcher>(
+                CreateResourceQuerySpecification.instance(), new CreateResourceProcessor() {
 
-            @Override
-            public void process(ResourceTypeVariant pRTV) {
-                pRTV.getInstances().add(SimplifiedbpmnFactory.eINSTANCE.createResourceInstance());
-            }
-            
-            
-        });
+                    @Override
+                    public void process(ResourceTypeVariant pRTV) {
+                        pRTV.getInstances().add(SimplifiedbpmnFactory.eINSTANCE.createResourceInstance());
+                    }
+
+                });
         rule.setActivationCostProcessor(new ActivationCostProcessor<CreateResourceMatch>() {
             @Override
             public Map<String, Double> process(CreateResourceMatch match) {
@@ -58,10 +60,11 @@ public class CreateResourceRule {
                     d = 1.5d;
                 } else if (name.equals(BpmnProblems.WS)) {
                     d = 1d;
+                } else {
+                    d = 0d;
                 }
-                else d = 0d;
                 Map<String, Double> result = new HashMap<String, Double>(1);
-                result.put(BpmnGeneticTestRunner.COST,d);
+                result.put(BpmnGeneticTestRunner.COST, d);
                 return result;
             }
         });

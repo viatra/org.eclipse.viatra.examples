@@ -12,20 +12,23 @@ package org.eclipse.viatra.dse.examples.bpmn.rules;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.TransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AllocateTaskToVariantProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AllocateTaskToVariantQuerySpecification;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**
- *  This rule assigns a resource variant to a task.
+ * This rule assigns a resource variant to a task.
+ * 
  * @author Andras Szabolcs Nagy
  */
 public class AssignVariantToTaskRule {
 
-    public static TransformationRule<AllocateTaskToVariantMatch> createRule() throws IncQueryException {
-        return new TransformationRule<AllocateTaskToVariantMatch>(AllocateTaskToVariantQuerySpecification.instance(),
-                new AllocateTaskToVariantProcessor() {
+    public static TransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> createRule()
+            throws IncQueryException {
+        return new TransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher>(
+                AllocateTaskToVariantQuerySpecification.instance(), new AllocateTaskToVariantProcessor() {
 
                     @Override
                     public void process(Task pT, ResourceTypeVariant pRTV) {

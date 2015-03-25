@@ -25,10 +25,7 @@ import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
 import org.eclipse.viatra.dse.api.strategy.impl.HillClimbingStrategy;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeHardObjective;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
@@ -41,7 +38,6 @@ import org.eclipse.viatra.dse.examples.bpmn.serializer.BpmnSerializerFactory;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
-import org.eclipse.viatra.dse.objectives.impl.ModelQueryType;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
 import org.eclipse.viatra.dse.objectives.impl.WeightedQueriesSoftObjective;
 import org.eclipse.viatra.dse.solutionstore.SimpleSolutionStore;
@@ -93,10 +89,10 @@ public class BpmnExamples {
     /**
      * Variables are converted to fields only for easier usage. 
      */
-    private TransformationRule<AllocateTaskToVariantMatch> allocateRule;
-    private TransformationRule<CreateResourceMatch> createResourceRule;
-    private TransformationRule<MakeParallelMatch> makeParallelRule;
-    private TransformationRule<MakeSequentialMatch> makeSequentialRule;
+    private TransformationRule<?, ?> allocateRule;
+    private TransformationRule<?, ?> createResourceRule;
+    private TransformationRule<?, ?> makeParallelRule;
+    private TransformationRule<?, ?> makeSequentialRule;
     private DesignSpaceExplorer dse;
     private FixedPriorityStrategy fixedPriorityStrategy;
     private EObject model;

@@ -16,27 +16,29 @@ import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.TransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.BaseElement;
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 
 /**
- *  This rule makes two parallel task sequential.
+ * This rule makes two parallel task sequential.
+ * 
  * @author Andras Szabolcs Nagy
  */
 public class MakeSequentialRule {
 
-    public static TransformationRule<MakeSequentialMatch> createRule() throws IncQueryException {
-        TransformationRule<MakeSequentialMatch> rule = new TransformationRule<MakeSequentialMatch>(MakeSequentialQuerySpecification.instance(),
-                new MakeSequentialProcessor() {
-                    
+    public static TransformationRule<MakeSequentialMatch, MakeSequentialMatcher> createRule() throws IncQueryException {
+        TransformationRule<MakeSequentialMatch, MakeSequentialMatcher> rule = new TransformationRule<MakeSequentialMatch, MakeSequentialMatcher>(
+                MakeSequentialQuerySpecification.instance(), new MakeSequentialProcessor() {
+
                     @Override
                     public void process(Task pT1, Task pT2, SimplifiedBPMN pRoot) {
-                        
+
                         EList<SequenceFlow> flows = pT1.getInFlows();
                         BaseElement divergingGateway = flows.get(0).getSource();
                         pRoot.getParallelGateways().remove(divergingGateway);
@@ -53,7 +55,7 @@ public class MakeSequentialRule {
                         pRoot.getParallelGateways().remove(convergingGateway);
                         pRoot.getSequenceFlows().removeAll(flows);
                         flows.clear();
-                      
+
                         flows = divergingGateway.getInFlows();
                         while (!flows.isEmpty()) {
                             SequenceFlow flow = flows.get(0);
@@ -64,7 +66,7 @@ public class MakeSequentialRule {
                             SequenceFlow flow = flows.get(0);
                             flow.setSource(pT2);
                         }
-                        
+
                         new SimplifiedBpmnBuilder(pRoot).createFlow(pT1, pT2);
                     }
                 });
