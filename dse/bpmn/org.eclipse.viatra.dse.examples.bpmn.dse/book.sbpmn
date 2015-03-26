@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<org.eclipse.viatra.dse.examples.bpmn:Root xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.viatra.dse.examples.bpmn="org.eclipse.viatra.dse.examples.bpmn">
+<org.eclipse.viatra.dse.examples.bpmn:SimplifiedBPMN xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.viatra.dse.examples.bpmn="org.eclipse.viatra.dse.examples.bpmn">
   <tasks name="Receive book request" outFlows="//@sequenceFlows.1" inFlows="//@sequenceFlows.0" executionTime="11" resourceNeeded="//@resourceTypes.0"/>
   <tasks name="Get book status" outFlows="//@sequenceFlows.2" inFlows="//@sequenceFlows.1 //@sequenceFlows.12" executionTime="8" resourceNeeded="//@resourceTypes.1"/>
   <tasks name="On loan reply" outFlows="//@sequenceFlows.7" inFlows="//@sequenceFlows.3" executionTime="11" resourceNeeded="//@resourceTypes.0"/>
@@ -35,4 +35,4 @@
     <variants name="SqlMedium"/>
     <variants name="SqlSlow" efficiency="1.2"/>
   </resourceTypes>
-</org.eclipse.viatra.dse.examples.bpmn:Root>
+</org.eclipse.viatra.dse.examples.bpmn:SimplifiedBPMN>

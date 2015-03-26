@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.viatra.dse.api.TransformationRule;
+import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
@@ -32,8 +32,8 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
  */
 public class MakeParallelRule {
 
-    public static TransformationRule<MakeParallelMatch, MakeParallelMatcher> createRule() throws IncQueryException {
-        TransformationRule<MakeParallelMatch, MakeParallelMatcher> rule = new TransformationRule<MakeParallelMatch, MakeParallelMatcher>(MakeParallelQuerySpecification.instance(),
+    public static DSETransformationRule<MakeParallelMatch, MakeParallelMatcher> createRule() throws IncQueryException {
+        DSETransformationRule<MakeParallelMatch, MakeParallelMatcher> rule = new DSETransformationRule<MakeParallelMatch, MakeParallelMatcher>(MakeParallelQuerySpecification.instance(),
                 new MakeParallelProcessor() {
                     @Override
                     public void process(Task pT1, Task pT2, SimplifiedBPMN pRoot) {

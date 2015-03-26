@@ -13,8 +13,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.viatra.dse.api.TransformationRule;
-import org.eclipse.viatra.dse.api.TransformationRule.ActivationCostProcessor;
+import org.eclipse.viatra.dse.api.DSETransformationRule;
+import org.eclipse.viatra.dse.api.DSETransformationRule.ActivationCostProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
@@ -31,8 +31,8 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
  */
 public class CreateResourceRule {
 
-    public static TransformationRule<CreateResourceMatch, CreateResourceMatcher> createRule() throws IncQueryException {
-        TransformationRule<CreateResourceMatch, CreateResourceMatcher> rule = new TransformationRule<CreateResourceMatch, CreateResourceMatcher>(
+    public static DSETransformationRule<CreateResourceMatch, CreateResourceMatcher> createRule() throws IncQueryException {
+        DSETransformationRule<CreateResourceMatch, CreateResourceMatcher> rule = new DSETransformationRule<CreateResourceMatch, CreateResourceMatcher>(
                 CreateResourceQuerySpecification.instance(), new CreateResourceProcessor() {
 
                     @Override

@@ -20,7 +20,7 @@ import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.Solution;
 import org.eclipse.viatra.dse.api.SolutionTrajectory;
 import org.eclipse.viatra.dse.api.Strategies;
-import org.eclipse.viatra.dse.api.TransformationRule;
+import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
 import org.eclipse.viatra.dse.api.strategy.impl.HillClimbingStrategy;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeHardObjective;
@@ -89,10 +89,10 @@ public class BpmnExamples {
     /**
      * Variables are converted to fields only for easier usage. 
      */
-    private TransformationRule<?, ?> allocateRule;
-    private TransformationRule<?, ?> createResourceRule;
-    private TransformationRule<?, ?> makeParallelRule;
-    private TransformationRule<?, ?> makeSequentialRule;
+    private DSETransformationRule<?, ?> allocateRule;
+    private DSETransformationRule<?, ?> createResourceRule;
+    private DSETransformationRule<?, ?> makeParallelRule;
+    private DSETransformationRule<?, ?> makeSequentialRule;
     private DesignSpaceExplorer dse;
     private FixedPriorityStrategy fixedPriorityStrategy;
     private EObject model;

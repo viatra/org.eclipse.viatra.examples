@@ -13,7 +13,7 @@ import java.util.HashMap;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.viatra.dse.api.TransformationRule;
+import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatcher;
@@ -32,8 +32,8 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
  */
 public class MakeSequentialRule {
 
-    public static TransformationRule<MakeSequentialMatch, MakeSequentialMatcher> createRule() throws IncQueryException {
-        TransformationRule<MakeSequentialMatch, MakeSequentialMatcher> rule = new TransformationRule<MakeSequentialMatch, MakeSequentialMatcher>(
+    public static DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher> createRule() throws IncQueryException {
+        DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher> rule = new DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher>(
                 MakeSequentialQuerySpecification.instance(), new MakeSequentialProcessor() {
 
                     @Override
