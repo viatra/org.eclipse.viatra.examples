@@ -9,15 +9,14 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.serializer;
 
-import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.viatra.dse.statecode.IStateSerializer;
-import org.eclipse.viatra.dse.statecode.IStateSerializerFactory;
+import org.eclipse.viatra.dse.statecode.IStateCoder;
+import org.eclipse.viatra.dse.statecode.IStateCoderFactory;
 
-public class BpmnSerializerFactory implements IStateSerializerFactory{
+public class BpmnSerializerFactory implements IStateCoderFactory {
 
     @Override
-    public IStateSerializer createStateSerializer(Notifier modelRoot) throws UnsupportedMetaModel {
-        return new BpmnSerializer(modelRoot);
+    public IStateCoder createStateCoder() {
+        return new BpmnSerializer();
     }
 
 }

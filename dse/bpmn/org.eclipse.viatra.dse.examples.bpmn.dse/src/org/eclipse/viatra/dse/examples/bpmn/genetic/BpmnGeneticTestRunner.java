@@ -66,7 +66,7 @@ public abstract class BpmnGeneticTestRunner extends GeneticTestRunner {
         GeneticDesignSpaceExplorer gdse = new GeneticDesignSpaceExplorer();
         
         
-        gdse.setSerializerFactory(new BpmnSerializerFactory());
+        gdse.setStateCoderFactory(new BpmnSerializerFactory());
         
         gdse.addTransformationRule(AssignVariantToTaskRule.createRule(), 3);
         gdse.addTransformationRule(CreateResourceRule.createRule(), 2);

@@ -127,7 +127,7 @@ public class BpmnExamples {
         model = BpmnProblems.createWebShopProblem();
         dse.setInitialModel(model);
 
-        dse.setSerializerFactory(new BpmnSerializerFactory());
+        dse.setStateCoderFactory(new BpmnSerializerFactory());
 
         allocateRule = AssignVariantToTaskRule.createRule();
         createResourceRule = CreateResourceRule.createRule();

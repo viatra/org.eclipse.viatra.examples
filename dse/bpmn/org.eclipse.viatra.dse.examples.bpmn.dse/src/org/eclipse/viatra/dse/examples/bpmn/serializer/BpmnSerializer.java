@@ -25,17 +25,19 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceType;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
-import org.eclipse.viatra.dse.statecode.IStateSerializer;
+import org.eclipse.viatra.dse.statecode.IStateCoder;
 
-public class BpmnSerializer implements IStateSerializer {
+public class BpmnSerializer implements IStateCoder {
 
     private SimplifiedBPMN model;
     private ArrayList<ResourceTypeVariant> sortedResourceTypes;
     private ArrayList<Task> sortedTasks;
 
-    public BpmnSerializer(Notifier modelRoot) {
+    
+    @Override
+    public void init(Notifier notifier) {
         
-        model = (SimplifiedBPMN) modelRoot;
+        model = (SimplifiedBPMN) notifier;
         
         sortedResourceTypes = new ArrayList<ResourceTypeVariant>();
         for (ResourceType resourceType : model.getResourceTypes()) {
@@ -59,7 +61,7 @@ public class BpmnSerializer implements IStateSerializer {
     }
 
     @Override
-    public Object serializeContainmentTree() {
+    public Object createStateCode() {
         StringBuilder sb = new StringBuilder();
         for (ResourceTypeVariant resourceTypeVariant : sortedResourceTypes) {
             sb.append(resourceTypeVariant.getName());
@@ -91,7 +93,7 @@ public class BpmnSerializer implements IStateSerializer {
     }
 
     @Override
-    public Object serializePatternMatch(IPatternMatch match) {
+    public Object createActivationCode(IPatternMatch match) {
 
         if (match instanceof CreateResourceMatch) {
             CreateResourceMatch m = (CreateResourceMatch) match;
@@ -115,8 +117,4 @@ public class BpmnSerializer implements IStateSerializer {
         return (sign > 0 ? s1 : s2) + "%" + (sign > 0 ? s2 : s1);
     }
     
-    @Override
-    public void resetCache() {
-    }
-
 }
