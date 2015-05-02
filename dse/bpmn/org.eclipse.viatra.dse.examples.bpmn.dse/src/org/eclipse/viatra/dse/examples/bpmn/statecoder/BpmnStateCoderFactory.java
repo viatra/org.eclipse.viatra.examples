@@ -7,16 +7,16 @@
  * Contributors:
  *   Andras Szabolcs Nagy - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.dse.examples.bpmn.serializer;
+package org.eclipse.viatra.dse.examples.bpmn.statecoder;
 
 import org.eclipse.viatra.dse.statecode.IStateCoder;
 import org.eclipse.viatra.dse.statecode.IStateCoderFactory;
 
-public class BpmnSerializerFactory implements IStateCoderFactory {
+public class BpmnStateCoderFactory implements IStateCoderFactory {
 
     @Override
     public IStateCoder createStateCoder() {
-        return new BpmnSerializer();
+        return new BpmnStateCoder();
     }
 
 }

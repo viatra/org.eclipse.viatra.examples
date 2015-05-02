@@ -34,7 +34,7 @@ import org.eclipse.viatra.dse.examples.bpmn.rules.AssignVariantToTaskRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.CreateResourceRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
-import org.eclipse.viatra.dse.examples.bpmn.serializer.BpmnSerializerFactory;
+import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
@@ -127,7 +127,7 @@ public class BpmnExamples {
         model = BpmnProblems.createWebShopProblem();
         dse.setInitialModel(model);
 
-        dse.setStateCoderFactory(new BpmnSerializerFactory());
+        dse.setStateCoderFactory(new BpmnStateCoderFactory());
 
         allocateRule = AssignVariantToTaskRule.createRule();
         createResourceRule = CreateResourceRule.createRule();

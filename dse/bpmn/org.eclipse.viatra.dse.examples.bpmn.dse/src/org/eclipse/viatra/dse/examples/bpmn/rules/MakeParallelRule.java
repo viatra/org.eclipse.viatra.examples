@@ -20,7 +20,7 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder;
-import org.eclipse.viatra.dse.examples.bpmn.serializer.BpmnSerializer;
+import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoder;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
@@ -37,7 +37,7 @@ public class MakeParallelRule {
                 new MakeParallelProcessor() {
                     @Override
                     public void process(Task pT1, Task pT2, SimplifiedBPMN pRoot) {
-                        String name = BpmnSerializer.createOrderedString(pT1.getName(), pT2.getName());
+                        String name = BpmnStateCoder.createOrderedString(pT1.getName(), pT2.getName());
                         
                         SimplifiedBpmnBuilder builder = new SimplifiedBpmnBuilder(pRoot);
                         

@@ -7,7 +7,7 @@
  * Contributors:
  *   Andras Szabolcs Nagy - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.dse.examples.bpmn.serializer;
+package org.eclipse.viatra.dse.examples.bpmn.statecoder;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,7 +27,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 import org.eclipse.viatra.dse.statecode.IStateCoder;
 
-public class BpmnSerializer implements IStateCoder {
+public class BpmnStateCoder implements IStateCoder {
 
     private SimplifiedBPMN model;
     private ArrayList<ResourceTypeVariant> sortedResourceTypes;

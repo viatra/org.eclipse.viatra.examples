@@ -18,9 +18,9 @@ import org.eclipse.viatra.dse.examples.bpmn.rules.AssignVariantToTaskRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.CreateResourceRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
-import org.eclipse.viatra.dse.examples.bpmn.serializer.BpmnSerializerFactory;
 import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator;
 import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator.ResourceInstanceData;
+import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.genetic.api.GeneticDesignSpaceExplorer;
@@ -66,7 +66,7 @@ public abstract class BpmnGeneticTestRunner extends GeneticTestRunner {
         GeneticDesignSpaceExplorer gdse = new GeneticDesignSpaceExplorer();
         
         
-        gdse.setStateCoderFactory(new BpmnSerializerFactory());
+        gdse.setStateCoderFactory(new BpmnStateCoderFactory());
         
         gdse.addTransformationRule(AssignVariantToTaskRule.createRule(), 3);
         gdse.addTransformationRule(CreateResourceRule.createRule(), 2);
