@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><?eclipse version="3.0"?><!--
+--><plugin>
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <!-- @generated Fowler -->
+    <package class="org.eclipse.viatra.cep.examples.fowler.incquery.model.fowler.FowlerPackage" genModel="model/Fowler.genmodel" uri="fowler.meta"/>
+  </extension>
+  <extension id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" point="org.eclipse.incquery.runtime.queryspecification">
+    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries"/>
+  </extension>
+</plugin>

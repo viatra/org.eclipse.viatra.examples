@@ -1,0 +1,84 @@
+package org.eclipse.viatra.cep.examples.fowler.model
+
+import org.eclipse.viatra.cep.examples.fowler.main.*
+
+/**
+ * Atomic events
+ * 
+ * Generated sources in packages:
+ * -atomic event beans:				*.events
+ * -atomic event pattern classes:	*.patterns.atomic
+ * 
+ */
+AtomicEvent DOCL(){}
+AtomicEvent DOOP(){}
+AtomicEvent DWCL(){}
+AtomicEvent DWOP(){}
+AtomicEvent LION(){}
+AtomicEvent LIOF(){}
+AtomicEvent WLKC(){}
+AtomicEvent DWCL_2(id:String){}
+AtomicEvent DWOP_2(id:String){}
+
+/**
+ * Complex event patterns
+ * 
+ * Generated sources in packages:
+ * -complex event pattern classes:	*.patterns.complex
+ * -anonymous pattern classes:		*.patterns.complex.anonymous
+ * 
+ */
+ComplexEvent SC1O(){
+	definition: DOOP -> LION -> DWOP 
+}
+
+ComplexEvent SC2O(){
+	definition: WLKC{2}
+}
+
+ComplexEvent SC3O(){
+	definition: ((LION -> LIOF)[1000] OR (DWOP->DWCL){2}[2000])  
+}
+
+ComplexEvent SC3O_2(drawerId:String){
+	definition: ((LION -> LIOF)[1000] OR (DWOP_2(drawerId)->DWCL_2(drawerId)){2}[2000])[1500]
+}
+
+/**
+ * Rules
+ * 
+ * Generated sources in packages:
+ * -rule classes:	*.rules
+ * -job classes:	*.jobs
+ * 
+ */
+Rule openSC1{
+	events: SC1O
+	action{
+		CompartmentActuator::openCompartment(1)
+	}
+}
+
+Rule openSC2{
+	events: SC2O
+	action{
+		CompartmentActuator::openCompartment(2)
+	}
+
+}
+
+Rule openSC3{
+	events: SC3O
+	action{
+		CompartmentActuator::openCompartment(3)
+	}
+}
+
+
+Rule openSC3_2{
+	events: SC3O_2
+	action{
+		System.out.println("To open the compartment, we used parameterized events now, and see...")
+		CompartmentActuator::openCompartment(3)
+	}
+}
