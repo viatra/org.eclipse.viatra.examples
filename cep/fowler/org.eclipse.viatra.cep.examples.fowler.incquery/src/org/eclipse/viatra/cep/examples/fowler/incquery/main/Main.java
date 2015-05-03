@@ -39,7 +39,7 @@ public class Main extends DefaultApplication {
 	private Drawer drawer2;
 
 	public Main() {
-		super(EventContext.CHRONICLE);
+		super(EventContext.STRICT_IMMEDIATE);
 	}
 
 	/**
@@ -84,7 +84,7 @@ public class Main extends DefaultApplication {
 		drawer1 = FowlerFactory.eINSTANCE.createDrawer();
 		drawer1.setId("drawer1");
 		drawer2 = FowlerFactory.eINSTANCE.createDrawer();
-		drawer1.setId("drawer2");
+		drawer2.setId("drawer2");
 		room.getDrawers().add(drawer1);
 		room.getDrawers().add(drawer2);
 
