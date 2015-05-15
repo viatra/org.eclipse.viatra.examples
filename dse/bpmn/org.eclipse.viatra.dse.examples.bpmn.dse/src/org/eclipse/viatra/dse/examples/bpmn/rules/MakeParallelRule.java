@@ -9,12 +9,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
-import java.util.HashMap;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
-import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelProcessor;
@@ -68,9 +65,6 @@ public class MakeParallelRule {
                     }
 
                 });
-        HashMap<String, Double> costs = new HashMap<String, Double>(1);
-        costs.put(BpmnGeneticTestRunner.COST, 1d);
-        rule.setCosts(costs);
         return rule;
     }
 }

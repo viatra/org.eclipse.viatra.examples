@@ -10,12 +10,12 @@
 package org.eclipse.viatra.dse.examples.bpmn.objectives;
 
 import org.eclipse.viatra.dse.base.ThreadContext;
+import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.IObjective;
 import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
 
 /**
- * This class represents the min. resource usage objective, but the actual calculation happens in the
- * {@link AvgResponseTimeHardObjective}.
+ * This class represents the min. resource usage objective.
  * 
  * @author Andras Szabolcs Nagy
  *
@@ -23,29 +23,22 @@ import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
 public class MinResourceUsageSoftObjective extends BaseObjective {
 
     protected static final String DEFAUL_NAME = "MinResourceUsage";
-
-    private Double fitness = Double.NaN;
+    private RunSimulationOnModel sim;
 
     public MinResourceUsageSoftObjective() {
         super(DEFAUL_NAME);
-    }
-
-    public void setFitness(Double fitness) {
-        this.fitness = fitness;
-    }
-
-    @Override
-    public Double getFitness(ThreadContext context) {
-        if (fitness.isNaN()) {
-            throw new RuntimeException("getFitness was called on " + DEFAUL_NAME + " objective, before "
-                    + AvgResponseTimeHardObjective.DEFAULT_NAME
-                    + " objective getFitness. Please change the order of the two objectives.");
-        }
-        return fitness;
+        comparator = Comparators.HIGHER_IS_BETTER;
     }
 
     @Override
     public void init(ThreadContext context) {
+        sim = RunSimulationOnModel.create(context);
+    }
+
+    @Override
+    public Double getFitness(ThreadContext context) {
+        sim.runSimulation();
+        return sim.getMinUtilization();
     }
 
     @Override

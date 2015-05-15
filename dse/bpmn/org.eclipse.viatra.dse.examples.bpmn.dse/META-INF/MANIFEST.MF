@@ -11,4 +11,10 @@ Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.model,
  org.eclipse.viatra.dse.base,
  org.eclipse.incquery.runtime
 Import-Package: org.apache.log4j;version="1.2.15"
-Export-Package: org.eclipse.viatra.dse.examples.bpmn.genetic
+Export-Package: org.eclipse.viatra.dse.examples.bpmn.dse,
+ org.eclipse.viatra.dse.examples.bpmn.genetic,
+ org.eclipse.viatra.dse.examples.bpmn.objectives,
+ org.eclipse.viatra.dse.examples.bpmn.problems,
+ org.eclipse.viatra.dse.examples.bpmn.rules,
+ org.eclipse.viatra.dse.examples.bpmn.simulator,
+ org.eclipse.viatra.dse.examples.bpmn.statecoder

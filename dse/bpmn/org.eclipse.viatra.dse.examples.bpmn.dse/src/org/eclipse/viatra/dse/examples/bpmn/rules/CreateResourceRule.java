@@ -9,18 +9,12 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
-import org.eclipse.viatra.dse.api.DSETransformationRule.ActivationCostProcessor;
-import org.eclipse.viatra.dse.examples.bpmn.genetic.BpmnGeneticTestRunner;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceQuerySpecification;
-import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
 
@@ -41,33 +35,6 @@ public class CreateResourceRule {
                     }
 
                 });
-        rule.setActivationCostProcessor(new ActivationCostProcessor<CreateResourceMatch>() {
-            @Override
-            public Map<String, Double> process(CreateResourceMatch match) {
-                String name = match.getRTV().getName();
-                Double d;
-                if (name.equals(BpmnProblems.NOSQL_FAST)) {
-                    d = 5d;
-                } else if (name.equals(BpmnProblems.NOSQL_MEDIUM)) {
-                    d = 3d;
-                } else if (name.equals(BpmnProblems.NOSQL_SLOW)) {
-                    d = 1.5d;
-                } else if (name.equals(BpmnProblems.SQL_FAST)) {
-                    d = 5d;
-                } else if (name.equals(BpmnProblems.SQL_MEDIUM)) {
-                    d = 3d;
-                } else if (name.equals(BpmnProblems.SQL_SLOW)) {
-                    d = 1.5d;
-                } else if (name.equals(BpmnProblems.WS)) {
-                    d = 1d;
-                } else {
-                    d = 0d;
-                }
-                Map<String, Double> result = new HashMap<String, Double>(1);
-                result.put(BpmnGeneticTestRunner.COST, d);
-                return result;
-            }
-        });
         return rule;
     }
 }

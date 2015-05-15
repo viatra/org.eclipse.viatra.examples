@@ -60,7 +60,7 @@ public class BpmnExamples {
     /**
      * Costs of the different resource instances.
      */
-    private final class CostOfCreateResource implements ActivationFitnessProcessor {
+    public static final class CostOfCreateResource implements ActivationFitnessProcessor {
         @Override
         public double process(IPatternMatch match) {
             CreateResourceMatch m = (CreateResourceMatch) match;
@@ -162,11 +162,10 @@ public class BpmnExamples {
         // Adds two more custom objectives: response time and resource utilization. Both of them are evaluated by
         // simulating the BPMN model.
         // The actual simulation is run by the AvgResponseTimeSoftObjective and calculates both objectives.
-        MinResourceUsageSoftObjective minResourceUsageSoftObjective = new MinResourceUsageSoftObjective();
-        dse.addObjective(new AvgResponseTimeHardObjective(minResourceUsageSoftObjective)
+        dse.addObjective(new AvgResponseTimeHardObjective()
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(1));
-        dse.addObjective(minResourceUsageSoftObjective
+        dse.addObjective(new MinResourceUsageSoftObjective()
                 .withComparator(Comparators.HIGHER_IS_BETTER)
                 .withLevel(1));
 

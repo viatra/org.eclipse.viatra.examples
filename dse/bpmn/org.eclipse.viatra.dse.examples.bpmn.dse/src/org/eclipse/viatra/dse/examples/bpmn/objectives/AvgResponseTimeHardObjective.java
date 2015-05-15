@@ -9,13 +9,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.objectives;
 
-import java.util.HashMap;
-
 import org.eclipse.viatra.dse.base.ThreadContext;
 import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator;
-import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator.ResourceInstanceData;
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
+import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.IObjective;
 import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
 
@@ -32,57 +28,27 @@ import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
 public class AvgResponseTimeHardObjective extends BaseObjective {
 
     public static final String DEFAULT_NAME = "AvgResponseTime";
-    private MinResourceUsageSoftObjective minResourceUsageSoftObjective;
+    private RunSimulationOnModel sim;
 
-    public AvgResponseTimeHardObjective(MinResourceUsageSoftObjective minResourceUsageSoftObjective) {
+    public AvgResponseTimeHardObjective() {
         super(DEFAULT_NAME);
-        this.minResourceUsageSoftObjective = minResourceUsageSoftObjective;
-    }
-
-    public Double getFitness(ThreadContext context) {
-        Simulator simulator = new Simulator((SimplifiedBPMN) context.getModelRoot(), 10, 20);
-        if (simulator.canSimulate()) {
-            simulator.simulate();
-
-            int sumResponseTimes = 0;
-            for (Simulator.Token token : simulator.getTokens()) {
-                sumResponseTimes += token.endTime - token.startTime;
-            }
-            double avgResponseTime = ((double) sumResponseTimes) / simulator.getTokens().size();
-
-            HashMap<ResourceTypeVariant, Integer> sumBusyTime = new HashMap<ResourceTypeVariant, Integer>();
-            for (ResourceInstanceData resource : simulator.getResourceDatas().values()) {
-                ResourceTypeVariant rtv = resource.resource.getResourceTypeVariant();
-                Integer sum = sumBusyTime.get(rtv);
-                if (sum == null) {
-                    sum = new Integer(0);
-                }
-                sumBusyTime.put(rtv, sum + resource.timeUsed);
-            }
-            double minUtilization = Double.MAX_VALUE;
-            for (ResourceTypeVariant key : sumBusyTime.keySet()) {
-                double utilization = sumBusyTime.get(key).doubleValue()
-                        / (simulator.getElapsedTime() * key.getInstances().size());
-                if (utilization < minUtilization) {
-                    minUtilization = utilization;
-                }
-            }
-            minResourceUsageSoftObjective.setFitness(minUtilization);
-
-            return avgResponseTime;
-        } else {
-            minResourceUsageSoftObjective.setFitness(-1d);
-            return Double.POSITIVE_INFINITY;
-        }
+        comparator = Comparators.LOWER_IS_BETTER;
     }
 
     @Override
     public void init(ThreadContext context) {
+        sim = RunSimulationOnModel.create(context);
+    }
+
+    @Override
+    public Double getFitness(ThreadContext context) {
+        sim.runSimulation();
+        return sim.getAvgResponseTime();
     }
 
     @Override
     public IObjective createNew() {
-        return this;
+        return new AvgResponseTimeHardObjective();
     }
 
     @Override
