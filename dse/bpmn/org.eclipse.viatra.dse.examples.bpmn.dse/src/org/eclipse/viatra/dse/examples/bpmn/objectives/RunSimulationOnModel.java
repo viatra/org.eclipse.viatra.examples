@@ -65,7 +65,7 @@ public class RunSimulationOnModel {
             return;
         }
         
-        Simulator simulator = new Simulator(modelRoot, 10, 20);
+        Simulator simulator = new Simulator(modelRoot, 100, 20);
         if (simulator.canSimulate()) {
             simulator.simulate();
 

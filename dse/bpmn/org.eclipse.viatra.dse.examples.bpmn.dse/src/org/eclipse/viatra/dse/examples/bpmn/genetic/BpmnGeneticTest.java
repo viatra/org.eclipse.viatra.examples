@@ -13,18 +13,7 @@ public class BpmnGeneticTest {
         Logger.getRootLogger().setLevel(Level.ERROR);
         Logger.getLogger(this.getClass()).setLevel(Level.ALL);
         
-        new BpmnGeneticTestRunner() {
-
-            @Override
-            public int getNumberOfTokens() {
-                return 100;
-            }
-
-            @Override
-            public int getRateOfTokens() {
-                return 20;
-            }
-        }.runTests();
+        new BpmnGeneticTestRunner().runTests();
     }
 
 }
