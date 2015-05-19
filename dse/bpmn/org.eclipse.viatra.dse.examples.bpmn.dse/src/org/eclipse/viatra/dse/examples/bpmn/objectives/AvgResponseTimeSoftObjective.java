@@ -25,12 +25,12 @@ import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
  * 
  * @author Andras Szabolcs Nagy
  */
-public class AvgResponseTimeHardObjective extends BaseObjective {
+public class AvgResponseTimeSoftObjective extends BaseObjective {
 
     public static final String DEFAULT_NAME = "AvgResponseTime";
     private RunSimulationOnModel sim;
 
-    public AvgResponseTimeHardObjective() {
+    public AvgResponseTimeSoftObjective() {
         super(DEFAULT_NAME);
         comparator = Comparators.LOWER_IS_BETTER;
     }
@@ -48,17 +48,19 @@ public class AvgResponseTimeHardObjective extends BaseObjective {
 
     @Override
     public IObjective createNew() {
-        return new AvgResponseTimeHardObjective();
+        AvgResponseTimeSoftObjective objective = new AvgResponseTimeSoftObjective();
+        objective.level = level;
+        return objective;
     }
 
     @Override
     public boolean isHardObjective() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean satisifiesHardObjective(Double fitness) {
-        return fitness < Double.POSITIVE_INFINITY;
+        return true;
     }
 
 }

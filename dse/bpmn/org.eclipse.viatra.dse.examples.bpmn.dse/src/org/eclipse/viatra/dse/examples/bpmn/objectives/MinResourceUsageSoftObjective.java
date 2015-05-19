@@ -43,7 +43,9 @@ public class MinResourceUsageSoftObjective extends BaseObjective {
 
     @Override
     public IObjective createNew() {
-        return new MinResourceUsageSoftObjective();
+        MinResourceUsageSoftObjective objective = new MinResourceUsageSoftObjective();
+        objective.level = level;
+        return objective;
     }
 
     @Override

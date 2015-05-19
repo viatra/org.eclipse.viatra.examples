@@ -6,10 +6,9 @@ import java.util.List;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
-import org.eclipse.viatra.dse.api.PatternWithCardinality;
 import org.eclipse.viatra.dse.base.GlobalContext;
 import org.eclipse.viatra.dse.examples.bpmn.dse.BpmnExamples;
-import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeHardObjective;
+import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EnoughResourceInstancesQuerySpecification;
@@ -22,7 +21,7 @@ import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
 import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.genetic.api.GeneticStrategyBuilder;
-import org.eclipse.viatra.dse.genetic.core.GeneticSoftConstraintHardObjective;
+import org.eclipse.viatra.dse.genetic.core.GeneticConstraintObjective;
 import org.eclipse.viatra.dse.genetic.core.InstanceData;
 import org.eclipse.viatra.dse.genetic.debug.GeneticDebugger;
 import org.eclipse.viatra.dse.genetic.debug.GeneticTestRunner;
@@ -39,20 +38,6 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
     public static final String CONST_FULFILLMENT = "ConstFulfillment";
     private String modelPath;
 
-    public BpmnGeneticTestRunner() {
-        super(getGoals());
-    }
-
-    private static List<PatternWithCardinality> getGoals(){
-        try {
-            return Arrays.asList(
-                    new PatternWithCardinality(EnoughResourceInstancesQuerySpecification.instance()),
-                    new PatternWithCardinality(EveryTaskHasVariantQuerySpecification.instance()));
-        } catch (IncQueryException e) {
-            return null;
-        }
-    }
-    
     @Override
     public void configDSE(Row configRow, DesignSpaceExplorer dse, GeneticStrategyBuilder builder) throws IncQueryException {
         modelPath = configRow.getValueAsString(GeneticTestRunner.MODEL_PATH);
@@ -72,12 +57,14 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
         dse.addTransformationRule(makeParallelRule);
         dse.addTransformationRule(makeSequentialRule);
 
-        dse.addObjective(new GeneticSoftConstraintHardObjective()
-                .withConstraint("LackOfResourceInstances", AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
-                .withConstraint("UnassignedTask", UnassignedTaskQuerySpecification.instance(), 10)
-                .withConstraint("UnrequiredResources", UnrequiredResourceInstanceQuerySpecification.instance(), 100));
+        dse.addObjective(new GeneticConstraintObjective()
+                .withSoftConstraint("LackOfResourceInstances", AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
+                .withSoftConstraint("UnassignedTask", UnassignedTaskQuerySpecification.instance(), 10)
+                .withSoftConstraint("UnrequiredResources", UnrequiredResourceInstanceQuerySpecification.instance(), 100)
+                .withHardConstraint(EnoughResourceInstancesQuerySpecification.instance())
+                .withHardConstraint(EveryTaskHasVariantQuerySpecification.instance()));
         
-        dse.addObjective(new AvgResponseTimeHardObjective()
+        dse.addObjective(new AvgResponseTimeSoftObjective()
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(2));
         dse.addObjective(new MinResourceUsageSoftObjective()

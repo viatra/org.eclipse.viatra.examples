@@ -23,7 +23,7 @@ import org.eclipse.viatra.dse.api.Strategies;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
 import org.eclipse.viatra.dse.api.strategy.impl.HillClimbingStrategy;
-import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeHardObjective;
+import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
@@ -162,7 +162,7 @@ public class BpmnExamples {
         // Adds two more custom objectives: response time and resource utilization. Both of them are evaluated by
         // simulating the BPMN model.
         // The actual simulation is run by the AvgResponseTimeSoftObjective and calculates both objectives.
-        dse.addObjective(new AvgResponseTimeHardObjective()
+        dse.addObjective(new AvgResponseTimeSoftObjective()
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(1));
         dse.addObjective(new MinResourceUsageSoftObjective()

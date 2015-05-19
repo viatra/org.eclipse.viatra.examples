@@ -11,7 +11,6 @@ package org.eclipse.viatra.dse.examples.bpmn.objectives;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
@@ -34,9 +33,9 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
  */
 public class RunSimulationOnModel {
 
-    private static Map<Notifier, RunSimulationOnModel> sims = new ConcurrentHashMap<Notifier, RunSimulationOnModel>();
+    private static Map<Notifier, RunSimulationOnModel> sims = new HashMap<Notifier, RunSimulationOnModel>();
     
-    public static RunSimulationOnModel create(ThreadContext context) {
+    public static synchronized RunSimulationOnModel create(ThreadContext context) {
         EObject modelRoot = context.getModelRoot();
         RunSimulationOnModel sim = sims.get(modelRoot);
         if (sim == null) {
