@@ -80,5 +80,9 @@ Rule openSC3_2{
 	action{
 		System.out.println("To open the compartment, we used parameterized events now, and see...")
 		CompartmentActuator::openCompartment(3)
+		
+		//accessing the parameter bindings
+		System.out.println("Parameter bindings of the complex event pattern:")
+		ruleInstance.atom.parameterTable.parameterBindings.forEach[binding | System.out.println("\t " + binding.symbolicName +": " + binding.value)]	
 	}
 }
