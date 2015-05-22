@@ -21,7 +21,7 @@ import org.junit.Test;
 public class BpmnProblemSaver {
 
     @Test
-    public void test() {
+    public void run() {
 
         SimplifiedBPMN root;
 

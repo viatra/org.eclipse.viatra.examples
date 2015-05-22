@@ -4,17 +4,19 @@ import com.google.common.collect.Sets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFPQuery;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
+import org.eclipse.incquery.runtime.emf.types.EClassTransitiveInstancesKey;
+import org.eclipse.incquery.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeBinary;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeUnary;
+import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitializationException;
 import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
@@ -102,10 +104,10 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
       	body.setExportedParameters(Arrays.<ExportedParameter>asList(
       		new ExportedParameter(body, var_RTV, "RTV")
       	));
-      	new TypeUnary(body, var_RTV, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant"), "org.eclipse.viatra.dse.examples.bpmn/ResourceTypeVariant");
+      	new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       	new NegativePatternCall(body, new FlatTuple(var___0_, var_RTV), InstanceOfVariantQuerySpecification.instance().getInternalQueryRepresentation());
-      	new TypeUnary(body, var___1_, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task"), "org.eclipse.viatra.dse.examples.bpmn/Task");
-      	new TypeBinary(body, CONTEXT, var___1_, var__virtual_0_, getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task", "variant"), "org.eclipse.viatra.dse.examples.bpmn/Task.variant");
+      	new TypeConstraint(body, new FlatTuple(var___1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      	new TypeConstraint(body, new FlatTuple(var___1_, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task", "variant")));
       	new Equality(body, var__virtual_0_, var_RTV);
       	bodies.add(body);
       }

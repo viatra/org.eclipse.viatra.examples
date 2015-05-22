@@ -4,17 +4,19 @@ import com.google.common.collect.Sets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.incquery.runtime.api.IncQueryEngine;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFPQuery;
 import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
+import org.eclipse.incquery.runtime.emf.types.EClassTransitiveInstancesKey;
+import org.eclipse.incquery.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.incquery.runtime.matchers.psystem.PBody;
 import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Equality;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeBinary;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeUnary;
+import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitializationException;
 import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
@@ -106,14 +108,14 @@ public final class AllocateTaskToVariantQuerySpecification extends BaseGenerated
       				
       		new ExportedParameter(body, var_RTV, "RTV")
       	));
-      	new TypeUnary(body, var_T, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task"), "org.eclipse.viatra.dse.examples.bpmn/Task");
-      	new TypeUnary(body, var_RTV, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant"), "org.eclipse.viatra.dse.examples.bpmn/ResourceTypeVariant");
+      	new TypeConstraint(body, new FlatTuple(var_T), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      	new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       	new NegativePatternCall(body, new FlatTuple(var_T, var___0_), VariantAllocatedToTaskQuerySpecification.instance().getInternalQueryRepresentation());
-      	new TypeUnary(body, var_T, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task"), "org.eclipse.viatra.dse.examples.bpmn/Task");
-      	new TypeBinary(body, CONTEXT, var_T, var__virtual_0_, getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task", "resourceNeeded"), "org.eclipse.viatra.dse.examples.bpmn/Task.resourceNeeded");
+      	new TypeConstraint(body, new FlatTuple(var_T), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      	new TypeConstraint(body, new FlatTuple(var_T, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task", "resourceNeeded")));
       	new Equality(body, var__virtual_0_, var_RT);
-      	new TypeUnary(body, var_RT, getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceType"), "org.eclipse.viatra.dse.examples.bpmn/ResourceType");
-      	new TypeBinary(body, CONTEXT, var_RT, var__virtual_1_, getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceType", "variants"), "org.eclipse.viatra.dse.examples.bpmn/ResourceType.variants");
+      	new TypeConstraint(body, new FlatTuple(var_RT), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceType")));
+      	new TypeConstraint(body, new FlatTuple(var_RT, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceType", "variants")));
       	new Equality(body, var__virtual_1_, var_RTV);
       	bodies.add(body);
       }
