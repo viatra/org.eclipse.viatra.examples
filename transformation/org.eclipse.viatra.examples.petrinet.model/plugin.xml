@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.emf.ecore.generated_package">
+      <package
+            class="org.eclipse.viatra.examples.petrinet.model.petrinet.PetriNetPackage"
+            genModel="model/petrinet.genmodel"
+            uri="http://inf.mit.bme.hu/petrinet/2014">
+      </package>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated petrinet -->
+      <package
+            uri="http://inf.mit.bme.hu/petrinet/2014"
+            class="org.eclipse.viatra.examples.petrinet.model.PetriNetPackage"
+            genModel="model/petrinet.genmodel"/>
+   </extension>
+
+</plugin>

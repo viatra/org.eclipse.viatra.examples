@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="petrinet" nsURI="http://inf.mit.bme.hu/petrinet/2014" nsPrefix="petrinet">
+  <eClassifiers xsi:type="ecore:EClass" name="Place" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//PetriNet"
+        eOpposite="#//PetriNet/places"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
+        eType="#//PTArc" containment="true" eOpposite="#//PTArc/source"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"
+        eType="#//TPArc" eOpposite="#//TPArc/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tokens" upperBound="-1"
+        eType="#//Token" containment="true" eOpposite="#//Token/place"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Transition" eSuperTypes="#//NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="net" lowerBound="1" eType="#//PetriNet"
+        eOpposite="#//PetriNet/transitions"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inArcs" upperBound="-1"
+        eType="#//PTArc" eOpposite="#//PTArc/target"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outArcs" upperBound="-1"
+        eType="#//TPArc" containment="true" eOpposite="#//TPArc/source"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Arc" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="weight" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt" defaultValueLiteral="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="NamedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PetriNet">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="places" upperBound="-1"
+        eType="#//Place" containment="true" eOpposite="#//Place/net"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="transitions" upperBound="-1"
+        eType="#//Transition" containment="true" eOpposite="#//Transition/net"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTArc" eSuperTypes="#//Arc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Place" eOpposite="#//Place/outArcs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Transition" eOpposite="#//Transition/inArcs"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TPArc" eSuperTypes="#//Arc">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Transition" eOpposite="#//Transition/outArcs"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="target" lowerBound="1"
+        eType="#//Place" eOpposite="#//Place/inArcs"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Token">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="place" lowerBound="1" eType="#//Place"
+        eOpposite="#//Place/tokens"/>
+  </eClassifiers>
+</ecore:EPackage>
