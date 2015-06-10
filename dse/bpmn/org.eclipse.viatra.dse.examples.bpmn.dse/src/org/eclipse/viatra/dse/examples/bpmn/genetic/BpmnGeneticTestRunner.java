@@ -106,7 +106,8 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
         double softConstraint = resultsRow.getValueAsDouble("AvgSoftConstraints");
         int numOfTasks = getNumOfTasksBasedOnProblem(modelPath);
         
-        resultsRow.add(CONST_FULFILLMENT, 100 - (softConstraint/(numOfTasks*CONSTRAINT_WEIGHT)*100));
+        double constFulfill = 100 - (softConstraint/(numOfTasks*CONSTRAINT_WEIGHT)*100);
+        resultsRow.add(CONST_FULFILLMENT, constFulfill < 0 ? 0 : constFulfill);
     }
 
     @Override
@@ -119,7 +120,9 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
             @Override
             public void appendCustomResults(StringBuilder sb, InstanceData instanceData) {
                 int numOfTasks = getNumOfTasksBasedOnProblem(modelPath);
-                sb.append(100 - ((instanceData.objectives.get("SoftConstraints")-100*instanceData.violations.get("UnrequiredResources"))/(numOfTasks*CONSTRAINT_WEIGHT)*100));
+                double constFulfill = 100 - (instanceData.objectives.get("SoftConstraints")/(numOfTasks*CONSTRAINT_WEIGHT)*100);
+                sb.append(constFulfill < 0 ? 0 : constFulfill);
+//                sb.append(100 - ((instanceData.objectives.get("SoftConstraints")-100*instanceData.violations.get("UnrequiredResources"))/(numOfTasks*CONSTRAINT_WEIGHT)*100));
             }
         };
     }
