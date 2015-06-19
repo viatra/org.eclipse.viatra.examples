@@ -17,7 +17,6 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder;
-import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoder;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
@@ -34,12 +33,11 @@ public class MakeParallelRule {
                 new MakeParallelProcessor() {
                     @Override
                     public void process(Task pT1, Task pT2, SimplifiedBPMN pRoot) {
-                        String name = BpmnStateCoder.createOrderedString(pT1.getName(), pT2.getName());
                         
                         SimplifiedBpmnBuilder builder = new SimplifiedBpmnBuilder(pRoot);
                         
-                        ParallelGateway divergingGateway = builder.createParallelGateway("Diverging:" + name, true);
-                        ParallelGateway convergingGateway = builder.createParallelGateway("Converging:" + name, false);
+                        ParallelGateway divergingGateway = builder.createParallelGateway(pT1, pT2, true);
+                        ParallelGateway convergingGateway = builder.createParallelGateway(pT1, pT2, false);
 
                         EList<SequenceFlow> flows = pT1.getInFlows();
                         while (!flows.isEmpty()) {

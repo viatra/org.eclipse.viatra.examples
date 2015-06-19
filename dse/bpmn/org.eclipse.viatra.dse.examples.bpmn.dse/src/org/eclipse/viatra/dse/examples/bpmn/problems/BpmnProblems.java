@@ -9,11 +9,6 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.problems;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.BaseElement;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.EndEvent;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Gateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
@@ -108,13 +103,14 @@ public class BpmnProblems {
         builder.createFlow(gw, taskPurchase, 33);
         builder.createFlow(taskPurchase, endElement);
 
-        ParallelGateway pgw = builder.createParallelGateway("DivergingParallelGateway", true);
-        builder.createFlow(gw, pgw, 66);
-
         Task taskRecommend = builder.createTask("Recommend", 15, nosql);
         Task taskFetchData = builder.createTask("FetchData", 10, sql);
+
+        ParallelGateway pgw = builder.createParallelGateway(taskRecommend, taskFetchData, true);
+        builder.createFlow(gw, pgw, 66);
+
         Task taskLog = builder.createTask("Log", 12, nosql);
-        ParallelGateway pgw2 = builder.createParallelGateway("ConvergingParallelGateway", false);
+        ParallelGateway pgw2 = builder.createParallelGateway(taskRecommend, taskLog, false);
         builder.createFlow(pgw, taskRecommend);
         builder.createFlow(pgw, taskFetchData);
         builder.createFlow(taskRecommend, pgw2);
@@ -162,8 +158,8 @@ public class BpmnProblems {
         Gateway mismatchChackingGW = builder.createGateway("Mismach checking");
         Gateway dummy = builder.createGateway("Dummy");
 
-        ParallelGateway divPgw = builder.createParallelGateway("pgw", true);
-        ParallelGateway convPgw = builder.createParallelGateway("pgw", false);
+        ParallelGateway divPgw = builder.createParallelGateway(insertInvoiceTask, insertCustomerTask, true);
+        ParallelGateway convPgw = builder.createParallelGateway(insertInvoiceTask, insertCustomerTask, false);
 
         builder.createFlow(startEvent, inTask);
         builder.createFlow(inTask, checkInvoiceTask);

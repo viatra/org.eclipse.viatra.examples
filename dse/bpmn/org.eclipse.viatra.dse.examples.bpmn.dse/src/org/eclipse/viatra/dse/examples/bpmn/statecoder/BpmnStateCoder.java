@@ -20,6 +20,7 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
+import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceType;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
@@ -103,18 +104,13 @@ public class BpmnStateCoder implements IStateCoder {
             return (m.getT().getName() + "-" + m.getRTV().getName()).intern();
         } else if (match instanceof MakeParallelMatch) {
             MakeParallelMatch m = (MakeParallelMatch) match;
-            return ("Parallel:" +  createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
+            return ("Parallel:" + SimplifiedBpmnBuilder.createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
         } else if (match instanceof MakeSequentialMatch) {
             MakeSequentialMatch m = (MakeSequentialMatch) match;
-            return ("Sequential:" +  createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
+            return ("Sequential:" + SimplifiedBpmnBuilder.createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
         } else {
             throw new DSEException("Unsupported rule.");
         }
     }
 
-    public static String createOrderedString(String s1, String s2) {
-        int sign = s1.compareTo(s2);
-        return (sign > 0 ? s1 : s2) + "%" + (sign > 0 ? s2 : s1);
-    }
-    
 }

@@ -16,8 +16,8 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceType;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.StartEvent;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
@@ -80,9 +80,16 @@ public class SimplifiedBpmnBuilder {
         return gateway;
     }
 
-    public ParallelGateway createParallelGateway(String name, boolean isDiverging) {
+    public ParallelGateway createParallelGateway(BaseElement e1, BaseElement e2, boolean isDiverging) {
         ParallelGateway gateway = factory.createParallelGateway();
-        gateway.setName(name);
+        StringBuilder sb = new StringBuilder();
+        if (isDiverging) {
+            sb.append("Diverging:");
+        } else {
+            sb.append("Conerging:");
+        }
+        sb.append(createOrderedString(e1.getName(), e2.getName()));
+        gateway.setName(sb.toString());
         gateway.setDiverging(isDiverging);
         root.getParallelGateways().add(gateway);
         return gateway;
@@ -145,5 +152,10 @@ public class SimplifiedBpmnBuilder {
         SequenceFlow flow = createFlow(source, target, 1);
         flow.setIsDataFlow(true);
         return flow;
+    }
+    
+    public static String createOrderedString(String s1, String s2) {
+        int sign = s1.compareTo(s2);
+        return (sign > 0 ? s1 : s2) + "%" + (sign > 0 ? s2 : s1);
     }
 }
