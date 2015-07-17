@@ -1,0 +1,36 @@
+/*******************************************************************************
+ * Copyright (c) 2004-2015, Peter Lunk, Zoltan Ujhelyi and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   Peter Lunk - initial API and implementation
+ *******************************************************************************/
+module org.eclipse.viatra.emf.mwe2integration.example.SimpleConditionalExample
+
+//Import the necessary libraries
+//Note, that the package containing the workflow needs to be imported as well (if it contains used resources)
+import org.eclipse.viatra.emf.mwe2integration.*
+import org.eclipse.viatra.emf.mwe2integration.mwe2impl.*
+import org.eclipse.viatra.emf.mwe2integration.mwe2impl.messages.*
+import org.eclipse.viatra.emf.mwe2integration.examples.resources.*
+
+//The workflow and components are defined in the usual MWE2 fashion
+Workflow {
+	//Add a TransformationChain component
+	//This component represents an MWE2 component that can contain numerous transformations
+	component = TransformationChain {
+		//A conditional transformation step can serve as a basic IF statement in any regular programming language
+		step = Conditional{
+			//If conditions can be specified in any class that implements the IConditionProvider interface
+			condition = ExampleIfCondition{}
+			//If the condition is true, this step will be executed
+			ifTrue =  ExampleATransformationStep{}
+			//If the condition is false, this step will be executed
+			ifFalse = ExampleBTransformationStep{}
+		}
+	}
+	//You can add additional regular MWE2 components here
+}
