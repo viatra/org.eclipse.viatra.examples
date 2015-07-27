@@ -20,7 +20,7 @@ public class Main2 extends DefaultApplication {
     private DefaultRealm defaultRealm;
 
     public Main2() {
-        super(EventContext.CHRONICLE);
+        super(EventContext.CHRONICLE, CepFactory.getInstance().rule_OpenSC3_2());
     }
 
     @Before
@@ -61,10 +61,5 @@ public class Main2 extends DefaultApplication {
 
         // Some debug information about the end of the process.
         getEngine().getLogger().info("ending");
-    }
-
-    @Override
-    protected void configureRules() {
-        getEngine().addRule(CepFactory.getInstance().createOpenSC3_2());
     }
 }
