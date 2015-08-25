@@ -11,6 +11,7 @@ package org.eclipse.viatra.dse.examples.bpmn.objectives;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EObject;
@@ -33,7 +34,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
  */
 public class RunSimulationOnModel {
 
-    private static Map<Notifier, RunSimulationOnModel> sims = new HashMap<Notifier, RunSimulationOnModel>();
+    private static Map<Notifier, RunSimulationOnModel> sims = new WeakHashMap<Notifier, RunSimulationOnModel>();
     
     public static synchronized RunSimulationOnModel create(ThreadContext context) {
         EObject modelRoot = context.getModelRoot();
