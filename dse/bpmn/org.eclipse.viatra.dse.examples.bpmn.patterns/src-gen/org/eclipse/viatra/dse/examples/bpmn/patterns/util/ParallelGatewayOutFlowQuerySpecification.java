@@ -93,23 +93,23 @@ final class ParallelGatewayOutFlowQuerySpecification extends BaseGeneratedEMFQue
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
-      {
-      	PBody body = new PBody(this);
-      	PVariable var_PG = body.getOrCreateVariableByName("PG");
-      	PVariable var_Flow = body.getOrCreateVariableByName("Flow");
-      	PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      	body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      		new ExportedParameter(body, var_PG, "PG"),
-      				
-      		new ExportedParameter(body, var_Flow, "Flow")
-      	));
-      	new TypeConstraint(body, new FlatTuple(var_PG), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ParallelGateway")));
-      	new TypeConstraint(body, new FlatTuple(var_Flow), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
-      	new TypeConstraint(body, new FlatTuple(var_PG), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ParallelGateway")));
-      	new TypeConstraint(body, new FlatTuple(var_PG, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "BaseElement", "outFlows")));
-      	new Equality(body, var__virtual_0_, var_Flow);
-      	bodies.add(body);
-      }
+      	{
+      		PBody body = new PBody(this);
+      		PVariable var_PG = body.getOrCreateVariableByName("PG");
+      		PVariable var_Flow = body.getOrCreateVariableByName("Flow");
+      		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
+      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
+      			new ExportedParameter(body, var_PG, "PG"),
+      			
+      			new ExportedParameter(body, var_Flow, "Flow")
+      		));
+      		new TypeConstraint(body, new FlatTuple(var_PG), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ParallelGateway")));
+      		new TypeConstraint(body, new FlatTuple(var_Flow), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
+      		new TypeConstraint(body, new FlatTuple(var_PG), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ParallelGateway")));
+      		new TypeConstraint(body, new FlatTuple(var_PG, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "BaseElement", "outFlows")));
+      		new Equality(body, var__virtual_0_, var_Flow);
+      		bodies.add(body);
+      	}
       	// to silence compiler error
       	if (false) throw new IncQueryException("Never", "happens");
       } catch (IncQueryException ex) {

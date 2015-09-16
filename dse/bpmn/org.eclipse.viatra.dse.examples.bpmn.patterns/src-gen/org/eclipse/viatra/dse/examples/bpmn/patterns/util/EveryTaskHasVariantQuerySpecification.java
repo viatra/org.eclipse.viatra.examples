@@ -90,14 +90,14 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
-      {
-      	PBody body = new PBody(this);
-      	PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
-      	body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      	));
-      	new NegativePatternCall(body, new FlatTuple(var___0_), UnassignedTaskQuerySpecification.instance().getInternalQueryRepresentation());
-      	bodies.add(body);
-      }
+      	{
+      		PBody body = new PBody(this);
+      		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
+      		));
+      		new NegativePatternCall(body, new FlatTuple(var___0_), UnassignedTaskQuerySpecification.instance().getInternalQueryRepresentation());
+      		bodies.add(body);
+      	}
       	// to silence compiler error
       	if (false) throw new IncQueryException("Never", "happens");
       } catch (IncQueryException ex) {

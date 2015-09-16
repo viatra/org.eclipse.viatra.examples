@@ -95,22 +95,22 @@ public final class UnrequiredResourceInstanceQuerySpecification extends BaseGene
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
-      {
-      	PBody body = new PBody(this);
-      	PVariable var_RI = body.getOrCreateVariableByName("RI");
-      	PVariable var_RTV = body.getOrCreateVariableByName("RTV");
-      	PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      	PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
-      	body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      		new ExportedParameter(body, var_RI, "RI")
-      	));
-      	new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
-      	new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
-      	new TypeConstraint(body, new FlatTuple(var_RI, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance", "resourceTypeVariant")));
-      	new Equality(body, var__virtual_0_, var_RTV);
-      	new NegativePatternCall(body, new FlatTuple(var___0_, var_RTV), TaskNeedsVariantQuerySpecification.instance().getInternalQueryRepresentation());
-      	bodies.add(body);
-      }
+      	{
+      		PBody body = new PBody(this);
+      		PVariable var_RI = body.getOrCreateVariableByName("RI");
+      		PVariable var_RTV = body.getOrCreateVariableByName("RTV");
+      		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
+      		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
+      			new ExportedParameter(body, var_RI, "RI")
+      		));
+      		new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
+      		new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
+      		new TypeConstraint(body, new FlatTuple(var_RI, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance", "resourceTypeVariant")));
+      		new Equality(body, var__virtual_0_, var_RTV);
+      		new NegativePatternCall(body, new FlatTuple(var___0_, var_RTV), TaskNeedsVariantQuerySpecification.instance().getInternalQueryRepresentation());
+      		bodies.add(body);
+      	}
       	// to silence compiler error
       	if (false) throw new IncQueryException("Never", "happens");
       } catch (IncQueryException ex) {

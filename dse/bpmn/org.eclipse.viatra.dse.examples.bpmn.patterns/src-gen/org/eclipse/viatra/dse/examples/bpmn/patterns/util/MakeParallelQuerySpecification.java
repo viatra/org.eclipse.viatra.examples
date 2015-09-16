@@ -98,52 +98,52 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
-      {
-      	PBody body = new PBody(this);
-      	PVariable var_T1 = body.getOrCreateVariableByName("T1");
-      	PVariable var_T2 = body.getOrCreateVariableByName("T2");
-      	PVariable var_Root = body.getOrCreateVariableByName("Root");
-      	PVariable var_out = body.getOrCreateVariableByName("out");
-      	PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      	PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-      	PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-      	PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
-      	PVariable var__virtual_4_ = body.getOrCreateVariableByName(".virtual{4}");
-      	PVariable var__virtual_5_ = body.getOrCreateVariableByName(".virtual{5}");
-      	PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
-      	PVariable var__virtual_6_ = body.getOrCreateVariableByName(".virtual{6}");
-      	PVariable var__virtual_7_ = body.getOrCreateVariableByName(".virtual{7}");
-      	PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
-      	body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      		new ExportedParameter(body, var_T1, "T1"),
-      				
-      		new ExportedParameter(body, var_T2, "T2"),
-      				
-      		new ExportedParameter(body, var_Root, "Root")
-      	));
-      	new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
-      	new TypeConstraint(body, new FlatTuple(var_T2), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
-      	new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
-      	new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
-      	new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
-      	new TypeConstraint(body, new FlatTuple(var_T1, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "BaseElement", "outFlows")));
-      	new Equality(body, var__virtual_0_, var_out);
-      	new ConstantValue(body, var__virtual_1_, false);
-      	new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
-      	new TypeConstraint(body, new FlatTuple(var_out, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "isDataFlow")));
-      	new Equality(body, var__virtual_2_, var__virtual_1_);
-      	new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
-      	new TypeConstraint(body, new FlatTuple(var_out, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "target")));
-      	new Equality(body, var__virtual_3_, var_T2);
-      	new Inequality(body, var_T1, var_T2);
-      	new ConstantValue(body, var__virtual_4_, 1);
-      	new PatternMatchCounter(body, new FlatTuple(var_T2, var___0_), InFlowQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_5_);
-      	new Equality(body, var__virtual_4_, var__virtual_5_);
-      	new ConstantValue(body, var__virtual_6_, 1);
-      	new PatternMatchCounter(body, new FlatTuple(var_T1, var___1_), OutFlowQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_7_);
-      	new Equality(body, var__virtual_6_, var__virtual_7_);
-      	bodies.add(body);
-      }
+      	{
+      		PBody body = new PBody(this);
+      		PVariable var_T1 = body.getOrCreateVariableByName("T1");
+      		PVariable var_T2 = body.getOrCreateVariableByName("T2");
+      		PVariable var_Root = body.getOrCreateVariableByName("Root");
+      		PVariable var_out = body.getOrCreateVariableByName("out");
+      		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
+      		PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
+      		PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
+      		PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
+      		PVariable var__virtual_4_ = body.getOrCreateVariableByName(".virtual{4}");
+      		PVariable var__virtual_5_ = body.getOrCreateVariableByName(".virtual{5}");
+      		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		PVariable var__virtual_6_ = body.getOrCreateVariableByName(".virtual{6}");
+      		PVariable var__virtual_7_ = body.getOrCreateVariableByName(".virtual{7}");
+      		PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
+      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
+      			new ExportedParameter(body, var_T1, "T1"),
+      			
+      			new ExportedParameter(body, var_T2, "T2"),
+      			
+      			new ExportedParameter(body, var_Root, "Root")
+      		));
+      		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      		new TypeConstraint(body, new FlatTuple(var_T2), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      		new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
+      		new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
+      		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
+      		new TypeConstraint(body, new FlatTuple(var_T1, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "BaseElement", "outFlows")));
+      		new Equality(body, var__virtual_0_, var_out);
+      		new ConstantValue(body, var__virtual_1_, false);
+      		new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
+      		new TypeConstraint(body, new FlatTuple(var_out, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "isDataFlow")));
+      		new Equality(body, var__virtual_2_, var__virtual_1_);
+      		new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
+      		new TypeConstraint(body, new FlatTuple(var_out, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "target")));
+      		new Equality(body, var__virtual_3_, var_T2);
+      		new Inequality(body, var_T1, var_T2);
+      		new ConstantValue(body, var__virtual_4_, 1);
+      		new PatternMatchCounter(body, new FlatTuple(var_T2, var___0_), InFlowQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_5_);
+      		new Equality(body, var__virtual_4_, var__virtual_5_);
+      		new ConstantValue(body, var__virtual_6_, 1);
+      		new PatternMatchCounter(body, new FlatTuple(var_T1, var___1_), OutFlowQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_7_);
+      		new Equality(body, var__virtual_6_, var__virtual_7_);
+      		bodies.add(body);
+      	}
       	// to silence compiler error
       	if (false) throw new IncQueryException("Never", "happens");
       } catch (IncQueryException ex) {
