@@ -1,0 +1,84 @@
+/*******************************************************************************
+ * Copyright (c) 2010-2015, Andras Szabolcs Nagy and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * Contributors:
+ *   Andras Szabolcs Nagy - initial API and implementation
+ *******************************************************************************/
+package hu.bme.mit.inf.cps.patterns
+
+import "org.eclipse.viatra.examples.dse.cps"
+
+pattern allApplicationInstanceIsRunning() {
+	neg find notRunningApp(_);
+}
+
+pattern notRunningApp(appInst : ApplicationInstance) {
+	neg find runningApp(appInst);
+}
+
+pattern runningApp(appInst : ApplicationInstance) {
+	ApplicationInstance.state(appInst, ::Running);
+}
+
+pattern notExistUnsatisfiedRequirement() {
+	neg find unsatisfiedRequirement(_);
+}
+
+pattern unsatisfiedRequirement(req : Requirement) {
+	M == count find applicationInRequirement(req, _);
+	Requirement.^count(req, N);
+	M != N;
+}
+
+pattern fullySatisfiedRequirement(req : Requirement) {
+	M == count find applicationInRequirement(req, _);
+	Requirement.^count(req, M);
+	Requirement.instances(req, app);
+	find fullyAllocatedApp(app);
+}
+
+private pattern applicationInRequirement(req : Requirement, app : ApplicationInstance) {
+	Requirement.instances(req, app);
+}
+
+pattern requirementHasAllApp(req : Requirement){
+	M == count find applicationInRequirement(req, _);
+	Requirement.^count(req, M);
+}
+
+// **** Allocations **** //
+
+pattern noUnallocatedApps() {
+	neg find unallocatedApp(_,_);
+}
+
+pattern allocatedApp(app : ApplicationInstance, rr : ResourceRequirement) {
+	ApplicationInstance.type.requirements(app, rr);
+	ResourceRequirement.hostType(rr, hostType);
+	ApplicationInstance.allocatedTo.type(app, hostType);
+}
+
+pattern unallocatedApp(app : ApplicationInstance, rr : ResourceRequirement){
+	ApplicationInstance.type.requirements(app, rr);
+	ResourceRequirement.hostType(rr, hostType);
+	neg find allocatedToHostType(app, hostType);
+}
+
+private pattern allocatedToHostType(app : ApplicationInstance, hostType : HostType){
+	ApplicationInstance.allocatedTo.type(app, hostType);
+}
+
+pattern fullyAllocatedApp(app : ApplicationInstance){
+	neg find unallocatedApp(app, _);
+}
+
+pattern unusedHost(host : HostInstance){
+	neg find hasHostedApp(host);
+}
+
+pattern hasHostedApp(host : HostInstance){
+	HostInstance.applications(host,_);
+}

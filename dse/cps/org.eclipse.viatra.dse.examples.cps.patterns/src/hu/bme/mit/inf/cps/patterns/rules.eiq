@@ -1,0 +1,96 @@
+/*******************************************************************************
+ * Copyright (c) 2010-2015, Andras Szabolcs Nagy and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * Contributors:
+ *   Andras Szabolcs Nagy - initial API and implementation
+ *******************************************************************************/
+package hu.bme.mit.inf.cps.patterns
+
+import "org.eclipse.viatra.examples.dse.cps"
+
+@QueryExplorer(display = true)
+pattern createApplicationInstances(req : Requirement) {
+	find unsatisfiedRequirement(req);
+}
+
+pattern createApplicationInstance(req : Requirement) {
+	find unsatisfiedRequirement(req);
+}
+
+pattern allocate(appInstance : ApplicationInstance, hostInstance : HostInstance, req : ResourceRequirement) {
+	neg find allocatedTo(appInstance, _);
+	neg find allocatedToHostType(appInstance, req);
+	find canAllocateTo(appInstance, hostInstance, req);
+}
+
+pattern deleteAllocation(appInstance : ApplicationInstance, hostInstance : HostInstance, req : ResourceRequirement) {
+	find allocatedTo(appInstance, hostInstance);
+	ApplicationInstance.type.requirements(appInstance, req);
+	ResourceRequirement.hostType.instances(req, hostInstance);
+	ApplicationInstance.state(appInstance, ::Stopped);
+}
+
+pattern startInstance(appInstance : ApplicationInstance) {
+	find allocatedTo(appInstance, _);
+	ApplicationInstance.state(appInstance, ::Stopped);
+}
+
+pattern stopInstance(appInstance : ApplicationInstance) {
+	ApplicationInstance.state(appInstance, ::Running);
+}
+
+pattern move(appInstance : ApplicationInstance, from : HostInstance, to : HostInstance, req : ResourceRequirement) {
+	find allocatedTo(appInstance, from);
+	ApplicationInstance.type.requirements(appInstance, req);
+	ResourceRequirement.hostType(req, hostType);
+	HostInstance.type(to, hostType);
+	from != to;
+	
+	ApplicationInstance.state(appInstance, ::Stopped);
+
+	find canAllocateTo(appInstance, to, req);
+}
+
+private pattern allocatedTo(appInstance : ApplicationInstance, hostInstance : HostInstance) {
+	ApplicationInstance.allocatedTo(appInstance, hostInstance);
+}
+
+private pattern allocatedToHostType(appInstance : ApplicationInstance, req : ResourceRequirement){
+	find allocatedTo(appInstance, host);
+	HostInstance.type(host, hostType);
+	ApplicationInstance.type.requirements(appInstance, req);
+	ResourceRequirement.hostType(req, hostType);
+}
+
+pattern canAllocateTo(appInstance : ApplicationInstance, hostInstance : HostInstance, req : ResourceRequirement) {
+	ApplicationInstance.type.requirements(appInstance, req);
+	ResourceRequirement.hostType(req, hostType);
+	HostInstance.type(hostInstance, hostType);
+	
+	HostInstance.availableMemory(hostInstance, currMemorySize);
+	ResourceRequirement.requiredMemory(req, reqMemorySize);
+	check(currMemorySize >= reqMemorySize);
+
+	HostInstance.availableHdd(hostInstance, currHdd);
+	ResourceRequirement.requiredHdd(req, reqHdd);
+	check(currHdd >= reqHdd);
+
+	HostInstance.availableCpu(hostInstance, currCpu);
+	ResourceRequirement.requiredCpu(req, reqCpu);
+	check(currCpu >= reqCpu);
+}
+
+pattern createHostInstance(hostType : HostType){
+	HostType(hostType);
+}
+
+pattern removeHostInstance(hostInstance : HostInstance){
+	HostInstance(hostInstance);
+}
+
+pattern cancelRequest(request : Request, cps : CyberPhysicalSystem){
+	CyberPhysicalSystem.requests(cps,request);
+}
