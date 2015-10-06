@@ -16,11 +16,11 @@ import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.incquery.runtime.api.IPatternMatch;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.Solution;
 import org.eclipse.viatra.dse.api.SolutionTrajectory;
 import org.eclipse.viatra.dse.api.Strategies;
-import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
 import org.eclipse.viatra.dse.api.strategy.impl.HillClimbingStrategy;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObjective;
@@ -35,6 +35,7 @@ import org.eclipse.viatra.dse.examples.bpmn.rules.CreateResourceRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
 import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
+import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnPackage;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
@@ -129,6 +130,12 @@ public class BpmnExamples {
 
         dse.setStateCoderFactory(new BpmnStateCoderFactory());
 
+        // The built in general state coder is used if state coder is specified.
+        // Then the following line is obligatory.
+        dse.addMetaModelPackage(SimplifiedbpmnPackage.eINSTANCE);
+        // Will be automatically called if no state coder is specified:
+        // dse.setStateCoderFactory(new SimpleStateCoderFactory(dse.getMetaModelPackages()));
+
         allocateRule = AssignVariantToTaskRule.createRule();
         createResourceRule = CreateResourceRule.createRule();
         makeParallelRule = MakeParallelRule.createRule();
@@ -194,7 +201,7 @@ public class BpmnExamples {
             solutionTrajectory.doTransformation();
         }
         
-        System.out.println(dse.prettyPrintSolutions());
+        System.out.println(dse.toStringSolutions());
         
         // To get all of the solutions
         Collection<Solution> solutions = dse.getSolutions();

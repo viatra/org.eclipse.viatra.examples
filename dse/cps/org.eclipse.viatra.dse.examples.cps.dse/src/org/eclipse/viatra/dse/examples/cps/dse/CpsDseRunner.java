@@ -16,6 +16,7 @@ import org.eclipse.incquery.runtime.api.IPatternMatch;
 import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
+import org.eclipse.viatra.dse.base.DesignSpaceManager;
 import org.eclipse.viatra.dse.examples.cps.objectives.ResourceUsageObjective;
 import org.eclipse.viatra.dse.examples.cps.problems.CpsProblemFactory;
 import org.eclipse.viatra.dse.examples.cps.problems.RoomServiceCpsDomain;
@@ -23,6 +24,8 @@ import org.eclipse.viatra.dse.examples.cps.rules.Rules;
 import org.eclipse.viatra.dse.examples.cps.statecoder.CpsStateCoderFactory;
 import org.eclipse.viatra.dse.genetic.core.GeneticConstraintObjective;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
+import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
+import org.eclipse.viatra.dse.objectives.impl.ModelQueryType;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
 import org.eclipse.viatra.examples.dse.cps.CpsPackage;
 import org.eclipse.viatra.examples.dse.cps.HostType;
@@ -32,6 +35,7 @@ import hu.bme.mit.inf.cps.patterns.CreateHostInstanceMatch;
 import hu.bme.mit.inf.cps.patterns.util.AllApplicationInstanceIsRunningQuerySpecification;
 import hu.bme.mit.inf.cps.patterns.util.AllocatedAppQuerySpecification;
 import hu.bme.mit.inf.cps.patterns.util.ApplicationsQuerySpecification;
+import hu.bme.mit.inf.cps.patterns.util.MoreThanOneUnusedHostQuerySpecification;
 import hu.bme.mit.inf.cps.patterns.util.NotExistUnsatisfiedRequirementQuerySpecification;
 import hu.bme.mit.inf.cps.patterns.util.RunningAppQuerySpecification;
 import hu.bme.mit.inf.cps.patterns.util.UnusedHostQuerySpecification;
@@ -62,6 +66,10 @@ public class CpsDseRunner {
         dse.addTransformationRule(rules.allocateRule);
         dse.addTransformationRule(rules.createAppRule);
         dse.addTransformationRule(rules.createHostRule);
+        
+        dse.addGlobalConstraint(new ModelQueriesGlobalConstraint()
+                .withConstraint(MoreThanOneUnusedHostQuerySpecification.instance())
+                .withType(ModelQueryType.NO_MATCH));
         
         dse.addObjective(new GeneticConstraintObjective()
             .withSoftConstraint("RunningApps", RunningAppQuerySpecification.instance(), -4d)

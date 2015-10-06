@@ -82,3 +82,8 @@ pattern unusedHost(host : HostInstance){
 pattern hasHostedApp(host : HostInstance){
 	HostInstance.applications(host,_);
 }
+
+pattern moreThanOneUnusedHost() {
+	N == count find unusedHost(_);
+	check(N > 1);
+}
