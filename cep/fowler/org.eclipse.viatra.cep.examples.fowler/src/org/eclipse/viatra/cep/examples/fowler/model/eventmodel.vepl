@@ -3,6 +3,13 @@ package org.eclipse.viatra.cep.examples.fowler.model
 import org.eclipse.viatra.cep.examples.fowler.main.*
 
 /**
+ * Traits
+ */
+ trait identifiable{
+ 	id : String
+ }
+
+/**
  * Atomic events
  * 
  * Generated sources in packages:
@@ -10,15 +17,27 @@ import org.eclipse.viatra.cep.examples.fowler.main.*
  * -atomic event pattern classes:	*.patterns.atomic
  * 
  */
-AtomicEvent DOCL(){}
-AtomicEvent DOOP(){}
-AtomicEvent DWCL(){}
-AtomicEvent DWOP(){}
-AtomicEvent LION(){}
-AtomicEvent LIOF(){}
-AtomicEvent WLKC(){}
-AtomicEvent DWCL_2(id:String){}
-AtomicEvent DWOP_2(id:String){}
+atomicEvent DOCL
+atomicEvent DOOP
+atomicEvent DWCL
+atomicEvent DWOP
+atomicEvent LION
+atomicEvent LIOF
+atomicEvent WLKC
+
+atomicEvent DWCL_2(id:String)
+atomicEvent DWOP_2(id:String)
+
+atomicEvent DWCL_3 with identifiable{
+	check{
+		id.startsWith("dw")
+	}
+}
+atomicEvent DWOP_3 with identifiable{
+	check{
+		id.startsWith("dw")
+	}
+}
 
 /**
  * Complex event patterns
@@ -28,20 +47,24 @@ AtomicEvent DWOP_2(id:String){}
  * -anonymous pattern classes:		*.patterns.complex.anonymous
  * 
  */
-ComplexEvent SC1O(){
-	definition: DOOP -> LION -> DWOP 
+complexEvent SC1O(){
+	as DOOP -> LION -> DWOP 
 }
 
-ComplexEvent SC2O(){
-	definition: WLKC{2}
+complexEvent SC2O(){
+	as WLKC{2}
 }
 
-ComplexEvent SC3O(){
-	definition: ((LION -> LIOF)[1000] OR (DWOP->DWCL){2}[2000])  
+complexEvent SC3O(){
+	as ((LION -> LIOF)[1000] OR (DWOP->DWCL){2}[2000])  
 }
 
-ComplexEvent SC3O_2(drawerId:String){
-	definition: ((LION -> LIOF)[1000] OR (DWOP_2(drawerId)->DWCL_2(drawerId)){2}[2000])[1500]
+complexEvent SC3O_2(drawerId:String){
+	as ((LION -> LIOF)[1000] OR (DWOP_2(drawerId)->DWCL_2(drawerId)){2}[2000])[1500]
+}
+
+complexEvent SC3O_3(drawerId:String){
+	as ((LION -> LIOF)[1000] OR (DWOP_2(drawerId)->DWCL_2(drawerId)){2}[2000])[1500]
 }
 
 /**
@@ -52,37 +75,33 @@ ComplexEvent SC3O_2(drawerId:String){
  * -job classes:	*.jobs
  * 
  */
-Rule openSC1{
-	events: SC1O
-	action{
-		CompartmentActuator::openCompartment(1)
-	}
+rule openSC1 on SC1O{
+	CompartmentActuator::openCompartment(1)
 }
 
-Rule openSC2{
-	events: SC2O
-	action{
-		CompartmentActuator::openCompartment(2)
-	}
-
+rule openSC2 on SC2O{
+	CompartmentActuator::openCompartment(2)
 }
 
-Rule openSC3{
-	events: SC3O
-	action{
-		CompartmentActuator::openCompartment(3)
-	}
+rule openSC3 on SC3O{
+	CompartmentActuator::openCompartment(3)
 }
 
 
-Rule openSC3_2{
-	events: SC3O_2
-	action{
-		System.out.println("To open the compartment, we used parameterized events now, and see...")
-		CompartmentActuator::openCompartment(3)
+rule openSC3_2 on SC3O_2{
+	System.out.println("To open the compartment, we used parameterized events now, and see...")
+	CompartmentActuator::openCompartment(3)
 		
-		//accessing the parameter bindings
-		System.out.println("Parameter bindings of the complex event pattern:")
-		ruleInstance.atom.parameterTable.parameterBindings.forEach[binding | System.out.println("\t " + binding.symbolicName +": " + binding.value)]	
-	}
+	//accessing the parameter bindings
+	System.out.println("Parameter bindings of the complex event pattern:")
+	ruleInstance.atom.parameterTable.parameterBindings.forEach[binding | System.out.println("\t " + binding.symbolicName +": " + binding.value)]
+}
+
+rule openSC3_3 on SC3O_3{
+	System.out.println("To open the compartment, we used parameterized events with traits, and see...")
+	CompartmentActuator::openCompartment(3)
+		
+	//accessing the parameter bindings
+	System.out.println("Parameter bindings of the complex event pattern:")
+	ruleInstance.atom.parameterTable.parameterBindings.forEach[binding | System.out.println("\t " + binding.symbolicName +": " + binding.value)]
 }

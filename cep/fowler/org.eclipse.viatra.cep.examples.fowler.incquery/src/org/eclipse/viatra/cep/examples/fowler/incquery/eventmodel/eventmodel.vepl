@@ -10,23 +10,16 @@ import-queries org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.*
  * -IncQuery-to-CEP mapping:				*.mapping
  * -atomic IncQuery event pattern classes:	*.patterns.atomic.queryresult
  */
-QueryResultChangeEvent drawerOpens(id: String){
-	query: drawerIsOpen(_, id)
-	resultChangeType: NEW_MATCH_FOUND
+queryEvent drawerOpens(id: String)
+	as drawerIsOpen(_, id)
+
+queryEvent drawerClosing(id: String)
+	as drawerIsClosed(_, id) found
+
+complexEvent SC3O_3(drawerId: String){
+	as (drawerOpens(id) -> drawerClosing(id)){2}
 }
 
-QueryResultChangeEvent drawerClosing(id: String){
-	query: drawerIsClosed(_, id)
-	resultChangeType: NEW_MATCH_FOUND
-}
-
-ComplexEvent SC3O_3(drawerId: String){
-	definition: (drawerOpens(id) -> drawerClosing(id)){2}
-}
-
-Rule openSC3{
-	events: SC3O_3
-	action{
-		System.out.println("Opening compartment #3")
-	}
+rule openSC3 on SC3O_3{
+	System.out.println("Opening compartment #3")
 }

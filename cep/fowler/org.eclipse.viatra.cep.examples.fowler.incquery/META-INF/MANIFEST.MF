@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.cep.examples.fowler.incquery
 Bundle-SymbolicName: org.eclipse.viatra.cep.examples.fowler.incquery;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.8.0.qualifier
 Export-Package: org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel,
  org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel.events.queryresult,
  org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel.jobs,
@@ -11,11 +11,11 @@ Export-Package: org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel,
  org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel.patterns.complex,
  org.eclipse.viatra.cep.examples.fowler.incquery.eventmodel.rules
 Require-Bundle: org.eclipse.core.runtime,
- org.eclipse.viatra.cep.core,
  org.eclipse.viatra.cep.examples.fowler.incquery.model;bundle-version="0.0.1",
  org.junit,
  org.eclipse.emf.ecore,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.core.databinding.observable
+ org.eclipse.core.databinding.observable,
+ org.eclipse.viatra.cep.core;bundle-version="0.8.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.log4j

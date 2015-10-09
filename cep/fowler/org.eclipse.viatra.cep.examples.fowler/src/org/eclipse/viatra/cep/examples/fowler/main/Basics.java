@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2004-2015, Istvan David, Istvan Rath and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Istvan David - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.viatra.cep.examples.fowler.main;
 
 import org.apache.log4j.Level;
@@ -9,7 +19,16 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class Main1 extends DefaultApplication {
+/**
+ * Example scenario demonstrating basics of event processing in VIATRA-CEP.
+ * 
+ * @see <a href="https://wiki.eclipse.org/VIATRA/CEP/Examples/SimpleEventProcessing">
+ *      https://wiki.eclipse.org/VIATRA/CEP/Examples/SimpleEventProcessing</a>
+ * 
+ * @author Istvan David
+ *
+ */
+public class Basics extends DefaultApplication {
 
     /**
      * The {@link DefaultRealm} is required to run the JUnit plug-in tests seamlessly. For details, see
@@ -17,7 +36,7 @@ public class Main1 extends DefaultApplication {
      */
     private DefaultRealm defaultRealm;
 
-    public Main1() {
+    public Basics() {
         super(EventContext.CHRONICLE, CepFactory.getInstance().rule_OpenSC1());
     }
 

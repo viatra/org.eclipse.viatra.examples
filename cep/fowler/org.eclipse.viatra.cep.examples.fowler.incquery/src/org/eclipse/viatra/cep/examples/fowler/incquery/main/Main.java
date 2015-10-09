@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2004-2015, Istvan David, Istvan Rath and Daniel Varro
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ * Istvan David - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.viatra.cep.examples.fowler.incquery.main;
 
 import java.util.Map;
@@ -20,6 +30,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Example scenario demonstrating integration between VIATRA-CEP and EMF-IncQuery.
+ * 
+ * @see <a
+ *      href="https://wiki.eclipse.org/VIATRA/CEP/Examples/ModelEvents">https://wiki.eclipse.org/VIATRA/CEP/Examples/ModelEvents</a>
+ * 
+ * @author Istvan David
+ *
+ */
 public class Main extends DefaultApplication {
 
     /**
