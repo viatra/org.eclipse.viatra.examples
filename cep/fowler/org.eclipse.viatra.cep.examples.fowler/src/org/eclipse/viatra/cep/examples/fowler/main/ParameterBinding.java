@@ -60,22 +60,22 @@ public class ParameterBinding extends DefaultApplication {
         // Pushing events to the event stream which will deliver them to the engine.
 
         DWOP_2_Event dwop_Event_1 = CepFactory.getInstance().createDWOP_2_Event();
-        dwop_Event_1.setId("id_drawer#1");
+        dwop_Event_1.setId("dw_drawer#1");
         getEventStream().push(dwop_Event_1);
         Thread.sleep(1000l);
 
         DWCL_2_Event dwcl_Event_1 = CepFactory.getInstance().createDWCL_2_Event();
-        dwcl_Event_1.setId("id_drawer#1");
+        dwcl_Event_1.setId("dw_drawer#1");
         getEventStream().push(dwcl_Event_1);
         Thread.sleep(1000l);
 
         DWOP_2_Event dwop_Event_2 = CepFactory.getInstance().createDWOP_2_Event();
-        dwop_Event_2.setId("id_drawer#1");
+        dwop_Event_2.setId("dw_drawer#1");
         getEventStream().push(dwop_Event_2);
         Thread.sleep(1000l);
 
         DWCL_2_Event dwcl_Event_2 = CepFactory.getInstance().createDWCL_2_Event();
-        dwcl_Event_2.setId("id_drawer#1");
+        dwcl_Event_2.setId("dw_drawer#1");
         getEventStream().push(dwcl_Event_2);
 
         // Some debug information about the end of the process.

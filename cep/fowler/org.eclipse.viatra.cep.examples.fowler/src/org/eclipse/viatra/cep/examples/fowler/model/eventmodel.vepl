@@ -25,8 +25,16 @@ atomicEvent LION
 atomicEvent LIOF
 atomicEvent WLKC
 
-atomicEvent DWCL_2(id:String)
-atomicEvent DWOP_2(id:String)
+atomicEvent DWCL_2(id: String){
+	check{
+		id.startsWith("dw")
+	}
+}
+atomicEvent DWOP_2(id:String){
+	check{
+		id.startsWith("dw")
+	}
+}
 
 atomicEvent DWCL_3 with identifiable{
 	check{
