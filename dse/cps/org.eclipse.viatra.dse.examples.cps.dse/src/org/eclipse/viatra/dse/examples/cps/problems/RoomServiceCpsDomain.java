@@ -10,14 +10,14 @@
 package org.eclipse.viatra.dse.examples.cps.problems;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.viatra.examples.dse.cps.ApplicationType;
-import org.eclipse.viatra.examples.dse.cps.CpsFactory;
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.HostInstance;
-import org.eclipse.viatra.examples.dse.cps.HostType;
-import org.eclipse.viatra.examples.dse.cps.Request;
-import org.eclipse.viatra.examples.dse.cps.Requirement;
-import org.eclipse.viatra.examples.dse.cps.ResourceRequirement;
+import org.eclipse.viatra.dse.examples.cps.ApplicationType;
+import org.eclipse.viatra.dse.examples.cps.CpsFactory;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.HostInstance;
+import org.eclipse.viatra.dse.examples.cps.HostType;
+import org.eclipse.viatra.dse.examples.cps.Request;
+import org.eclipse.viatra.dse.examples.cps.Requirement;
+import org.eclipse.viatra.dse.examples.cps.ResourceRequirement;
 
 public class RoomServiceCpsDomain {
 

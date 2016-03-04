@@ -2,10 +2,10 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
 import java.util.Arrays;
 import java.util.List;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
-import org.eclipse.incquery.runtime.api.impl.BasePatternMatch;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EveryTaskHasVariantQuerySpecification;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.api.impl.BasePatternMatch;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 /**
  * Pattern-specific match representation of the org.eclipse.viatra.dse.examples.bpmn.patterns.everyTaskHasVariant pattern,
@@ -94,7 +94,7 @@ public abstract class EveryTaskHasVariantMatch extends BasePatternMatch {
   public EveryTaskHasVariantQuerySpecification specification() {
     try {
     	return EveryTaskHasVariantQuerySpecification.instance();
-    } catch (IncQueryException ex) {
+    } catch (ViatraQueryException ex) {
      	// This cannot happen, as the match object can only be instantiated if the query specification exists
      	throw new IllegalStateException (ex);
     }

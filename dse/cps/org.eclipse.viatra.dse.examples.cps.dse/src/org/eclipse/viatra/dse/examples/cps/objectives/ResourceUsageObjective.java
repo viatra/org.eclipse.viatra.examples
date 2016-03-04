@@ -13,11 +13,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.viatra.dse.base.ThreadContext;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.HostInstance;
+import org.eclipse.viatra.dse.examples.cps.HostType;
 import org.eclipse.viatra.dse.objectives.IObjective;
 import org.eclipse.viatra.dse.objectives.impl.BaseObjective;
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.HostInstance;
-import org.eclipse.viatra.examples.dse.cps.HostType;
 
 public final class ResourceUsageObjective extends BaseObjective {
 

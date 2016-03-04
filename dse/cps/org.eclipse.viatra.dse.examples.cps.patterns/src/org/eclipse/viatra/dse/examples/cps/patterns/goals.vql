@@ -7,7 +7,7 @@
  * Contributors:
  *   Andras Szabolcs Nagy - initial API and implementation
  *******************************************************************************/
-package hu.bme.mit.inf.cps.patterns
+package org.eclipse.viatra.dse.examples.cps.patterns
 
 import "org.eclipse.viatra.examples.dse.cps"
 
@@ -64,10 +64,10 @@ pattern allocatedApp(app : ApplicationInstance, rr : ResourceRequirement) {
 pattern unallocatedApp(app : ApplicationInstance, rr : ResourceRequirement){
 	ApplicationInstance.type.requirements(app, rr);
 	ResourceRequirement.hostType(rr, hostType);
-	neg find allocatedToHostType(app, hostType);
+	neg find allocatedToHostTypeG(app, hostType);
 }
 
-private pattern allocatedToHostType(app : ApplicationInstance, hostType : HostType){
+private pattern allocatedToHostTypeG(app : ApplicationInstance, hostType : HostType){
 	ApplicationInstance.allocatedTo.type(app, hostType);
 }
 

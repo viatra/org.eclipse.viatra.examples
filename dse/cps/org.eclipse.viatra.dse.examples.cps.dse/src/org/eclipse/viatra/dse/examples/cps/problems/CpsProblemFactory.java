@@ -9,8 +9,8 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.cps.problems;
 
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.Request;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.Request;
 
 public class CpsProblemFactory {
 

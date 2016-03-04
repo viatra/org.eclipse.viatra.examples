@@ -10,7 +10,7 @@
       <!-- @generated cps -->
       <package
             uri="org.eclipse.viatra.examples.dse.cps"
-            class="org.eclipse.viatra.examples.dse.cps.CpsPackage"
+            class="org.eclipse.viatra.dse.examples.cps.CpsPackage"
             genModel="model/cps.genmodel"/>
    </extension>
 

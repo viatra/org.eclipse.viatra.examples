@@ -10,7 +10,7 @@
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatcher;
@@ -29,7 +29,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
  */
 public class MakeSequentialRule {
 
-    public static DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher> createRule() throws IncQueryException {
+    public static DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher> createRule() throws ViatraQueryException {
         DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher> rule = new DSETransformationRule<MakeSequentialMatch, MakeSequentialMatcher>(
                 MakeSequentialQuerySpecification.instance(), new MakeSequentialProcessor() {
 

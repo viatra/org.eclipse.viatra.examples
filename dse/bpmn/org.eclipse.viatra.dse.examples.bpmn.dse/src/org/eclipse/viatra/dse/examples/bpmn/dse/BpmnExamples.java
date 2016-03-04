@@ -14,8 +14,8 @@ import java.util.Collection;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.Solution;
@@ -121,7 +121,7 @@ public class BpmnExamples {
      * Configuration of the VIATRA-DSE framework
      */
     @Before
-    public void setUp() throws IncQueryException {
+    public void setUp() throws ViatraQueryException {
 
         dse = new DesignSpaceExplorer();
 
@@ -192,7 +192,7 @@ public class BpmnExamples {
      * Things you can do after the exploration
      */
     @After
-    public void tearDown() throws IncQueryException {
+    public void tearDown() throws ViatraQueryException {
         // Get an arbitrary solution trajectory
         SolutionTrajectory solutionTrajectory = dse.getArbitrarySolution();
         if (solutionTrajectory != null) {
@@ -210,7 +210,7 @@ public class BpmnExamples {
     }
 
     @Test
-    public void fixedPrioritySearch() throws IncQueryException {
+    public void fixedPrioritySearch() throws ViatraQueryException {
         fixedPriorityStrategy = new FixedPriorityStrategy()
             .withRulePriority(allocateRule, 10)
             .withRulePriority(createResourceRule, 5)
@@ -221,17 +221,17 @@ public class BpmnExamples {
     }
 
     @Test
-    public void DFS() throws IncQueryException {
+    public void DFS() throws ViatraQueryException {
         dse.startExploration(Strategies.createDFSStrategy(4));
     }
 
     @Test
-    public void BFS() throws IncQueryException {
+    public void BFS() throws ViatraQueryException {
         dse.startExploration(Strategies.createBFSStrategy(4));
     }
 
     @Test
-    public void hillClimbing() throws IncQueryException {
+    public void hillClimbing() throws ViatraQueryException {
         dse.setSolutionStore(new StrategyDependentSolutionStore());
         dse.startExploration(new HillClimbingStrategy());
     }

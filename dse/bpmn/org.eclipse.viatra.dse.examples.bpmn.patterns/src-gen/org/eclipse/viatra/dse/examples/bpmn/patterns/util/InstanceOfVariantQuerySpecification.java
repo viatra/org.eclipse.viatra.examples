@@ -5,22 +5,22 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.incquery.runtime.api.IncQueryEngine;
-import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFPQuery;
-import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
-import org.eclipse.incquery.runtime.emf.types.EClassTransitiveInstancesKey;
-import org.eclipse.incquery.runtime.emf.types.EStructuralFeatureInstancesKey;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.matchers.psystem.PBody;
-import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
-import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.Equality;
-import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
-import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitializationException;
-import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.InstanceOfVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.InstanceOfVariantMatcher;
+import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
+import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFPQuery;
+import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
+import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
+import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
+import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Equality;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
+import org.eclipse.viatra.query.runtime.matchers.tuple.FlatTuple;
 
 /**
  * A pattern-specific query specification that can instantiate InstanceOfVariantMatcher in a type-safe way.
@@ -37,10 +37,10 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
   
   /**
    * @return the singleton instance of the query specification
-   * @throws IncQueryException if the pattern definition could not be loaded
+   * @throws ViatraQueryException if the pattern definition could not be loaded
    * 
    */
-  public static InstanceOfVariantQuerySpecification instance() throws IncQueryException {
+  public static InstanceOfVariantQuerySpecification instance() throws ViatraQueryException {
     try{
     	return LazyHolder.INSTANCE;
     } catch (ExceptionInInitializerError err) {
@@ -49,7 +49,7 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
   }
   
   @Override
-  protected InstanceOfVariantMatcher instantiate(final IncQueryEngine engine) throws IncQueryException {
+  protected InstanceOfVariantMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return InstanceOfVariantMatcher.on(engine);
   }
   
@@ -63,11 +63,29 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
     return InstanceOfVariantMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance) parameters[0], (org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant) parameters[1]);
   }
   
+  /**
+   * Inner class allowing the singleton instance of {@link InstanceOfVariantQuerySpecification} to be created 
+   * 	<b>not</b> at the class load time of the outer class, 
+   * 	but rather at the first call to {@link InstanceOfVariantQuerySpecification#instance()}.
+   * 
+   * <p> This workaround is required e.g. to support recursion.
+   * 
+   */
   private static class LazyHolder {
-    private final static InstanceOfVariantQuerySpecification INSTANCE = make();
+    private final static InstanceOfVariantQuerySpecification INSTANCE = new InstanceOfVariantQuerySpecification();
     
-    public static InstanceOfVariantQuerySpecification make() {
-      return new InstanceOfVariantQuerySpecification();					
+    /**
+     * Statically initializes the query specification <b>after</b> the field {@link #INSTANCE} is assigned.
+     * This initialization order is required to support indirect recursion.
+     * 
+     * <p> The static initializer is defined using a helper field to work around limitations of the code generator.
+     * 
+     */
+    private final static Object STATIC_INITIALIZER = ensureInitialized();
+    
+    public static Object ensureInitialized() {
+      INSTANCE.ensureInitializedInternalSneaky();
+      return null;					
     }
   }
   
@@ -97,22 +115,22 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
       		PBody body = new PBody(this);
       		PVariable var_RI = body.getOrCreateVariableByName("RI");
       		PVariable var_RTV = body.getOrCreateVariableByName("RTV");
-      		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      			new ExportedParameter(body, var_RI, "RI"),
-      			
-      			new ExportedParameter(body, var_RTV, "RTV")
-      		));
       		new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
+      		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
+      		   new ExportedParameter(body, var_RI, "RI"),
+      		   new ExportedParameter(body, var_RTV, "RTV")
+      		));
+      		// 	ResourceInstance.resourceTypeVariant(RI, RTV)
       		new TypeConstraint(body, new FlatTuple(var_RI), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")));
+      		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
       		new TypeConstraint(body, new FlatTuple(var_RI, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance", "resourceTypeVariant")));
       		new Equality(body, var__virtual_0_, var_RTV);
       		bodies.add(body);
       	}
       	// to silence compiler error
-      	if (false) throw new IncQueryException("Never", "happens");
-      } catch (IncQueryException ex) {
+      	if (false) throw new ViatraQueryException("Never", "happens");
+      } catch (ViatraQueryException ex) {
       	throw processDependencyException(ex);
       }
       return bodies;

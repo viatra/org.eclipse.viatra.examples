@@ -2,15 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.dse.examples.bpmn.dse
 Bundle-SymbolicName: org.eclipse.viatra.dse.examples.bpmn.dse
-Bundle-Version: 0.8.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.model;bundle-version="[0.8.0,0.9.0)",
- org.eclipse.viatra.dse.examples.bpmn.patterns;bundle-version="[0.8.0,0.9.0)",
- org.junit;bundle-version="4.11.0",
- org.eclipse.viatra.dse.genetic;bundle-version="[0.8.0,0.9.0)",
- org.eclipse.viatra.dse.base;bundle-version="[0.8.0,0.9.0)",
- org.eclipse.incquery.runtime
-Import-Package: org.apache.log4j;version="1.2.15"
+Bundle-Version: 0.12.0.qualifier
 Export-Package: org.eclipse.viatra.dse.examples.bpmn.dse,
  org.eclipse.viatra.dse.examples.bpmn.genetic,
  org.eclipse.viatra.dse.examples.bpmn.objectives,
@@ -18,3 +10,11 @@ Export-Package: org.eclipse.viatra.dse.examples.bpmn.dse,
  org.eclipse.viatra.dse.examples.bpmn.rules,
  org.eclipse.viatra.dse.examples.bpmn.simulator,
  org.eclipse.viatra.dse.examples.bpmn.statecoder
+Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.model,
+ org.eclipse.viatra.dse.examples.bpmn.patterns,
+ org.junit,
+ org.eclipse.viatra.dse.genetic,
+ org.eclipse.viatra.dse.base,
+ org.eclipse.viatra.query.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.apache.log4j;version="1.2.15"

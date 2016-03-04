@@ -2,11 +2,11 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
 import java.util.Arrays;
 import java.util.List;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
-import org.eclipse.incquery.runtime.api.impl.BasePatternMatch;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.api.impl.BasePatternMatch;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 /**
  * Pattern-specific match representation of the org.eclipse.viatra.dse.examples.bpmn.patterns.unassignedTask pattern,
@@ -45,7 +45,7 @@ public abstract class UnassignedTaskMatch extends BasePatternMatch {
   public boolean set(final String parameterName, final Object newValue) {
     if (!isMutable()) throw new java.lang.UnsupportedOperationException();
     if ("T".equals(parameterName) ) {
-    	this.fT = (org.eclipse.viatra.dse.examples.simplifiedbpmn.Task) newValue;
+    	this.fT = (Task) newValue;
     	return true;
     }
     return false;
@@ -118,7 +118,7 @@ public abstract class UnassignedTaskMatch extends BasePatternMatch {
   public UnassignedTaskQuerySpecification specification() {
     try {
     	return UnassignedTaskQuerySpecification.instance();
-    } catch (IncQueryException ex) {
+    } catch (ViatraQueryException ex) {
      	// This cannot happen, as the match object can only be instantiated if the query specification exists
      	throw new IllegalStateException (ex);
     }

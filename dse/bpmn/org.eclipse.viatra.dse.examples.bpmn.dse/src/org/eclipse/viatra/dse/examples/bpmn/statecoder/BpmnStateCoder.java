@@ -14,7 +14,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.dse.api.DSEException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;

@@ -9,7 +9,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
@@ -25,7 +25,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
  */
 public class CreateResourceRule {
 
-    public static DSETransformationRule<CreateResourceMatch, CreateResourceMatcher> createRule() throws IncQueryException {
+    public static DSETransformationRule<CreateResourceMatch, CreateResourceMatcher> createRule() throws ViatraQueryException {
         DSETransformationRule<CreateResourceMatch, CreateResourceMatcher> rule = new DSETransformationRule<CreateResourceMatch, CreateResourceMatcher>(
                 CreateResourceQuerySpecification.instance(), new CreateResourceProcessor() {
 

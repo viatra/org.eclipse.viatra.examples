@@ -1,8 +1,8 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
-import org.eclipse.incquery.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.UnrequiredResourceInstanceMatch;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance;
+import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 
 /**
  * A match processor tailored for the org.eclipse.viatra.dse.examples.bpmn.patterns.unrequiredResourceInstance pattern.

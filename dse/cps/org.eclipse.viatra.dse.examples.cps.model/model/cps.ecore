@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="cps" nsURI="org.eclipse.viatra.examples.dse.cps" nsPrefix="org.eclipse.viatra.examples.dse.cps">
   <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
-    <details key="settingDelegates" value="org.eclipse.incquery.querybasedfeature"/>
+    <details key="settingDelegates" value="org.eclipse.incquery.querybasedfeature org.eclipse.viatra.query.querybasedfeature"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="CyberPhysicalSystem">
     <eStructuralFeatures xsi:type="ecore:EReference" name="applicationTypes" upperBound="-1"
@@ -15,12 +15,18 @@
       <eAnnotations source="org.eclipse.incquery.querybasedfeature">
         <details key="patternFQN" value="hu.bme.mit.inf.cps.patterns.applications"/>
       </eAnnotations>
+      <eAnnotations source="org.eclipse.viatra.query.querybasedfeature">
+        <details key="patternFQN" value="org.eclipse.viatra.dse.examples.cps.patterns.applications"/>
+      </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="hosts" upperBound="-1"
         eType="#//HostInstance" changeable="false" volatile="true" transient="true"
         derived="true">
       <eAnnotations source="org.eclipse.incquery.querybasedfeature">
         <details key="patternFQN" value="hu.bme.mit.inf.cps.patterns.hosts"/>
+      </eAnnotations>
+      <eAnnotations source="org.eclipse.viatra.query.querybasedfeature">
+        <details key="patternFQN" value="org.eclipse.viatra.dse.examples.cps.patterns.hosts"/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="requests" upperBound="-1"

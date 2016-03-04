@@ -7,7 +7,7 @@
  * Contributors:
  *   Andras Szabolcs Nagy - initial API and implementation
  *******************************************************************************/
-package hu.bme.mit.inf.cps.patterns
+package org.eclipse.viatra.dse.examples.cps.patterns
 
 import "org.eclipse.viatra.examples.dse.cps"
 

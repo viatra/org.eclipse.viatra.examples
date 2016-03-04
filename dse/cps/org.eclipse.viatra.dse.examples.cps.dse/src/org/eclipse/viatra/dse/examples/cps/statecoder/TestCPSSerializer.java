@@ -21,31 +21,30 @@ import java.util.Set;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
-import org.eclipse.incquery.runtime.api.IncQueryEngine;
-import org.eclipse.incquery.runtime.base.api.NavigationHelper;
-import org.eclipse.incquery.runtime.emf.EMFScope;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.dse.examples.cps.CpsPackage;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.HostInstance;
+import org.eclipse.viatra.dse.examples.cps.HostType;
+import org.eclipse.viatra.dse.examples.cps.patterns.AllocateMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateHostInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.DeleteAllocationMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.MoveMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StartInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StopInstanceMatch;
 import org.eclipse.viatra.dse.statecode.IStateCoder;
-import org.eclipse.viatra.examples.dse.cps.CpsPackage;
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.HostInstance;
-import org.eclipse.viatra.examples.dse.cps.HostType;
-
-import hu.bme.mit.inf.cps.patterns.AllocateMatch;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.CreateHostInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.DeleteAllocationMatch;
-import hu.bme.mit.inf.cps.patterns.MoveMatch;
-import hu.bme.mit.inf.cps.patterns.StartInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.StopInstanceMatch;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
+import org.eclipse.viatra.query.runtime.base.api.NavigationHelper;
+import org.eclipse.viatra.query.runtime.emf.EMFScope;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class TestCPSSerializer implements IStateCoder {
 
 	private static final String classSeparator = "|";
     private static final String objectSeparator = ";";
     private CyberPhysicalSystem model;
-    private IncQueryEngine queryEngine;
+    private ViatraQueryEngine queryEngine;
 
     private Map<EObject, String> codes = new HashMap<EObject, String>();
     private NavigationHelper baseIndex;
@@ -55,9 +54,9 @@ public class TestCPSSerializer implements IStateCoder {
 		
 		try {
 		    EMFScope scope = new EMFScope(model);
-            queryEngine = IncQueryEngine.on(scope);
+            queryEngine = ViatraQueryEngine.on(scope);
             baseIndex = EMFScope.extractUnderlyingEMFIndex(queryEngine);
-        } catch (IncQueryException e) {
+        } catch (ViatraQueryException e) {
         }
 		
 		Set<EClass> classes = new HashSet<EClass>();

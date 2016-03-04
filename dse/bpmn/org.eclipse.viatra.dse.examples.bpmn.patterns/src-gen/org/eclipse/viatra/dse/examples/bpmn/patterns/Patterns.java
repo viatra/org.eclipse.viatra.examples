@@ -1,8 +1,5 @@
 package org.eclipse.viatra.dse.examples.bpmn.patterns;
 
-import org.eclipse.incquery.runtime.api.IncQueryEngine;
-import org.eclipse.incquery.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AbsenceOfResourceInstancesMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
@@ -25,12 +22,15 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpe
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.VariantAllocatedToTaskQuerySpecification;
+import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
+import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 /**
- * A pattern group formed of all patterns defined in patterns.eiq.
+ * A pattern group formed of all patterns defined in patterns.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.incquery.runtime.api.IPatternGroup}, to conveniently prepare
- * an EMF-IncQuery engine for matching all patterns originally defined in file patterns.eiq,
+ * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * an VIATRA Query engine for matching all patterns originally defined in file patterns.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.eclipse.viatra.dse.examples.bpmn.patterns, the group contains the definition of the following patterns: <ul>
@@ -60,10 +60,10 @@ public final class Patterns extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws IncQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Patterns instance() throws IncQueryException {
+  public static Patterns instance() throws ViatraQueryException {
     if (INSTANCE == null) {
     	INSTANCE = new Patterns();
     }
@@ -72,7 +72,7 @@ public final class Patterns extends BaseGeneratedPatternGroup {
   
   private static Patterns INSTANCE;
   
-  private Patterns() throws IncQueryException {
+  private Patterns() throws ViatraQueryException {
     querySpecifications.add(CreateResourceQuerySpecification.instance());
     querySpecifications.add(VariantAllocatedToTaskQuerySpecification.instance());
     querySpecifications.add(AllocateTaskToVariantQuerySpecification.instance());
@@ -86,91 +86,91 @@ public final class Patterns extends BaseGeneratedPatternGroup {
     querySpecifications.add(EveryTaskHasVariantQuerySpecification.instance());
   }
   
-  public CreateResourceQuerySpecification getCreateResource() throws IncQueryException {
+  public CreateResourceQuerySpecification getCreateResource() throws ViatraQueryException {
     return CreateResourceQuerySpecification.instance();
   }
   
-  public CreateResourceMatcher getCreateResource(final IncQueryEngine engine) throws IncQueryException {
+  public CreateResourceMatcher getCreateResource(final ViatraQueryEngine engine) throws ViatraQueryException {
     return CreateResourceMatcher.on(engine);
   }
   
-  public VariantAllocatedToTaskQuerySpecification getVariantAllocatedToTask() throws IncQueryException {
+  public VariantAllocatedToTaskQuerySpecification getVariantAllocatedToTask() throws ViatraQueryException {
     return VariantAllocatedToTaskQuerySpecification.instance();
   }
   
-  public VariantAllocatedToTaskMatcher getVariantAllocatedToTask(final IncQueryEngine engine) throws IncQueryException {
+  public VariantAllocatedToTaskMatcher getVariantAllocatedToTask(final ViatraQueryEngine engine) throws ViatraQueryException {
     return VariantAllocatedToTaskMatcher.on(engine);
   }
   
-  public AllocateTaskToVariantQuerySpecification getAllocateTaskToVariant() throws IncQueryException {
+  public AllocateTaskToVariantQuerySpecification getAllocateTaskToVariant() throws ViatraQueryException {
     return AllocateTaskToVariantQuerySpecification.instance();
   }
   
-  public AllocateTaskToVariantMatcher getAllocateTaskToVariant(final IncQueryEngine engine) throws IncQueryException {
+  public AllocateTaskToVariantMatcher getAllocateTaskToVariant(final ViatraQueryEngine engine) throws ViatraQueryException {
     return AllocateTaskToVariantMatcher.on(engine);
   }
   
-  public MakeParallelQuerySpecification getMakeParallel() throws IncQueryException {
+  public MakeParallelQuerySpecification getMakeParallel() throws ViatraQueryException {
     return MakeParallelQuerySpecification.instance();
   }
   
-  public MakeParallelMatcher getMakeParallel(final IncQueryEngine engine) throws IncQueryException {
+  public MakeParallelMatcher getMakeParallel(final ViatraQueryEngine engine) throws ViatraQueryException {
     return MakeParallelMatcher.on(engine);
   }
   
-  public MakeSequentialQuerySpecification getMakeSequential() throws IncQueryException {
+  public MakeSequentialQuerySpecification getMakeSequential() throws ViatraQueryException {
     return MakeSequentialQuerySpecification.instance();
   }
   
-  public MakeSequentialMatcher getMakeSequential(final IncQueryEngine engine) throws IncQueryException {
+  public MakeSequentialMatcher getMakeSequential(final ViatraQueryEngine engine) throws ViatraQueryException {
     return MakeSequentialMatcher.on(engine);
   }
   
-  public UnassignedTaskQuerySpecification getUnassignedTask() throws IncQueryException {
+  public UnassignedTaskQuerySpecification getUnassignedTask() throws ViatraQueryException {
     return UnassignedTaskQuerySpecification.instance();
   }
   
-  public UnassignedTaskMatcher getUnassignedTask(final IncQueryEngine engine) throws IncQueryException {
+  public UnassignedTaskMatcher getUnassignedTask(final ViatraQueryEngine engine) throws ViatraQueryException {
     return UnassignedTaskMatcher.on(engine);
   }
   
-  public InstanceOfVariantQuerySpecification getInstanceOfVariant() throws IncQueryException {
+  public InstanceOfVariantQuerySpecification getInstanceOfVariant() throws ViatraQueryException {
     return InstanceOfVariantQuerySpecification.instance();
   }
   
-  public InstanceOfVariantMatcher getInstanceOfVariant(final IncQueryEngine engine) throws IncQueryException {
+  public InstanceOfVariantMatcher getInstanceOfVariant(final ViatraQueryEngine engine) throws ViatraQueryException {
     return InstanceOfVariantMatcher.on(engine);
   }
   
-  public AbsenceOfResourceInstancesQuerySpecification getAbsenceOfResourceInstances() throws IncQueryException {
+  public AbsenceOfResourceInstancesQuerySpecification getAbsenceOfResourceInstances() throws ViatraQueryException {
     return AbsenceOfResourceInstancesQuerySpecification.instance();
   }
   
-  public AbsenceOfResourceInstancesMatcher getAbsenceOfResourceInstances(final IncQueryEngine engine) throws IncQueryException {
+  public AbsenceOfResourceInstancesMatcher getAbsenceOfResourceInstances(final ViatraQueryEngine engine) throws ViatraQueryException {
     return AbsenceOfResourceInstancesMatcher.on(engine);
   }
   
-  public UnrequiredResourceInstanceQuerySpecification getUnrequiredResourceInstance() throws IncQueryException {
+  public UnrequiredResourceInstanceQuerySpecification getUnrequiredResourceInstance() throws ViatraQueryException {
     return UnrequiredResourceInstanceQuerySpecification.instance();
   }
   
-  public UnrequiredResourceInstanceMatcher getUnrequiredResourceInstance(final IncQueryEngine engine) throws IncQueryException {
+  public UnrequiredResourceInstanceMatcher getUnrequiredResourceInstance(final ViatraQueryEngine engine) throws ViatraQueryException {
     return UnrequiredResourceInstanceMatcher.on(engine);
   }
   
-  public EnoughResourceInstancesQuerySpecification getEnoughResourceInstances() throws IncQueryException {
+  public EnoughResourceInstancesQuerySpecification getEnoughResourceInstances() throws ViatraQueryException {
     return EnoughResourceInstancesQuerySpecification.instance();
   }
   
-  public EnoughResourceInstancesMatcher getEnoughResourceInstances(final IncQueryEngine engine) throws IncQueryException {
+  public EnoughResourceInstancesMatcher getEnoughResourceInstances(final ViatraQueryEngine engine) throws ViatraQueryException {
     return EnoughResourceInstancesMatcher.on(engine);
   }
   
-  public EveryTaskHasVariantQuerySpecification getEveryTaskHasVariant() throws IncQueryException {
+  public EveryTaskHasVariantQuerySpecification getEveryTaskHasVariant() throws ViatraQueryException {
     return EveryTaskHasVariantQuerySpecification.instance();
   }
   
-  public EveryTaskHasVariantMatcher getEveryTaskHasVariant(final IncQueryEngine engine) throws IncQueryException {
+  public EveryTaskHasVariantMatcher getEveryTaskHasVariant(final ViatraQueryEngine engine) throws ViatraQueryException {
     return EveryTaskHasVariantMatcher.on(engine);
   }
 }

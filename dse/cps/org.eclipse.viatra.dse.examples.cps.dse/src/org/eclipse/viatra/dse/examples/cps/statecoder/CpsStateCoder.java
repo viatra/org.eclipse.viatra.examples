@@ -15,22 +15,21 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.incquery.runtime.api.IPatternMatch;
+import org.eclipse.viatra.dse.examples.cps.ApplicationInstance;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.HostInstance;
+import org.eclipse.viatra.dse.examples.cps.HostType;
+import org.eclipse.viatra.dse.examples.cps.Request;
+import org.eclipse.viatra.dse.examples.cps.Requirement;
+import org.eclipse.viatra.dse.examples.cps.patterns.AllocateMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateHostInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.DeleteAllocationMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.MoveMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StartInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StopInstanceMatch;
 import org.eclipse.viatra.dse.statecode.IStateCoder;
-import org.eclipse.viatra.examples.dse.cps.ApplicationInstance;
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.HostInstance;
-import org.eclipse.viatra.examples.dse.cps.HostType;
-import org.eclipse.viatra.examples.dse.cps.Request;
-import org.eclipse.viatra.examples.dse.cps.Requirement;
-
-import hu.bme.mit.inf.cps.patterns.AllocateMatch;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.CreateHostInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.DeleteAllocationMatch;
-import hu.bme.mit.inf.cps.patterns.MoveMatch;
-import hu.bme.mit.inf.cps.patterns.StartInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.StopInstanceMatch;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 
 public class CpsStateCoder implements IStateCoder {
 

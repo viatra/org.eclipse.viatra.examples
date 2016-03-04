@@ -10,7 +10,7 @@
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
@@ -28,7 +28,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
  */
 public class MakeParallelRule {
 
-    public static DSETransformationRule<MakeParallelMatch, MakeParallelMatcher> createRule() throws IncQueryException {
+    public static DSETransformationRule<MakeParallelMatch, MakeParallelMatcher> createRule() throws ViatraQueryException {
         DSETransformationRule<MakeParallelMatch, MakeParallelMatcher> rule = new DSETransformationRule<MakeParallelMatch, MakeParallelMatcher>(MakeParallelQuerySpecification.instance(),
                 new MakeParallelProcessor() {
                     @Override

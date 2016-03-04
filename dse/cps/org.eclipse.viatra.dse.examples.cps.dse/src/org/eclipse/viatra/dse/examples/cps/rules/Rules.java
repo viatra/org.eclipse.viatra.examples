@@ -10,51 +10,50 @@
 package org.eclipse.viatra.dse.examples.cps.rules;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
-import org.eclipse.viatra.examples.dse.cps.ApplicationInstance;
-import org.eclipse.viatra.examples.dse.cps.CpsFactory;
-import org.eclipse.viatra.examples.dse.cps.CyberPhysicalSystem;
-import org.eclipse.viatra.examples.dse.cps.HostInstance;
-import org.eclipse.viatra.examples.dse.cps.HostType;
-import org.eclipse.viatra.examples.dse.cps.Request;
-import org.eclipse.viatra.examples.dse.cps.Requirement;
-import org.eclipse.viatra.examples.dse.cps.ResourceRequirement;
-import org.eclipse.viatra.examples.dse.cps.State;
-
-import hu.bme.mit.inf.cps.patterns.AllocateMatch;
-import hu.bme.mit.inf.cps.patterns.AllocateMatcher;
-import hu.bme.mit.inf.cps.patterns.CancelRequestMatch;
-import hu.bme.mit.inf.cps.patterns.CancelRequestMatcher;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstanceMatcher;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstancesMatch;
-import hu.bme.mit.inf.cps.patterns.CreateApplicationInstancesMatcher;
-import hu.bme.mit.inf.cps.patterns.CreateHostInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.CreateHostInstanceMatcher;
-import hu.bme.mit.inf.cps.patterns.DeleteAllocationMatch;
-import hu.bme.mit.inf.cps.patterns.DeleteAllocationMatcher;
-import hu.bme.mit.inf.cps.patterns.MoveMatch;
-import hu.bme.mit.inf.cps.patterns.MoveMatcher;
-import hu.bme.mit.inf.cps.patterns.RemoveHostInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.RemoveHostInstanceMatcher;
-import hu.bme.mit.inf.cps.patterns.StartInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.StartInstanceMatcher;
-import hu.bme.mit.inf.cps.patterns.StopInstanceMatch;
-import hu.bme.mit.inf.cps.patterns.StopInstanceMatcher;
-import hu.bme.mit.inf.cps.patterns.util.AllocateProcessor;
-import hu.bme.mit.inf.cps.patterns.util.CancelRequestProcessor;
-import hu.bme.mit.inf.cps.patterns.util.CancelRequestQuerySpecification;
-import hu.bme.mit.inf.cps.patterns.util.CreateApplicationInstanceProcessor;
-import hu.bme.mit.inf.cps.patterns.util.CreateApplicationInstancesProcessor;
-import hu.bme.mit.inf.cps.patterns.util.CreateApplicationInstancesQuerySpecification;
-import hu.bme.mit.inf.cps.patterns.util.CreateHostInstanceProcessor;
-import hu.bme.mit.inf.cps.patterns.util.DeleteAllocationProcessor;
-import hu.bme.mit.inf.cps.patterns.util.MoveProcessor;
-import hu.bme.mit.inf.cps.patterns.util.RemoveHostInstanceProcessor;
-import hu.bme.mit.inf.cps.patterns.util.RemoveHostInstanceQuerySpecification;
-import hu.bme.mit.inf.cps.patterns.util.StartInstanceProcessor;
-import hu.bme.mit.inf.cps.patterns.util.StopInstanceProcessor;
+import org.eclipse.viatra.dse.examples.cps.ApplicationInstance;
+import org.eclipse.viatra.dse.examples.cps.CpsFactory;
+import org.eclipse.viatra.dse.examples.cps.CyberPhysicalSystem;
+import org.eclipse.viatra.dse.examples.cps.HostInstance;
+import org.eclipse.viatra.dse.examples.cps.HostType;
+import org.eclipse.viatra.dse.examples.cps.Request;
+import org.eclipse.viatra.dse.examples.cps.Requirement;
+import org.eclipse.viatra.dse.examples.cps.ResourceRequirement;
+import org.eclipse.viatra.dse.examples.cps.State;
+import org.eclipse.viatra.dse.examples.cps.patterns.AllocateMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.AllocateMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.CancelRequestMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CancelRequestMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstanceMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstancesMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateApplicationInstancesMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateHostInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.CreateHostInstanceMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.DeleteAllocationMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.DeleteAllocationMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.MoveMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.MoveMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.RemoveHostInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.RemoveHostInstanceMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.StartInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StartInstanceMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.StopInstanceMatch;
+import org.eclipse.viatra.dse.examples.cps.patterns.StopInstanceMatcher;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.AllocateProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CancelRequestProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CancelRequestQuerySpecification;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CreateApplicationInstanceProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CreateApplicationInstancesProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CreateApplicationInstancesQuerySpecification;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.CreateHostInstanceProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.DeleteAllocationProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.MoveProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.RemoveHostInstanceProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.RemoveHostInstanceQuerySpecification;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.StartInstanceProcessor;
+import org.eclipse.viatra.dse.examples.cps.patterns.util.StopInstanceProcessor;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class Rules {
 
@@ -71,7 +70,7 @@ public class Rules {
 	public DSETransformationRule<CreateApplicationInstancesMatch, CreateApplicationInstancesMatcher> createAppsRule;
 	public DSETransformationRule<RemoveHostInstanceMatch, RemoveHostInstanceMatcher> removeHostInstanceRule;
 
-	public Rules() throws IncQueryException {
+	public Rules() throws ViatraQueryException {
 
 		allocateRule = new DSETransformationRule<>(
 		        AllocateMatcher.querySpecification(),

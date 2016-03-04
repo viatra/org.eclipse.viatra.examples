@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.dse.examples.bpmn.model
 Bundle-SymbolicName: org.eclipse.viatra.dse.examples.bpmn.model;singleton:=true
-Bundle-Version: 0.8.0.qualifier
+Bundle-Version: 0.12.0.qualifier
 Bundle-ClassPath: .
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: org.eclipse.viatra.dse.examples.simplifiedbpmn,
  org.eclipse.viatra.dse.examples.simplifiedbpmn.impl,
  org.eclipse.viatra.dse.examples.simplifiedbpmn.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ActivationPolicy: lazy

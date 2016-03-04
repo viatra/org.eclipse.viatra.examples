@@ -9,7 +9,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatcher;
@@ -26,7 +26,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 public class AssignVariantToTaskRule {
 
     public static DSETransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> createRule()
-            throws IncQueryException {
+            throws ViatraQueryException {
         return new DSETransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher>(
                 AllocateTaskToVariantQuerySpecification.instance(), new AllocateTaskToVariantProcessor() {
 

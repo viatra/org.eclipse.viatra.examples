@@ -5,20 +5,20 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.incquery.runtime.api.IncQueryEngine;
-import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFPQuery;
-import org.eclipse.incquery.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
-import org.eclipse.incquery.runtime.emf.types.EClassTransitiveInstancesKey;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
-import org.eclipse.incquery.runtime.matchers.psystem.PBody;
-import org.eclipse.incquery.runtime.matchers.psystem.PVariable;
-import org.eclipse.incquery.runtime.matchers.psystem.basicdeferred.ExportedParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.basicenumerables.TypeConstraint;
-import org.eclipse.incquery.runtime.matchers.psystem.queries.PParameter;
-import org.eclipse.incquery.runtime.matchers.psystem.queries.QueryInitializationException;
-import org.eclipse.incquery.runtime.matchers.tuple.FlatTuple;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatcher;
+import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
+import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFPQuery;
+import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
+import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
+import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
+import org.eclipse.viatra.query.runtime.matchers.tuple.FlatTuple;
 
 /**
  * A pattern-specific query specification that can instantiate CreateResourceMatcher in a type-safe way.
@@ -35,10 +35,10 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
   
   /**
    * @return the singleton instance of the query specification
-   * @throws IncQueryException if the pattern definition could not be loaded
+   * @throws ViatraQueryException if the pattern definition could not be loaded
    * 
    */
-  public static CreateResourceQuerySpecification instance() throws IncQueryException {
+  public static CreateResourceQuerySpecification instance() throws ViatraQueryException {
     try{
     	return LazyHolder.INSTANCE;
     } catch (ExceptionInInitializerError err) {
@@ -47,7 +47,7 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
   }
   
   @Override
-  protected CreateResourceMatcher instantiate(final IncQueryEngine engine) throws IncQueryException {
+  protected CreateResourceMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return CreateResourceMatcher.on(engine);
   }
   
@@ -61,11 +61,29 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
     return CreateResourceMatch.newMatch((org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant) parameters[0]);
   }
   
+  /**
+   * Inner class allowing the singleton instance of {@link CreateResourceQuerySpecification} to be created 
+   * 	<b>not</b> at the class load time of the outer class, 
+   * 	but rather at the first call to {@link CreateResourceQuerySpecification#instance()}.
+   * 
+   * <p> This workaround is required e.g. to support recursion.
+   * 
+   */
   private static class LazyHolder {
-    private final static CreateResourceQuerySpecification INSTANCE = make();
+    private final static CreateResourceQuerySpecification INSTANCE = new CreateResourceQuerySpecification();
     
-    public static CreateResourceQuerySpecification make() {
-      return new CreateResourceQuerySpecification();					
+    /**
+     * Statically initializes the query specification <b>after</b> the field {@link #INSTANCE} is assigned.
+     * This initialization order is required to support indirect recursion.
+     * 
+     * <p> The static initializer is defined using a helper field to work around limitations of the code generator.
+     * 
+     */
+    private final static Object STATIC_INITIALIZER = ensureInitialized();
+    
+    public static Object ensureInitialized() {
+      INSTANCE.ensureInitializedInternalSneaky();
+      return null;					
     }
   }
   
@@ -94,16 +112,17 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
       	{
       		PBody body = new PBody(this);
       		PVariable var_RTV = body.getOrCreateVariableByName("RTV");
-      		body.setExportedParameters(Arrays.<ExportedParameter>asList(
-      			new ExportedParameter(body, var_RTV, "RTV")
-      		));
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
+      		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
+      		   new ExportedParameter(body, var_RTV, "RTV")
+      		));
+      		// 	ResourceTypeVariant(RTV)
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       		bodies.add(body);
       	}
       	// to silence compiler error
-      	if (false) throw new IncQueryException("Never", "happens");
-      } catch (IncQueryException ex) {
+      	if (false) throw new ViatraQueryException("Never", "happens");
+      } catch (ViatraQueryException ex) {
       	throw processDependencyException(ex);
       }
       return bodies;

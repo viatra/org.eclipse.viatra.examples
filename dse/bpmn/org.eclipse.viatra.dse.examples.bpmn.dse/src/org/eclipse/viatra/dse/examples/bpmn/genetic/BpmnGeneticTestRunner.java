@@ -3,7 +3,7 @@ package org.eclipse.viatra.dse.examples.bpmn.genetic;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.incquery.runtime.exception.IncQueryException;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.base.GlobalContext;
@@ -39,7 +39,7 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
     private String modelPath;
 
     @Override
-    public void configDSE(Row configRow, DesignSpaceExplorer dse, GeneticStrategyBuilder builder) throws IncQueryException {
+    public void configDSE(Row configRow, DesignSpaceExplorer dse, GeneticStrategyBuilder builder) throws ViatraQueryException {
         modelPath = configRow.getValueAsString(GeneticTestRunner.MODEL_PATH);
 
         dse.setStateCoderFactory(new BpmnStateCoderFactory());

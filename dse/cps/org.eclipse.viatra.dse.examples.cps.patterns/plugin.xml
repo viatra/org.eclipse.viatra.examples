@@ -1,17 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="hu.bme.mit.inf.cps.patterns.Goals" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.inf.cps.patterns.Goals" id="hu.bme.mit.inf.cps.patterns.Goals"/>
+  <extension id="hu.bme.mit.inf.cps.patterns.Derived" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.inf.cps.patterns.Derived" id="hu.bme.mit.inf.cps.patterns.Derived"/>
   </extension>
-  <extension id="hu.bme.mit.inf.cps.patterns.Derived" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.inf.cps.patterns.Derived" id="hu.bme.mit.inf.cps.patterns.Derived"/>
+  <extension id="hu.bme.mit.inf.cps.patterns.Rules" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.inf.cps.patterns.Rules" id="hu.bme.mit.inf.cps.patterns.Rules"/>
   </extension>
-  <extension id="hu.bme.mit.inf.cps.patterns.Rules" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:hu.bme.mit.inf.cps.patterns.Rules" id="hu.bme.mit.inf.cps.patterns.Rules"/>
+  <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Derived" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Derived" id="org.eclipse.viatra.dse.examples.cps.patterns.Derived"/>
   </extension>
-  <extension id="extension.derived.hu.bme.mit.inf.cps.patterns.applications" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
+  <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Goals" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Goals" id="org.eclipse.viatra.dse.examples.cps.patterns.Goals"/>
+  </extension>
+  <extension id="extension.derived.org.eclipse.viatra.dse.examples.cps.patterns.applications" point="org.eclipse.viatra.query.runtime.base.wellbehaving.derived.features">
     <wellbehaving-derived-feature classifier-name="CyberPhysicalSystem" feature-name="applications" package-nsUri="org.eclipse.viatra.examples.dse.cps"/>
   </extension>
-  <extension id="extension.derived.hu.bme.mit.inf.cps.patterns.hosts" point="org.eclipse.incquery.runtime.base.wellbehaving.derived.features">
+  <extension id="extension.derived.org.eclipse.viatra.dse.examples.cps.patterns.hosts" point="org.eclipse.viatra.query.runtime.base.wellbehaving.derived.features">
     <wellbehaving-derived-feature classifier-name="CyberPhysicalSystem" feature-name="hosts" package-nsUri="org.eclipse.viatra.examples.dse.cps"/>
+  </extension>
+  <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Rules" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Rules" id="org.eclipse.viatra.dse.examples.cps.patterns.Rules"/>
   </extension>
 </plugin>
