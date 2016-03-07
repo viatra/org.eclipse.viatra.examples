@@ -29,8 +29,9 @@ import org.eclipse.viatra.dse.examples.cps.problems.CpsProblemFactory;
 import org.eclipse.viatra.dse.examples.cps.problems.RoomServiceCpsDomain;
 import org.eclipse.viatra.dse.examples.cps.rules.Rules;
 import org.eclipse.viatra.dse.examples.cps.statecoder.CpsStateCoderFactory;
-import org.eclipse.viatra.dse.genetic.core.GeneticConstraintObjective;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
+import org.eclipse.viatra.dse.objectives.Comparators;
+import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueryType;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
@@ -69,13 +70,15 @@ public class CpsDseRunner {
                 .withConstraint(MoreThanOneUnusedHostQuerySpecification.instance())
                 .withType(ModelQueryType.NO_MATCH));
         
-        dse.addObjective(new GeneticConstraintObjective()
+        dse.addObjective(new ConstraintsObjective()
             .withSoftConstraint("RunningApps", RunningAppQuerySpecification.instance(), -4d)
             .withSoftConstraint("AllocatedApps", AllocatedAppQuerySpecification.instance(), -3d)
             .withSoftConstraint("ApplicationInstances", ApplicationsQuerySpecification.instance(), -2d)
             .withSoftConstraint("UnusedHosts", UnusedHostQuerySpecification.instance(), 1d)
             .withHardConstraint(NotExistUnsatisfiedRequirementQuerySpecification.instance())
-            .withHardConstraint(AllApplicationInstanceIsRunningQuerySpecification.instance()));
+            .withHardConstraint(AllApplicationInstanceIsRunningQuerySpecification.instance())
+            .withComparator(Comparators.LOWER_IS_BETTER)
+            .withLevel(1));
 
         dse.addObjective(new ResourceUsageObjective().withLevel(2));
 

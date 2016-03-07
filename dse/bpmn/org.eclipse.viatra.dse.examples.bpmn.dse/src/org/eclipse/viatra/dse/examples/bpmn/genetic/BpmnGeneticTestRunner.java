@@ -3,7 +3,6 @@ package org.eclipse.viatra.dse.examples.bpmn.genetic;
 import java.util.Arrays;
 import java.util.List;
 
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.base.GlobalContext;
@@ -21,13 +20,14 @@ import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
 import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
 import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.genetic.api.GeneticStrategyBuilder;
-import org.eclipse.viatra.dse.genetic.core.GeneticConstraintObjective;
 import org.eclipse.viatra.dse.genetic.core.InstanceData;
 import org.eclipse.viatra.dse.genetic.debug.GeneticDebugger;
 import org.eclipse.viatra.dse.genetic.debug.GeneticTestRunner;
 import org.eclipse.viatra.dse.genetic.debug.Row;
 import org.eclipse.viatra.dse.objectives.Comparators;
+import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class BpmnGeneticTestRunner extends GeneticTestRunner {
 
@@ -57,12 +57,14 @@ public class BpmnGeneticTestRunner extends GeneticTestRunner {
         dse.addTransformationRule(makeParallelRule);
         dse.addTransformationRule(makeSequentialRule);
 
-        dse.addObjective(new GeneticConstraintObjective()
+        dse.addObjective(new ConstraintsObjective()
                 .withSoftConstraint("LackOfResourceInstances", AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
                 .withSoftConstraint("UnassignedTask", UnassignedTaskQuerySpecification.instance(), 10)
                 .withSoftConstraint("UnrequiredResources", UnrequiredResourceInstanceQuerySpecification.instance(), 100)
                 .withHardConstraint(EnoughResourceInstancesQuerySpecification.instance())
-                .withHardConstraint(EveryTaskHasVariantQuerySpecification.instance()));
+                .withHardConstraint(EveryTaskHasVariantQuerySpecification.instance())
+                .withComparator(Comparators.LOWER_IS_BETTER)
+                .withLevel(1));
         
         dse.addObjective(new AvgResponseTimeSoftObjective()
                 .withComparator(Comparators.LOWER_IS_BETTER)

@@ -150,11 +150,13 @@ public class BpmnExamples {
                 .withConstraint(UnrequiredResourceInstanceQuerySpecification.instance()));
         
         // Guidance objective
-        dse.addObjective(new WeightedQueriesSoftObjective()
-            .withConstraint(AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
-            .withConstraint(UnassignedTaskQuerySpecification.instance(), 10)
-            .withComparator(Comparators.LOWER_IS_BETTER)
-            .withLevel(0));
+        dse.addObjective(new ConstraintsObjective()
+                .withHardConstraint(EnoughResourceInstancesQuerySpecification.instance())
+                .withHardConstraint(EveryTaskHasVariantQuerySpecification.instance())
+                .withSoftConstraint(AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
+                .withSoftConstraint(UnassignedTaskQuerySpecification.instance(), 10)
+                .withComparator(Comparators.LOWER_IS_BETTER)
+                .withLevel(0));
 
         costOfCreateResource = new CostOfCreateResource();
 
