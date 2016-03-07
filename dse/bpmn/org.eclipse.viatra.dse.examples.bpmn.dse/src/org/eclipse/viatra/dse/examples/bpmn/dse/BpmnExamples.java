@@ -14,8 +14,6 @@ import java.util.Collection;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.viatra.query.runtime.api.IPatternMatch;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.Solution;
@@ -27,6 +25,8 @@ import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObject
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EnoughResourceInstancesQuerySpecification;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EveryTaskHasVariantQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
@@ -38,12 +38,13 @@ import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnPackage;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.dse.objectives.Comparators;
+import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
-import org.eclipse.viatra.dse.objectives.impl.WeightedQueriesSoftObjective;
-import org.eclipse.viatra.dse.solutionstore.SimpleSolutionStore;
-import org.eclipse.viatra.dse.solutionstore.StrategyDependentSolutionStore;
+import org.eclipse.viatra.dse.solutionstore.SolutionStore;
 import org.eclipse.viatra.dse.visualizer.GraphmlDesignSpaceVisualizer;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -179,7 +180,7 @@ public class BpmnExamples {
                 .withLevel(1));
 
         // Stop at first valid solution
-        dse.setSolutionStore(new SimpleSolutionStore(1));
+        dse.setSolutionStore(new SolutionStore(1));
 
         dse.setMaxNumberOfThreads(1);
         
@@ -229,12 +230,11 @@ public class BpmnExamples {
 
     @Test
     public void BFS() throws ViatraQueryException {
-        dse.startExploration(Strategies.createBFSStrategy(4));
+        dse.startExploration(Strategies.createBfsStrategy(4));
     }
 
     @Test
     public void hillClimbing() throws ViatraQueryException {
-        dse.setSolutionStore(new StrategyDependentSolutionStore());
         dse.startExploration(new HillClimbingStrategy());
     }
 
