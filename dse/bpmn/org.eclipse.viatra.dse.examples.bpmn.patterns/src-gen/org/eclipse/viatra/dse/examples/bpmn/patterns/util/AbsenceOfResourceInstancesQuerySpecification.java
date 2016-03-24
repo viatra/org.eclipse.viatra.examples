@@ -116,8 +116,8 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
       	{
       		PBody body = new PBody(this);
       		PVariable var_RTV = body.getOrCreateVariableByName("RTV");
-      		PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
       		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
       		   new ExportedParameter(body, var_RTV, "RTV")

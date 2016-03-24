@@ -30,7 +30,7 @@ import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
  * A pattern group formed of all patterns defined in patterns.vql.
  * 
  * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
- * an VIATRA Query engine for matching all patterns originally defined in file patterns.vql,
+ * a VIATRA Query engine for matching all patterns originally defined in file patterns.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
  * <p> From package org.eclipse.viatra.dse.examples.bpmn.patterns, the group contains the definition of the following patterns: <ul>

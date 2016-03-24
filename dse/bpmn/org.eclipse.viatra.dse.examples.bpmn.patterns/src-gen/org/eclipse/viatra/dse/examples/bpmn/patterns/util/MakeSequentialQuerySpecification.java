@@ -122,8 +122,8 @@ public final class MakeSequentialQuerySpecification extends BaseGeneratedEMFQuer
       		PVariable var_Root = body.getOrCreateVariableByName("Root");
       		PVariable var_pg = body.getOrCreateVariableByName("pg");
       		PVariable var_N = body.getOrCreateVariableByName("N");
-      		PVariable var_pg2 = body.getOrCreateVariableByName("pg2");
       		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		PVariable var_pg2 = body.getOrCreateVariableByName("pg2");
       		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_T2), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));

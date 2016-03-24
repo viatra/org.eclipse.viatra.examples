@@ -27,7 +27,7 @@ public final class ResourceUsageObjective extends BaseObjective {
 
     @Override
     public Double getFitness(ThreadContext context) {
-        CyberPhysicalSystem root = (CyberPhysicalSystem) context.getModelRoot();
+        CyberPhysicalSystem root = (CyberPhysicalSystem) context.getModel();
 
         double sumUtil = 0;
 //        EList<HostInstance> hosts = root.getHosts();

@@ -14,7 +14,6 @@ import java.util.Map;
 import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.viatra.dse.base.DesignSpaceManager;
 import org.eclipse.viatra.dse.base.ThreadContext;
 import org.eclipse.viatra.dse.designspace.api.IState;
@@ -37,12 +36,12 @@ public class RunSimulationOnModel {
     private static Map<Notifier, RunSimulationOnModel> sims = new WeakHashMap<Notifier, RunSimulationOnModel>();
     
     public static synchronized RunSimulationOnModel create(ThreadContext context) {
-        EObject modelRoot = context.getModelRoot();
-        RunSimulationOnModel sim = sims.get(modelRoot);
+        Notifier model = context.getModel();
+        RunSimulationOnModel sim = sims.get(model);
         if (sim == null) {
             sim = new RunSimulationOnModel();
             sim.init(context);
-            sims.put(modelRoot, sim);
+            sims.put(model, sim);
         }
         return sim;
     }
@@ -56,7 +55,7 @@ public class RunSimulationOnModel {
     private RunSimulationOnModel() {}
     
     private void init(ThreadContext context) {
-        modelRoot = (SimplifiedBPMN) context.getModelRoot();
+        modelRoot = (SimplifiedBPMN) context.getModel();
         dsm = context.getDesignSpaceManager();
     }
     

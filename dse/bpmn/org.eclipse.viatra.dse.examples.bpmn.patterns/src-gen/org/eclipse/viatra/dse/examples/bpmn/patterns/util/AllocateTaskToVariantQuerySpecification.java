@@ -117,8 +117,8 @@ public final class AllocateTaskToVariantQuerySpecification extends BaseGenerated
       		PBody body = new PBody(this);
       		PVariable var_T = body.getOrCreateVariableByName("T");
       		PVariable var_RTV = body.getOrCreateVariableByName("RTV");
-      		PVariable var_RT = body.getOrCreateVariableByName("RT");
       		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
+      		PVariable var_RT = body.getOrCreateVariableByName("RT");
       		new TypeConstraint(body, new FlatTuple(var_T), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(

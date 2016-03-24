@@ -11,7 +11,6 @@ package org.eclipse.viatra.dse.examples.cps.patterns
 
 import "org.eclipse.viatra.examples.dse.cps"
 
-@QueryExplorer(display = true)
 pattern createApplicationInstances(req : Requirement) {
 	find unsatisfiedRequirement(req);
 }
