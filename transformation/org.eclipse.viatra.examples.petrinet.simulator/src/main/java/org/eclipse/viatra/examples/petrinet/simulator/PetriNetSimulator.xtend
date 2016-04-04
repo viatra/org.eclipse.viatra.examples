@@ -11,18 +11,17 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.petrinet.simulator
 
-import org.eclipse.viatra.examples.petrinet.model.PetriNetPackage
-import org.eclipse.viatra.examples.petrinet.simulator.PetriNetSimulatorQueries
-import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine
-import org.eclipse.incquery.runtime.evm.api.RuleEngine
-import org.eclipse.incquery.runtime.evm.specific.RuleEngines
-import org.eclipse.incquery.runtime.evm.specific.event.IncQueryEventRealm
-import org.eclipse.viatra.emf.runtime.modelmanipulation.IModelManipulations
-import org.eclipse.viatra.emf.runtime.modelmanipulation.SimpleModelManipulations
-import org.eclipse.viatra.emf.runtime.rules.batch.BatchTransformationRuleFactory
-import org.eclipse.viatra.emf.runtime.rules.batch.BatchTransformationStatements
-import org.eclipse.viatra.emf.runtime.transformation.batch.BatchTransformation
 import org.apache.log4j.Level
+import org.eclipse.viatra.examples.petrinet.model.PetriNetPackage
+import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
+import org.eclipse.viatra.transformation.evm.api.RuleEngine
+import org.eclipse.viatra.transformation.evm.specific.RuleEngines
+import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.IModelManipulations
+import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.SimpleModelManipulations
+import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory
+import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationStatements
+import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformation
+import org.eclipse.viatra.transformation.evm.specific.event.ViatraQueryEventRealm
 
 class PetriNetSimulator {
 	extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
@@ -32,17 +31,17 @@ class PetriNetSimulator {
 
 	extension PetriNetPackage pnPackage = PetriNetPackage::eINSTANCE
 	extension PetriNetSimulatorQueries queries = PetriNetSimulatorQueries::instance
-	val AdvancedIncQueryEngine engine
+	val AdvancedViatraQueryEngine engine
 	
-	new(AdvancedIncQueryEngine engine) {
-		this(RuleEngines.createIncQueryRuleEngine(engine))
+	new(AdvancedViatraQueryEngine engine) {
+		this(RuleEngines.createViatraQueryRuleEngine(engine))
 	}
 	
 	new(RuleEngine ruleEngine) {
-		engine = (ruleEngine.eventRealm as IncQueryEventRealm).engine as AdvancedIncQueryEngine
+		engine = (ruleEngine.eventRealm as ViatraQueryEventRealm).engine as AdvancedViatraQueryEngine
 		transformation = BatchTransformation.forRuleEngine(ruleEngine, engine)
 		statements = new BatchTransformationStatements(transformation)
-		manipulation = new SimpleModelManipulations(iqEngine)
+		manipulation = new SimpleModelManipulations(engine)
 
 		transformation.ruleEngine.logger.level = Level::DEBUG
 		

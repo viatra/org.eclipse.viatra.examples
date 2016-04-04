@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.eclipse.viatra.examples.petrinet</groupId>
 		<artifactId>org.eclipse.viatra.examples.petrinet</artifactId>
-		<version>0.7.0-SNAPSHOT</version>
+		<version>0.12.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.eclipse.viatra.examples.petrinet.simulator</artifactId>
 
@@ -31,9 +31,9 @@
 				</executions>
 			</plugin>
 			<plugin>
-				<groupId>org.eclipse.incquery</groupId>
-				<artifactId>incquery-maven-plugin</artifactId>
-				<version>${incquery.version}</version>
+				<groupId>org.eclipse.viatra</groupId>
+                <artifactId>viatra-maven-plugin</artifactId>
+				<version>${viatra.version}</version>
 				<executions>
 					<execution>
 						<goals>
@@ -53,7 +53,7 @@
 					<dependency>
 						<groupId>org.eclipse.viatra.examples.petrinet</groupId>
 						<artifactId>org.eclipse.viatra.examples.petrinet.model</artifactId>
-						<version>0.7.0-SNAPSHOT</version>
+						<version>0.12.0-SNAPSHOT</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -124,13 +124,13 @@
 								<pluginExecution>
 									<pluginExecutionFilter>
 										<groupId>
-											org.eclipse.incquery
+											org.eclipse.viatra
 										</groupId>
 										<artifactId>
-											incquery-maven-plugin
+											viatra-maven-plugin
 										</artifactId>
 										<versionRange>
-											[1.0.0-SNAPSHOT,)
+											[1.2.0-SNAPSHOT,)
 										</versionRange>
 										<goals>
 											<goal>generate</goal>
@@ -169,15 +169,15 @@
 
 		<dependency>
 			<groupId>org.eclipse.viatra</groupId>
-			<artifactId>viatra-emf-runtime</artifactId>
+			<artifactId>viatra-transformation-runtime</artifactId>
 			<version>${viatra.version}</version>
 		</dependency>
-
+				
 		<dependency>
-			<groupId>org.eclipse.incquery</groupId>
-			<artifactId>incquery-runtime</artifactId>
-			<version>${incquery.version}</version>
-		</dependency>
+            <groupId>org.eclipse.viatra</groupId>
+            <artifactId>viatra-query-runtime</artifactId>
+            <version>${viatra.version}</version>
+        </dependency>
 
 		<dependency>
 			<groupId>org.eclipse.xtend</groupId>
@@ -188,7 +188,7 @@
 		<dependency>
 			<groupId>org.eclipse.viatra.examples.petrinet</groupId>
 			<artifactId>org.eclipse.viatra.examples.petrinet.model</artifactId>
-			<version>0.7.0-SNAPSHOT</version>
+			<version>0.12.0-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>

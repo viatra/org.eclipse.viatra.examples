@@ -18,13 +18,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
-import org.eclipse.incquery.runtime.api.AdvancedIncQueryEngine;
-import org.eclipse.incquery.runtime.emf.EMFScope;
-import org.eclipse.incquery.runtime.exception.IncQueryException;
 import org.eclipse.viatra.examples.petrinet.model.PetriNetPackage;
+import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine;
+import org.eclipse.viatra.query.runtime.emf.EMFScope;
+import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class PetriNetSimulatorMain {
-	public static void main(String[] args) throws IncQueryException, IOException {
+	public static void main(String[] args) throws ViatraQueryException, IOException {
 		// Initializing the EMF package
 		PetriNetPackage.eINSTANCE.getName();
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("petrinet", new XMIResourceFactoryImpl());
@@ -34,7 +34,7 @@ public class PetriNetSimulatorMain {
 		URI uri = URI.createFileURI("My.petrinet");
 		set.getResource(uri, true);
 
-		final AdvancedIncQueryEngine engine = AdvancedIncQueryEngine.createUnmanagedEngine(new EMFScope(set));
+		final AdvancedViatraQueryEngine engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(set));
 
 		PetriNetSimulator simulator = new PetriNetSimulator(engine);
 		simulator.fire(10);

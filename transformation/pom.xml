@@ -5,15 +5,14 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.examples.petrinet</groupId>
 	<artifactId>org.eclipse.viatra.examples.petrinet</artifactId>
-	<version>0.7.0-SNAPSHOT</version>
+	<version>0.12.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<emf.version>2.9.1.v20130827-0309</emf.version>
-		<incquery.version>1.0.0-SNAPSHOT</incquery.version>
-		<viatra.version>0.7.0-SNAPSHOT</viatra.version>
-		<xtend.version>2.8.2</xtend.version>
+		<viatra.version>1.2.0-SNAPSHOT</viatra.version>
+		<xtend.version>2.9.2</xtend.version>
 		<maven.compiler.source>1.6</maven.compiler.source>
 		<maven.compiler.target>1.6</maven.compiler.target>
 	</properties>
@@ -37,25 +36,22 @@
 			<url>https://repo.eclipse.org/content/groups/acceleo</url>
 		</repository>
 		<repository>
-			<id>incquery</id>
-			<url>https://repo.eclipse.org/content/groups/emf-incquery/</url>
-		</repository>
-		<repository>
 			<id>viatra</id>
 			<url>https://repo.eclipse.org/content/groups/viatra2/</url>
 		</repository>
 	</repositories>
-
+	
+    <!-- Add release repo here instead of snaphots once its ready -->
 	<pluginRepositories>
 		<pluginRepository>
-			<id>incquery-snapshots</id>
+			<id>viatra-repo</id>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
-			<url>https://repo.eclipse.org/content/repositories/emf-incquery/</url>
+			<url>https://repo.eclipse.org/content/repositories/viatra2-snapshots/</url>
 		</pluginRepository>
 	</pluginRepositories>
 
