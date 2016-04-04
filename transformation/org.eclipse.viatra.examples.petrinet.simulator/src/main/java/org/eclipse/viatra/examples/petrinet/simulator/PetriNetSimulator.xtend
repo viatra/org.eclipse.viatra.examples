@@ -19,7 +19,7 @@ import org.eclipse.viatra.transformation.evm.specific.RuleEngines
 import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.IModelManipulations
 import org.eclipse.viatra.transformation.runtime.emf.modelmanipulation.SimpleModelManipulations
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory
-import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationStatements
+import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformationStatements
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformation
 import org.eclipse.viatra.transformation.evm.specific.event.ViatraQueryEventRealm
 
@@ -34,18 +34,14 @@ class PetriNetSimulator {
 	val AdvancedViatraQueryEngine engine
 	
 	new(AdvancedViatraQueryEngine engine) {
-		this(RuleEngines.createViatraQueryRuleEngine(engine))
+	    this.engine = engine
+		transformation = BatchTransformation.forEngine(engine).build
+        statements = transformation.transformationStatements
+        manipulation = new SimpleModelManipulations(engine)
+
+        transformation.ruleEngine.logger.level = Level::DEBUG
 	}
 	
-	new(RuleEngine ruleEngine) {
-		engine = (ruleEngine.eventRealm as ViatraQueryEventRealm).engine as AdvancedViatraQueryEngine
-		transformation = BatchTransformation.forRuleEngine(ruleEngine, engine)
-		statements = new BatchTransformationStatements(transformation)
-		manipulation = new SimpleModelManipulations(engine)
-
-		transformation.ruleEngine.logger.level = Level::DEBUG
-		
-	}
 	
 	val removeTokenRule = createRule.precondition(sourcePlace).action [
 		pl.tokens.findFirst[true].remove

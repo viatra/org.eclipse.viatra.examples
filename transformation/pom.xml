@@ -48,9 +48,6 @@
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
 			<url>https://repo.eclipse.org/content/repositories/viatra2-snapshots/</url>
 		</pluginRepository>
 	</pluginRepositories>

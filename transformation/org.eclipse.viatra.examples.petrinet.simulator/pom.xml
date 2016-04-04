@@ -72,7 +72,7 @@
 					</execution>
 				</executions>
 				<configuration>
-					<outputDirectory>${project.build.directory}/generated-sources/xtend</outputDirectory>
+					<outputDirectory>src/main/generated-sources/xtend</outputDirectory>
 				</configuration>
 			</plugin>
 			<plugin>
