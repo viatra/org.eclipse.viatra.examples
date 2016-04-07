@@ -15,7 +15,7 @@ import java.util.HashMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.mwe2.launch.runtime.Mwe2Runner;
 import org.eclipse.emf.mwe2.runtime.workflow.WorkflowContextImpl;
-import org.eclipse.viatra.emf.mwe2integration.initializer.MWE2IntegrationInitializer;
+import org.eclipse.viatra.integration.mwe2.initializer.MWE2IntegrationInitializer;
 import org.junit.Test;
 
 /**

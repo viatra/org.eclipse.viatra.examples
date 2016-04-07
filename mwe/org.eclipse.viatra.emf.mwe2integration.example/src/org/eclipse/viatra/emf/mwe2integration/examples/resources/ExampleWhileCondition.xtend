@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.viatra.emf.mwe2integration.examples.resources
 
-import org.eclipse.viatra.emf.mwe2integration.providers.IConditionProvider
-import org.eclipse.viatra.emf.mwe2integration.providers.impl.BaseProvider
+import org.eclipse.viatra.integration.mwe2.providers.IConditionProvider
+import org.eclipse.viatra.integration.mwe2.providers.impl.BaseProvider
 
 /**
  * This IConditionProvider provides a basic example dynamically computed condition for WHILE Loops.

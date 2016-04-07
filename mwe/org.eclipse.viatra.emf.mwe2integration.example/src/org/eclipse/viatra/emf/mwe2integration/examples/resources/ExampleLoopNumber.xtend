@@ -10,8 +10,8 @@
  *******************************************************************************/
 package org.eclipse.viatra.emf.mwe2integration.examples.resources
 
-import org.eclipse.viatra.emf.mwe2integration.providers.IIterationNumberProvider
-import org.eclipse.viatra.emf.mwe2integration.providers.impl.BaseProvider
+import org.eclipse.viatra.integration.mwe2.providers.IIterationNumberProvider
+import org.eclipse.viatra.integration.mwe2.providers.impl.BaseProvider
 
 /**
  * This IIterationNumberProvider dynamically evaluates how many iterations a FOR cycle should iterate through.

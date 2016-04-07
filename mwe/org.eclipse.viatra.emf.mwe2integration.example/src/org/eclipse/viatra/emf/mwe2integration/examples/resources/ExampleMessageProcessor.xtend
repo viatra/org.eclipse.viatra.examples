@@ -11,11 +11,10 @@
 package org.eclipse.viatra.emf.mwe2integration.examples.resources
 
 import java.security.InvalidParameterException
-import org.eclipse.viatra.emf.mwe2integration.IMessage
-import org.eclipse.viatra.emf.mwe2integration.IMessageProcessor
-import org.eclipse.viatra.emf.mwe2integration.ITransformationStep
-import org.eclipse.viatra.emf.mwe2integration.examples.resources.ExampleMessage
-import org.eclipse.viatra.emf.mwe2integration.mwe2impl.exceptions.InvalidParameterTypeException
+import org.eclipse.viatra.integration.mwe2.IMessage
+import org.eclipse.viatra.integration.mwe2.IMessageProcessor
+import org.eclipse.viatra.integration.mwe2.ITransformationStep
+import org.eclipse.viatra.integration.mwe2.mwe2impl.exceptions.InvalidParameterTypeException
 
 /**
  * 

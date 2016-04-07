@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.emf.mwe2integration.examples.resources
 
-import org.eclipse.viatra.emf.mwe2integration.IMessage
+import org.eclipse.viatra.integration.mwe2.IMessage
 
 /**
  * Example message, that contains a String parameter. Generally, messages should implement the IMessage<?> interface. 

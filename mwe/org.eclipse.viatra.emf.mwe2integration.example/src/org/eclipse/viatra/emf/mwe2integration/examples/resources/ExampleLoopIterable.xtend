@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.emf.mwe2integration.examples.resources
 
-import org.eclipse.viatra.emf.mwe2integration.providers.IIterableProvider
-import org.eclipse.viatra.emf.mwe2integration.providers.impl.BaseProvider
 import com.google.common.collect.Lists
+import org.eclipse.viatra.integration.mwe2.providers.IIterableProvider
+import org.eclipse.viatra.integration.mwe2.providers.impl.BaseProvider
 
 /**
  * This IIterableProvider creates a list on which a FOREACH loop can iterate through.
