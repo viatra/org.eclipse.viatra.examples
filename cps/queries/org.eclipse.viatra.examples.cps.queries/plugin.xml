@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="org.eclipse.viatra.examples.cps.model.derived.Derived" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.derived.Derived" id="org.eclipse.viatra.examples.cps.model.derived.Derived"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSM" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSM" id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSM"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerReq" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerReq" id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerReq"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerHW" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerHW" id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerHW"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.traceability.TraceabilityQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.traceability.TraceabilityQueries" id="org.eclipse.viatra.examples.cps.traceability.TraceabilityQueries"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.deployment.common.DeploymentQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.deployment.common.DeploymentQueries" id="org.eclipse.viatra.examples.cps.deployment.common.DeploymentQueries"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.deployment.viewer.DeploymentViewer" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.deployment.viewer.DeploymentViewer" id="org.eclipse.viatra.examples.cps.deployment.viewer.DeploymentViewer"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerCommon" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerCommon" id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerCommon"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSW" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSW" id="org.eclipse.viatra.examples.cps.model.viewer.CpsModelViewerSW"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.model.validation.Rules" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.model.validation.Rules" id="org.eclipse.viatra.examples.cps.model.validation.Rules"/>
+  </extension>
+</plugin>

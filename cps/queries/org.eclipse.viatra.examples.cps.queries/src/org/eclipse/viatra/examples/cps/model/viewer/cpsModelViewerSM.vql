@@ -1,0 +1,48 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2016 IncQuery Labs Ltd.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Akos Horvath, Abel Hegedus, Akos Menyhert, Zoltan Ujhelyi - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.viatra.examples.cps.model.viewer
+
+import "http://org.eclipse.viatra/model/cps"
+
+@Item(item = machine, label = "$machine.identifier$")
+pattern statemachines(machine) {
+	StateMachine(machine);
+}
+
+@Edge(source = app, target = machine, label = "behavior")
+pattern machineOfAppType(app, machine) {
+	ApplicationType.behavior(app, machine);
+}
+
+@Edge(source = machine, target = state, label = "states")
+pattern cpsStatemachineStateEdge(machine, state) {
+	StateMachine.states(machine, state);
+}
+
+@Format(color = "#2DF618", textColor = "#000000")
+@Item(item = state, label = "$machine.identifier$ $state.identifier$")
+pattern initialState(machine, state) {
+	StateMachine.initial(machine, state);
+}
+
+@Format(color = "#00F8EF", textColor = "#000000")
+@Item(item = state, label = "$machine.identifier$ $state.identifier$")
+pattern states(machine, state) {
+	StateMachine.states(machine, state);
+	neg find initialState(machine, state);
+}
+
+@Format(lineColor = "#000000")
+@Edge(source = sourceState, target = targetState, label = "$transition.action$")
+pattern transitions(sourceState, targetState, transition) {
+	State.outgoingTransitions(sourceState, transition);
+	Transition.targetState(transition, targetState);
+}

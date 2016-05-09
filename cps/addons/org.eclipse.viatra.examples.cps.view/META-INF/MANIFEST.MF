@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CPS Demonstrator Viewers
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.view;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: IncQueryLabs Ltd.
+Require-Bundle: org.eclipse.viatra.examples.cps.model,
+ org.eclipse.ui,
+ org.eclipse.core.runtime,
+ org.eclipse.viatra.query.runtime;bundle-version="[1.2.0,2.0.0)",
+ org.eclipse.gef4.geometry,
+ org.eclipse.gef4.zest.core,
+ org.eclipse.gef4.zest.jface,
+ org.eclipse.viatra.examples.cps.model.editor,
+ org.eclipse.viatra.examples.cps.queries,
+ com.google.guava;bundle-version="10.0.0",
+ org.eclipse.viatra.addon.viewers.runtime;bundle-version="[0.13.0,0.14.0)",
+ org.eclipse.viatra.addon.viewers.runtime.zest;bundle-version="[0.13.0,0.14.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.apache.log4j;version="1.2.15"

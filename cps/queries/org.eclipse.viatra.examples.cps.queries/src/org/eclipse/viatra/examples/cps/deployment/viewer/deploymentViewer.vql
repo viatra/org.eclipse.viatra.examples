@@ -1,0 +1,80 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2016 IncQuery Labs Ltd.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Akos Horvath, Abel Hegedus, Akos Menyhert, Zoltan Ujhelyi - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.viatra.examples.cps.deployment.viewer
+
+import "http://org.eclipse.viatra/model/deployment"
+
+@Format(color = "#FBFE00")
+@Item(item = host, label = "Host $host.ip$")
+pattern deploymentHostItem(host) {
+	DeploymentHost(host);
+}
+
+@Format(color = "#996600")
+@Item(item = app, label = "App $app.id$")
+pattern deploymentApplicationItem(app) {
+	DeploymentApplication(app);
+}
+
+@Edge(source = host, target = app, label = "apps")
+pattern deploymentHostApplicationEdge(host, app) {
+	DeploymentHost.applications(host, app);
+}
+
+@Item(item = behavior, label = "Behavior $behavior.description$")
+pattern deploymentBehaviorItem(behavior) {
+	DeploymentBehavior(behavior);
+}
+
+@Edge(source = app, target = behavior, label = "behavior")
+pattern deploymentApplicationBehaviorEdge(app, behavior) {
+	DeploymentApplication.behavior(app, behavior);
+}
+
+@Format(color = "#FF5F00", textColor = "#000000")
+@Item(item = state, label = "State $state.description$")
+pattern depoymentCurrentStateItem(state) {
+	DeploymentBehavior.current(_, state);
+}
+
+@Format(color = "#00F8EF", textColor = "#000000")
+@Item(item = state, label = "State $state.description$")
+pattern depoymentStateItem(state) {
+	BehaviorState(state);
+	neg find depoymentCurrentStateItem(state);
+}
+
+
+@Edge(source = behavior, target = state, label = "states")
+pattern deploymentBehaviorStateEdge(behavior, state) {
+	DeploymentBehavior.states(behavior, state);
+}
+
+@Format(color = "#009A9A", textColor = "#000000")
+@Item(item = transition, label = "Tr $transition.description$")
+pattern depoymentTransitionItem(transition) {
+	BehaviorTransition(transition);
+}
+
+@Edge(source = state, target = transition, label = "out")
+pattern deploymentStateOutgoingEdge(state, transition) {
+	BehaviorState.outgoing(state, transition);
+}
+
+@Edge(source = transition, target = state, label = "in")
+pattern deploymentTransitionOutEdge(transition, state) {
+	BehaviorTransition.to(transition, state);
+}
+
+@Edge(source = transition, target = triggeredTrans, label = "triggers")
+pattern deploymentTransitionTriggerEdge(transition, triggeredTrans) {
+	BehaviorTransition.trigger(transition, triggeredTrans);
+}

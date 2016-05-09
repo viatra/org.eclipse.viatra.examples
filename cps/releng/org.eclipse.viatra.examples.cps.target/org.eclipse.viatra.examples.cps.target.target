@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+<target name="Generated from Demo Targlet Platform" sequenceNumber="19">
+  <locations>
+    <location includeAllPlatforms="false" includeConfigurePhase="true" includeMode="planner" includeSource="false" type="InstallableUnit">
+      <unit id="com.google.inject.multibindings" version="3.0.0.v201402270930"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.11.2.v20160208-0841"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="1.9.0.201506010221"/>
+      <unit id="org.eclipse.equinox.sdk.feature.group" version="3.11.2.v20160202-2102"/>
+      <unit id="org.eclipse.gef4.geometry.feature.group" version="0.1.0.201506081138"/>
+      <unit id="org.eclipse.sdk.feature.group" version="4.5.2.v20160212-1500"/>
+      <unit id="org.eclipse.xtext.sdk.feature.group" version="2.9.1.v201512180746"/>
+      <repository location="http://download.eclipse.org/releases/mars"/>
+    </location>
+  </locations>
+</target>

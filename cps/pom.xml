@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.viatra.examples.cps</groupId>
+	<artifactId>org.eclipse.viatra.examples.cps.parent</artifactId>
+	<version>0.1.0-SNAPSHOT</version>
+	<name>CPS Demonstrator</name>
+	<url></url>
+	<packaging>pom</packaging>
+	<modules>
+		<!-- Target platform -->
+		<module>releng/org.eclipse.viatra.examples.cps.target</module>
+
+		<!-- Domains -->
+		<module>domains/org.eclipse.viatra.examples.cps.deployment</module>
+		<module>domains/org.eclipse.viatra.examples.cps.deployment.edit</module>
+		<module>domains/org.eclipse.viatra.examples.cps.deployment.editor</module>
+		<module>domains/org.eclipse.viatra.examples.cps.model</module>
+		<module>domains/org.eclipse.viatra.examples.cps.model.edit</module>
+		<module>domains/org.eclipse.viatra.examples.cps.model.editor</module>
+		<module>domains/org.eclipse.viatra.examples.cps.traceability</module>
+		<module>domains/org.eclipse.viatra.examples.cps.traceability.edit</module>
+		<module>domains/org.eclipse.viatra.examples.cps.traceability.editor</module>
+
+		<!-- Generator -->
+		<module>generator/org.eclipse.viatra.examples.cps.generator</module>
+		<module>generator/org.eclipse.viatra.examples.cps.planexecutor</module>
+
+		<!-- Queries -->
+		<module>queries/org.eclipse.viatra.examples.cps.queries</module>
+
+		<!-- Addons -->
+		<module>addons/org.eclipse.viatra.examples.cps.queries.validation</module>
+		<module>addons/org.eclipse.viatra.examples.cps.view</module>
+		<module>addons/org.eclipse.viatra.examples.cps.mwe2integration.example</module>
+		
+
+		<!-- M2M Transformations -->
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.util</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.simple</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.expl</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra</module>
+
+		<!-- M2T Transformations -->
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2t</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2t.distributed</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2t.jdt</module>
+		
+		<!-- Serializers -->
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.serializer</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.serializer.eclipse</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.serializer.javaio</module>
+		
+		<!-- Tests -->
+		<module>tests/org.eclipse.viatra.examples.cps.generator.tests</module>
+		<module>tests/org.eclipse.viatra.examples.cps.tests</module>
+		<module>tests/org.eclipse.viatra.examples.cps.xform.m2m.tests</module>
+		<module>tests/org.eclipse.viatra.examples.cps.xform.m2t.tests</module>
+		<module>tests/org.eclipse.viatra.examples.cps.xform.serializer.test</module>
+		
+		<!-- Ignored because we are not able to resolve mondo-sam (no update site) -->
+		<!-- 
+		<module>tests/org.eclipse.incquery.examples.cps.performance.tests</module>
+		<module>tests/org.eclipse.incquery.examples.cps.mwe2integration.performancetest</module>
+		
+		<module>releng/org.eclipse.incquery.examples.cps.rcpapplication.headless</module>
+		<module>releng/org.eclipse.incquery.examples.cps.rcpapplication.headless.product</module>
+		-->
+	
+		<!--  p2 repository -->
+		<module>releng/org.eclipse.viatra.examples.cps.metamodel.feature</module>
+		<module>releng/org.eclipse.viatra.examples.cps.update</module>
+	</modules>
+	<properties>
+		<tycho.version>0.24.0</tycho.version>
+		<xtend.compiler.version>2.9.1</xtend.compiler.version>
+		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
+		<viatra.compiler.version>1.2.0-SNAPSHOT</viatra.compiler.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<strictBinIncludes>false</strictBinIncludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.viatra.examples.cps</groupId>
+							<artifactId>org.eclipse.viatra.examples.cps.target</artifactId>
+							<version>${project.version}</version>
+							<relativePath>releng/org.eclipse.viatra.examples.cps.target/pom.xml</relativePath>
+						</artifact>
+					</target>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<!-- <argLine>-Xmx2048m -XX:MaxPermSize=256m ${tycho.testArgLine} ${cps.test.vmargs}</argLine> -->
+					<excludes>
+		            	<exclude>**/IntegrationTest*.java</exclude>
+						<exclude>**/integration/*.java</exclude>
+						<exclude>**/scenarios/*.java</exclude>
+						<exclude>**/queries/*.java</exclude>
+		            </excludes>
+		            <failIfNoTests>false</failIfNoTests>
+		            <skipTests>false</skipTests>
+				</configuration>
+				<!-- <executions>
+		         <execution>
+		            <id>unit-test</id>
+		            <goals>
+		              <goal>test</goal>
+		            </goals>
+		            <phase>test</phase>
+		            <configuration>
+		            	<excludes>
+		            		<exclude>**/IntegrationTest*.java</exclude>
+		            	</excludes>
+		            	<includes>
+		            		<include>**/*Test.java</include>
+		            	</includes>
+		            </configuration>
+		          </execution>
+		        </executions> -->
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtend.compiler.version}</version>
+					<configuration>
+						<!-- need to prefix by basedir to generate to currently built module -->
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>viatra.update</id>
+			<layout>p2</layout>
+			<url>${viatra.repository.url}</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>viatra-snapshots</id>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<url>https://repo.eclipse.org/content/repositories/viatra-snapshots/</url>
+		</pluginRepository>
+	</pluginRepositories>
+</project>

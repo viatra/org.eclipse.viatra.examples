@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.eclipse.viatra.examples.cps.metamodel.feature_0.1.0.qualifier.jar" id="org.eclipse.viatra.examples.cps.metamodel.feature" version="0.1.0.qualifier">
+      <category name="org.eclipse.viatra.examples.cps"/>
+   </feature>
+   <category-def name="org.eclipse.viatra.examples.cps" label="CPS Demonstrator"/>
+</site>

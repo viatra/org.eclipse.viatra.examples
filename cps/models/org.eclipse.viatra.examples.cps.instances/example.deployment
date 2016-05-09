@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<deployment:Deployment xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:deployment="http://org.eclipse.viatra/model/deployment">
+  <hosts ip="152.66.102.6">
+    <applications id="Smoke Detector">
+      <behavior description="Smoke Detector B" current="//@hosts.0/@applications.0/@behavior/@states.0">
+        <states description="SD Init" outgoing="//@hosts.0/@applications.0/@behavior/@transitions.0"/>
+        <states description="SD Sent" outgoing="//@hosts.0/@applications.0/@behavior/@transitions.1"/>
+        <transitions description="SD sending" to="//@hosts.0/@applications.0/@behavior/@states.1" trigger="//@hosts.1/@applications.0/@behavior/@transitions.0"/>
+        <transitions description="SD finish" to="//@hosts.0/@applications.0/@behavior/@states.0"/>
+      </behavior>
+    </applications>
+    <applications id="Alarm">
+      <behavior description="Alarm B" current="//@hosts.0/@applications.1/@behavior/@states.0">
+        <states description="A Init" outgoing="//@hosts.0/@applications.1/@behavior/@transitions.0"/>
+        <states description="A Sent" outgoing="//@hosts.0/@applications.1/@behavior/@transitions.1"/>
+        <transitions description="A sending" to="//@hosts.0/@applications.1/@behavior/@states.1" trigger="//@hosts.1/@applications.0/@behavior/@transitions.0"/>
+        <transitions description="A finish" to="//@hosts.0/@applications.1/@behavior/@states.0"/>
+      </behavior>
+    </applications>
+    <applications id="Camera">
+      <behavior description="Camera B" current="//@hosts.0/@applications.2/@behavior/@states.0">
+        <states description="C Init" outgoing="//@hosts.0/@applications.2/@behavior/@transitions.0"/>
+        <states description="C Sent" outgoing="//@hosts.0/@applications.2/@behavior/@transitions.1"/>
+        <transitions description="C sending" to="//@hosts.0/@applications.2/@behavior/@states.1" trigger="//@hosts.1/@applications.0/@behavior/@transitions.0"/>
+        <transitions description="C finish" to="//@hosts.0/@applications.2/@behavior/@states.0"/>
+      </behavior>
+    </applications>
+  </hosts>
+  <hosts ip="152.66.102.5">
+    <applications id="IBM System Storage">
+      <behavior description="ISS B" current="//@hosts.1/@applications.0/@behavior/@states.0">
+        <states description="ISS Wait" outgoing="//@hosts.1/@applications.0/@behavior/@transitions.0"/>
+        <states description="ISS Received" outgoing="//@hosts.1/@applications.0/@behavior/@transitions.1"/>
+        <transitions description="ISS receiving" to="//@hosts.1/@applications.0/@behavior/@states.1"/>
+        <transitions description="ISS finish" to="//@hosts.1/@applications.0/@behavior/@states.0"/>
+      </behavior>
+    </applications>
+  </hosts>
+</deployment:Deployment>

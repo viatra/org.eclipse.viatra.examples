@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cps:CyberPhysicalSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:cps="http://org.eclipse.viatra/model/cps">
+  <appTypes id="Archiving">
+    <instances id="IBM System Storage" allocatedTo="//@hostTypes.1/@instances.2"/>
+    <behavior id="Archiving-sm" initial="//@appTypes.0/@behavior/@states.0">
+      <states id="Wait">
+        <outgoingTransitions id="tr_arch_receive" targetState="//@appTypes.0/@behavior/@states.1" action="waitForSignal(msg)"/>
+      </states>
+      <states id="Received">
+        <outgoingTransitions id="tr_arch-finish" targetState="//@appTypes.0/@behavior/@states.0"/>
+      </states>
+    </behavior>
+  </appTypes>
+  <appTypes id="LPC">
+    <instances id="Smoke Detector" allocatedTo="//@hostTypes.2/@instances.0"/>
+    <instances id="Alarm" allocatedTo="//@hostTypes.2/@instances.0"/>
+    <instances id="Camera" allocatedTo="//@hostTypes.2/@instances.0"/>
+    <behavior id="LPC-sm" initial="//@appTypes.1/@behavior/@states.0">
+      <states id="Init">
+        <outgoingTransitions id="tr_lpc-send" targetState="//@appTypes.1/@behavior/@states.1" action="sendSignal(Archiving,msg)"/>
+      </states>
+      <states id="Sent">
+        <outgoingTransitions id="tr_lpc-finish" targetState="//@appTypes.1/@behavior/@states.0"/>
+      </states>
+    </behavior>
+  </appTypes>
+  <requests>
+    <requirements count="1" type="//@appTypes.1" applications="//@appTypes.1/@instances.1 //@appTypes.1/@instances.2 //@appTypes.1/@instances.0"/>
+  </requests>
+  <requests>
+    <requirements count="1" type="//@appTypes.0" applications="//@appTypes.0/@instances.0"/>
+  </requests>
+  <hostTypes id="ESX">
+    <instances id="Cirdan" nodeIp="152.66.102.1" availableCpu="25" availableRam="30" availableHdd="20" totalCpu="25" totalRam="30" totalHdd="20"/>
+    <instances id="Arwen" nodeIp="152.66.102.2" availableCpu="5" availableRam="3" availableHdd="12" totalCpu="25" totalRam="30" totalHdd="20"/>
+  </hostTypes>
+  <hostTypes id="Storage">
+    <instances id="Sauron" nodeIp="152.66.102.3" availableCpu="5" availableRam="10" availableHdd="70" totalCpu="5" totalRam="10" totalHdd="70"/>
+    <instances id="Celeborn" nodeIp="152.66.102.4" availableCpu="5" availableRam="5" availableHdd="80" totalCpu="5" totalRam="5" totalHdd="80"/>
+    <instances id="Shelob" nodeIp="152.66.102.5" availableCpu="7" availableRam="5" availableHdd="50" totalCpu="7" totalRam="5" totalHdd="70" applications="//@appTypes.0/@instances.0"/>
+  </hostTypes>
+  <hostTypes id="Rawsberry PI">
+    <instances id="Aragorn" nodeIp="152.66.102.6" availableCpu="4" availableRam="7" availableHdd="3" totalCpu="10" totalRam="10" totalHdd="10" applications="//@appTypes.1/@instances.0 //@appTypes.1/@instances.1 //@appTypes.1/@instances.2" communicateWith="//@hostTypes.1/@instances.2"/>
+  </hostTypes>
+</cps:CyberPhysicalSystem>

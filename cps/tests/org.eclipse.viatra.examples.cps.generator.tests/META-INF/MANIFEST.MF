@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CPS Demonstrator Model Generator Tests
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.generator.tests;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: IncQueryLabs Ltd.
+Export-Package: org.eclipse.viatra.examples.cps.generator.tests,
+ org.eclipse.viatra.examples.cps.generator.tests.constraints,
+ org.eclipse.viatra.examples.cps.generator.tests.constraints.scenarios
+Require-Bundle: org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.viatra.examples.cps.generator;bundle-version="0.1.0";visibility:=reexport,
+ org.eclipse.viatra.examples.cps.planexecutor;bundle-version="0.1.0";visibility:=reexport,
+ org.eclipse.viatra.examples.cps.tests;bundle-version="0.1.0";visibility:=reexport
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.apache.log4j

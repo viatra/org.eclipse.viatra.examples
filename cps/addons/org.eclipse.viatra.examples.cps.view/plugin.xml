@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension point="org.eclipse.ui.perspectives">
+    <perspective class="org.eclipse.viatra.examples.cps.viewers.PerspectiveFactory" icon="icon/iq.png" id="org.eclipse.viatra.examples.cps.viewers.perspective" name="EMF-IncQuery CPS Perspective"/>
+  </extension>
+  <extension point="org.eclipse.ui.views">
+    <category id="org.eclipse.viatra.examples.cps.viewers.category" name="EMF-IncQuery CPS Views"/>
+    <view category="org.eclipse.viatra.examples.cps.viewers.category" class="org.eclipse.viatra.examples.cps.view.CpsAllocationViewPart" id="org.eclipse.viatra.examples.cps.viewers.view.allocation" name="Allocation Hierarchy" restorable="true"/>
+    <view category="org.eclipse.viatra.examples.cps.viewers.category" class="org.eclipse.viatra.examples.cps.view.CpsHardwareViewPart" id="org.eclipse.viatra.examples.cps.viewers.view.hardware" name="Hardware Architecture" restorable="true"/>
+    <view category="org.eclipse.viatra.examples.cps.viewers.category" class="org.eclipse.viatra.examples.cps.view.CpsSoftwareViewPart" id="org.eclipse.viatra.examples.cps.viewers.view.software" name="Software Architecture" restorable="true"/>
+    <view category="org.eclipse.viatra.examples.cps.viewers.category" class="org.eclipse.viatra.examples.cps.view.CpsRequirementViewPart" id="org.eclipse.viatra.examples.cps.viewers.view.requirement" name="Requirement Process" restorable="true"/>
+  </extension>
+  <extension point="org.eclipse.ui.perspectiveExtensions">
+    <perspectiveExtension targetID="org.eclipse.viatra.examples.cps.viewers.perspective">
+      <view id="org.eclipse.jdt.ui.PackageExplorer" minimized="false" moveable="false" ratio="0.2" relationship="left" relative="org.eclipse.ui.editorss" visible="true"/>
+      <view id="org.eclipse.viatra.examples.cps.viewers.view.allocation" minimized="false" relationship="bottom" relative="org.eclipse.ui.editorss" visible="true"/>
+      <view id="org.eclipse.viatra.examples.cps.viewers.view.requirement" minimized="false" relationship="left" relative="org.eclipse.viatra.examples.cps.viewers.view.allocation" visible="true"/>
+      <view id="org.eclipse.viatra.examples.cps.viewers.view.hardware" minimized="false" relationship="right" relative="org.eclipse.ui.editorss" visible="true"/>
+      <view id="org.eclipse.viatra.examples.cps.viewers.view.software" minimized="false" relationship="bottom" relative="org.eclipse.viatra.examples.cps.viewers.view.hardware" visible="true"/>
+      <view id="org.eclipse.ui.views.PropertySheet" minimized="false" relationship="bottom" relative="org.eclipse.jdt.ui.PackageExplorer" visible="true"/>
+      <view id="org.eclipse.ui.views.ProblemView" minimized="false" relationship="stack" relative="org.eclipse.viatra.examples.cps.viewers.view.requirement" visible="true"/>
+    </perspectiveExtension>
+  </extension>
+</plugin>

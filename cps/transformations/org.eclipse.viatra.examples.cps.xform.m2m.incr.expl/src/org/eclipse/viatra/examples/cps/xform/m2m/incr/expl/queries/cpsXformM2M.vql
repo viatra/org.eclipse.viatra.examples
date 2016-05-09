@@ -1,0 +1,359 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2016 IncQuery Labs Ltd.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Akos Horvath, Abel Hegedus, Zoltan Ujhelyi, Denes Harmath - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries
+
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
+import "http://org.eclipse.viatra/model/cps-traceability"
+import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
+
+pattern mappedCPS(cps2dep : CPSToDeployment, cps : CyberPhysicalSystem, deployment : Deployment) {
+	CPSToDeployment.cps(cps2dep, cps);
+	CPSToDeployment.deployment(cps2dep, deployment);
+}
+
+pattern cps2depTrace(cps2dep, trace, cpsElement, depElement) {
+	CPSToDeployment.traces(cps2dep, trace);
+	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
+	CPS2DeploymentTrace.deploymentElements(trace, depElement);
+}
+
+pattern identifiable(identifiable) {
+	Identifiable(identifiable);
+}
+
+pattern deploymentElements(depElement) {
+	DeploymentElement(depElement);
+}
+
+pattern illegalTrace(trace) {
+	find cps2depTrace(_, trace, cpsElem, depElem);
+	neg find identifiable(cpsElem);
+	neg find deploymentElements(depElem);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====			    HOST RULES 			   ====
+ * ====		                 			   ====
+ * ============================================ */
+
+pattern hostInstances(hostType, hostInstance) {
+	HostType.instances(hostType, hostInstance);
+}
+
+pattern mappedHostInstance(hostInstance, depHost) {
+	find hostInstances(_, hostInstance);
+	find cps2depTrace(_, _, hostInstance, depHost);
+	Deployment.hosts(_, depHost);
+}
+
+pattern monitoredHostInstance(hostInstance) {
+	find mappedHostInstance(hostInstance, _depHost);
+}
+
+pattern unmappedHostInstance(hostType, hostInstance) {
+	find hostInstances(hostType, hostInstance);
+	neg find cps2depTrace(_, _, hostInstance, _);
+}
+
+pattern deletedDeploymentHost(depHost : DeploymentHost, trace) {
+	neg find hostInstances(_, host);
+	find cps2depTrace(_, trace, host, depHost);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====			APPLICATION RULES 		   ====
+ * ====		                 			   ====
+ * ============================================ */
+ 
+pattern allocatedApplicationInstances(appType, appInstance, host) {
+	find applicationInstance(appType, appInstance, host);
+	find hostInstances(_, host);
+}
+
+pattern applicationInstance(appType, appInstance, host){
+	ApplicationType.instances(appType, appInstance);
+	ApplicationInstance.allocatedTo(appInstance, host);
+}
+
+pattern deploymentHostApplications(depHost, depApp) {
+	DeploymentHost.applications(depHost, depApp);
+}
+
+pattern mappedApplicationInstance(appInstance, depApp, host, depHost) {
+	find allocatedApplicationInstances(_, appInstance, host);
+	find mappedHostInstance(host, depHost);
+	find cps2depTrace(_, _, appInstance, depApp);
+	find deploymentHostApplications(_, depApp);
+}
+
+pattern monitoredApplicationInstance(appInstance, host) {
+	find mappedApplicationInstance(appInstance, _depApp, host, _depHost);
+}
+
+pattern unmappedApplicationInstance(appType, appInstance, depHost) {
+	find allocatedApplicationInstances(appType, appInstance, host);
+	find mappedHostInstance(host, depHost);
+	neg find cps2depTrace(_, _, appInstance, _);
+}
+
+pattern deletedApplicationInstance(depApp, trace) {
+	neg find applicationInstance(_, app, _);
+	DeploymentApplication(depApp);
+	find cps2depTrace(_, trace, app, depApp);
+} or {
+	find applicationInstance(_, app, host);
+	neg find hostInstances(_, host);
+	find cps2depTrace(_, trace, app, depApp);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====		   STATE MACHINE RULES 		   ====
+ * ====		                 			   ====
+ * ============================================ */
+ 
+pattern allocatedStateMachines(appInstance, stateMachine) {
+	find applicationBehavior(appType, stateMachine);
+	find allocatedApplicationInstances(appType, appInstance, _);
+}
+
+pattern applicationBehavior(appType, stateMachine) {
+	ApplicationType.behavior(appType, stateMachine);
+}
+
+pattern deploymentApplicationBehavior(depApp, depBehavior) {
+	DeploymentApplication.behavior(depApp, depBehavior);
+}
+
+pattern mappedStateMachine(stateMachine, depBehavior, appInstance, depApp) {
+	find allocatedStateMachines(appInstance, stateMachine);
+	find mappedApplicationInstance(appInstance, depApp, _, _);
+	find cps2depTrace(_, _, stateMachine, depBehavior);
+	find deploymentApplicationBehavior(depApp, depBehavior);
+}
+
+pattern monitoredStateMachine(stateMachine) {
+	find mappedStateMachine(stateMachine, _depBehavior, _appInstance, _depApp);
+}
+
+pattern unmappedStateMachine(appInstance, stateMachine, depApp) {
+	find allocatedStateMachines(appInstance, stateMachine);
+	find mappedApplicationInstance(appInstance, depApp, _, _);
+	neg find mappedStateMachine(stateMachine, _, appInstance, _);
+}
+
+pattern deletedStateMachine(depBehavior, trace) {
+	find applicationBehavior(appType, stateMachine);
+	neg find allocatedApplicationInstances(appType, _, _);
+	find cps2depTrace(_, trace, stateMachine, depBehavior);
+} or {
+	neg find applicationBehavior(_, stateMachine);
+	DeploymentBehavior(depBehavior);
+	find cps2depTrace(_, trace, stateMachine, depBehavior);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====			   STATE RULES 		 	   ====
+ * ====		                 			   ====
+ * ============================================ */
+
+pattern allocatedStateMachineState(stateMachine, state) {
+	find allocatedStateMachines(_, stateMachine);
+	find stateMachineState(stateMachine, state);
+}
+
+pattern stateMachineState(stateMachine, state) {
+	StateMachine.states(stateMachine, state);
+}
+
+pattern behaviorState(depBehavior, depState) {
+	DeploymentBehavior.states(depBehavior, depState);
+}
+
+pattern mappedState(state, depState, stateMachine, depBehavior) {
+	find allocatedStateMachineState(stateMachine, state);
+	find mappedStateMachine(stateMachine, depBehavior, _, _);
+	find cps2depTrace(_, _, state, depState);
+	find behaviorState(depBehavior, depState);
+}
+
+pattern monitoredState(state, stateMachine) {
+	find mappedState(state, _depState, stateMachine, _depBehavior);
+}
+
+pattern unmappedState(state, stateMachine, depBehavior) {
+	find allocatedStateMachineState(stateMachine, state);
+	find mappedStateMachine(stateMachine, depBehavior, _, _);
+	neg find mappedState(state, _, stateMachine, depBehavior);
+}
+
+pattern deletedState(depState, trace) {
+	find stateMachineState(stateMachine, state);
+	neg find allocatedStateMachines(_, stateMachine);
+	find cps2depTrace(_, trace, state, depState);
+} or {
+	neg find stateMachineState(_, state);
+	BehaviorState(depState);
+	find cps2depTrace(_, trace, state, depState);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====			 TRANSITION RULES	 	   ====
+ * ====		                 			   ====
+ * ============================================ */
+
+pattern allocatedStateMachineTransition(stateMachine, source, transition, target) {
+	find allocatedStateMachineState(stateMachine, source);
+	find allocatedStateMachineState(stateMachine, target);
+	find stateTransition(source, transition, target);
+}
+
+pattern stateTransition(source, transition, target) {
+	State.outgoingTransitions(source, transition);
+	Transition.targetState(transition, target);
+}
+
+pattern behaviorTransition(depBehavior, depTransition) {
+	DeploymentBehavior.transitions(depBehavior, depTransition);
+}
+
+pattern behaviorStateOutgoing(depState, depTransition) {
+	BehaviorState.outgoing(depState, depTransition);
+}
+
+pattern mappedTransitionSourceTarget(transition, depSource, depTarget, depBehavior) {
+	find mappedState(source, depSource, stateMachine, depBehavior);
+	find mappedState(target, depTarget, stateMachine, depBehavior);
+	find stateTransition(source, transition, target);
+}
+
+pattern mappedTransition(transition, depTransition, depBehavior) {
+	find allocatedStateMachineTransition(stateMachine, source, transition, target);
+	find mappedState(source, _, stateMachine, depBehavior);
+	find mappedState(target, _, stateMachine, depBehavior);
+	find cps2depTrace(_, _, transition, depTransition);
+	find behaviorTransition(depBehavior, depTransition);
+}
+
+pattern monitoredTransition(transition) {
+	find mappedTransition(transition, _depTransition, _depBehavior);
+}
+
+pattern unmappedTransition(transition, depBehavior) {
+	find allocatedStateMachineTransition(stateMachine, source, transition, target);
+	find mappedState(source, _, stateMachine, depBehavior);
+	find mappedState(target, _, stateMachine, depBehavior);
+	neg find mappedTransition(transition, _, depBehavior);
+}
+
+pattern deletedTransition(depTransition, trace) {
+	find stateTransition(source, transition, _);
+	neg find allocatedStateMachineState(_, source);
+	find cps2depTrace(_, trace, transition, depTransition);
+} or {
+	find stateTransition(_, transition, target);
+	neg find allocatedStateMachineState(_, target);
+	find cps2depTrace(_, trace, transition, depTransition);
+} or {
+	neg find stateTransition(_, transition, _);
+	BehaviorTransition(depTransition);
+	find cps2depTrace(_, trace, transition, depTransition);
+}
+
+/* ============================================
+ * ==== 		                 		   ====
+ * ====			   ACTION RULES	 		   ====
+ * ====		                 			   ====
+ * ============================================ */
+
+pattern sendTransitionAppSignal(transition, app, signal) {
+ 	Transition.action(transition, action);
+ 	app == eval(SignalUtil.getAppId(action));
+ 	signal == eval(SignalUtil.getSignalId(action));
+}
+
+pattern waitTransitionAppSignal(transition, appType, signal) {
+ 	find applicationBehavior(appType, stateMachine);
+	find stateMachineState(stateMachine, source);
+	find stateTransition(source, transition, _);
+ 	Transition.action(transition, action);
+ 	check(
+ 		SignalUtil.isWait(action)
+ 	);
+ 	signal == eval(SignalUtil.getSignalId(action));
+}
+
+pattern triggerPair(trigger, target) {
+	find sendTransitionAppSignal(trigger, appId, signal);
+	find waitTransitionAppSignal(target, waitApp, signal);
+	ApplicationType.identifier(waitApp, appId);
+}
+
+pattern deploymentTrigger(depSendTransition, depWaitTransition) {
+	find triggerPair(sendTransition, waitTransition);
+	find cps2depTrace(_, _, sendTransition, depSendTransition);
+	find cps2depTrace(_, _, waitTransition, depWaitTransition);
+}	
+
+pattern trigger(depSendTransition, depWaitTransition) {
+	find deploymentTrigger(depSendTransition, depWaitTransition);
+	find deploymentApplicationTransition(depSendApp, depSendTransition);
+	find deploymentApplicationTransition(depWaitApp, depWaitTransition);
+	find communicatingDeploymentAppInstances(depSendApp, depWaitApp);
+}
+
+pattern behaviorTransitionTrigger(depSendTransition, depWaitTransition) {
+	BehaviorTransition.trigger(depSendTransition, depWaitTransition);
+}
+
+pattern unmappedTrigger(depSendTransition, depWaitTransition){
+	neg find behaviorTransitionTrigger(depSendTransition, depWaitTransition);
+	find trigger(depSendTransition, depWaitTransition);
+}
+
+pattern deletedTrigger(depSendTransition, depWaitTransition){
+	find behaviorTransitionTrigger(depSendTransition, depWaitTransition);
+	neg find trigger(depSendTransition, depWaitTransition);
+}
+
+pattern deploymentApplicationTransition(depApp, depTransition) {
+	find deploymentApplicationBehavior(depApp, depBehavior);
+	find behaviorTransition(depBehavior, depTransition);
+}
+
+pattern communicatingDeploymentAppInstances(sourceApp, targetApp) {
+	find cps2depTrace(_, _, sourceAppInstance, sourceApp);
+	find cps2depTrace(_, _, targetAppInstance, targetApp);
+	find communicatingAppInstances(sourceAppInstance, targetAppInstance);
+}
+
+pattern communicatingAppInstances(sourceAppInstance, targetAppInstance) {
+	find applicationInstance(_, sourceAppInstance, sourceHostInstance);
+	find applicationInstance(_, targetAppInstance, targetHostInstance);
+	find reachableHosts(sourceHostInstance, targetHostInstance);
+}
+
+pattern hostCommunication(fromHost, toHost) {
+	HostInstance.communicateWith(fromHost, toHost);
+}
+
+pattern reachableHosts(source, target) {
+	find hostCommunication(source, target);
+} or {
+	HostInstance(source);
+	HostInstance(target);
+	source == target;
+}

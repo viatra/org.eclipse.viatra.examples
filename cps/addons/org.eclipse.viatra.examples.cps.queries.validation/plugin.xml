@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.idIsNotUnique" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.IdIsNotUniqueConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.idIsNotUnique"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.targetStateNotContainedBySameStateMachine" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.TargetStateNotContainedBySameStateMachineConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.targetStateNotContainedBySameStateMachine"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.initialStateNotContainedByStateMachine" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.InitialStateNotContainedByStateMachineConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.initialStateNotContainedByStateMachine"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalRam" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.AvailableGreaterThanTotalRamConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalRam"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.notAllocatedButRunning" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.NotAllocatedButRunningConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.notAllocatedButRunning"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalCpu" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.AvailableGreaterThanTotalCpuConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalCpu"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalHdd" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.AvailableGreaterThanTotalHddConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalHdd"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.nodeIpIsNotUnique" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.NodeIpIsNotUniqueConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.nodeIpIsNotUnique"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.multipleApplicationInstanceInCommunicationGroup" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.MultipleApplicationInstanceInCommunicationGroupConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.multipleApplicationInstanceInCommunicationGroup"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.transitionWithoutTargetState" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.TransitionWithoutTargetStateConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.transitionWithoutTargetState"/>
+  </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.multipleTransitionsWithSameAction" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.MultipleTransitionsWithSameActionConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.multipleTransitionsWithSameAction"/>
+  </extension>
+</plugin>

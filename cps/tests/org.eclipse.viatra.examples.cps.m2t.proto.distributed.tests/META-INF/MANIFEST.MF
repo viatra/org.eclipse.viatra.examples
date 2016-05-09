@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CPS M2T Distributed Prototype Tests
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.m2t.proto.distributed.tests
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: IncQueryLabs Ltd.
+Require-Bundle: org.eclipse.viatra.examples.cps.m2t.proto.distributed;bundle-version="0.1.0",
+ org.junit;bundle-version="4.11.0",
+ org.eclipse.viatra.examples.cps.tests,
+ org.apache.log4j,
+ org.eclipse.emf.ecore.xmi,
+ org.eclipse.viatra.examples.cps.queries,
+ org.eclipse.viatra.examples.cps.xform.m2t;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.xform.m2t.distributed;bundle-version="0.1.0",
+ com.google.guava;bundle-version="15.0.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

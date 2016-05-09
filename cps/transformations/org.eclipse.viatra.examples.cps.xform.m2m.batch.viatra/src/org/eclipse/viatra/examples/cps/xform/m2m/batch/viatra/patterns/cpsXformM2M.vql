@@ -1,0 +1,84 @@
+/*******************************************************************************
+ * Copyright (c) 2014, 2016 IncQuery Labs Ltd.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Akos Horvath, Abel Hegedus, Zoltan Ujhelyi, Daniel Segesdi - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns
+
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
+import "http://org.eclipse.viatra/model/cps-traceability"
+
+import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
+
+pattern hostInstance(hostInstance) {
+	HostInstance(hostInstance);
+}
+
+pattern cps2depTrace(cps2dep, trace, cpsElement, depElement) {
+	CPSToDeployment.traces(cps2dep, trace);
+	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
+	CPS2DeploymentTrace.deploymentElements(trace, depElement);
+}
+
+pattern applicationInstance(appType, appInstance) {
+	HostInstance.applications(_, appInstance);
+	ApplicationType.instances(appType, appInstance);
+}
+
+pattern appInstanceWithStateMachine(appType, appInstance, stateMachine) {
+	find applicationInstance(appType, appInstance);
+	ApplicationType.behavior(appType, stateMachine);
+}
+
+pattern state(appInstance, stateMachine, state) {
+	find appInstanceWithStateMachine(_, appInstance, stateMachine);
+	StateMachine.states(stateMachine, state);
+}
+
+pattern transition(appInstance, sourceState, transition, targetState) {
+	find state(appInstance, _, sourceState);
+	find state(appInstance, _, targetState);
+	State.outgoingTransitions(sourceState, transition);
+	Transition.targetState(transition, targetState);
+}
+
+pattern action(appInstance, transition, action, signalId) {
+	find transition(appInstance, _, transition, _);
+	Transition.action(transition, action);
+	signalId == eval(SignalUtil.getSignalId(action));
+}
+
+pattern sendAction(appInstance, transition, action, signalId, appTypeId) {
+	find action(appInstance, transition, action, signalId);
+	check(SignalUtil.isSend(action));
+	appTypeId == eval(SignalUtil.getAppId(action));
+}
+
+pattern waitAction(appInstance, transition, action, signalId) {
+	find action(appInstance, transition, action, signalId);
+	check(SignalUtil.isWait(action));
+}
+
+pattern actionPair(sendTransition, sendAppInstance, waitTransition, waitAppInstance) {
+	find sendAction(sendAppInstance, sendTransition, _, signalId, appTypeId);
+	find waitAction(waitAppInstance, waitTransition, _, signalId);
+	ApplicationInstance.type.identifier(waitAppInstance, appTypeId);
+	
+	ApplicationInstance.allocatedTo(sendAppInstance, sendHostInstance);
+	ApplicationInstance.allocatedTo(waitAppInstance, waitHostInstance);
+	find reachableHosts(sendHostInstance, waitHostInstance);
+}
+
+pattern reachableHosts(source, target) {
+	HostInstance.communicateWith(source, target);
+} or {
+	HostInstance(source);
+	HostInstance(target);
+	source == target;
+}

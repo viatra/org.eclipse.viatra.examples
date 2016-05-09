@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CPS Model Generator Implementation
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.generator;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: IncQueryLabs Ltd.
+Export-Package: org.eclipse.viatra.examples.cps.generator,
+ org.eclipse.viatra.examples.cps.generator.dtos,
+ org.eclipse.viatra.examples.cps.generator.dtos.bases,
+ org.eclipse.viatra.examples.cps.generator.dtos.scenario,
+ org.eclipse.viatra.examples.cps.generator.exceptions,
+ org.eclipse.viatra.examples.cps.generator.interfaces,
+ org.eclipse.viatra.examples.cps.generator.operations,
+ org.eclipse.viatra.examples.cps.generator.phases,
+ org.eclipse.viatra.examples.cps.generator.queries,
+ org.eclipse.viatra.examples.cps.generator.queries.util,
+ org.eclipse.viatra.examples.cps.generator.utils
+Require-Bundle: org.eclipse.viatra.examples.cps.planexecutor;bundle-version="0.1.0";visibility:=reexport,
+ org.eclipse.xtend.lib,
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.viatra.examples.cps.model;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.deployment;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0",
+ org.eclipse.viatra.query.runtime;bundle-version="[1.2.0,2.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: org.apache.log4j

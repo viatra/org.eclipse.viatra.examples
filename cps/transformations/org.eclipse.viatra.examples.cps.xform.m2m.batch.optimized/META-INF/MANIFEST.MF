@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Optimized
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized
+Bundle-Vendor: IncQueryLabs Ltd.
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Require-Bundle: com.google.guava,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.viatra.examples.cps.deployment;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.model;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.xform.m2m.util;bundle-version="0.1.0"
+Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized
+Import-Package: org.apache.log4j;version="1.2.15"

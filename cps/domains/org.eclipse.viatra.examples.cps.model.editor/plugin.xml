@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated model -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemModelWizardID"
+            name="%_UI_CyberPhysicalSystemModelWizard_label"
+            class="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/CyberPhysicalSystemModelFile.gif">
+         <description>%_UI_CyberPhysicalSystemModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated model -->
+      <editor
+            id="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemEditorID"
+            name="%_UI_CyberPhysicalSystemEditor_label"
+            icon="icons/full/obj16/CyberPhysicalSystemModelFile.gif"
+            extensions="cyberphysicalsystem"
+            class="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemEditor"
+            contributorClass="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
