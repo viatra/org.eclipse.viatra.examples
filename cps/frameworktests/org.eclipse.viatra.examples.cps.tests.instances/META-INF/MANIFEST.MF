@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Instances
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.tests.instances
+Bundle-Version: 0.0.1.qualifier

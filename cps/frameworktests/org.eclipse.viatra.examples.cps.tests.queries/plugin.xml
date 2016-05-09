@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.CpsValidationRules" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.CpsValidationRules" id="org.eclipse.viatra.examples.cps.tests.queries.CpsValidationRules"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables" id="org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.SimpleCpsQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.SimpleCpsQueries" id="org.eclipse.viatra.examples.cps.tests.queries.SimpleCpsQueries"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.FlattenedPatternCall" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.FlattenedPatternCall" id="org.eclipse.viatra.examples.cps.tests.queries.FlattenedPatternCall"/>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality" id="org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality"/>
+  </extension>
+</plugin>

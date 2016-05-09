@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.viatra.tests</groupId>
+	<artifactId>org.eclipse.viatra.tests.parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>VIATRA CPS Tests</name>
+	<url></url>
+	<packaging>pom</packaging>
+	<modules>
+		<!-- CPS based unit tests -->
+		<module>../org.eclipse.viatra.examples.cps.tests</module>
+		<module>../org.eclipse.viatra.examples.cps.tests.instances</module>
+		<module>../org.eclipse.viatra.examples.cps.tests.queries</module>
+		
+		<!-- CPS based RCPTT tests with product -->
+		<module>../org.eclipse.viatra.gui.tests.queries</module>
+		<module>../org.eclipse.viatra.gui.tests.queries.validation</module>
+		<module>../org.eclipse.viatra.gui.tests.product</module>
+		<module>../org.eclipse.viatra.gui.tests</module>
+	</modules>
+	
+	<properties>
+		<tycho.version>0.24.0</tycho.version>
+		<xtend.compiler.version>2.9.1</xtend.compiler.version>
+    	<rcptt.version>2.0.0</rcptt.version>
+		<viatra.compiler.version>1.2.0.M2</viatra.compiler.version>
+		<cps.version>0.1.0-SNAPSHOT</cps.version>
+        
+        <jacoco.version>0.7.6.201602180812</jacoco.version>
+        <jacoco.targetdir>${project.basedir}/../target</jacoco.targetdir>
+		
+		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
+		<mars.repository.url>http://download.eclipse.org/releases/mars/</mars.repository.url>
+		<itemis.repository.url>http://download.itemis.com/updates/releases</itemis.repository.url>
+		<cps.domain.repository.url>https://build.incquerylabs.com/jenkins/job/CPS-Demonstrator/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.examples.cps.update/target/repository/</cps.domain.repository.url>
+		
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        
+        <sonar.core.codeCoveragePlugin>jacoco</sonar.core.codeCoveragePlugin>
+        <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+        <sonar.jacoco.reportPath>${jacoco.targetdir}/jacoco.exec</sonar.jacoco.reportPath>
+		<sonar.skippedModules></sonar.skippedModules>
+	</properties>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-packaging-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<strictBinIncludes>false</strictBinIncludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho.version}</version>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-surefire-plugin</artifactId>
+				<version>${tycho.version}</version>
+				<configuration>
+					<excludes>
+						<exclude>**/queries/*.java</exclude>
+		            </excludes>
+		            <failIfNoTests>false</failIfNoTests>
+		            <skipTests>false</skipTests>
+				</configuration>
+			</plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+                <configuration>
+                    <destFile>${jacoco.targetdir}/jacoco.exec</destFile>
+
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <!-- <execution> <id>report</id> <phase>prepare-package</phase> <goals> 
+                        <goal>report</goal> </goals> <configuration> <dataFile>${jacoco.targetdir}/jacoco.exec</dataFile> 
+                        <outputDirectory>${jacoco.targetdir}/jacoco/${project.artifactId}</outputDirectory> 
+                        </configuration> </execution> -->
+                </executions>
+            </plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtend.compiler.version}</version>
+					<configuration>
+						<!-- need to prefix by basedir to generate to currently built module -->
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>testCompile</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<repositories>
+		<repository>
+			<id>mars</id>
+			<url>${mars.repository.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>itemis</id>
+			<url>${itemis.repository.url}</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>viatra.update</id>
+			<layout>p2</layout>
+			<url>${viatra.repository.url}</url>
+		</repository>
+		<repository>
+			<id>cps.domain.update</id>
+			<layout>p2</layout>
+			<url>${cps.domain.repository.url}</url>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>viatra-snapshots</id>
+			<url>https://repo.eclipse.org/content/repositories/viatra2/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+		<pluginRepository>
+			<id>rcptt-releases</id>
+			<name>RCPTT Maven repository</name>
+			<url>https://repo.eclipse.org/content/repositories/rcptt-releases</url>
+			<snapshots>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+</project>
