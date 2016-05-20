@@ -25,7 +25,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 /**
  * This class simplifies the creation of a BPMN model by defining helper methods.
  * 
- * @author András Szabolcs Nagy
+ * @author Andras Szabolcs Nagy
  */
 public class SimplifiedBpmnBuilder {
 

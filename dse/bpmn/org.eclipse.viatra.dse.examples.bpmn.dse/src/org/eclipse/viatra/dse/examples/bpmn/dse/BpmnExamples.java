@@ -10,45 +10,40 @@
 package org.eclipse.viatra.dse.examples.bpmn.dse;
 
 import java.util.Collection;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.viatra.dse.api.DSETransformationRule;
 import org.eclipse.viatra.dse.api.DesignSpaceExplorer;
 import org.eclipse.viatra.dse.api.Solution;
 import org.eclipse.viatra.dse.api.SolutionTrajectory;
 import org.eclipse.viatra.dse.api.Strategies;
 import org.eclipse.viatra.dse.api.strategy.impl.FixedPriorityStrategy;
-import org.eclipse.viatra.dse.api.strategy.impl.HillClimbingStrategy;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObjective;
+import org.eclipse.viatra.dse.examples.bpmn.objectives.CostOfCreateResource;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EnoughResourceInstancesQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EveryTaskHasVariantQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
-import org.eclipse.viatra.dse.examples.bpmn.rules.AssignVariantToTaskRule;
-import org.eclipse.viatra.dse.examples.bpmn.rules.CreateResourceRule;
-import org.eclipse.viatra.dse.examples.bpmn.rules.MakeParallelRule;
-import org.eclipse.viatra.dse.examples.bpmn.rules.MakeSequentialRule;
+import org.eclipse.viatra.dse.examples.bpmn.rules.BpmnRuleProvider;
 import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnPackage;
-import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
 import org.eclipse.viatra.dse.solutionstore.SolutionStore;
-import org.eclipse.viatra.dse.visualizer.GraphmlDesignSpaceVisualizer;
-import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import com.google.common.base.Stopwatch;
 
 /**
  * This class gives an example usage of the VIATRA-DSE framework. Use JUnit plug-in test run configuration to try it
@@ -60,52 +55,18 @@ import org.junit.Test;
 public class BpmnExamples {
 
     /**
-     * Costs of the different resource instances.
-     */
-    public static final class CostOfCreateResource implements ActivationFitnessProcessor {
-        @Override
-        public double process(IPatternMatch match) {
-            CreateResourceMatch m = (CreateResourceMatch) match;
-            String name = m.getRTV().getName();
-            Double result;
-            if (name.equals(BpmnProblems.NOSQL_FAST)) {
-                result = 5d;
-            } else if (name.equals(BpmnProblems.NOSQL_MEDIUM)) {
-                result = 3d;
-            } else if (name.equals(BpmnProblems.NOSQL_SLOW)) {
-                result = 1.5d;
-            } else if (name.equals(BpmnProblems.SQL_FAST)) {
-                result = 5d;
-            } else if (name.equals(BpmnProblems.SQL_MEDIUM)) {
-                result = 3d;
-            } else if (name.equals(BpmnProblems.SQL_SLOW)) {
-                result = 1.5d;
-            } else if (name.equals(BpmnProblems.WS)) {
-                result = 1d;
-            } else
-                result = 0d;
-            return result;
-        }
-    }
-
-    /**
      * Variables are converted to fields only for easier usage. 
      */
-    private DSETransformationRule<?, ?> allocateRule;
-    private DSETransformationRule<?, ?> createResourceRule;
-    private DSETransformationRule<?, ?> makeParallelRule;
-    private DSETransformationRule<?, ?> makeSequentialRule;
+    private BpmnRuleProvider ruleProvider;
     private DesignSpaceExplorer dse;
     private FixedPriorityStrategy fixedPriorityStrategy;
     private EObject model;
-    private GraphmlDesignSpaceVisualizer visualizer;
-    private ActivationFitnessProcessor costOfCreateResource;
+    private Stopwatch stopwatch;
 
     @BeforeClass
     public static void setUpOnce() {
         // Apache logger basic configuration
-        // BasicConfigurator.configure();
-        Logger.getRootLogger().setLevel(Level.ERROR);
+        Logger.getRootLogger().setLevel(Level.WARN);
         
         // For debugging you can either set the level to ALL,
         // Logger.getRootLogger().setLevel(Level.ALL);
@@ -137,15 +98,12 @@ public class BpmnExamples {
         // Will be automatically called if no state coder is specified:
         // dse.setStateCoderFactory(new SimpleStateCoderFactory(dse.getMetaModelPackages()));
 
-        allocateRule = AssignVariantToTaskRule.createRule();
-        createResourceRule = CreateResourceRule.createRule();
-        makeParallelRule = MakeParallelRule.createRule();
-        makeSequentialRule = MakeSequentialRule.createRule();
+        ruleProvider = new BpmnRuleProvider();
 
-        dse.addTransformationRule(allocateRule);
-        dse.addTransformationRule(createResourceRule);
-        dse.addTransformationRule(makeParallelRule);
-        dse.addTransformationRule(makeSequentialRule);
+        dse.addTransformationRule(ruleProvider.allocateRule);
+        dse.addTransformationRule(ruleProvider.createResourceRule);
+        dse.addTransformationRule(ruleProvider.makeParallelRule);
+        dse.addTransformationRule(ruleProvider.makeSequentialRule);
 
         dse.addGlobalConstraint(new ModelQueriesGlobalConstraint()
                 .withConstraint(UnrequiredResourceInstanceQuerySpecification.instance()));
@@ -159,13 +117,11 @@ public class BpmnExamples {
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(0));
 
-        costOfCreateResource = new CostOfCreateResource();
-
         // Costs objective
         dse.addObjective(new TrajectoryCostSoftObjective()
-                .withActivationCost(createResourceRule, costOfCreateResource)
-                .withRuleCost(makeSequentialRule, 1)
-                .withRuleCost(makeParallelRule, 1)
+                .withActivationCost(ruleProvider.createResourceRule, new CostOfCreateResource())
+                .withRuleCost(ruleProvider.makeSequentialRule, 1)
+                .withRuleCost(ruleProvider.makeParallelRule, 1)
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(1));
         
@@ -179,16 +135,14 @@ public class BpmnExamples {
                 .withComparator(Comparators.HIGHER_IS_BETTER)
                 .withLevel(1));
 
-        // Stop at first valid solution
-        dse.setSolutionStore(new SolutionStore(1));
+        // Stop after a certain amount of solutions
+        SolutionStore solutionStore = new SolutionStore(5);
+        solutionStore.logSolutionsWhenFound();
+        dse.setSolutionStore(solutionStore);
 
         dse.setMaxNumberOfThreads(1);
         
-        // The trace of the strategy can be visualized with these lines of code,
-        // visualizer.save(); should be called after the exploration - tearDown() method
-        // visualizer = new GraphmlDesignSpaceVisualizer("BPMNDesignSpace.graphml");
-        // dse.addDesignSpaceVisulaizer(visualizer);
-
+        stopwatch = Stopwatch.createStarted();
     }
 
     /**
@@ -204,38 +158,39 @@ public class BpmnExamples {
             solutionTrajectory.doTransformation();
         }
         
+        stopwatch.stop();
+        System.out.println("States:" + dse.getNumberOfStates());
+        System.out.println("Milisecs: " + stopwatch.elapsed(TimeUnit.MILLISECONDS));
         System.out.println(dse.toStringSolutions());
         
         // To get all of the solutions
         Collection<Solution> solutions = dse.getSolutions();
-        
-        // visualizer.save();
     }
 
     @Test
     public void fixedPrioritySearch() throws ViatraQueryException {
         fixedPriorityStrategy = new FixedPriorityStrategy()
-            .withRulePriority(allocateRule, 10)
-            .withRulePriority(createResourceRule, 5)
-            .withRulePriority(makeParallelRule, 1)
-            .withRulePriority(makeSequentialRule, 1);
+            .withRulePriority(ruleProvider.allocateRule, 10)
+            .withRulePriority(ruleProvider.createResourceRule, 5)
+            .withRulePriority(ruleProvider.makeParallelRule, 1)
+            .withRulePriority(ruleProvider.makeSequentialRule, 1);
         
         dse.startExploration(fixedPriorityStrategy);
     }
 
     @Test
     public void DFS() throws ViatraQueryException {
-        dse.startExploration(Strategies.createDFSStrategy(4));
+        dse.startExploration(Strategies.createDFSStrategy(7));
     }
 
     @Test
     public void BFS() throws ViatraQueryException {
-        dse.startExploration(Strategies.createBfsStrategy(4));
+        dse.startExploration(Strategies.createBfsStrategy(7));
     }
 
     @Test
     public void hillClimbing() throws ViatraQueryException {
-        dse.startExploration(new HillClimbingStrategy());
+        dse.startExploration(Strategies.creatHillClimbingStrategy());
     }
 
 }

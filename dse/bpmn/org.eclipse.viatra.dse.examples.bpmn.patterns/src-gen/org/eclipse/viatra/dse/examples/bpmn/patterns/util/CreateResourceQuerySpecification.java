@@ -102,7 +102,9 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant"));
+      return Arrays.asList(
+      			 new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")))
+      			);
     }
     
     @Override

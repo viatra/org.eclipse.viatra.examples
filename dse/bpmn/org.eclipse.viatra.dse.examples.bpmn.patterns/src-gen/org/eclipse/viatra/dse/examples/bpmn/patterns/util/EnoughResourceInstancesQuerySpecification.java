@@ -101,7 +101,8 @@ public final class EnoughResourceInstancesQuerySpecification extends BaseGenerat
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList();
+      return Arrays.asList(
+      			);
     }
     
     @Override

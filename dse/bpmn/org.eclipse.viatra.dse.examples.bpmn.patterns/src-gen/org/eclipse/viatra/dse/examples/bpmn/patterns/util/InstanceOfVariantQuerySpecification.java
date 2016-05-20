@@ -104,7 +104,10 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("RI", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance"),new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant"));
+      return Arrays.asList(
+      			 new PParameter("RI", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance"))),
+      			 new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")))
+      			);
     }
     
     @Override

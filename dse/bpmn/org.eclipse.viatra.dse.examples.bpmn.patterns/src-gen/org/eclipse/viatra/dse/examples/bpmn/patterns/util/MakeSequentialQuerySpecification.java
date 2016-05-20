@@ -8,6 +8,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.ParallelGatewayOutFlowQuerySpecification;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.util.TaskOrderQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFPQuery;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
@@ -21,6 +22,7 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedP
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Inequality;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.PatternMatchCounter;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.ConstantValue;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
@@ -108,7 +110,11 @@ public final class MakeSequentialQuerySpecification extends BaseGeneratedEMFQuer
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"),new PParameter("Root", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN"));
+      return Arrays.asList(
+      			 new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task"))),
+      			 new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task"))),
+      			 new PParameter("Root", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")))
+      			);
     }
     
     @Override
@@ -150,6 +156,8 @@ public final class MakeSequentialQuerySpecification extends BaseGeneratedEMFQuer
       		new Equality(body, var__virtual_3_, var_T2);
       		// 	T1 != T2
       		new Inequality(body, var_T1, var_T2);
+      		// 	find taskOrder(T1,T2)
+      		new PositivePatternCall(body, new FlatTuple(var_T1, var_T2), TaskOrderQuerySpecification.instance().getInternalQueryRepresentation());
       		// 	N == count find parallelGatewayOutFlow(pg, _)
       		PVariable var__virtual_4_ = body.getOrCreateVariableByName(".virtual{4}");
       		new PatternMatchCounter(body, new FlatTuple(var_pg, var___0_), ParallelGatewayOutFlowQuerySpecification.instance().getInternalQueryRepresentation(), var__virtual_4_);

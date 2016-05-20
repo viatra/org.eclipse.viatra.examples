@@ -4,9 +4,8 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 import org.apache.log4j.Logger;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification;
-import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.TaskOrderMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.util.TaskOrderQuerySpecification;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
@@ -17,36 +16,30 @@ import org.eclipse.viatra.query.runtime.matchers.tuple.Tuple;
 import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
 
 /**
- * Generated pattern matcher API of the org.eclipse.viatra.dse.examples.bpmn.patterns.makeSequential pattern,
+ * Generated pattern matcher API of the org.eclipse.viatra.dse.examples.bpmn.patterns.taskOrder pattern,
  * providing pattern-specific query methods.
  * 
  * <p>Use the pattern matcher on a given model via {@link #on(ViatraQueryEngine)},
  * e.g. in conjunction with {@link ViatraQueryEngine#on(Notifier)}.
  * 
- * <p>Matches of the pattern will be represented as {@link MakeSequentialMatch}.
+ * <p>Matches of the pattern will be represented as {@link TaskOrderMatch}.
  * 
  * <p>Original source:
  * <code><pre>
- * pattern makeSequential(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
- * 	SimplifiedBPMN(Root);
- * 	ParallelGateway.outFlows.target(pg, T1);
- * 	ParallelGateway.outFlows.target(pg, T2);
- * 	T1 != T2;
- * 	find taskOrder(T1,T2);
- * 	N == count find parallelGatewayOutFlow(pg, _);
- * 	N == 2;
- * 	Task.outFlows.target(T1, pg2);
- * 	Task.outFlows.target(T2, pg2);
+ * pattern taskOrder(T1:Task, T2:Task) {
+ *     Task.name(T1,name1);
+ *     Task.name(T2,name2);
+ *     check(name1 {@literal >} name2);
  * }
  * </pre></code>
  * 
- * @see MakeSequentialMatch
- * @see MakeSequentialProcessor
- * @see MakeSequentialQuerySpecification
+ * @see TaskOrderMatch
+ * @see TaskOrderProcessor
+ * @see TaskOrderQuerySpecification
  * 
  */
 @SuppressWarnings("all")
-public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
+public class TaskOrderMatcher extends BaseMatcher<TaskOrderMatch> {
   /**
    * Initializes the pattern matcher within an existing VIATRA Query engine.
    * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
@@ -55,11 +48,11 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  public static MakeSequentialMatcher on(final ViatraQueryEngine engine) throws ViatraQueryException {
+  public static TaskOrderMatcher on(final ViatraQueryEngine engine) throws ViatraQueryException {
     // check if matcher already exists
-    MakeSequentialMatcher matcher = engine.getExistingMatcher(querySpecification());
+    TaskOrderMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new MakeSequentialMatcher(engine);
+    	matcher = new TaskOrderMatcher(engine);
     	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
     }
     return matcher;
@@ -69,9 +62,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   
   private final static int POSITION_T2 = 1;
   
-  private final static int POSITION_ROOT = 2;
-  
-  private final static Logger LOGGER = ViatraQueryLoggingUtil.getLogger(MakeSequentialMatcher.class);
+  private final static Logger LOGGER = ViatraQueryLoggingUtil.getLogger(TaskOrderMatcher.class);
   
   /**
    * Initializes the pattern matcher within an existing VIATRA Query engine.
@@ -81,7 +72,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private MakeSequentialMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
+  private TaskOrderMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
     super(engine, querySpecification());
   }
   
@@ -89,12 +80,11 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * Returns the set of all matches of the pattern that conform to the given fixed values of some parameters.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
-   * @return matches represented as a MakeSequentialMatch object.
+   * @return matches represented as a TaskOrderMatch object.
    * 
    */
-  public Collection<MakeSequentialMatch> getAllMatches(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot) {
-    return rawGetAllMatches(new Object[]{pT1, pT2, pRoot});
+  public Collection<TaskOrderMatch> getAllMatches(final Task pT1, final Task pT2) {
+    return rawGetAllMatches(new Object[]{pT1, pT2});
   }
   
   /**
@@ -102,12 +92,11 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * Neither determinism nor randomness of selection is guaranteed.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
-   * @return a match represented as a MakeSequentialMatch object, or null if no match is found.
+   * @return a match represented as a TaskOrderMatch object, or null if no match is found.
    * 
    */
-  public MakeSequentialMatch getOneArbitraryMatch(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot) {
-    return rawGetOneArbitraryMatch(new Object[]{pT1, pT2, pRoot});
+  public TaskOrderMatch getOneArbitraryMatch(final Task pT1, final Task pT2) {
+    return rawGetOneArbitraryMatch(new Object[]{pT1, pT2});
   }
   
   /**
@@ -115,36 +104,33 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * under any possible substitution of the unspecified parameters (if any).
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
    * @return true if the input is a valid (partial) match of the pattern.
    * 
    */
-  public boolean hasMatch(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot) {
-    return rawHasMatch(new Object[]{pT1, pT2, pRoot});
+  public boolean hasMatch(final Task pT1, final Task pT2) {
+    return rawHasMatch(new Object[]{pT1, pT2});
   }
   
   /**
    * Returns the number of all matches of the pattern that conform to the given fixed values of some parameters.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
    * @return the number of pattern matches found.
    * 
    */
-  public int countMatches(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot) {
-    return rawCountMatches(new Object[]{pT1, pT2, pRoot});
+  public int countMatches(final Task pT1, final Task pT2) {
+    return rawCountMatches(new Object[]{pT1, pT2});
   }
   
   /**
    * Executes the given processor on each match of the pattern that conforms to the given fixed values of some parameters.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
    * @param processor the action that will process each pattern match.
    * 
    */
-  public void forEachMatch(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot, final IMatchProcessor<? super MakeSequentialMatch> processor) {
-    rawForEachMatch(new Object[]{pT1, pT2, pRoot}, processor);
+  public void forEachMatch(final Task pT1, final Task pT2, final IMatchProcessor<? super TaskOrderMatch> processor) {
+    rawForEachMatch(new Object[]{pT1, pT2}, processor);
   }
   
   /**
@@ -152,13 +138,12 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * Neither determinism nor randomness of selection is guaranteed.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
    * @param processor the action that will process the selected match.
    * @return true if the pattern has at least one match with the given parameter values, false if the processor was not invoked
    * 
    */
-  public boolean forOneArbitraryMatch(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot, final IMatchProcessor<? super MakeSequentialMatch> processor) {
-    return rawForOneArbitraryMatch(new Object[]{pT1, pT2, pRoot}, processor);
+  public boolean forOneArbitraryMatch(final Task pT1, final Task pT2, final IMatchProcessor<? super TaskOrderMatch> processor) {
+    return rawForOneArbitraryMatch(new Object[]{pT1, pT2}, processor);
   }
   
   /**
@@ -167,12 +152,11 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * <p>The returned match will be immutable. Use {@link #newEmptyMatch()} to obtain a mutable match object.
    * @param pT1 the fixed value of pattern parameter T1, or null if not bound.
    * @param pT2 the fixed value of pattern parameter T2, or null if not bound.
-   * @param pRoot the fixed value of pattern parameter Root, or null if not bound.
    * @return the (partial) match object.
    * 
    */
-  public MakeSequentialMatch newMatch(final Task pT1, final Task pT2, final SimplifiedBPMN pRoot) {
-    return MakeSequentialMatch.newMatch(pT1, pT2, pRoot);
+  public TaskOrderMatch newMatch(final Task pT1, final Task pT2) {
+    return TaskOrderMatch.newMatch(pT1, pT2);
   }
   
   /**
@@ -200,7 +184,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Task> getAllValuesOfT1(final MakeSequentialMatch partialMatch) {
+  public Set<Task> getAllValuesOfT1(final TaskOrderMatch partialMatch) {
     return rawAccumulateAllValuesOfT1(partialMatch.toArray());
   }
   
@@ -209,11 +193,10 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Task> getAllValuesOfT1(final Task pT2, final SimplifiedBPMN pRoot) {
+  public Set<Task> getAllValuesOfT1(final Task pT2) {
     return rawAccumulateAllValuesOfT1(new Object[]{
     null, 
-    pT2, 
-    pRoot
+    pT2
     });
   }
   
@@ -242,7 +225,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Task> getAllValuesOfT2(final MakeSequentialMatch partialMatch) {
+  public Set<Task> getAllValuesOfT2(final TaskOrderMatch partialMatch) {
     return rawAccumulateAllValuesOfT2(partialMatch.toArray());
   }
   
@@ -251,60 +234,17 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
    * 
    */
-  public Set<Task> getAllValuesOfT2(final Task pT1, final SimplifiedBPMN pRoot) {
+  public Set<Task> getAllValuesOfT2(final Task pT1) {
     return rawAccumulateAllValuesOfT2(new Object[]{
     pT1, 
-    null, 
-    pRoot
-    });
-  }
-  
-  /**
-   * Retrieve the set of values that occur in matches for Root.
-   * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
-   * 
-   */
-  protected Set<SimplifiedBPMN> rawAccumulateAllValuesOfRoot(final Object[] parameters) {
-    Set<SimplifiedBPMN> results = new HashSet<SimplifiedBPMN>();
-    rawAccumulateAllValues(POSITION_ROOT, parameters, results);
-    return results;
-  }
-  
-  /**
-   * Retrieve the set of values that occur in matches for Root.
-   * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
-   * 
-   */
-  public Set<SimplifiedBPMN> getAllValuesOfRoot() {
-    return rawAccumulateAllValuesOfRoot(emptyArray());
-  }
-  
-  /**
-   * Retrieve the set of values that occur in matches for Root.
-   * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
-   * 
-   */
-  public Set<SimplifiedBPMN> getAllValuesOfRoot(final MakeSequentialMatch partialMatch) {
-    return rawAccumulateAllValuesOfRoot(partialMatch.toArray());
-  }
-  
-  /**
-   * Retrieve the set of values that occur in matches for Root.
-   * @return the Set of all values, null if no parameter with the given name exists, empty set if there are no matches
-   * 
-   */
-  public Set<SimplifiedBPMN> getAllValuesOfRoot(final Task pT1, final Task pT2) {
-    return rawAccumulateAllValuesOfRoot(new Object[]{
-    pT1, 
-    pT2, 
     null
     });
   }
   
   @Override
-  protected MakeSequentialMatch tupleToMatch(final Tuple t) {
+  protected TaskOrderMatch tupleToMatch(final Tuple t) {
     try {
-    	return MakeSequentialMatch.newMatch((Task) t.get(POSITION_T1), (Task) t.get(POSITION_T2), (SimplifiedBPMN) t.get(POSITION_ROOT));
+    	return TaskOrderMatch.newMatch((Task) t.get(POSITION_T1), (Task) t.get(POSITION_T2));
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in tuple not properly typed!",e);
     	return null;
@@ -312,9 +252,9 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   }
   
   @Override
-  protected MakeSequentialMatch arrayToMatch(final Object[] match) {
+  protected TaskOrderMatch arrayToMatch(final Object[] match) {
     try {
-    	return MakeSequentialMatch.newMatch((Task) match[POSITION_T1], (Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return TaskOrderMatch.newMatch((Task) match[POSITION_T1], (Task) match[POSITION_T2]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -322,9 +262,9 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
   }
   
   @Override
-  protected MakeSequentialMatch arrayToMatchMutable(final Object[] match) {
+  protected TaskOrderMatch arrayToMatchMutable(final Object[] match) {
     try {
-    	return MakeSequentialMatch.newMutableMatch((Task) match[POSITION_T1], (Task) match[POSITION_T2], (SimplifiedBPMN) match[POSITION_ROOT]);
+    	return TaskOrderMatch.newMutableMatch((Task) match[POSITION_T1], (Task) match[POSITION_T2]);
     } catch(ClassCastException e) {
     	LOGGER.error("Element(s) in array not properly typed!",e);
     	return null;
@@ -336,7 +276,7 @@ public class MakeSequentialMatcher extends BaseMatcher<MakeSequentialMatch> {
    * @throws ViatraQueryException if the pattern definition could not be loaded
    * 
    */
-  public static IQuerySpecification<MakeSequentialMatcher> querySpecification() throws ViatraQueryException {
-    return MakeSequentialQuerySpecification.instance();
+  public static IQuerySpecification<TaskOrderMatcher> querySpecification() throws ViatraQueryException {
+    return TaskOrderQuerySpecification.instance();
   }
 }

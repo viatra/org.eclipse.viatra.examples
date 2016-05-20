@@ -104,7 +104,10 @@ final class InFlowQuerySpecification extends BaseGeneratedEMFQuerySpecification<
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("Element", "org.eclipse.viatra.dse.examples.simplifiedbpmn.BaseElement"),new PParameter("Flow", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow"));
+      return Arrays.asList(
+      			 new PParameter("Element", "org.eclipse.viatra.dse.examples.simplifiedbpmn.BaseElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "BaseElement"))),
+      			 new PParameter("Flow", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")))
+      			);
     }
     
     @Override

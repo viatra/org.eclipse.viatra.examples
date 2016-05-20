@@ -8,6 +8,7 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.EveryTaskHasVariantMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.InstanceOfVariantMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatcher;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.TaskOrderMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.UnassignedTaskMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.UnrequiredResourceInstanceMatcher;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.VariantAllocatedToTaskMatcher;
@@ -19,6 +20,7 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EveryTaskHasVariantQue
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.InstanceOfVariantQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.util.TaskOrderQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.VariantAllocatedToTaskQuerySpecification;
@@ -49,6 +51,7 @@ import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
  * <li>taskNeedsVariant</li>
  * <li>enoughResourceInstances</li>
  * <li>everyTaskHasVariant</li>
+ * <li>taskOrder</li>
  * </ul>
  * 
  * @see IPatternGroup
@@ -84,6 +87,7 @@ public final class Patterns extends BaseGeneratedPatternGroup {
     querySpecifications.add(UnrequiredResourceInstanceQuerySpecification.instance());
     querySpecifications.add(EnoughResourceInstancesQuerySpecification.instance());
     querySpecifications.add(EveryTaskHasVariantQuerySpecification.instance());
+    querySpecifications.add(TaskOrderQuerySpecification.instance());
   }
   
   public CreateResourceQuerySpecification getCreateResource() throws ViatraQueryException {
@@ -172,5 +176,13 @@ public final class Patterns extends BaseGeneratedPatternGroup {
   
   public EveryTaskHasVariantMatcher getEveryTaskHasVariant(final ViatraQueryEngine engine) throws ViatraQueryException {
     return EveryTaskHasVariantMatcher.on(engine);
+  }
+  
+  public TaskOrderQuerySpecification getTaskOrder() throws ViatraQueryException {
+    return TaskOrderQuerySpecification.instance();
+  }
+  
+  public TaskOrderMatcher getTaskOrder(final ViatraQueryEngine engine) throws ViatraQueryException {
+    return TaskOrderMatcher.on(engine);
   }
 }

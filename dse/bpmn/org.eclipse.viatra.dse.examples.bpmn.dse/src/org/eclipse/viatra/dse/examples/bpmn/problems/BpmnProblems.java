@@ -34,9 +34,9 @@ public class BpmnProblems {
     public static final String SQL_MEDIUM = "SqlMedium";
     public static final String SQL_FAST = "SqlFast";
     public static final String WS = "WS";
-    private static final String WS_FAST = "WsFast";
-    private static final String WS_MEDIUM = "WsMedium";
-    private static final String WS_SLOW = "WsSlow";
+    public static final String WS_FAST = "WsFast";
+    public static final String WS_MEDIUM = "WsMedium";
+    public static final String WS_SLOW = "WsSlow";
 
     public static SimplifiedBPMN createOneTaskProblem(boolean withResource) {
         SimplifiedBpmnBuilder builder = new SimplifiedBpmnBuilder();

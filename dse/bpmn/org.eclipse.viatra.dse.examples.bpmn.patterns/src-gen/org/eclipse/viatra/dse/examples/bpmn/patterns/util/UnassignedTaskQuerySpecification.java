@@ -104,7 +104,9 @@ public final class UnassignedTaskQuerySpecification extends BaseGeneratedEMFQuer
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("T", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task"));
+      return Arrays.asList(
+      			 new PParameter("T", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")))
+      			);
     }
     
     @Override

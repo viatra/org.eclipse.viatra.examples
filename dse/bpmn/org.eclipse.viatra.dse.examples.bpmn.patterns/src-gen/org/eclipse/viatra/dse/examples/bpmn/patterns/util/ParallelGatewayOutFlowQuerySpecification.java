@@ -104,7 +104,10 @@ final class ParallelGatewayOutFlowQuerySpecification extends BaseGeneratedEMFQue
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("PG", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway"),new PParameter("Flow", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow"));
+      return Arrays.asList(
+      			 new PParameter("PG", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ParallelGateway"))),
+      			 new PParameter("Flow", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")))
+      			);
     }
     
     @Override

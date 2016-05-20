@@ -33,6 +33,7 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  * 	SequenceFlow.isDataFlow(out, false);
  * 	SequenceFlow.target(out, T2);
  * 	T1 != T2;
+ * 	find taskOrder(T1,T2);
  * 	1 == count find inFlow(T2, _);
  * 	1 == count find outFlow(T1, _);
  * }

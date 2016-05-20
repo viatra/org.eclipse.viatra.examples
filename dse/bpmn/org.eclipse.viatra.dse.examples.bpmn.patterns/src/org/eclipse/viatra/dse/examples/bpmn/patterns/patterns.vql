@@ -39,6 +39,7 @@ pattern makeParallel(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
 	SequenceFlow.isDataFlow(out, false);
 	SequenceFlow.target(out, T2);
 	T1 != T2;
+	find taskOrder(T1,T2);
 	1 == count find inFlow(T2, _);
 	1 == count find outFlow(T1, _);
 }
@@ -53,6 +54,7 @@ pattern makeSequential(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
 	ParallelGateway.outFlows.target(pg, T1);
 	ParallelGateway.outFlows.target(pg, T2);
 	T1 != T2;
+	find taskOrder(T1,T2);
 	N == count find parallelGatewayOutFlow(pg, _);
 	N == 2;
 	Task.outFlows.target(T1, pg2);
@@ -87,4 +89,10 @@ pattern enoughResourceInstances() {
 
 pattern everyTaskHasVariant() {
 	neg find unassignedTask(_);
+}
+
+pattern taskOrder(T1:Task, T2:Task) {
+    Task.name(T1,name1);
+    Task.name(T2,name2);
+    check(name1 > name2);
 }

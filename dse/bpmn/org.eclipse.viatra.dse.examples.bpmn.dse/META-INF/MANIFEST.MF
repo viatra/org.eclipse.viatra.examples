@@ -15,6 +15,12 @@ Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.model,
  org.junit,
  org.eclipse.viatra.dse.genetic,
  org.eclipse.viatra.dse.base,
- org.eclipse.viatra.query.runtime
+ org.eclipse.viatra.query.runtime,
+ com.google.guava,
+ org.eclipse.viatra.dse.api,
+ org.eclipse.viatra.transformation.runtime.emf,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.apache.log4j;version="1.2.15"

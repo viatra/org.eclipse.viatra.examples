@@ -14,7 +14,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import org.eclipse.emf.common.notify.Notifier;
-import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.dse.api.DSEException;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
@@ -27,6 +26,7 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
 import org.eclipse.viatra.dse.statecode.IStateCoder;
+import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 
 public class BpmnStateCoder implements IStateCoder {
 

@@ -106,7 +106,9 @@ public final class UnrequiredResourceInstanceQuerySpecification extends BaseGene
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(new PParameter("RI", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance"));
+      return Arrays.asList(
+      			 new PParameter("RI", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceInstance", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceInstance")))
+      			);
     }
     
     @Override

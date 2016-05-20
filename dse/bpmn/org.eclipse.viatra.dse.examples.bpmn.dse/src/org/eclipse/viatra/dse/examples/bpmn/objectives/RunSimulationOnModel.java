@@ -60,7 +60,7 @@ public class RunSimulationOnModel {
     }
     
     public void runSimulation() {
-        if (dsm.getCurrentState().getId().equals(lastState)) {
+        if (dsm.getCurrentState().equals(lastState)) {
             return;
         }
         

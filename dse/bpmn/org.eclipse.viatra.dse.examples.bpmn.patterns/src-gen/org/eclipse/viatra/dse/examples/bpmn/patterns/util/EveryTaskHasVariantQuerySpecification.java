@@ -101,7 +101,8 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList();
+      return Arrays.asList(
+      			);
     }
     
     @Override
