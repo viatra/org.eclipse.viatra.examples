@@ -37,7 +37,7 @@
 		</repository>
 		<repository>
 			<id>viatra</id>
-			<url>https://repo.eclipse.org/content/groups/viatra2/</url>
+			<url>https://repo.eclipse.org/content/repositories/viatra-releases/</url>
 		</repository>
 	</repositories>
 	
