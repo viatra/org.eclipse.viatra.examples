@@ -36,7 +36,7 @@
 			<url>https://repo.eclipse.org/content/groups/acceleo</url>
 		</repository>
 		<repository>
-			<id>viatra</id>
+			<id>repo.eclipse.org.viatra</id>
 			<url>https://repo.eclipse.org/content/repositories/viatra-releases/</url>
 		</repository>
 	</repositories>
@@ -44,7 +44,7 @@
     <!-- Add release repo here instead of snaphots once its ready -->
 	<pluginRepositories>
 		<pluginRepository>
-			<id>viatra-repo</id>
+			<id>repo.eclipse.org.viatra</id>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
