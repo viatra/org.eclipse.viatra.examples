@@ -32,6 +32,7 @@ public class MinResourceUsageSoftObjective extends BaseObjective {
 
     @Override
     public void init(ThreadContext context) {
+        super.init(context);
         sim = RunSimulationOnModel.create(context);
     }
 
@@ -44,18 +45,9 @@ public class MinResourceUsageSoftObjective extends BaseObjective {
     @Override
     public IObjective createNew() {
         MinResourceUsageSoftObjective objective = new MinResourceUsageSoftObjective();
-        objective.level = level;
-        return objective;
+        if (isThereFitnessConstraint) {
+            objective.withHardConstraintOnFitness(fitnessConstraint, fitnessConstraintComparator);
+        }
+        return objective.withLevel(level);
     }
-
-    @Override
-    public boolean isHardObjective() {
-        return false;
-    }
-
-    @Override
-    public boolean satisifiesHardObjective(Double fitness) {
-        return true;
-    }
-
 }

@@ -4,11 +4,11 @@ import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AllocateTaskToVariantQ
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceQuerySpecification
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification
 import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification
+import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRule
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory
-import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems
 
 class BpmnRuleProvider {
     private extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
@@ -17,9 +17,19 @@ class BpmnRuleProvider {
     public BatchTransformationRule<?, ?> createResourceRule
     public BatchTransformationRule<?, ?> makeParallelRule
     public BatchTransformationRule<?, ?> makeSequentialRule
+    public BatchTransformationRule<?, ?> allocateRuleFilteredExample
+    
 
     new() {
         allocateRule = createRule
+            .name("AllocateTaskToVariantRule")
+            .precondition(AllocateTaskToVariantQuerySpecification.instance())
+            .action()[
+                t.setVariant(RTV)
+            ]
+            .build()
+
+        allocateRuleFilteredExample = createRule
             .name("AllocateTaskToVariantRule")
             .precondition(AllocateTaskToVariantQuerySpecification.instance())
             .action()[

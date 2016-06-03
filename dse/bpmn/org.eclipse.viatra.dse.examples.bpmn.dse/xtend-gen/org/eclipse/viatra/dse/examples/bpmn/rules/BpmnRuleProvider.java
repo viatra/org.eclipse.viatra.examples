@@ -43,6 +43,8 @@ public class BpmnRuleProvider {
   
   public BatchTransformationRule<?, ?> makeSequentialRule;
   
+  public BatchTransformationRule<?, ?> allocateRuleFilteredExample;
+  
   public BpmnRuleProvider() {
     try {
       BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _createRule = this.factory.<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher>createRule();
@@ -58,35 +60,39 @@ public class BpmnRuleProvider {
         }
       };
       BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _action = _precondition.action(_function);
-      final EventFilter<AllocateTaskToVariantMatch> _function_1 = new EventFilter<AllocateTaskToVariantMatch>() {
+      BatchTransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _build = _action.build();
+      this.allocateRule = _build;
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _createRule_1 = this.factory.<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher>createRule();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _name_1 = _createRule_1.name("AllocateTaskToVariantRule");
+      AllocateTaskToVariantQuerySpecification _instance_1 = AllocateTaskToVariantQuerySpecification.instance();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _precondition_1 = _name_1.precondition(_instance_1);
+      final IMatchProcessor<AllocateTaskToVariantMatch> _function_1 = new IMatchProcessor<AllocateTaskToVariantMatch>() {
+        @Override
+        public void process(final AllocateTaskToVariantMatch it) {
+          Task _t = it.getT();
+          ResourceTypeVariant _rTV = it.getRTV();
+          _t.setVariant(_rTV);
+        }
+      };
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _action_1 = _precondition_1.action(_function_1);
+      final EventFilter<AllocateTaskToVariantMatch> _function_2 = new EventFilter<AllocateTaskToVariantMatch>() {
         @Override
         public boolean isProcessable(final AllocateTaskToVariantMatch it) {
-          boolean _or = false;
-          ResourceTypeVariant _rTV = it.getRTV();
-          String _name = _rTV.getName();
-          boolean _equals = _name.equals(BpmnProblems.NOSQL_MEDIUM);
-          if (_equals) {
-            _or = true;
-          } else {
-            ResourceTypeVariant _rTV_1 = it.getRTV();
-            String _name_1 = _rTV_1.getName();
-            boolean _equals_1 = _name_1.equals(BpmnProblems.SQL_MEDIUM);
-            _or = _equals_1;
-          }
-          if (_or) {
+          if ((it.getRTV().getName().equals(BpmnProblems.NOSQL_MEDIUM) || 
+            it.getRTV().getName().equals(BpmnProblems.SQL_MEDIUM))) {
             return false;
           }
           return true;
         }
       };
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _filter = _action.filter(_function_1);
-      BatchTransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _build = _filter.build();
-      this.allocateRule = _build;
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _createRule_1 = this.factory.<CreateResourceMatch, CreateResourceMatcher>createRule();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _name_1 = _createRule_1.name("CreateResourceRule");
-      CreateResourceQuerySpecification _instance_1 = CreateResourceQuerySpecification.instance();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _precondition_1 = _name_1.precondition(_instance_1);
-      final IMatchProcessor<CreateResourceMatch> _function_2 = new IMatchProcessor<CreateResourceMatch>() {
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _filter = _action_1.filter(_function_2);
+      BatchTransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _build_1 = _filter.build();
+      this.allocateRuleFilteredExample = _build_1;
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _createRule_2 = this.factory.<CreateResourceMatch, CreateResourceMatcher>createRule();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _name_2 = _createRule_2.name("CreateResourceRule");
+      CreateResourceQuerySpecification _instance_2 = CreateResourceQuerySpecification.instance();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _precondition_2 = _name_2.precondition(_instance_2);
+      final IMatchProcessor<CreateResourceMatch> _function_3 = new IMatchProcessor<CreateResourceMatch>() {
         @Override
         public void process(final CreateResourceMatch it) {
           ResourceTypeVariant _rTV = it.getRTV();
@@ -95,14 +101,14 @@ public class BpmnRuleProvider {
           _instances.add(_createResourceInstance);
         }
       };
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _action_1 = _precondition_1.action(_function_2);
-      BatchTransformationRule<CreateResourceMatch, CreateResourceMatcher> _build_1 = _action_1.build();
-      this.createResourceRule = _build_1;
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _createRule_2 = this.factory.<MakeParallelMatch, MakeParallelMatcher>createRule();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _name_2 = _createRule_2.name("MakeParallelRule");
-      MakeParallelQuerySpecification _instance_2 = MakeParallelQuerySpecification.instance();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _precondition_2 = _name_2.precondition(_instance_2);
-      final IMatchProcessor<MakeParallelMatch> _function_3 = new IMatchProcessor<MakeParallelMatch>() {
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<CreateResourceMatch, CreateResourceMatcher> _action_2 = _precondition_2.action(_function_3);
+      BatchTransformationRule<CreateResourceMatch, CreateResourceMatcher> _build_2 = _action_2.build();
+      this.createResourceRule = _build_2;
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _createRule_3 = this.factory.<MakeParallelMatch, MakeParallelMatcher>createRule();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _name_3 = _createRule_3.name("MakeParallelRule");
+      MakeParallelQuerySpecification _instance_3 = MakeParallelQuerySpecification.instance();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _precondition_3 = _name_3.precondition(_instance_3);
+      final IMatchProcessor<MakeParallelMatch> _function_4 = new IMatchProcessor<MakeParallelMatch>() {
         @Override
         public void process(final MakeParallelMatch it) {
           SimplifiedBPMN _root = it.getRoot();
@@ -148,14 +154,14 @@ public class BpmnRuleProvider {
           builder.createFlow(_t2_4, convergingGateway);
         }
       };
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _action_2 = _precondition_2.action(_function_3);
-      BatchTransformationRule<MakeParallelMatch, MakeParallelMatcher> _build_2 = _action_2.build();
-      this.makeParallelRule = _build_2;
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _createRule_3 = this.factory.<MakeSequentialMatch, MakeSequentialMatcher>createRule();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _name_3 = _createRule_3.name("MakeSequentialRule");
-      MakeSequentialQuerySpecification _instance_3 = MakeSequentialQuerySpecification.instance();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _precondition_3 = _name_3.precondition(_instance_3);
-      final IMatchProcessor<MakeSequentialMatch> _function_4 = new IMatchProcessor<MakeSequentialMatch>() {
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeParallelMatch, MakeParallelMatcher> _action_3 = _precondition_3.action(_function_4);
+      BatchTransformationRule<MakeParallelMatch, MakeParallelMatcher> _build_3 = _action_3.build();
+      this.makeParallelRule = _build_3;
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _createRule_4 = this.factory.<MakeSequentialMatch, MakeSequentialMatcher>createRule();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _name_4 = _createRule_4.name("MakeSequentialRule");
+      MakeSequentialQuerySpecification _instance_4 = MakeSequentialQuerySpecification.instance();
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _precondition_4 = _name_4.precondition(_instance_4);
+      final IMatchProcessor<MakeSequentialMatch> _function_5 = new IMatchProcessor<MakeSequentialMatch>() {
         @Override
         public void process(final MakeSequentialMatch it) {
           Task _t1 = it.getT1();
@@ -220,9 +226,9 @@ public class BpmnRuleProvider {
           _simplifiedBpmnBuilder.createFlow(_t1_2, _t2_2);
         }
       };
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _action_3 = _precondition_3.action(_function_4);
-      BatchTransformationRule<MakeSequentialMatch, MakeSequentialMatcher> _build_3 = _action_3.build();
-      this.makeSequentialRule = _build_3;
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<MakeSequentialMatch, MakeSequentialMatcher> _action_4 = _precondition_4.action(_function_5);
+      BatchTransformationRule<MakeSequentialMatch, MakeSequentialMatcher> _build_4 = _action_4.build();
+      this.makeSequentialRule = _build_4;
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

@@ -63,21 +63,7 @@ public final class ResourceUsageObjective extends BaseObjective {
     }
 
     @Override
-    public void init(ThreadContext context) {
-    }
-
-    @Override
     public IObjective createNew() {
         return this;
-    }
-
-    @Override
-    public boolean isHardObjective() {
-        return false;
-    }
-
-    @Override
-    public boolean satisifiesHardObjective(Double fitness) {
-        return true;
     }
 }

@@ -6,12 +6,42 @@
     <wellbehaving-derived-feature classifier-name="CyberPhysicalSystem" feature-name="hosts" package-nsUri="org.eclipse.viatra.examples.dse.cps"/>
   </extension>
   <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Derived" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Derived" id="org.eclipse.viatra.dse.examples.cps.patterns.Derived"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Derived" id="org.eclipse.viatra.dse.examples.cps.patterns.Derived">
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.applications"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.hosts"/>
+    </group>
   </extension>
   <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Goals" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Goals" id="org.eclipse.viatra.dse.examples.cps.patterns.Goals"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Goals" id="org.eclipse.viatra.dse.examples.cps.patterns.Goals">
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.allApplicationInstanceIsRunning"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.notRunningApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.runningApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.notExistUnsatisfiedRequirement"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.unsatisfiedRequirement"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.fullySatisfiedRequirement"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.requirementHasAllApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.noUnallocatedApps"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.allocatedApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.unallocatedApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.fullyAllocatedApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.unusedHost"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.hasHostedApp"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.moreThanOneUnusedHost"/>
+    </group>
   </extension>
   <extension id="org.eclipse.viatra.dse.examples.cps.patterns.Rules" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Rules" id="org.eclipse.viatra.dse.examples.cps.patterns.Rules"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.dse.examples.cps.patterns.Rules" id="org.eclipse.viatra.dse.examples.cps.patterns.Rules">
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.createApplicationInstances"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.createApplicationInstance"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.allocate"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.deleteAllocation"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.startInstance"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.stopInstance"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.move"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.canAllocateTo"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.createHostInstance"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.removeHostInstance"/>
+      <query-specification fqn="org.eclipse.viatra.dse.examples.cps.patterns.cancelRequest"/>
+    </group>
   </extension>
 </plugin>
