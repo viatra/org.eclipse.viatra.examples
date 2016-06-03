@@ -30,7 +30,7 @@ class BpmnRuleProvider {
             .build
 
         allocateRuleFilteredExample = createRule
-            .name("AllocateTaskToVariantRule")
+            .name("FilteredAllocateTaskToVariantRule")
             .precondition(AllocateTaskToVariantQuerySpecification.instance())
             .action[
                 t.variant = RTV
