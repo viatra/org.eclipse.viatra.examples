@@ -13,7 +13,7 @@ package org.eclipse.viatra.examples.cps.xform.m2m.tests
 
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase
 import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.CPSTransformationWrapper
 import org.junit.After
 

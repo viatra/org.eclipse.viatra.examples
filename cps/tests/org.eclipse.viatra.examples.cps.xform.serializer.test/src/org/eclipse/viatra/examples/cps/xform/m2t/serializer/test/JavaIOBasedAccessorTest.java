@@ -19,7 +19,7 @@ import java.io.IOException;
 
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase;
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase;
 import org.eclipse.viatra.examples.cps.xform.serializer.javaio.JavaIOBasedFileAccessor;
 import org.junit.Test;
 

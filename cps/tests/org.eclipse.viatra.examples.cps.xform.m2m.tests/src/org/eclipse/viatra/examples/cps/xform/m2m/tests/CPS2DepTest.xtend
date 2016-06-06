@@ -12,7 +12,7 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.tests
 
 import com.google.common.collect.ImmutableSet
-import org.eclipse.viatra.examples.cps.tests.PropertiesUtil
+import org.eclipse.viatra.examples.cps.tests.util.PropertiesUtil
 import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.CPSTransformationWrapper
 import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType
 import org.junit.runners.Parameterized.Parameters

@@ -20,7 +20,7 @@ import org.eclipse.viatra.examples.cps.m2t.proto.distributed.general.communicati
 import org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.hosts.Host152661025;
 import org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.hosts.Host152661026;
 import org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.hosts.statemachines.BehaviorCameraB;
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase;
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase;
 import org.junit.Test;
 
 import com.google.common.collect.Iterables;

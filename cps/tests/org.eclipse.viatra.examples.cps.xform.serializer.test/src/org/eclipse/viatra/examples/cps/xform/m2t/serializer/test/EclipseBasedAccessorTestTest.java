@@ -24,7 +24,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase;
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase;
 import org.eclipse.viatra.examples.cps.xform.serializer.eclipse.EclipseBasedFileAccessor;
 import org.junit.Test;
 

@@ -28,7 +28,7 @@ import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentPackage;
 import org.eclipse.viatra.examples.cps.deployment.common.DeploymentQueries;
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase;
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase;
 import org.eclipse.viatra.examples.cps.xform.m2t.api.ICPSGenerator;
 import org.eclipse.viatra.examples.cps.xform.m2t.distributed.CodeGenerator;
 import org.eclipse.viatra.examples.cps.xform.m2t.exceptions.CPSGeneratorException;

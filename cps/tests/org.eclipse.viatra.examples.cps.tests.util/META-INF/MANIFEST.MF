@@ -4,7 +4,7 @@ Bundle-Name: CPS Demonstrator Tests Common
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.tests.util
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
-Export-Package: org.eclipse.viatra.examples.cps.tests
+Export-Package: org.eclipse.viatra.examples.cps.tests.util
 Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.viatra.examples.cps.model;visibility:=reexport,
  org.eclipse.viatra.examples.cps.deployment;visibility:=reexport,

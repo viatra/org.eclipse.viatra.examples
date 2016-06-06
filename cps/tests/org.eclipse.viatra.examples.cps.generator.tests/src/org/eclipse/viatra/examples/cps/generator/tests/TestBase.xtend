@@ -22,7 +22,7 @@ import org.eclipse.viatra.examples.cps.generator.queries.Validation
 import org.eclipse.viatra.examples.cps.generator.utils.CPSGeneratorBuilder
 import org.eclipse.viatra.examples.cps.generator.utils.PersistenceUtil
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
-import org.eclipse.viatra.examples.cps.tests.CPSTestBase
+import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.emf.EMFScope
 
