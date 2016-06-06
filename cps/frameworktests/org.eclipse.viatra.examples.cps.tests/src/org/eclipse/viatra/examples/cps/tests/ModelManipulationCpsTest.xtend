@@ -233,7 +233,7 @@ class ModelManipulationCpsTest {
                         .assertEqualsThen
                         .modify(HostType,
                             [it.identifier == "simple.cps.host.FirstHostClass0"],
-                            [ EcoreUtil.delete(it) ] )
+                            [ EcoreUtil.delete(it, true) ] )
                         .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteHostType.snapshot")
                         .assertEquals
     }
