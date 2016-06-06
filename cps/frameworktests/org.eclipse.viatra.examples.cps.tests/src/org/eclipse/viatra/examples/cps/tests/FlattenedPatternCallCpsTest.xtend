@@ -28,6 +28,10 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
+import org.eclipse.viatra.examples.cps.tests.queries.util.Callee2QuerySpecification
+import org.eclipse.viatra.query.runtime.api.IQuerySpecification
+import org.eclipse.viatra.query.runtime.api.IPatternMatch
+import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher
 
 // This test is necessary because of 481265 bug
 @RunWith(Parameterized)
@@ -36,19 +40,31 @@ class FlattenedPatternCallCpsTest {
     def static Collection<Object[]> testData() {
         newArrayList(
             #[  BackendType.Rete,
-                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem",
+                CalleeQuerySpecification.instance
             ],
             #[  BackendType.LocalSearch,
-                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem",
+                CalleeQuerySpecification.instance
+            ],
+            #[  BackendType.Rete,
+                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem",
+                Callee2QuerySpecification.instance
+            ],
+            #[  BackendType.LocalSearch,
+                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem",
+                Callee2QuerySpecification.instance
             ]
         )
     }
     
     @Parameter(0)
     public BackendType backendType
-    IQueryBackendFactory queryBackendFactory
     @Parameter(1)
     public String modelPath
+    @Parameter(2)
+    public IQuerySpecification queryToFlatten //XXX type parameter does not work correctly
+    IQueryBackendFactory queryBackendFactory
     ResourceSet rs
     
     
@@ -64,7 +80,7 @@ class FlattenedPatternCallCpsTest {
     def void flattenedPatternCallTest() {
         val hint = new QueryEvaluationHint(queryBackendFactory, emptyMap)
         val modelProvider = new PatternBasedMatchSetModelProvider(hint)
-        val notFlattenedMatchSet = modelProvider.getMatchSetRecord(rs, CalleeQuerySpecification.instance, null)
+        val notFlattenedMatchSet = modelProvider.getMatchSetRecord(rs, queryToFlatten, null)
         val flattenedMatchSet = modelProvider.getMatchSetRecord(rs, FlattenedQuerySpecification.instance, null)
         val diff = MatchSetRecordDiff.compute(notFlattenedMatchSet, flattenedMatchSet)
         if (!diff.empty) {
