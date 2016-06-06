@@ -504,7 +504,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 			reverseMappingCache.put(deploymentElement,identifiable)
 			if(!trace.tail.empty){
 				throw new IllegalStateException(
-					'''More than one mapping was created to state machine wit Id '«identifiable.identifier»'.''')
+					'''More than one mapping was created to state machine with Id '«identifiable.identifier»'.''')
 			}
 		}
 

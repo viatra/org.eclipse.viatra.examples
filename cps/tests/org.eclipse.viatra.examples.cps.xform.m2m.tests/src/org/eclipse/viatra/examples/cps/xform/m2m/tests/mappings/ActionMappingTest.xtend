@@ -1165,15 +1165,15 @@ class ActionMappingTest extends CPS2DepTest {
 		executeTransformation
 		
 		val sendTrace = cps2dep.traces.findFirst[cpsElements.contains(sendTransition)]
-		assertEquals("Send transition not transformed correctly", 1, sendTrace.deploymentElements.length)
+		assertEquals("Send transition not transformed correctly", 1, sendTrace.deploymentElements.size)
 		assertFalse("Send transition not transformed", sendTrace.deploymentElements.empty)
 		
 		val waitTrace = cps2dep.traces.findFirst[cpsElements.contains(waitTransition)]
-		assertEquals("Wait transition not transformed correctly", 2, waitTrace.deploymentElements.length)
+		assertEquals("Wait transition not transformed correctly", 2, waitTrace.deploymentElements.size)
 		assertFalse("Wait transition not transformed", waitTrace.deploymentElements.empty)
 		
 		val depSend = sendTrace.deploymentElements.head as BehaviorTransition
-		assertEquals("Trigger incorrect", 1, depSend.trigger.length)
+		assertEquals("Trigger incorrect", 1, depSend.trigger.size)
 		
 		endTest(testId)
 	}
