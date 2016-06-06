@@ -1,4 +1,4 @@
-package org.eclipse.viatra.examples.cps.tests
+package org.eclipse.viatra.examples.cps.tests.util
 
 import java.io.IOException
 import java.io.InputStream

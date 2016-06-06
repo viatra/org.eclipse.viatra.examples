@@ -1,4 +1,4 @@
-package org.eclipse.viatra.examples.cps.tests
+package org.eclipse.viatra.examples.cps.tests.util
 
 import java.io.OutputStreamWriter
 import org.apache.log4j.ConsoleAppender

@@ -60,7 +60,7 @@
 		
 		<!-- Tests -->
 		<module>tests/org.eclipse.viatra.examples.cps.generator.tests</module>
-		<module>tests/org.eclipse.viatra.examples.cps.tests</module>
+		<module>tests/org.eclipse.viatra.examples.cps.tests.util</module>
 		<module>tests/org.eclipse.viatra.examples.cps.xform.m2m.tests</module>
 		<module>tests/org.eclipse.viatra.examples.cps.xform.m2t.tests</module>
 		<module>tests/org.eclipse.viatra.examples.cps.xform.serializer.test</module>

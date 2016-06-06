@@ -12,6 +12,6 @@ Require-Bundle: org.eclipse.xtend.lib,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.viatra.examples.cps.generator;bundle-version="0.1.0";visibility:=reexport,
  org.eclipse.viatra.examples.cps.planexecutor;bundle-version="0.1.0";visibility:=reexport,
- org.eclipse.viatra.examples.cps.tests;bundle-version="0.1.0";visibility:=reexport
+ org.eclipse.viatra.examples.cps.tests.util;bundle-version="0.1.0";visibility:=reexport
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j

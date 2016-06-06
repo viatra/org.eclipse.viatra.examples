@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.viatra.examples.cps.xform.serializer;bundle-version=
  org.eclipse.jdt.core;bundle-version="3.10.0",
  com.google.guava;bundle-version="15.0.0",
  org.junit;bundle-version="4.11.0",
- org.eclipse.viatra.examples.cps.tests,
+ org.eclipse.viatra.examples.cps.tests.util,
  org.apache.log4j,
  org.eclipse.viatra.examples.cps.xform.serializer.eclipse,
  org.eclipse.viatra.examples.cps.xform.serializer.javaio;bundle-version="0.1.0"

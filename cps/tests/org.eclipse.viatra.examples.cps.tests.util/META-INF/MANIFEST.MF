@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator Tests Common
-Bundle-SymbolicName: org.eclipse.viatra.examples.cps.tests
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.tests.util
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Export-Package: org.eclipse.viatra.examples.cps.tests

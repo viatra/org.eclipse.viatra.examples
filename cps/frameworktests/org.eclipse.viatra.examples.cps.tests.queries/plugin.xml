@@ -14,4 +14,7 @@
   <extension id="org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality" id="org.eclipse.viatra.examples.cps.tests.queries.VariablesEquality"/>
   </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.RecursiveQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.RecursiveQueries" id="org.eclipse.viatra.examples.cps.tests.queries.RecursiveQueries"/>
+  </extension>
 </plugin>
