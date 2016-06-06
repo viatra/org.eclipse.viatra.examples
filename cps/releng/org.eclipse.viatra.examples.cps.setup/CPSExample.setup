@@ -24,7 +24,7 @@
       location="${jre.location-1.7}"/>
   <setupTask
       xsi:type="git:GitCloneTask"
-      id="git.clone.viatra"
+      id="git.clone.viatra.cps"
       remoteURI="viatra/org.eclipse.viatra.examples"
       checkoutBranch="${viatra.exampes.git.branch}">
     <annotation
@@ -89,7 +89,7 @@
           source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
         <detail
             key="location">
-          <value>${git.clone.cps.location/releng/org.eclipse.viatra.examples.cps.target/cps-demonstrator_oomphgen.target}</value>
+          <value>${git.clone.viatra.cps.location/releng/org.eclipse.viatra.examples.cps.target/cps-demonstrator_oomphgen.target}</value>
         </detail>
         <detail
             key="includeAllPlatforms">
@@ -154,7 +154,7 @@
   <setupTask
       xsi:type="projects:ProjectsImportTask">
     <sourceLocator
-        rootFolder="${git.clone.cps.location}"
+        rootFolder="${git.clone.viatra.cps.location}"
         locateNestedProjects="true">
       <predicate
           xsi:type="predicates:AndPredicate">
@@ -167,7 +167,7 @@
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.viatra.cps.demo.setup"
-      value="=https://git.eclipse.org/c/viatra/org.eclipse.viatra.examples.git/plain/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup->${git.clone.cps.location|uri}/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup"
+      value="=https://git.eclipse.org/c/viatra/org.eclipse.viatra.examples.git/plain/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup->${git.clone.viatra.cps.location|uri}/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
