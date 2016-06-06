@@ -88,5 +88,7 @@ class DeploymentStats extends ModelStats {
 		
 		this.eObjects = model.eAllContents.size
 		this.eReferences = StatsUtil.countEdges(model)
+		
+		baseIndex.dispose
 	}
 }
