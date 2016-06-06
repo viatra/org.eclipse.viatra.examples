@@ -79,7 +79,7 @@ class CPSStats extends ModelStats {
 		})	
 		sp2.resetSum
 		
-		
+		baseIndex.dispose
 		
 	}
 	
