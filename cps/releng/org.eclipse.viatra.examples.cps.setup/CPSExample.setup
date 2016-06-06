@@ -5,33 +5,37 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:git="http://www.eclipse.org/oomph/setup/git/1.0"
     xmlns:jdt="http://www.eclipse.org/oomph/setup/jdt/1.0"
-    xmlns:mylyn="http://www.eclipse.org/oomph/setup/mylyn/1.0"
     xmlns:predicates="http://www.eclipse.org/oomph/predicates/1.0"
     xmlns:projects="http://www.eclipse.org/oomph/setup/projects/1.0"
     xmlns:setup="http://www.eclipse.org/oomph/setup/1.0"
     xmlns:setup.p2="http://www.eclipse.org/oomph/setup/p2/1.0"
     xmlns:setup.targlets="http://www.eclipse.org/oomph/setup/targlets/1.0"
     xmlns:setup.workingsets="http://www.eclipse.org/oomph/setup/workingsets/1.0"
-    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/setup/mylyn/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Mylyn.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
+    xsi:schemaLocation="http://www.eclipse.org/oomph/setup/git/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Git.ecore http://www.eclipse.org/oomph/setup/jdt/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/JDT.ecore http://www.eclipse.org/oomph/predicates/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Predicates.ecore http://www.eclipse.org/oomph/setup/projects/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/Projects.ecore http://www.eclipse.org/oomph/setup/targlets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupTarglets.ecore http://www.eclipse.org/oomph/setup/workingsets/1.0 http://git.eclipse.org/c/oomph/org.eclipse.oomph.git/plain/setups/models/SetupWorkingSets.ecore"
     name="viatra.cps.demo"
     label="VIATRA CPS Demo">
+  <setupTask
+      xsi:type="setup:VariableTask"
+      name="viatra.exampes.git.branch"
+      value="master"/>
   <setupTask
       xsi:type="jdt:JRETask"
       version="JavaSE-1.7"
       location="${jre.location-1.7}"/>
   <setupTask
       xsi:type="git:GitCloneTask"
-      id="git.clone.cps"
-      remoteURI="IncQueryLabs/incquery-examples-cps">
+      id="git.clone.viatra"
+      remoteURI="viatra/org.eclipse.viatra.examples"
+      checkoutBranch="${viatra.exampes.git.branch}">
     <annotation
         source="http://www.eclipse.org/oomph/setup/InducedChoices">
       <detail
           key="inherit">
-        <value>github.remoteURIs</value>
+        <value>eclipse.git.gerrit.remoteURIs</value>
       </detail>
       <detail
           key="label">
-        <value>${scope.project.label} Github repository</value>
+        <value>${scope.project.label} Git or Gerrit repository</value>
       </detail>
       <detail
           key="target">
@@ -153,23 +157,17 @@
         rootFolder="${git.clone.cps.location}"
         locateNestedProjects="true">
       <predicate
-          xsi:type="predicates:NotPredicate">
+          xsi:type="predicates:AndPredicate">
         <operand
-            xsi:type="predicates:OrPredicate">
-          <operand
-              xsi:type="predicates:LocationPredicate"
-              pattern=".*/tests/.*performance.*"/>
-          <operand
-              xsi:type="predicates:LocationPredicate"
-              pattern=".*/releng/.*rcpapplication.*"/>
-        </operand>
+            xsi:type="predicates:LocationPredicate"
+            pattern="cps/.*"/>
       </predicate>
     </sourceLocator>
   </setupTask>
   <setupTask
       xsi:type="setup:EclipseIniTask"
       option="-Doomph.redirection.viatra.cps.demo.setup"
-      value="=https://raw.githubusercontent.com/IncQueryLabs/incquery-examples-cps/master/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup->${git.clone.cps.location|uri}/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup"
+      value="=https://git.eclipse.org/c/viatra/org.eclipse.viatra.examples.git/plain/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup->${git.clone.cps.location|uri}/cps/releng/org.eclipse.viatra.examples.cps.setup/CPSExample.setup"
       vm="true"/>
   <setupTask
       xsi:type="setup:EclipseIniTask"
@@ -186,165 +184,6 @@
       option="-XX:MaxPermSize="
       value="256M"
       vm="true"/>
-  <project name="mylyn">
-    <setupTask
-        xsi:type="setup:CompoundTask"
-        name="Mylyn">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          id=""
-          type="PASSWORD"
-          name="github.user.password"
-          label="GitHub password for Issues/Pull requests"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eiq.cps.demo.milestone"/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eiq.cps.demo.milestone.id"/>
-      <setupTask
-          xsi:type="mylyn:MylynQueriesTask"
-          connectorKind="github"
-          repositoryURL="https://github.com/IncQueryLabs/incquery-examples-cps"
-          userID="${github.user.id}"
-          password="${github.user.password}">
-        <query
-            summary="CPS-Demo bugs in ${eiq.cps.demo.milestone}">
-          <attribute
-              key="milestone"
-              value="${eiq.cps.demo.milestone.id}"/>
-          <attribute
-              key="state"
-              value="open::"/>
-          <attribute
-              key="labels"
-              value="bug::"/>
-        </query>
-        <query
-            summary="CPS-Demo features in ${eiq.cps.demo.milestone}"
-            url="">
-          <attribute
-              key="milestone"
-              value="${eiq.cps.demo.milestone.id}"/>
-          <attribute
-              key="state"
-              value="open::"/>
-          <attribute
-              key="labels"
-              value="enhancement::"/>
-        </query>
-        <query
-            summary="CPS-Demo resolved in ${eiq.cps.demo.milestone}">
-          <attribute
-              key="milestone"
-              value="${eiq.cps.demo.milestone.id}"/>
-          <attribute
-              key="state"
-              value="closed::"/>
-        </query>
-      </setupTask>
-      <setupTask
-          xsi:type="mylyn:MylynQueriesTask"
-          connectorKind="githubPullRequests"
-          repositoryURL="http://github.com/IncQueryLabs/incquery-examples-cps/pulls"
-          userID="${github.user.id}"
-          password="${github.user.password}">
-        <query
-            summary="CPS-Demo pull requests"
-            url="">
-          <attribute
-              key="state"
-              value="open::closed::"/>
-        </query>
-      </setupTask>
-      <setupTask
-          xsi:type="setup.p2:P2Task">
-        <requirement
-            name="org.eclipse.mylyn.ide_feature.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn.java_feature.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn.pde_feature.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn.team_feature.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn_feature.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn.git.feature.group"/>
-        <requirement
-            name="org.eclipse.mylyn.github.feature.feature.group"/>
-        <requirement
-            name="org.eclipse.egit.mylyn.feature.group"/>
-        <repository
-            url="http://download.eclipse.org/releases/mars"/>
-      </setupTask>
-    </setupTask>
-    <stream
-        name="master">
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eiq.cps.demo.milestone"
-          value="0.1.0"
-          defaultValue=""/>
-      <setupTask
-          xsi:type="setup:VariableTask"
-          name="eiq.cps.demo.milestone.id"
-          value="1"
-          defaultValue=""/>
-    </stream>
-  </project>
-  <project name="Performance testing">
-    <setupTask
-        xsi:type="setup.targlets:TargletTask">
-      <targlet
-          name="MONDO-SAM">
-        <requirement
-            name="org.apache.commons.io"/>
-        <requirement
-            name="org.codehaus.jackson.core"/>
-        <requirement
-            name="org.codehaus.jackson.mapper"/>
-        <repositoryList
-            name="Dependencies">
-          <repository
-              url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
-        </repositoryList>
-      </targlet>
-    </setupTask>
-    <setupTask
-        xsi:type="git:GitCloneTask"
-        id="git.clone.mondosam"
-        remoteURI="FTSRG/mondo-sam"
-        pushURI="">
-      <annotation
-          source="http://www.eclipse.org/oomph/setup/InducedChoices">
-        <detail
-            key="inherit">
-          <value>github.remoteURIs</value>
-        </detail>
-        <detail
-            key="label">
-          <value>MONDO-SAM Github repository</value>
-        </detail>
-        <detail
-            key="target">
-          <value>remoteURI</value>
-        </detail>
-      </annotation>
-      <description>${scope.project.label}</description>
-    </setupTask>
-    <setupTask
-        xsi:type="projects:ProjectsImportTask">
-      <sourceLocator
-          rootFolder="${git.clone.mondosam.location}"
-          locateNestedProjects="true"/>
-      <sourceLocator
-          rootFolder="${git.clone.cps.location}"
-          locateNestedProjects="true"/>
-    </setupTask>
-    <stream
-        name="0.1-maintenance"/>
-  </project>
   <stream name="master">
     <setupTask
         xsi:type="setup.workingsets:WorkingSetTask">
@@ -371,6 +210,9 @@
         <predicate
             xsi:type="predicates:LocationPredicate"
             pattern=".*/tests/.*"/>
+        <predicate
+            xsi:type="predicates:LocationPredicate"
+            pattern=".*/frameworktests/.*"/>
       </workingSet>
       <workingSet
           name="CPS Addons">
