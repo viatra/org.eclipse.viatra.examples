@@ -31,6 +31,8 @@ import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.base.api.IEStructuralFeatureProcessor
 import org.eclipse.viatra.query.runtime.base.api.ViatraBaseFactory
 import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutActionMatcher
+import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
+import java.util.LinkedHashSet
 
 class CPSStats extends ModelStats {
 	
@@ -47,6 +49,7 @@ class CPSStats extends ModelStats {
 	public int sendActions = 0;
 	public int waitActions = 0;
 	public int emptyTransition = 0;
+	public int duplicateIds = 0;
 
 	new(ViatraQueryEngine engine, CyberPhysicalSystem model){
 		this.appTypeCount = AppTypesMatcher.on(engine).countMatches;
@@ -79,6 +82,16 @@ class CPSStats extends ModelStats {
 		})	
 		sp2.resetSum
 		
+		val appInstanceIdentifiers = baseIndex.getAllInstances(CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE).filter(ApplicationInstance).map[it.identifier].toList
+		val uniqueAppInstanceIdentifiers = new LinkedHashSet
+		appInstanceIdentifiers.forEach[
+			val added = uniqueAppInstanceIdentifiers.add(it)
+		    if(!added){
+		    	duplicateIds++
+		    	logger.error('''Non-unique ApplicationInstance identifier: «it»''')
+		    }
+		]
+		
 		baseIndex.dispose
 		
 	}
@@ -99,6 +112,7 @@ class CPSStats extends ModelStats {
 		logger.info("=   Connected HostsInstances: " + connectedHostCount);
 		logger.info("=   EObjects: " + eObjects);
 		logger.info("=   EReferences: " + eReferences);
+		logger.info("=   Duplicate AppInstance IDs: " + duplicateIds);
 		logger.info("====================================================================")
 	}
 	

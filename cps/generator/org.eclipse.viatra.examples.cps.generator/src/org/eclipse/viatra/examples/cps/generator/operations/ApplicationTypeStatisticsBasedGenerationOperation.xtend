@@ -39,7 +39,7 @@ class ApplicationTypeStatisticsBasedGenerationOperation implements IOperation<CP
 		
 			for(i : 0 ..< numberOfAppTypes){
 				
-				val appTypeId = "simple.cps.app." + applicationClass.name;
+				val appTypeId = "simple.cps.app." + applicationClass.name + i;
 				val appType = fragment.modelRoot.prepareApplicationTypeWithId(appTypeId);
 				fragment.addApplicationType(applicationClass, appType);
 				
