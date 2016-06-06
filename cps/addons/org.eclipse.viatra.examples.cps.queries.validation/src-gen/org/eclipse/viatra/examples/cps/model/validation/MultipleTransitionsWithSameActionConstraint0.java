@@ -1,15 +1,15 @@
 /**
 
-  Copyright (c) 2014-2016, IncQuery Labs Ltd.
+  Copyright (c) 2014, 2016 IncQuery Labs Ltd.
   All rights reserved. This program and the accompanying materials
   are made available under the terms of the Eclipse Public License v1.0
   which accompanies this distribution, and is available at
   http://www.eclipse.org/legal/epl-v10.html
-  
+ 
   Contributors:
-    Akos Horvath, Abel Hegedus, Tamas Borbas, Zoltan Ujhelyi - initial API and implementation
+      Akos Horvath, Abel Hegedus, Akos Menyhert, Zoltan Ujhelyi - initial API and implementation
 */
-package org.eclipse.viatra.gui.tests.queries;
+package org.eclipse.viatra.examples.cps.model.validation;
 
 import java.util.List;
 import java.util.Map;
@@ -25,7 +25,7 @@ import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
-import org.eclipse.viatra.gui.tests.queries.util.MultipleTransitionsWithSameActionQuerySpecification;
+import org.eclipse.viatra.examples.cps.model.validation.util.MultipleTransitionsWithSameActionQuerySpecification;
 
 public class MultipleTransitionsWithSameActionConstraint0 implements IConstraintSpecification {
 

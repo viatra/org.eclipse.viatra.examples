@@ -1,8 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
   <extension id="org.eclipse.viatra.examples.cps.generator.queries.Validation" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.generator.queries.Validation" id="org.eclipse.viatra.examples.cps.generator.queries.Validation"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.generator.queries.Validation" id="org.eclipse.viatra.examples.cps.generator.queries.Validation">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.AppTypes"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.AppInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.HostTypes"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.HostInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.States"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.Transition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.AllocatedAppInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.ConnectedHosts"/>
+    </group>
   </extension>
   <extension id="org.eclipse.viatra.examples.cps.generator.queries.Queries" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.generator.queries.Queries" id="org.eclipse.viatra.examples.cps.generator.queries.Queries"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.generator.queries.Queries" id="org.eclipse.viatra.examples.cps.generator.queries.Queries">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.Transitions"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.ReachableAppTypes"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.AppTypesOfTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.ReceiverTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.PossibleReceiverType"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionOnAHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutAction"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionWithAction"/>
+    </group>
   </extension>
 </plugin>

@@ -160,7 +160,13 @@
           xsi:type="predicates:AndPredicate">
         <operand
             xsi:type="predicates:LocationPredicate"
-            pattern="cps/.*"/>
+            pattern=".*/cps/.*"/>
+        <operand
+            xsi:type="predicates:NotPredicate">
+          <operand
+              xsi:type="predicates:LocationPredicate"
+              pattern=".*/dse/cps/.*"/>
+        </operand>
       </predicate>
     </sourceLocator>
   </setupTask>
@@ -191,46 +197,46 @@
           name="CPS Domains">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/domains/.*"/>
+            pattern=".*/cps/domains/.*"/>
       </workingSet>
       <workingSet
           name="CPS Queries">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/queries/.*"/>
+            pattern=".*/cps/queries/.*"/>
       </workingSet>
       <workingSet
           name="CPS Transformations">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/transformations/.*"/>
+            pattern=".*/cps/transformations/.*"/>
       </workingSet>
       <workingSet
           name="CPS Tests">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/tests/.*"/>
+            pattern=".*/cps/tests/.*"/>
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/frameworktests/.*"/>
+            pattern=".*/cps/frameworktests/.*"/>
       </workingSet>
       <workingSet
           name="CPS Addons">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/addons/.*"/>
+            pattern=".*/cps/addons/.*"/>
       </workingSet>
       <workingSet
           name="CPS Generator">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/generator/.*"/>
+            pattern=".*/cps/generator/.*"/>
       </workingSet>
       <workingSet
           name="CPS Prototypes">
         <predicate
             xsi:type="predicates:LocationPredicate"
-            pattern=".*/prototypes/.*"/>
+            pattern=".*/cps/prototypes/.*"/>
       </workingSet>
     </setupTask>
   </stream>

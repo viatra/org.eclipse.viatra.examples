@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
   <extension id="org.eclipse.viatra.examples.cps.xform.m2t.monitor.ModelChangeListenerQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.xform.m2t.monitor.ModelChangeListenerQueries" id="org.eclipse.viatra.examples.cps.xform.m2t.monitor.ModelChangeListenerQueries"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.xform.m2t.monitor.ModelChangeListenerQueries" id="org.eclipse.viatra.examples.cps.xform.m2t.monitor.ModelChangeListenerQueries">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.deploymentHostsChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.deploymentHostIpChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.hostApplicationsChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.hostIpChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.applicationIdChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.applicationBehaviorCurrentStateChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.behaviorChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.transitionChange"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2t.monitor.triggerChange"/>
+    </group>
   </extension>
 </plugin>
