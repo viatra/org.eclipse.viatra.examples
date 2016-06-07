@@ -18,3 +18,8 @@ pattern sameVariables(a1, a2) {
 	HostType(a2);
 	a1 == a2;
 }
+
+pattern enumNotEqual(a, s) {
+    ApplicationInstance.state(a, s);
+    s != AppState::Stopped;
+}
