@@ -411,13 +411,16 @@ class CPS2DeploymentBatchTransformationOptimized {
 		// Transform transitions
 		var behaviorTransitions = new ArrayList<BehaviorTransition>
 		for (state : stateMachine.states) {
-//			val parentBehaviorState = mappingCache.get(state).findFirst[behaviorStates.contains(it)] as BehaviorState
-			val parentBehaviorState = mappingCache.get(state).head as BehaviorState
+			val parentBehaviorState = mappingCache.get(state).findFirst[
+				behavior.states.contains(it)
+			] as BehaviorState
 			behaviorTransitions.addAll(
 				state.outgoingTransitions
 					.filter[targetState != null]
 					.filter[transition|mappingCache.get(transition.targetState) != null && /* Need to check, if it is in the model */ transition.targetState.eContainer != null]
-					.map[transform(parentBehaviorState)]
+					.map[
+						transform(parentBehaviorState)
+					]
 			)
 		}
 		stateMachineTransformationPerformance.start
@@ -459,7 +462,9 @@ class CPS2DeploymentBatchTransformationOptimized {
 		val behaviorTransition = DeploymentFactory.eINSTANCE.createBehaviorTransition
 
 		val dep = mappingCache.get(transition.targetState)
-		val targetBehaviorState = dep.head as BehaviorState
+		val targetBehaviorState = dep.filter(BehaviorState).findFirst[
+			it.eContainer.equals(behaviorState.eContainer)
+		]
 		behaviorTransition.to = targetBehaviorState
 		behaviorState.outgoing += behaviorTransition
 		behaviorTransition.description = transition.identifier

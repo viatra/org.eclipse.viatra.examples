@@ -307,11 +307,17 @@ class CPS2DeploymentBatchTransformationSimple {
 		var behaviorTransitions = new ArrayList<BehaviorTransition>
 		for (state : stateMachine.states) {
 			val stateMapping = mapping.traces.findFirst[it.cpsElements.contains(state)]
-			val parentBehaviorState = stateMapping.deploymentElements.head as BehaviorState
+			val parentBehaviorState = stateMapping.deploymentElements.filter(BehaviorState).findFirst[
+				behavior.states.contains(it)
+			]
 			behaviorTransitions.addAll(
-				state.outgoingTransitions.filter[targetState != null].filter[transition|
-					mapping.traces.findFirst[it.cpsElements.contains(transition.targetState)] != null && /* Need to check, if it is in the model */ transition.targetState != null].map[
-					transform(parentBehaviorState)]
+				state.outgoingTransitions.filter[targetState != null].filter [ transition |
+					mapping.traces.findFirst [
+						it.cpsElements.contains(transition.targetState)
+					] != null && /* Need to check, if it is in the model */ transition.targetState != null
+				].map [
+					transform(parentBehaviorState)
+				]
 			)
 		}
 
@@ -348,9 +354,13 @@ class CPS2DeploymentBatchTransformationSimple {
 
 		val behaviorTransition = DeploymentFactory.eINSTANCE.createBehaviorTransition
 
-		val targetStateMapping = mapping.traces.findFirst[it.cpsElements.contains(transition.targetState)]
+		val targetStateMapping = mapping.traces.findFirst[
+			it.cpsElements.contains(transition.targetState)
+		]
 		val dep = targetStateMapping.deploymentElements
-		val targetBehaviorState = dep.head as BehaviorState
+		val targetBehaviorState = dep.filter(BehaviorState).findFirst[
+			it.eContainer.equals(behaviorState.eContainer)
+		]
 		behaviorTransition.to = targetBehaviorState
 		behaviorState.outgoing += behaviorTransition
 		behaviorTransition.description = transition.identifier

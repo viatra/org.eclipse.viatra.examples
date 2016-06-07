@@ -328,7 +328,8 @@ class TransitionMappingTest extends CPS2DepTest {
 		
 		val applications = cps2dep.deployment.hosts.head.applications
 		applications.forEach[
-			assertNotNull("State not created in deployment", it.behavior.transitions.head)
+			assertNotNull("Transition not created in deployment", it.behavior.transitions.head)
+			assertTrue("Outgoing is not set correctly", it.behavior.states.exists[!outgoing.empty])
 		]
 		val traces = cps2dep.traces.filter[cpsElements.contains(transition)]
 		assertEquals("Incorrect number of traces created", 1, traces.size)
@@ -430,6 +431,44 @@ class TransitionMappingTest extends CPS2DepTest {
 		
 		val traces = cps2dep.traces.filter[cpsElements.contains(transition)]
 		assertTrue("Traces not removed", traces.empty)
+		
+		endTest(testId)
+	}
+	
+	@Test
+	def multipleApplicationInstanceOfTransition() {
+		val testId = "multipleApplicationInstanceOfTransition"
+		startTest(testId)
+		
+		val cps2dep = prepareEmptyModel(testId)
+		val hostInstance = cps2dep.prepareHostInstance
+		val appInstance = cps2dep.prepareAppInstance(hostInstance)
+		appInstance.type.prepareApplicationInstanceWithId("app2", hostInstance)
+		appInstance.type.prepareApplicationInstanceWithId("app3", hostInstance)
+		appInstance.type.prepareApplicationInstanceWithId("app4", hostInstance)
+		appInstance.type.prepareApplicationInstanceWithId("app5", hostInstance)
+		val sm = prepareStateMachine(appInstance.type, "simple.cps.sm")
+		val source = sm.prepareState("simple.cps.sm.s1")
+		val target = sm.prepareState("simple.cps.sm.s2")
+		val transition = source.prepareTransition("simple.cps.sm.t", target)
+				
+		cps2dep.initializeTransformation
+		executeTransformation
+
+		prepareApplicationInstanceWithId(appInstance.type, "simple.cps.app.inst2", hostInstance)
+		executeTransformation
+		
+		val applications = cps2dep.deployment.hosts.head.applications
+		applications.forEach[
+			val behavior = it.behavior
+			val trans = behavior.transitions.head
+			assertNotNull("Transition not created in deployment", trans)
+			assertTrue("Target not in same behavior", behavior.states.contains(trans.to))
+			assertTrue("Source not in same behavior", behavior.states.exists[outgoing.contains(trans)])
+		]
+		val traces = cps2dep.traces.filter[cpsElements.contains(transition)]
+		assertEquals("Incorrect number of traces created", 1, traces.size)
+		assertEquals("Trace is not complete (depElements)", appInstance.type.instances.size, traces.head.deploymentElements.size)
 		
 		endTest(testId)
 	}
