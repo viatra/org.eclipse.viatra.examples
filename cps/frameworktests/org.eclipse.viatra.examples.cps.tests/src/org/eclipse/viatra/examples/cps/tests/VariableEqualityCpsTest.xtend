@@ -21,6 +21,7 @@ import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
 import org.eclipse.viatra.examples.cps.tests.queries.util.EnumNotEqualQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.PartiallyUnboundUnifiedExportedParametersQuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
@@ -50,6 +51,15 @@ class VariableEqualityCpsTest {
     @Test
     def void enumNotEqualsTest() {
         ViatraQueryTest.test(EnumNotEqualQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .assertEquals
+    }
+    
+    @Test
+    def void partiallyUnboundUnifiedExportedParametersTest(){
+        ViatraQueryTest.test(PartiallyUnboundUnifiedExportedParametersQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .with(BackendType.Rete.newBackendInstance)
                         .with(BackendType.LocalSearch.newBackendInstance)
