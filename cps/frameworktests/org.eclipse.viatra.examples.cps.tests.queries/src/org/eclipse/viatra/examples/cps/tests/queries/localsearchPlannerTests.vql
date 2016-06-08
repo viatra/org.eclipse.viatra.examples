@@ -15,3 +15,13 @@ pattern multipleExportedSame(at1: ApplicationType, at2: ApplicationType, ai: App
     ApplicationType.instances(at1, ai);
     at1 == at2;
 }
+
+/*
+ * Test pattern to check
+ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=495677
+ */
+pattern unifiedParametersWithDifferentValues(at1, ai, c){
+    ApplicationType.instances(at1, ai);
+    ApplicationType(at2);
+    c == count find multipleExportedSame(at1, at2, _);
+}
