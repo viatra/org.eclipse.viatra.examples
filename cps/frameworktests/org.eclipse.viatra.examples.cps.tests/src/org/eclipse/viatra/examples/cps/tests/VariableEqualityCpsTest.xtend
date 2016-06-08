@@ -14,6 +14,7 @@ import java.util.Collection
 import org.eclipse.viatra.examples.cps.tests.queries.util.EnumNotEqualQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.PartiallyUnboundUnifiedExportedParametersQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.SameVariablesQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.UnifiedParametersWithDifferentValues2QuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UnifiedParametersWithDifferentValuesQuerySpecification
 import org.eclipse.viatra.query.testing.core.XmiModelUtil
 import org.eclipse.viatra.query.testing.core.XmiModelUtil.XmiModelUtilRunningOptionEnum
@@ -61,6 +62,15 @@ class VariableEqualityCpsTest {
     @Test
     def void partiallyUnboundUnifiedExportedParametersTest(){
         ViatraQueryTest.test(PartiallyUnboundUnifiedExportedParametersQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .assertEquals
+    }
+    
+    @Test
+    def void unifiedParametersWithDifferentValues2Test(){
+        ViatraQueryTest.test(UnifiedParametersWithDifferentValues2QuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .with(BackendType.Rete.newBackendInstance)
                         .with(BackendType.LocalSearch.newBackendInstance)

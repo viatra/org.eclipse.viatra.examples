@@ -16,6 +16,18 @@ pattern multipleExportedSame(at1: ApplicationType, at2: ApplicationType, ai: App
     at1 == at2;
 }
 
+pattern multiInstanceTypes(at1: ApplicationType, at2: ApplicationType, ai: ApplicationInstance){
+    c == count find applicationInstancesOfApplicationType(at1, ai);
+    check(c > 1);
+    at1 == at2;
+}
+
+pattern unifiedParametersWithDifferentValues2(at1, ai, c){
+    ApplicationType.instances(at1, ai);
+    ApplicationType(at2);
+    c == count find multiInstanceTypes(at1, at2, ai);
+}
+
 /*
  * Test pattern to check
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=495677
