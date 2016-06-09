@@ -46,3 +46,21 @@ pattern multipleEvals(at: ApplicationType){
     d == eval(Integer.parseInt("1"));
     check(c > d);
 }
+
+private pattern countInstances(at: ApplicationType, value){
+    value == count find applicationInstancesOfApplicationType(at, _ai);
+}
+
+private pattern useVarInEvalUtil(at: ApplicationType){
+    find countInstances(at, value);
+    d == eval(value+2);
+    check(d == 1);
+}
+
+/*
+ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=495792
+ */
+pattern useVarInEval(at1: ApplicationType, at2: ApplicationType){
+    find useVarInEvalUtil(at1);
+    find useVarInEvalUtil(at2);
+}
