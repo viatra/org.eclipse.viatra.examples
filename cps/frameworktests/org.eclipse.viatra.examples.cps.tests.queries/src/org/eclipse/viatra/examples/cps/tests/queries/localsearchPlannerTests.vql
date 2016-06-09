@@ -37,3 +37,12 @@ pattern unifiedParametersWithDifferentValues(at1, ai, c){
     ApplicationType(at2);
     c == count find multipleExportedSame(at1, at2, _);
 }
+
+/*
+ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=495764
+ */
+pattern multipleEvals(at: ApplicationType){
+    c == count find applicationInstancesOfApplicationType(at, _ai);
+    d == eval(Integer.parseInt("1"));
+    check(c > d);
+}
