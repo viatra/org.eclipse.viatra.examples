@@ -15,15 +15,21 @@ import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.CPS2DeploymentBatchTransformationEiq
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
 import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint
 
-class BatchIncQuery extends CPSTransformationWrapper {
+class BatchQueryOnly extends CPSTransformationWrapper {
 
 	CPS2DeploymentBatchTransformationEiq xform
 	AdvancedViatraQueryEngine engine
+	QueryEvaluationHint hint
+
+	new(QueryEvaluationHint hint) {
+		this.hint = hint
+	}
 
 	override initializeTransformation(CPSToDeployment cps2dep) {
 		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
-		xform = new CPS2DeploymentBatchTransformationEiq(cps2dep, engine)
+		xform = new CPS2DeploymentBatchTransformationEiq(cps2dep, engine, hint)
 	}
 
 	override executeTransformation() {
