@@ -20,13 +20,15 @@
       value="master"/>
   <setupTask
       xsi:type="setup:VariableTask"
-      name="viatra.repository.url">
+      name="viatra.repository.url"
+      label="VIATRA Update site">
     <choice
         value="http://download.eclipse.org/viatra/updates/integration"
         label="Integration"/>
     <choice
         value="https://hudson.eclipse.org/viatra/job/viatra-master/lastSuccessfulBuild/artifact/releng/org.eclipse.viatra.update/target/repository/"
         label="CI"/>
+    <description>Select Integration unless you need to check a very recent change</description>
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
