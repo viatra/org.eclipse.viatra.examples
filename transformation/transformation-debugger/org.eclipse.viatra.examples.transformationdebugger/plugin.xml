@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension point="org.eclipse.ui.commands">
+    <command id="com.incquerylabs.course.cps.viatra.debugger.test" name="ED Test Trafo"/>
+    <command id="com.incquerylabs.course.cps.viatra.debugger.testbatch" name="Batch Test Trafo"/>
+  </extension>
+  <extension point="org.eclipse.ui.handlers">
+    <handler class="com.incquerylabs.course.cps.viatra.debugger.handler.EDTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.test"/>
+    <handler class="com.incquerylabs.course.cps.viatra.debugger.handler.BatchTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.testbatch"/>
+  </extension>
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+      <toolbar id="com.incquerylabsED CPS TRAFOps.viatra.debugger.sampleToolbar">
+        <command commandId="com.incquerylabs.course.cps.viatra.debugger.test" id="com.incquerylabs.course.cps.viatra.debugger.testtrafotoolbar" label="CPS ED TRAFO" tooltip="CPS trafo"/>
+        <command commandId="com.incquerylabs.course.cps.viatra.debugger.testbatch" id="com.incquerylabs.course.cps.viatra.debugger.testtrafotoolbar" label="CPS Batch TRAFO" tooltip="CPS batch trafo"/>
+      </toolbar>
+    </menuContribution>
+  </extension>
+  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns">
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostTypeViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostInstanceViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.appInstanceViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostTypeInstanceLinkViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostAppLinkViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.deploymentHostViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.deploymentAppViewers"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.traceRelationViewers"/>
+    </group>
+  </extension>
+  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns">
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.hostInstance"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.cps2depTrace"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.applicationInstance"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.appInstanceWithStateMachine"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.state"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.transition"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.action"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.sendAction"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.waitAction"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.actionPair"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.reachableHosts"/>
+    </group>
+  </extension>
+  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns">
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.mappedCPS"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.cps2depTrace"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostInstance"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.applicationInstance"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.stateMachine"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.state"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.transition"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.depBehaviorsStateAndTransitions"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.allocatedDeploymentApplication"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.applicationInstanceWithHost"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostFromTransition"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.appInstanceTransition"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.communicatingAppInstances"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostCommunication"/>
+      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.reachableHosts"/>
+    </group>
+  </extension>
+</plugin>

@@ -1,0 +1,53 @@
+package com.incquerylabs.course.cps.viatra.debugger.patterns
+
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
+import "http://org.eclipse.viatra/model/cps-traceability"
+
+
+
+@Item(item = hostType, label = "HOST TYPE : $hostType.identifier$")
+pattern hostTypeViewers(hostType : HostType) {
+	HostType(hostType);
+}
+
+@Item(item = hostInstance, label = "HOST INSTANCE : $hostInstance.identifier$ : $hostInstance.nodeIp$")
+pattern hostInstanceViewers(hostInstance : HostInstance) {
+	HostInstance(hostInstance);
+}
+
+@Item(item = appInstance, label = "APP INSTANCE : $appInstance.identifier$")
+pattern appInstanceViewers(appInstance : ApplicationInstance) {
+	ApplicationInstance(appInstance);
+}
+
+@Edge(source = hostType, target = hostInstance)
+pattern hostTypeInstanceLinkViewers(hostType : HostType, hostInstance : HostInstance){
+	HostType.instances(hostType, hostInstance);
+}
+
+@Edge(source = hostInstance, target = appInstance)
+pattern hostAppLinkViewers(hostInstance : HostInstance, appInstance : ApplicationInstance){
+	HostInstance.applications(hostInstance, appInstance);
+}
+
+
+@Item(item = depHost, label = "DEPLOYMENT HOST : $depHost.ip$")
+@Format(color = "#00ff00")
+pattern deploymentHostViewers(depHost : DeploymentHost) {
+	DeploymentHost(depHost);
+}
+
+@Item(item = depApp, label = "DEPLOYMENT APP : $depApp.id$")
+@Format(color = "#00ff00")
+pattern deploymentAppViewers(depApp : DeploymentApplication) {
+	DeploymentApplication(depApp);
+}
+
+
+@Edge(source = cpsElement, target = depElement)
+pattern traceRelationViewers(cpsElement : Identifiable, depElement : DeploymentElement){
+	CPSToDeployment.traces(_, trace);
+	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
+	CPS2DeploymentTrace.deploymentElements(trace, depElement);
+}

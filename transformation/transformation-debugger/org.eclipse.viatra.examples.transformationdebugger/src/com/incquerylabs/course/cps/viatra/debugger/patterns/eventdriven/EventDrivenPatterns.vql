@@ -1,0 +1,84 @@
+package com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven
+
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
+import "http://org.eclipse.viatra/model/cps-traceability"
+
+pattern mappedCPS(cps2dep : CPSToDeployment, cps : CyberPhysicalSystem, deployment : Deployment) {
+	CPSToDeployment.cps(cps2dep, cps);
+	CPSToDeployment.deployment(cps2dep, deployment);
+}
+
+pattern cps2depTrace(cps2dep : CPSToDeployment, trace : CPS2DeploymentTrace, cpsElement : Identifiable, depElement : DeploymentElement) {
+	CPSToDeployment.traces(cps2dep, trace);
+	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
+	CPS2DeploymentTrace.deploymentElements(trace, depElement);
+}
+
+pattern hostInstance(hostInstance : HostInstance) {
+	HostInstance(hostInstance);
+}
+
+pattern applicationInstance(appType : ApplicationType, appInstance : ApplicationInstance){
+	HostInstance.applications(_, appInstance);
+	ApplicationType.instances(appType, appInstance);
+}
+
+pattern stateMachine(appInstance : ApplicationInstance, stateMachine : StateMachine) {
+	find applicationInstance(appType, appInstance);
+	ApplicationType.behavior(appType, stateMachine);
+}
+
+pattern state(appInstance : ApplicationInstance, stateMachine : StateMachine, state : State) {
+	find stateMachine(appInstance, stateMachine);
+	StateMachine.states(stateMachine, state);
+}
+
+pattern transition(appInstance : ApplicationInstance, srcState : State, targetState : State, transition : Transition) {
+	find state(appInstance, stateMachine, srcState);
+	State.outgoingTransitions(srcState, transition);
+	Transition.targetState(transition, targetState);
+	StateMachine.states(stateMachine, targetState);
+}
+
+pattern depBehaviorsStateAndTransitions(depBehavior : DeploymentBehavior, depState : BehaviorState, depTransition : BehaviorTransition) {
+	DeploymentBehavior.states(depBehavior, depState);
+	DeploymentBehavior.transitions(depBehavior, depTransition);
+}
+
+pattern allocatedDeploymentApplication(depHost : DeploymentHost, depApp : DeploymentApplication) {
+	DeploymentHost.applications(depHost, depApp);
+}
+
+pattern applicationInstanceWithHost(appType : ApplicationType, appInstance : ApplicationInstance, host : HostInstance) {
+	find applicationInstance(appType, appInstance);
+	ApplicationInstance.allocatedTo(appInstance, host);
+}
+
+pattern hostFromTransition(appType : ApplicationType, appInstance : ApplicationInstance, transition : Transition, hostInstance : HostInstance) {
+	find appInstanceTransition(appInstance, transition);
+	find applicationInstanceWithHost(appType, appInstance, hostInstance);
+}
+
+pattern appInstanceTransition(appInstance : ApplicationInstance, transition : Transition) {
+	find applicationInstance(appType, appInstance);
+	ApplicationType.behavior.states.outgoingTransitions(appType, transition);
+}
+
+pattern communicatingAppInstances(sourceAppInstance : ApplicationInstance, targetAppInstance : ApplicationInstance) {
+	find applicationInstanceWithHost(_, sourceAppInstance, sourceHostInstance);
+	find applicationInstanceWithHost(_, targetAppInstance, targetHostInstance);
+	find reachableHosts(sourceHostInstance, targetHostInstance);
+}
+
+pattern hostCommunication(fromHost : HostInstance, toHost : HostInstance) {
+	HostInstance.communicateWith(fromHost, toHost);
+}
+
+pattern reachableHosts(source : HostInstance, target : HostInstance) {
+	find hostCommunication(source, target);
+} or {
+	HostInstance(source);
+	HostInstance(target);
+	source == target;
+}
