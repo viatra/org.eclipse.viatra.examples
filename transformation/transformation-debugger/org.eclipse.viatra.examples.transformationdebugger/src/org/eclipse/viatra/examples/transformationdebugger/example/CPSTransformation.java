@@ -8,7 +8,7 @@
  * Contributors:
  *   Peter Lunk - initial API and implementation
  */
-package com.incquerylabs.course.cps.viatra.debugger.example;
+package org.eclipse.viatra.examples.transformationdebugger.example;
 
 public interface CPSTransformation {
     public void execute();

@@ -8,21 +8,21 @@
  * Contributors:
  *   Peter Lunk - initial API and implementation
  */
-package com.incquerylabs.course.cps.viatra.debugger.example
+package org.eclipse.viatra.examples.transformationdebugger.example
 
 import com.google.common.base.Stopwatch
-import com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns
-import com.incquerylabs.course.cps.viatra.debugger.patterns.batch.ApplicationInstanceMatch
-import com.incquerylabs.course.cps.viatra.debugger.patterns.batch.ApplicationInstanceMatcher
-import com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns
-import com.incquerylabs.course.cps.viatra.debugger.patterns.batch.HostInstanceMatch
-import com.incquerylabs.course.cps.viatra.debugger.patterns.batch.HostInstanceMatcher
 import java.util.concurrent.TimeUnit
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.deployment.DeploymentFactory
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
+import org.eclipse.viatra.examples.transformationdebugger.patterns.ViewersPatterns
+import org.eclipse.viatra.examples.transformationdebugger.patterns.batch.ApplicationInstanceMatch
+import org.eclipse.viatra.examples.transformationdebugger.patterns.batch.ApplicationInstanceMatcher
+import org.eclipse.viatra.examples.transformationdebugger.patterns.batch.BatchPatterns
+import org.eclipse.viatra.examples.transformationdebugger.patterns.batch.HostInstanceMatch
+import org.eclipse.viatra.examples.transformationdebugger.patterns.batch.HostInstanceMatcher
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.emf.EMFScope
 import org.eclipse.viatra.transformation.debug.configuration.TransformationDebuggerConfiguration

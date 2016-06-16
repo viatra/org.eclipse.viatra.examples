@@ -1,4 +1,4 @@
-package com.incquerylabs.course.cps.viatra.debugger.patterns
+package org.eclipse.viatra.examples.transformationdebugger.patterns
 
 import "http://org.eclipse.viatra/model/cps"
 import "http://org.eclipse.viatra/model/deployment"

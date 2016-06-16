@@ -8,12 +8,12 @@
  * Contributors:
  *   Peter Lunk - initial API and implementation
  */
-package com.incquerylabs.course.cps.viatra.debugger
+package org.eclipse.viatra.examples.transformationdebugger
 
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSBatchTransformation
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSEventDrivenTransformation
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSModelInitializer
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSTransformation
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSBatchTransformation
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSEventDrivenTransformation
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSModelInitializer
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSTransformation
 import org.junit.Test
 
 class RunVIATRATransformation {

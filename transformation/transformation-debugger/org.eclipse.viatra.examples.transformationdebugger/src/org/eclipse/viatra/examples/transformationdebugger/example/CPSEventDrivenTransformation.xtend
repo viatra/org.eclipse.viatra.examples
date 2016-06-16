@@ -8,13 +8,9 @@
  * Contributors:
  *   Peter Lunk - initial API and implementation
  */
-package com.incquerylabs.course.cps.viatra.debugger.example
+package org.eclipse.viatra.examples.transformationdebugger.example
 
 import com.google.common.base.Stopwatch
-import com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns
-import com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.ApplicationInstanceMatcher
-import com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns
-import com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.HostInstanceMatcher
 import java.util.concurrent.TimeUnit
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
@@ -25,6 +21,10 @@ import org.eclipse.viatra.examples.cps.traceability.CPS2DeploymentTrace
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityPackage
+import org.eclipse.viatra.examples.transformationdebugger.patterns.ViewersPatterns
+import org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.ApplicationInstanceMatcher
+import org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.EventDrivenPatterns
+import org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.HostInstanceMatcher
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.emf.EMFScope
 import org.eclipse.viatra.transformation.debug.configuration.TransformationDebuggerConfiguration
@@ -122,9 +122,9 @@ public class CPSEventDrivenTransformation implements CPSTransformation {
                 val deploymentHost = mapping.deployment.createChild(deployment_Hosts, deploymentHost)
                 deploymentHost.set(deploymentHost_Ip, hostInstance.nodeIp)
 
-                val hostTrace = mapping.createChild(CPSToDeployment_Traces, CPS2DeploymentTrace)
-                hostTrace.addTo(CPS2DeploymentTrace_CpsElements, hostInstance)
-                hostTrace.addTo(CPS2DeploymentTrace_DeploymentElements, deploymentHost)
+                val hostTrace = mapping.createChild(getCPSToDeployment_Traces, getCPS2DeploymentTrace)
+                hostTrace.addTo(getCPS2DeploymentTrace_CpsElements, hostInstance)
+                hostTrace.addTo(getCPS2DeploymentTrace_DeploymentElements, deploymentHost)
 
             ].action(CRUDActivationStateEnum.UPDATED) [
                 val depHost = engine.cps2depTrace.getOneArbitraryMatch(mapping, null, hostInstance, null).
@@ -136,7 +136,7 @@ public class CPSEventDrivenTransformation implements CPSTransformation {
                 val traceMatch = engine.cps2depTrace.getOneArbitraryMatch(mapping, null, hostInstance, null)
                 logger.debug('''Removing host with IP: «hostInstance.nodeIp»''')
                 mapping.deployment.remove(deployment_Hosts, traceMatch.depElement)
-                mapping.remove(CPSToDeployment_Traces, traceMatch.trace)
+                mapping.remove(getCPSToDeployment_Traces, traceMatch.trace)
                 logger.debug('''Removed host with IP: «hostInstance.nodeIp»''')
             ].addLifeCycle(Lifecycles.getDefault(true, true)).build
         }
@@ -153,9 +153,9 @@ public class CPSEventDrivenTransformation implements CPSTransformation {
                     val deploymentApplication = depHost.createChild(deploymentHost_Applications, deploymentApplication)
                     deploymentApplication.set(deploymentApplication_Id, appInstance.identifier)
 
-                    val hostTrace = mapping.createChild(CPSToDeployment_Traces, CPS2DeploymentTrace)
-                    hostTrace.addTo(CPS2DeploymentTrace_CpsElements, appInstance)
-                    hostTrace.addTo(CPS2DeploymentTrace_DeploymentElements, deploymentApplication)
+                    val hostTrace = mapping.createChild(getCPSToDeployment_Traces, getCPS2DeploymentTrace)
+                    hostTrace.addTo(getCPS2DeploymentTrace_CpsElements, appInstance)
+                    hostTrace.addTo(getCPS2DeploymentTrace_DeploymentElements, deploymentApplication)
                     debug('''Mapped application with ID: «appInstance.identifier»''')
                 ].action(CRUDActivationStateEnum.UPDATED) [
                     val depApp = engine.cps2depTrace.getOneArbitraryMatch(mapping, null, appInstance, null).
@@ -168,7 +168,7 @@ public class CPSEventDrivenTransformation implements CPSTransformation {
                     val depApp = trace.deploymentElements.head as DeploymentApplication
                     engine.allocatedDeploymentApplication.getAllValuesOfdepHost(depApp).head.remove(
                         deploymentHost_Applications, depApp)
-                    mapping.remove(CPSToDeployment_Traces, trace)
+                    mapping.remove(getCPSToDeployment_Traces, trace)
                 ].addLifeCycle(Lifecycles.getDefault(true, true)).build
         }
         return applicationRule

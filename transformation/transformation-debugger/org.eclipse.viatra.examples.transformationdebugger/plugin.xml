@@ -4,8 +4,8 @@
     <command id="com.incquerylabs.course.cps.viatra.debugger.testbatch" name="Batch Test Trafo"/>
   </extension>
   <extension point="org.eclipse.ui.handlers">
-    <handler class="com.incquerylabs.course.cps.viatra.debugger.handler.EDTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.test"/>
-    <handler class="com.incquerylabs.course.cps.viatra.debugger.handler.BatchTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.testbatch"/>
+    <handler class="org.eclipse.viatra.examples.transformationdebugger.handler.EDTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.test"/>
+    <handler class="org.eclipse.viatra.examples.transformationdebugger.handler.BatchTestHandler" commandId="com.incquerylabs.course.cps.viatra.debugger.testbatch"/>
   </extension>
   <extension point="org.eclipse.ui.menus">
     <menuContribution locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
@@ -15,50 +15,50 @@
       </toolbar>
     </menuContribution>
   </extension>
-  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.ViewersPatterns">
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostTypeViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostInstanceViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.appInstanceViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostTypeInstanceLinkViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.hostAppLinkViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.deploymentHostViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.deploymentAppViewers"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.traceRelationViewers"/>
+  <extension id="org.eclipse.viatra.examples.transformationdebugger.patterns.ViewersPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.transformationdebugger.patterns.ViewersPatterns" id="org.eclipse.viatra.examples.transformationdebugger.patterns.ViewersPatterns">
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.hostTypeViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.hostInstanceViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.appInstanceViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.hostTypeInstanceLinkViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.hostAppLinkViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.deploymentHostViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.deploymentAppViewers"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.traceRelationViewers"/>
     </group>
   </extension>
-  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.BatchPatterns">
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.hostInstance"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.cps2depTrace"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.applicationInstance"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.appInstanceWithStateMachine"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.state"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.transition"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.action"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.sendAction"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.waitAction"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.actionPair"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.batch.reachableHosts"/>
+  <extension id="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.BatchPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.transformationdebugger.patterns.batch.BatchPatterns" id="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.BatchPatterns">
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.hostInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.cps2depTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.applicationInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.appInstanceWithStateMachine"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.state"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.transition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.action"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.sendAction"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.waitAction"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.actionPair"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.batch.reachableHosts"/>
     </group>
   </extension>
-  <extension id="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns" id="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.EventDrivenPatterns">
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.mappedCPS"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.cps2depTrace"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostInstance"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.applicationInstance"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.stateMachine"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.state"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.transition"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.depBehaviorsStateAndTransitions"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.allocatedDeploymentApplication"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.applicationInstanceWithHost"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostFromTransition"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.appInstanceTransition"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.communicatingAppInstances"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.hostCommunication"/>
-      <query-specification fqn="com.incquerylabs.course.cps.viatra.debugger.patterns.eventdriven.reachableHosts"/>
+  <extension id="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.EventDrivenPatterns" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.EventDrivenPatterns" id="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.EventDrivenPatterns">
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.mappedCPS"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.cps2depTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.hostInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.applicationInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.stateMachine"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.state"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.transition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.depBehaviorsStateAndTransitions"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.allocatedDeploymentApplication"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.applicationInstanceWithHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.hostFromTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.appInstanceTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.communicatingAppInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.hostCommunication"/>
+      <query-specification fqn="org.eclipse.viatra.examples.transformationdebugger.patterns.eventdriven.reachableHosts"/>
     </group>
   </extension>
 </plugin>

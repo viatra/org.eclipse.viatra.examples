@@ -8,7 +8,7 @@
  * Contributors:
  *   Peter Lunk - initial API and implementation
  */
-package com.incquerylabs.course.cps.viatra.debugger.handler;
+package org.eclipse.viatra.examples.transformationdebugger.handler;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -18,24 +18,23 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment;
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSBatchTransformation;
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSModelInitializer;
+import org.eclipse.viatra.examples.transformationdebugger.example.CPSTransformation;
 
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSEventDrivenTransformation;
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSModelInitializer;
-import com.incquerylabs.course.cps.viatra.debugger.example.CPSTransformation;
-
-public class EDTestHandler extends AbstractHandler {
+public class BatchTestHandler extends AbstractHandler {
 
     @Override
     public Object execute(ExecutionEvent event) throws ExecutionException {
 
-        final Job job = new Job("CPS batch trafo job") {
+        final Job job = new Job("CPS batch job") {
             protected IStatus run(IProgressMonitor monitor) {
                 // Load the CPS model
                 CPSModelInitializer init = new CPSModelInitializer();
-                CPSToDeployment cps2dep = init.loadModel("platform:/plugin/com.incquerylabs.course.cps.viatra.debugger/output/example.cyberphysicalsystem");
+                CPSToDeployment cps2dep = init.loadModel("platform:/plugin/org.eclipse.viatra.examples.transformationdebugger/output/example.cyberphysicalsystem");
 
                 // Initialize CPS to Deployment Transformation
-                CPSTransformation transformation = new CPSEventDrivenTransformation(cps2dep);
+                CPSTransformation transformation = new CPSBatchTransformation(cps2dep);
                 // Execute the transformation and observe the effects of the selected adapter
                 transformation.execute();
                 
