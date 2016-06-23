@@ -64,6 +64,7 @@ pattern cpsApplicationTransition(cpsApp : ApplicationInstance, cpsTransition : T
 
 pattern sendTransitionAppSignal(transition, app, signal) {
  	Transition.action(transition, action);
+ 	check(SignalUtil.isSend(action));
  	app == eval(SignalUtil.getAppId(action));
  	signal == eval(SignalUtil.getSignalId(action));
 }
@@ -73,9 +74,7 @@ pattern waitTransitionAppSignal(transition, appType, signal) {
 	StateMachine.states(stateMachine, source);
 	State.outgoingTransitions(source, transition);
  	Transition.action(transition, action);
- 	check(
- 		SignalUtil.isWait(action)
- 	);
+ 	check(SignalUtil.isWait(action));
  	signal == eval(SignalUtil.getSignalId(action));
 }
 

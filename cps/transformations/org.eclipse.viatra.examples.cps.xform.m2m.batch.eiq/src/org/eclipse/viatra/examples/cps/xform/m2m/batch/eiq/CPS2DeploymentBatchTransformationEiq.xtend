@@ -350,25 +350,27 @@ class CPS2DeploymentBatchTransformationEiq {
 		val cpsSendTransition = engine.getMatcher(cps2depTrace, hint).getAllValuesOfcpsElement(mapping, null, depSendTransition).head as Transition
 		val cpsWaitTransitions = engine.getMatcher(triggerPair, hint).getAllValuesOfcpsTarget(cpsSendTransition).filter(Transition)
 
-		val senderDepApp = depSendTransition.eContainer.eContainer as DeploymentApplication
-		val cpsSendAppInstance = engine.getMatcher(cps2depTrace, hint).getAllValuesOfcpsElement(mapping, null, senderDepApp).head as ApplicationInstance
-				
-		cpsWaitTransitions.forEach[cpsWaitTransition |
-			val cpsWaitAppInstances = engine.getMatcher(cpsApplicationTransition, hint).getAllValuesOfcpsApp(cpsWaitTransition)
-			val communicatingWaitAppInstances = cpsWaitAppInstances.filter[
-				engine.getMatcher(communicatingAppInstances, hint).hasMatch(cpsSendAppInstance, it)
-			]
-			communicatingWaitAppInstances.forEach[cpsWaitAppInstance |
-				val waitTransitionTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitTransition, null).filter(CPS2DeploymentTrace).head
-				val waitAppInstanceTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitAppInstance, null).filter(CPS2DeploymentTrace).head 
-				
-				val depWaitApp = waitAppInstanceTrace.deploymentElements.filter(DeploymentApplication).head
-				val depWaitTransition = waitTransitionTrace.deploymentElements.filter(BehaviorTransition).findFirst[
-					depWaitApp == it.eContainer.eContainer
+		if(!cpsWaitTransitions.empty){
+			val senderDepApp = depSendTransition.eContainer.eContainer as DeploymentApplication
+			val cpsSendAppInstance = engine.getMatcher(cps2depTrace, hint).getAllValuesOfcpsElement(mapping, null, senderDepApp).head as ApplicationInstance
+					
+			cpsWaitTransitions.forEach[cpsWaitTransition |
+				val cpsWaitAppInstances = engine.getMatcher(cpsApplicationTransition, hint).getAllValuesOfcpsApp(cpsWaitTransition)
+				val communicatingWaitAppInstances = cpsWaitAppInstances.filter[
+					engine.getMatcher(communicatingAppInstances, hint).hasMatch(cpsSendAppInstance, it)
 				]
-				depSendTransition.trigger += depWaitTransition
+				communicatingWaitAppInstances.forEach[cpsWaitAppInstance |
+					val waitTransitionTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitTransition, null).filter(CPS2DeploymentTrace).head
+					val waitAppInstanceTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitAppInstance, null).filter(CPS2DeploymentTrace).head 
+					
+					val depWaitApp = waitAppInstanceTrace.deploymentElements.filter(DeploymentApplication).head
+					val depWaitTransition = waitTransitionTrace.deploymentElements.filter(BehaviorTransition).findFirst[
+						depWaitApp == it.eContainer.eContainer
+					]
+					depSendTransition.trigger += depWaitTransition
+				]
 			]
-		]
+		}
 
 		triggerTransformationPerformance.stop
 		trace('''Execution ended: mapAction''')
