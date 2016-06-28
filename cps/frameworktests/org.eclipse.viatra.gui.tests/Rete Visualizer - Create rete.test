@@ -7,7 +7,7 @@ Element-Version: 3.0
 External-Reference: 
 Id: _e6LfkO9yEeW7SP0a5rPzzg
 Runtime-Version: 2.1.0.201606221726
-Save-Time: 6/27/16 1:02 PM
+Save-Time: 6/28/16 3:12 PM
 Testcase-Type: ecl
 
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac
@@ -25,15 +25,19 @@ Entry-Name: .content
  *   Tamas Borbas - Testing VIATRA GUI
  *******************************************************************************/
 
-get-view "Rete Visualizer" | get-canvas | get-property "getNodes().size()" | equals 0 | verify-true
-with [get-tab-folder -index 5] {
-    get-tab-item "Query Explorer" | click
-    double-click
-    get-tab-item "Query Explorer" | click
-}
+/**
+ * XXX For some reason, RCPTT does not consider the Zest canvas existing before
+ * it had any nodes. Workaround: Initialize view with some content than clear it up.
+ */
+get-view "Rete Visualizer" | click
 get-view "Query Explorer" | get-tree -index 1 
     | select "\[platform:\\/resource\\/org.eclipse.viatra.examples.uml.instances\\/empty-classes.uml\]\[.*\]/uml.emptyclass.superClass.*$" 
-    | double-click
-get-view "Rete Visualizer" | get-canvas | get-property "getItem().getNodes().size()" | equals 15 | verify-true
+get-view "Rete Visualizer" | get-button "Clear Graph" | click
 
+
+
+get-view "Rete Visualizer" | get-canvas | get-property "getNodes().size()" | equals 0 | verify-true
+get-view "Query Explorer" | get-tree -index 1 
+    | select "\[platform:\\/resource\\/org.eclipse.viatra.examples.uml.instances\\/empty-classes.uml\]\[.*\]/uml.emptyclass.superClass.*$" 
+get-view "Rete Visualizer" | get-canvas | get-property "getItem().getNodes().size()" | equals 15 | verify-true
 ------=_.content-0a7243a0-75d3-3d5f-9791-539de0e5b7ac--
