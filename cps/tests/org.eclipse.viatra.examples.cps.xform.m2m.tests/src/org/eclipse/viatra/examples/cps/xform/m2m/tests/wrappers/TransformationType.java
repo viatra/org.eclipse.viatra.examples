@@ -12,6 +12,8 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers;
 
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchBackendFactory;
+import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHintKeys;
+import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.VariableBindingBasedCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
@@ -33,6 +35,17 @@ public enum TransformationType {
 	    	return new BatchQueryOnly(hint);
 	    }
     	public boolean isIncremental(){return false;}
+    },
+    BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
+        public CPSTransformationWrapper getWrapper() {
+            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
+                    LocalSearchHintKeys.ALLOW_INVERSE_NAVIGATION, Boolean.FALSE,
+                    LocalSearchHintKeys.USE_BASE_INDEX, Boolean.FALSE,
+                    LocalSearchHintKeys.PLANNER_COST_FUNCTION, new VariableBindingBasedCostFunction()
+                    ));
+            return new BatchQueryOnly(hint);
+        }
+        public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_TRANSFORMATION {public CPSTransformationWrapper getWrapper() {return new BatchViatra();} public boolean isIncremental(){return false;}},
     INCR_VIATRA_QUERY_RESULT_TRACEABILITY {public CPSTransformationWrapper getWrapper() {return new QueryResultTraceability();} public boolean isIncremental(){return true;}},
