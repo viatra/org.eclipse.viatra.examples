@@ -34,7 +34,7 @@ class CPSPhaseInstanceGeneration implements IPhase<CPSFragment>{
 					sumAppType++
 				}			
 			}
-			info(" --> AppTypes of " + appClass.name + " = " +sumAppType)
+			debug(" --> AppTypes of " + appClass.name + " = " +sumAppType)
 		}
 
 		
