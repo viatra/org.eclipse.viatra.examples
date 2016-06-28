@@ -26,6 +26,7 @@ import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
 import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
+import org.junit.Ignore
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
@@ -71,6 +72,7 @@ class VariableEqualityCpsTest {
     }
     
     @Test
+    @Ignore("TODO: Waiting for bug 495681 to be fixed")
     def void unifiedParametersWithDifferentValues2Test(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValues2QuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
@@ -80,6 +82,7 @@ class VariableEqualityCpsTest {
     }
     
     @Test
+    @Ignore("TODO: Waiting for bug 495681 to be fixed")
     def void unifiedParametersWithDifferentValuesTest(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValuesQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
