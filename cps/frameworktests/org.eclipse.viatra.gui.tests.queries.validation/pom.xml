@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.eclipse.viatra.tests</groupId>
-        <artifactId>org.eclipse.viatra.tests.parent</artifactId>
+        <artifactId>org.eclipse.viatra.gui.tests.parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../org.eclipse.viatra.tests.parent/</relativePath>
+        <relativePath>../org.eclipse.viatra.gui.tests.parent/</relativePath>
     </parent>
     <artifactId>org.eclipse.viatra.gui.tests.queries.validation</artifactId>
     <packaging>eclipse-plugin</packaging>

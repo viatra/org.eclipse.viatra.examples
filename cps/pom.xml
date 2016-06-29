@@ -14,15 +14,7 @@
 		<module>releng/org.eclipse.viatra.examples.cps.target</module>
 
 		<!-- Domains -->
-		<module>domains/org.eclipse.viatra.examples.cps.deployment</module>
-		<module>domains/org.eclipse.viatra.examples.cps.deployment.edit</module>
-		<module>domains/org.eclipse.viatra.examples.cps.deployment.editor</module>
-		<module>domains/org.eclipse.viatra.examples.cps.model</module>
-		<module>domains/org.eclipse.viatra.examples.cps.model.edit</module>
-		<module>domains/org.eclipse.viatra.examples.cps.model.editor</module>
-		<module>domains/org.eclipse.viatra.examples.cps.traceability</module>
-		<module>domains/org.eclipse.viatra.examples.cps.traceability.edit</module>
-		<module>domains/org.eclipse.viatra.examples.cps.traceability.editor</module>
+		<module>releng/org.eclipse.viatra.examples.cps.domain.parent</module>
 
 		<!-- Generator -->
 		<module>generator/org.eclipse.viatra.examples.cps.generator</module>
@@ -75,7 +67,6 @@
 		-->
 	
 		<!--  p2 repository -->
-		<module>releng/org.eclipse.viatra.examples.cps.metamodel.feature</module>
 		<module>releng/org.eclipse.viatra.examples.cps.update</module>
 	</modules>
 	<properties>
