@@ -27,6 +27,7 @@ import org.junit.runners.Parameterized.Parameters
 import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
 import org.junit.Ignore
+import org.eclipse.viatra.examples.cps.tests.queries.util.NotOneInstanceQuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
@@ -103,6 +104,15 @@ class VariableEqualityCpsTest {
     @Test
     def void useVarInEval(){
         ViatraQueryTest.test(UseVarInEvalQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .assertEquals
+    }
+    
+    @Test
+    def void notOneInstance(){
+        ViatraQueryTest.test(NotOneInstanceQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .with(BackendType.Rete.newBackendInstance)
                         .with(BackendType.LocalSearch.newBackendInstance)

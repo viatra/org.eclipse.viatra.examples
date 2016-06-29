@@ -23,3 +23,15 @@ pattern enumNotEqual(a, s) {
     ApplicationInstance.state(a, s);
     s != AppState::Stopped;
 }
+
+
+private pattern oneInstance(at: ApplicationType){
+    1 == count find applicationInstancesOfApplicationType(at, _ai);
+}
+
+/*
+ * https://bugs.eclipse.org/bugs/show_bug.cgi?id=496989
+ */
+pattern notOneInstance(at: ApplicationType){
+    neg find oneInstance(at);
+}
