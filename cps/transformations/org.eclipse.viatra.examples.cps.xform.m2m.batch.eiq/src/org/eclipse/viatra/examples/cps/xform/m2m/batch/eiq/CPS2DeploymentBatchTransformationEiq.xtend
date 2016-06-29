@@ -96,10 +96,7 @@ class CPS2DeploymentBatchTransformationEiq {
 
 		debug("Preparing queries on engine.")
 		val watch = Stopwatch.createStarted
-		// TODO add prepare for local search (plan computation, indexing, etc.)
-		if(hint.queryBackendFactory instanceof ReteBackendFactory){
-			prepare(engine)
-		}
+		engine.prepareGroup(cpsXformM2M, hint)
 		watch.stop
 		info('''Prepared queries on engine («watch.elapsed(TimeUnit.MILLISECONDS)» ms)''')
 	}
