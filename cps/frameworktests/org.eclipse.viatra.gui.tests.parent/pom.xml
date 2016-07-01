@@ -146,6 +146,11 @@
 			<layout>p2</layout>
 			<url>${viatra.repository.url}</url>
 		</repository>
+		<repository> 
+		    <id>deps</id>
+		    <layout>p2</layout>
+		    <url>http://download.eclipse.org/viatra/dependency</url>
+		</repository>
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
