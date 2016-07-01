@@ -12,6 +12,7 @@
 	<modules>
 	    <!-- CPS domain model demonstrator -->
 	    <module>../../releng/org.eclipse.viatra.examples.cps.domain.parent</module>
+	    <module>../../releng/org.eclipse.viatra.examples.cps.target</module>
 	    
 		<!-- CPS based unit tests -->
 		<module>../org.eclipse.viatra.examples.cps.tests</module>
