@@ -18,6 +18,7 @@
 		<module>../../releng/org.eclipse.viatra.examples.cps.dependencies.feature</module>
 		<module>../org.eclipse.viatra.gui.tests.queries</module>
 		<module>../org.eclipse.viatra.gui.tests.queries.validation</module>
+		<module>../org.eclipse.viatra.gui.tests.queries.feature</module>
 		<module>../org.eclipse.viatra.gui.tests.product</module>
 		<module>../org.eclipse.viatra.gui.tests</module>
 	</modules>
