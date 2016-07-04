@@ -10,7 +10,7 @@
 	<url></url>
 	<packaging>pom</packaging>
 	<modules>
-	    <module>../org.eclipse.viatra.examples.gui.tests.target</module>
+	    <module>../org.eclipse.viatra.gui.tests.target</module>
 	    <!-- CPS domain model demonstrator -->
 	    <module>../../releng/org.eclipse.viatra.examples.cps.domain.parent</module>
 		
@@ -44,6 +44,7 @@
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
         <sonar.jacoco.reportPath>${jacoco.targetdir}/jacoco.exec</sonar.jacoco.reportPath>
 		<sonar.skippedModules></sonar.skippedModules>
+		<target.classifier>indigo</target.classifier>
 	</properties>
 	<build>
 		<plugins>
