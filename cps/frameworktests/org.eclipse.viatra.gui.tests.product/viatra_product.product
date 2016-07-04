@@ -3,7 +3,6 @@
 
 <product name="VIATRA Product" uid="org.eclipse.viatra.gui.tests.rcp.product" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" version="0.0.1" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -14,14 +13,12 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -47,6 +44,7 @@
       <feature id="org.eclipse.viatra.query.testing.sdk.feature" version="1.3.0.qualifier"/>
       <feature id="org.eclipse.viatra.query.tooling.debug.feature" version="1.3.0.qualifier"/>
       <feature id="org.eclipse.viatra.query.tooling.ui.visualization.feature" version="0.13.0.qualifier"/>
+      <feature id="org.eclipse.viatra.integration.uml.feature" version="1.3.0.qualifier"/>
       <feature id="org.eclipse.viatra.transformation.debug.feature" version="0.13.0.qualifier"/>
       <feature id="org.eclipse.viatra.transformation.evm.transactions.feature" version="1.3.0.qualifier"/>
       <feature id="org.eclipse.viatra.transformation.runtime.emf.feature" version="1.3.0.qualifier"/>
@@ -101,6 +99,16 @@
       <feature id="org.eclipse.viatra.examples.cps.dependencies.feature" version="0.1.0.qualifier"/>
       <feature id="org.eclipse.gef4.zest.sdk" version="0.1.0.201406280202"/>
       <feature id="org.eclipse.gef4.zest.source"/>
+      <feature id="org.eclipse.uml2"/>
+      <feature id="org.eclipse.uml2.common"/>
+      <feature id="org.eclipse.uml2.codegen.ecore.ui"/>
+      <feature id="org.eclipse.uml2.uml"/>
+      <feature id="org.eclipse.uml2.uml.edit"/>
+      <feature id="org.eclipse.uml2.common.edit"/>
+      <feature id="org.eclipse.emf.codegen.ecore.ui"/>
+      <feature id="org.eclipse.emf.converter"/>
+      <feature id="org.eclipse.emf.mapping.ecore"/>
+      <feature id="org.eclipse.emf.mapping"/>
    </features>
 
    <configurations>
