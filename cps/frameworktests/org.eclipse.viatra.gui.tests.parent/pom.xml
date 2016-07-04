@@ -34,7 +34,7 @@
         <jacoco.targetdir>${project.basedir}/../target</jacoco.targetdir>
 		
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
-		<mars.repository.url>http://download.eclipse.org/releases/mars/</mars.repository.url>
+		<eclipse.repository.url>http://download.eclipse.org/releases/mars/</eclipse.repository.url>
 		<itemis.repository.url>http://download.itemis.com/updates/releases</itemis.repository.url>
 		<xtext.repository.url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases</xtext.repository.url>
 		
@@ -128,8 +128,8 @@
 	</build>
 	<repositories>
 		<repository>
-			<id>mars</id>
-			<url>${mars.repository.url}</url>
+			<id>eclipse</id>
+			<url>${eclipse.repository.url}</url>
 			<layout>p2</layout>
 		</repository>
 		<repository>
