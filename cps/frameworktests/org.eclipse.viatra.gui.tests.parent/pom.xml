@@ -10,7 +10,7 @@
 	<url></url>
 	<packaging>pom</packaging>
 	<modules>
-	    <module>../releng/org.eclipse.viatra.examples.gui.tests.target</module>
+	    <module>../org.eclipse.viatra.examples.gui.tests.target</module>
 	    <!-- CPS domain model demonstrator -->
 	    <module>../../releng/org.eclipse.viatra.examples.cps.domain.parent</module>
 		
