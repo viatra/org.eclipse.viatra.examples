@@ -10,6 +10,8 @@
 	<url></url>
 	<packaging>pom</packaging>
 	<modules>
+	    <module>../org.eclipse.viatra.gui.tests.target</module>
+	    
 	    <!-- CPS domain model demonstrator -->
 	    <module>../../releng/org.eclipse.viatra.examples.cps.domain.parent</module>
 	    <module>../../releng/org.eclipse.viatra.examples.cps.target</module>
@@ -25,6 +27,7 @@
 		<xtend.compiler.version>2.10.0</xtend.compiler.version>
 		<viatra.compiler.version>1.3.0.M2</viatra.compiler.version>
 		<cps.version>0.1.0-SNAPSHOT</cps.version>
+		<target.classifier>indigo</target.classifier>
         
         <jacoco.version>0.7.6.201602180812</jacoco.version>
         <jacoco.targetdir>${project.basedir}/../target</jacoco.targetdir>
@@ -94,6 +97,31 @@
                         </configuration> </execution> -->
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.tycho</groupId>
+                <artifactId>target-platform-configuration</artifactId>
+                <version>${tycho.version}</version>
+                <configuration>
+                    <resolver>p2</resolver>
+                    <target>
+                        <artifact>
+                            <groupId>org.eclipse.viatra.tests</groupId>
+                            <artifactId>org.eclipse.viatra.gui.tests.target</artifactId>
+                            <version>${project.version}</version>
+                            <classifier>${target.classifier}</classifier>
+                        </artifact>
+                        <dependency-resolution>
+                        <extraRequirements>
+                            <requirement>
+                                <type>eclipse-plugin</type>
+                                <id>com.google.inject.multibindings</id>
+                                <versionRange>[3.0.0,4.0.0)</versionRange>
+                            </requirement>
+                        </extraRequirements>
+                    </dependency-resolution>
+                    </target>
+                </configuration>
+            </plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -123,21 +151,6 @@
 		</pluginManagement>
 	</build>
 	<repositories>
-		<repository>
-			<id>mars</id>
-			<url>${mars.repository.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>itemis</id>
-			<url>${itemis.repository.url}</url>
-			<layout>p2</layout>
-		</repository>
-		<repository>
-			<id>xtext</id>
-			<url>${xtext.repository.url}</url>
-			<layout>p2</layout>
-		</repository>
 		<repository>
 			<id>viatra.update</id>
 			<layout>p2</layout>

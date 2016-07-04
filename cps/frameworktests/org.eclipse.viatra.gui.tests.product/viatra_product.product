@@ -56,7 +56,7 @@
       <feature id="org.eclipse.xtext.runtime"/>
       <feature id="org.eclipse.emf.edit"/>
       <feature id="org.eclipse.emf.transaction"/>
-      <feature id="org.eclipse.gef4.zest"/>
+      <feature id="org.eclipse.gef4.zest" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.xtext.ui"/>
       <feature id="org.eclipse.emf.databinding"/>
@@ -96,10 +96,9 @@
       <feature id="org.eclipse.emf.ecore.edit"/>
       <feature id="org.eclipse.emf.ecore.editor"/>
       <feature id="org.eclipse.draw2d"/>
-      <feature id="org.eclipse.gef4.geometry" version="0.1.0.201406280202"/>
+      <feature id="org.eclipse.gef4.geometry" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.viatra.examples.cps.dependencies.feature" version="0.1.0.qualifier"/>
-      <feature id="org.eclipse.gef4.zest.sdk" version="0.1.0.201406280202"/>
-      <feature id="org.eclipse.gef4.zest.source"/>
+      <feature id="org.eclipse.gef4.zest.sdk" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.uml2"/>
       <feature id="org.eclipse.uml2.common"/>
       <feature id="org.eclipse.uml2.codegen.ecore.ui"/>
