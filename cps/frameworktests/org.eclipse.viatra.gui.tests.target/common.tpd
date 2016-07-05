@@ -30,6 +30,7 @@ location "http://download.eclipse.org/modeling/tmf/xtext/updates/releases/xpand/
 }
 location "http://download.eclipse.org/modeling/emft/mwe/updates/releases/2.8.2/R201511170842/mwe2lang/" {
     org.eclipse.emf.mwe2.language.sdk.feature.group
+    org.eclipse.emf.mwe2.launcher.feature.group
 }
 location "http://download.eclipse.org/cbi/updates/license/" {
     org.eclipse.license.feature.group

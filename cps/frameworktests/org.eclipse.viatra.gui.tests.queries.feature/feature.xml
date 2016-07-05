@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.viatra.gui.tests.queries.feature"
       label="VIATRA GUI Test Queries"
-      version="0.0.1.qualifier"
+      version="0.1.0.qualifier"
       provider-name="Eclipse VIATRA Project">
 
    <description url="http://www.example.com/description">

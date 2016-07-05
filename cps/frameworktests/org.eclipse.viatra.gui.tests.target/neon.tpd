@@ -1,4 +1,4 @@
-target "VIATRA-Luna"
+target "VIATRA-GUITest-Neon"
 environment JavaSE-1.7
 with source requirements
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.gui.tests.queries
 Bundle-SymbolicName: org.eclipse.viatra.gui.tests.queries;singleton:=true
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.1.0.qualifier
 Export-Package: org.eclipse.viatra.gui.tests.queries,
  org.eclipse.viatra.gui.tests.queries.util
 Require-Bundle: org.eclipse.emf.ecore,

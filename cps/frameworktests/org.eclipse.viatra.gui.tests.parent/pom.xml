@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.tests</groupId>
 	<artifactId>org.eclipse.viatra.gui.tests.parent</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.1.0-SNAPSHOT</version>
 	<name>VIATRA CPS Tests</name>
 	<url></url>
 	<packaging>pom</packaging>
@@ -13,9 +13,10 @@
 	    <module>../org.eclipse.viatra.gui.tests.target</module>
 	    <!-- CPS domain model demonstrator -->
 	    <module>../../releng/org.eclipse.viatra.examples.cps.domain.parent</module>
+	    <module>../../releng/org.eclipse.viatra.examples.cps.target</module>
 		
 		<!-- CPS based RCPTT tests with product -->
-		<module>../../releng/org.eclipse.viatra.examples.cps.dependencies.feature</module>
+		<module>../org.eclipse.viatra.examples.cps.dependencies.feature</module>
 		<module>../org.eclipse.viatra.gui.tests.queries</module>
 		<module>../org.eclipse.viatra.gui.tests.queries.validation</module>
 		<module>../org.eclipse.viatra.gui.tests.queries.feature</module>
