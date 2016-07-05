@@ -17,3 +17,7 @@ location "http://download.eclipse.org/releases/indigo/201202240900/" {
     org.eclipse.graphiti.sdk.feature.feature.group [0.8.0,0.9.0)
     org.eclipse.emf.transaction.sdk.feature.group [1.5.0,1.6.0)
 }
+
+location "http://archive.eclipse.org/rt/ecf/3.5/site.p2" {
+    org.eclipse.ecf.core.feature.group
+}

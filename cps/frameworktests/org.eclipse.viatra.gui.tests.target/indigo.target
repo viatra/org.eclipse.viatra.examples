@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="VIATRA-Indigo" sequenceNumber="1467650176">
+<target name="VIATRA-Indigo" sequenceNumber="1467716667">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.8.2.v201511170833"/>
@@ -70,6 +70,10 @@
       <unit id="org.eclipse.graphiti.sdk.feature.feature.group" version="0.8.2.v20120215-0845"/>
       <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="1.5.1.v20110823-1800-777T19A_WsXmjNatPxcrPm1rOKlH"/>
       <repository location="http://download.eclipse.org/releases/indigo/201202240900/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.ecf.core.feature.group" version="3.5.0.v20110313-1843"/>
+      <repository location="http://archive.eclipse.org/rt/ecf/3.5/site.p2"/>
     </location>
   </locations>
   <targetJRE path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
