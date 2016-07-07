@@ -49,7 +49,7 @@
       <feature id="org.eclipse.viatra.integration.uml.feature" version="1.4.0.qualifier"/>
       <feature id="org.eclipse.viatra.transformation.debug.feature" version="0.14.0.qualifier"/>
       <feature id="org.eclipse.viatra.transformation.evm.transactions.feature" version="1.4.0.qualifier"/>
-      <feature id="org.eclipse.viatra.transformation.runtime.emf.feature" version="1.3.0.qualifier"/>
+      <feature id="org.eclipse.viatra.transformation.runtime.emf.feature" version="1.4.0.qualifier"/>
       <feature id="org.eclipse.viatra.examples.cps.metamodel.feature" version="0.1.0.qualifier"/>
       <feature id="org.eclipse.viatra.gui.tests.queries.feature" version="0.1.0.qualifier"/>
       <feature id="org.eclipse.pde"/>
