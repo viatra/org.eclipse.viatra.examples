@@ -73,7 +73,6 @@ class VariableEqualityCpsTest {
     }
     
     @Test
-    @Ignore("TODO: Waiting for bug 495681 to be fixed")
     def void unifiedParametersWithDifferentValues2Test(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValues2QuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
@@ -83,7 +82,6 @@ class VariableEqualityCpsTest {
     }
     
     @Test
-    @Ignore("TODO: Waiting for bug 495681 to be fixed")
     def void unifiedParametersWithDifferentValuesTest(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValuesQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
