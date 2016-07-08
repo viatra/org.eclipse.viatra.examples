@@ -26,7 +26,6 @@ import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
 import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
-import org.junit.Ignore
 import org.eclipse.viatra.examples.cps.tests.queries.util.NotOneInstanceQuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
