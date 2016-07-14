@@ -35,3 +35,12 @@ private pattern oneInstance(at: ApplicationType){
 pattern notOneInstance(at: ApplicationType){
     neg find oneInstance(at);
 }
+
+pattern cartesianProduct(a1, a2){
+    ApplicationType(a1);
+    ApplicationType(a2);
+}
+
+pattern argumentsUnifiedByCaller(a){
+    find cartesianProduct(a, a);
+}

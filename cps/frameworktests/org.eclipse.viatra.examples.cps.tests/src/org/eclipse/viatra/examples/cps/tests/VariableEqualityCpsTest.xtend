@@ -27,10 +27,13 @@ import org.junit.runners.Parameterized.Parameters
 import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.NotOneInstanceQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.ArgumentsUnifiedByCallerQuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
 class VariableEqualityCpsTest {
+    extension AllBackendTypes = new AllBackendTypes
+    
     @Parameters(name = "Model: {0}")
     def static Collection<Object[]> testData() {
         newArrayList(
@@ -48,8 +51,7 @@ class VariableEqualityCpsTest {
     def void variableEqualityTest() {
         ViatraQueryTest.test(SameVariablesQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -57,8 +59,7 @@ class VariableEqualityCpsTest {
     def void enumNotEqualsTest() {
         ViatraQueryTest.test(EnumNotEqualQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -66,8 +67,7 @@ class VariableEqualityCpsTest {
     def void partiallyUnboundUnifiedExportedParametersTest(){
         ViatraQueryTest.test(PartiallyUnboundUnifiedExportedParametersQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -75,8 +75,7 @@ class VariableEqualityCpsTest {
     def void unifiedParametersWithDifferentValues2Test(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValues2QuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -84,8 +83,7 @@ class VariableEqualityCpsTest {
     def void unifiedParametersWithDifferentValuesTest(){
         ViatraQueryTest.test(UnifiedParametersWithDifferentValuesQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -93,8 +91,7 @@ class VariableEqualityCpsTest {
     def void multipleEvals(){
         ViatraQueryTest.test(MultipleEvalsQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -102,8 +99,7 @@ class VariableEqualityCpsTest {
     def void useVarInEval(){
         ViatraQueryTest.test(UseVarInEvalQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
                         .assertEquals
     }
     
@@ -111,8 +107,15 @@ class VariableEqualityCpsTest {
     def void notOneInstance(){
         ViatraQueryTest.test(NotOneInstanceQuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
-                        .with(BackendType.Rete.newBackendInstance)
-                        .with(BackendType.LocalSearch.newBackendInstance)
+                        .withAll
+                        .assertEquals
+    }
+    
+    @Test
+    def void argumentsUnifiedByCaller(){
+        ViatraQueryTest.test(ArgumentsUnifiedByCallerQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .withAll
                         .assertEquals
     }
 }
