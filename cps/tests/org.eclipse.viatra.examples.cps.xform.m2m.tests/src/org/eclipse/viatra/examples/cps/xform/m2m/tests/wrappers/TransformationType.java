@@ -15,6 +15,8 @@ import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSea
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHintKeys;
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.VariableBindingBasedCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
+import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
+import org.eclipse.viatra.query.runtime.matchers.psystem.rewriters.IFlattenCallPredicate;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 import com.google.common.collect.ImmutableMap;
@@ -35,6 +37,29 @@ public enum TransformationType {
 	    	return new BatchQueryOnly(hint);
 	    }
     	public boolean isIncremental(){return false;}
+    },
+    BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
+        public CPSTransformationWrapper getWrapper() {
+            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
+                    LocalSearchHintKeys.FLATTEN_CALL_PREDICATE, new IFlattenCallPredicate() {
+                        
+                        @Override
+                        public boolean shouldFlatten(PositivePatternCall positivePatternCall) {
+                            return false;
+                        }
+                    }));
+            return new BatchQueryOnly(hint);
+        }
+        public boolean isIncremental(){return false;}
+    },
+    BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
+        public CPSTransformationWrapper getWrapper() {
+            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
+                    LocalSearchHintKeys.PLANNER_COST_FUNCTION, new VariableBindingBasedCostFunction()
+                    ));
+            return new BatchQueryOnly(hint);
+        }
+        public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
