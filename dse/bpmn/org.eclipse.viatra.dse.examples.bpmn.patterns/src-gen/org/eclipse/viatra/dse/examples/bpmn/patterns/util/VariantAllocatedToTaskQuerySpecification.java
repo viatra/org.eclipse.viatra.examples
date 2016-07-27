@@ -96,7 +96,7 @@ public final class VariantAllocatedToTaskQuerySpecification extends BaseGenerate
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

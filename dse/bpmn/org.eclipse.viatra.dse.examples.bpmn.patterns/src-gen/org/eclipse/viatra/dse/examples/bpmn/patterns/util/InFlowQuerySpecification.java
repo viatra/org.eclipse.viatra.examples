@@ -96,7 +96,7 @@ final class InFlowQuerySpecification extends BaseGeneratedEMFQuerySpecification<
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

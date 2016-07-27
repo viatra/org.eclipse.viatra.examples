@@ -94,7 +94,7 @@ public final class CreateResourceQuerySpecification extends BaseGeneratedEMFQuer
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

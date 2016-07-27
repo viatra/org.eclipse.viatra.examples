@@ -99,7 +99,7 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

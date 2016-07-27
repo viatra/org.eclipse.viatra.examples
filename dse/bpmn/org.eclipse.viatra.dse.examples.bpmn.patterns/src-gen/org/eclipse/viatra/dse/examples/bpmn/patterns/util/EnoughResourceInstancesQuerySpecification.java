@@ -93,7 +93,7 @@ public final class EnoughResourceInstancesQuerySpecification extends BaseGenerat
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

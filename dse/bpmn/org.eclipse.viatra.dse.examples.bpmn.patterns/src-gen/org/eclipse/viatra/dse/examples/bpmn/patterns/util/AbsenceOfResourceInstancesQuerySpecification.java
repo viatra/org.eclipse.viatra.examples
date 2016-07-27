@@ -98,7 +98,7 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

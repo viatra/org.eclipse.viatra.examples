@@ -38,6 +38,8 @@ import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
 import org.eclipse.viatra.dse.solutionstore.SolutionStore;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.transformation.evm.specific.ConflictResolvers;
+import org.eclipse.viatra.transformation.evm.specific.resolver.FixedPriorityConflictResolver;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -135,10 +137,7 @@ public class BpmnExamples {
                 .withComparator(Comparators.HIGHER_IS_BETTER)
                 .withLevel(1));
 
-        // Stop after a certain amount of solutions
-        SolutionStore solutionStore = new SolutionStore(5);
-        solutionStore.logSolutionsWhenFound();
-        dse.setSolutionStore(solutionStore);
+        dse.setSolutionStore(new SolutionStore(0).storeBestSolutionsOnly());
 
         dse.setMaxNumberOfThreads(1);
         
@@ -160,16 +159,20 @@ public class BpmnExamples {
         
         stopwatch.stop();
         System.out.println("States:" + dse.getNumberOfStates());
+        System.out.println("Transitions:" + dse.getNumberOfTransitions());
         System.out.println("Milisecs: " + stopwatch.elapsed(TimeUnit.MILLISECONDS));
         System.out.println(dse.toStringSolutions());
         
         // To get all of the solutions
         Collection<Solution> solutions = dse.getSolutions();
+        
+        SolutionTrajectory arbitrarySolution = dse.getArbitrarySolution();
     }
 
     @Test
     public void fixedPrioritySearch() throws ViatraQueryException {
         fixedPriorityStrategy = new FixedPriorityStrategy()
+            .withDepthLimit(10)
             .withRulePriority(ruleProvider.allocateRule, 10)
             .withRulePriority(ruleProvider.createResourceRule, 5)
             .withRulePriority(ruleProvider.makeParallelRule, 1)
@@ -179,8 +182,19 @@ public class BpmnExamples {
     }
 
     @Test
+    public void DfsWithFixedPriorityConflictResolver() throws ViatraQueryException {
+        FixedPriorityConflictResolver conflictResolver = ConflictResolvers.createFixedPriorityResolver();
+        conflictResolver.setPriority(ruleProvider.allocateRule.getRuleSpecification(), 1);
+        conflictResolver.setPriority(ruleProvider.createResourceRule.getRuleSpecification(), 5);
+        conflictResolver.setPriority(ruleProvider.makeParallelRule.getRuleSpecification(), 10);
+        conflictResolver.setPriority(ruleProvider.makeSequentialRule.getRuleSpecification(), 10);
+        dse.setConflictResolver(conflictResolver);
+        dse.startExploration(Strategies.createDfsStrategy(10));
+    }
+
+    @Test
     public void DFS() throws ViatraQueryException {
-        dse.startExploration(Strategies.createDFSStrategy(7));
+        dse.startExploration(Strategies.createDfsStrategy(12).continueIfHardObjectivesFulfilled());
     }
 
     @Test

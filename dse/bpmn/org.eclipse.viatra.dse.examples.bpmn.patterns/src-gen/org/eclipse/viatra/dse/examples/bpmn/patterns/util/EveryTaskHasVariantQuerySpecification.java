@@ -93,7 +93,7 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

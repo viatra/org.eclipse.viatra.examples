@@ -63,7 +63,7 @@ public class BpmnRuleProvider {
       BatchTransformationRule<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _build = _action.build();
       this.allocateRule = _build;
       BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _createRule_1 = this.factory.<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher>createRule();
-      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _name_1 = _createRule_1.name("AllocateTaskToVariantRule");
+      BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _name_1 = _createRule_1.name("FilteredAllocateTaskToVariantRule");
       AllocateTaskToVariantQuerySpecification _instance_1 = AllocateTaskToVariantQuerySpecification.instance();
       BatchTransformationRuleFactory.BatchTransformationRuleBuilder<AllocateTaskToVariantMatch, AllocateTaskToVariantMatcher> _precondition_1 = _name_1.precondition(_instance_1);
       final IMatchProcessor<AllocateTaskToVariantMatch> _function_1 = new IMatchProcessor<AllocateTaskToVariantMatch>() {

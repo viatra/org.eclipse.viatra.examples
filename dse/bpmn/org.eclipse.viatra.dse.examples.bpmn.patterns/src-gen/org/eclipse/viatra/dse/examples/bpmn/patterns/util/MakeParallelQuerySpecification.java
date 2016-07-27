@@ -103,7 +103,7 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

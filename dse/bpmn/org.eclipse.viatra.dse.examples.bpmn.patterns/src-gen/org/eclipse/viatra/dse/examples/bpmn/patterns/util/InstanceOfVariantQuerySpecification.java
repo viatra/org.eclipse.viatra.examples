@@ -96,7 +96,7 @@ public final class InstanceOfVariantQuerySpecification extends BaseGeneratedEMFQ
     
     public static Object ensureInitialized() {
       INSTANCE.ensureInitializedInternalSneaky();
-      return null;					
+      return null;
     }
   }
   

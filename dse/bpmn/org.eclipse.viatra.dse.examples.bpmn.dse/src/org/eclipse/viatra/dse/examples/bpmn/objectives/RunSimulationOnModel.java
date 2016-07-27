@@ -16,7 +16,6 @@ import java.util.WeakHashMap;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.viatra.dse.base.DesignSpaceManager;
 import org.eclipse.viatra.dse.base.ThreadContext;
-import org.eclipse.viatra.dse.designspace.api.IState;
 import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator;
 import org.eclipse.viatra.dse.examples.bpmn.simulator.Simulator.ResourceInstanceData;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant;
@@ -49,7 +48,7 @@ public class RunSimulationOnModel {
     private double minUtilization;
     private double avgResponseTime;
     private SimplifiedBPMN modelRoot;
-    private IState lastState = null;
+    private Object lastState = null;
     private DesignSpaceManager dsm;
 
     private RunSimulationOnModel() {}
