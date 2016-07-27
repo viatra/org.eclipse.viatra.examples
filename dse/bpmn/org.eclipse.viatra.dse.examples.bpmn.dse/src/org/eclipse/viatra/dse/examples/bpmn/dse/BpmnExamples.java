@@ -137,7 +137,7 @@ public class BpmnExamples {
                 .withComparator(Comparators.HIGHER_IS_BETTER)
                 .withLevel(1));
 
-        dse.setSolutionStore(new SolutionStore(0).storeBestSolutionsOnly());
+        dse.setSolutionStore(new SolutionStore(50).storeBestSolutionsOnly());
 
         dse.setMaxNumberOfThreads(1);
         
