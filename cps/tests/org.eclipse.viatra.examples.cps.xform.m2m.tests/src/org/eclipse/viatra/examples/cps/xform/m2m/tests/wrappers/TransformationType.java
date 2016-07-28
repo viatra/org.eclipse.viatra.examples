@@ -11,12 +11,9 @@
 
 package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers;
 
-import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchBackendFactory;
-import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHintKeys;
+import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints;
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.VariableBindingBasedCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
-import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
-import org.eclipse.viatra.query.runtime.matchers.psystem.rewriters.IFlattenCallPredicate;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 import com.google.common.collect.ImmutableMap;
@@ -33,42 +30,25 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
     	public CPSTransformationWrapper getWrapper() {
-    		QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of());
-	    	return new BatchQueryOnly(hint);
+	    	return new BatchQueryOnly(LocalSearchHints.getDefaultFlatten().build());
 	    }
     	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
-                    LocalSearchHintKeys.FLATTEN_CALL_PREDICATE, new IFlattenCallPredicate() {
-                        
-                        @Override
-                        public boolean shouldFlatten(PositivePatternCall positivePatternCall) {
-                            return false;
-                        }
-                    }));
-            return new BatchQueryOnly(hint);
+            return new BatchQueryOnly(LocalSearchHints.getDefault().build());
         }
         public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
-                    LocalSearchHintKeys.PLANNER_COST_FUNCTION, new VariableBindingBasedCostFunction()
-                    ));
-            return new BatchQueryOnly(hint);
+            return new BatchQueryOnly(LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build());
         }
         public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
-                    LocalSearchHintKeys.ALLOW_INVERSE_NAVIGATION, Boolean.FALSE,
-                    LocalSearchHintKeys.USE_BASE_INDEX, Boolean.FALSE,
-                    LocalSearchHintKeys.PLANNER_COST_FUNCTION, new VariableBindingBasedCostFunction()
-                    ));
-            return new BatchQueryOnly(hint);
+            return new BatchQueryOnly(LocalSearchHints.getDefaultNoBase().build());
         }
         public boolean isIncremental(){return false;}
     },

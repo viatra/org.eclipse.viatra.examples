@@ -28,6 +28,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
+import com.google.common.collect.Iterators
 
 // This test is necessary because of 398745 bug
 @RunWith(Parameterized)
