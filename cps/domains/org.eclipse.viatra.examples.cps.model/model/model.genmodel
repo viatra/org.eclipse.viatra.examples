@@ -7,7 +7,7 @@
     operationReflection="true" importOrganizing="true">
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="CyberPhysicalSystem" basePackage="org.eclipse.viatra.examples.cps"
-      disposableProviderFactory="true" ecorePackage="model.ecore#/">
+      disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="model.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="model.ecore#//AppState">
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AppState/Running"/>
       <genEnumLiterals ecoreEnumLiteral="model.ecore#//AppState/Stopped"/>
