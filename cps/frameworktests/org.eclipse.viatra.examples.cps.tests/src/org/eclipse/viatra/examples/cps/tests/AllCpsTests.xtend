@@ -23,6 +23,7 @@ import org.junit.runners.Suite.SuiteClasses
     ModelManipulationCpsTest,
     RecursionCpsTest,
     TestingFrameworkTest,
-    VariableEqualityCpsTest
+    VariableEqualityCpsTest,
+    BaseIndexerTest
 ])
 class AllCpsTests {}
