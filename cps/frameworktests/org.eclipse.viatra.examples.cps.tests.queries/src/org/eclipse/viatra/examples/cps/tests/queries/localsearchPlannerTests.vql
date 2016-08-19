@@ -17,7 +17,7 @@ pattern multipleExportedSame(at1: ApplicationType, at2: ApplicationType, ai: App
 }
 
 pattern multiInstanceTypes(at1: ApplicationType, at2: ApplicationType, ai: ApplicationInstance){
-    c == count find applicationInstancesOfApplicationType(at1, ai);
+    c == count find applicationInstancesOfApplicationType(ai, at1);
     check(c > 1);
     at1 == at2;
 }
@@ -42,13 +42,13 @@ pattern unifiedParametersWithDifferentValues(at1, ai, c){
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=495764
  */
 pattern multipleEvals(at: ApplicationType){
-    c == count find applicationInstancesOfApplicationType(at, _ai);
+    c == count find applicationInstancesOfApplicationType(_ai, at);
     d == eval(Integer.parseInt("1"));
     check(c > d);
 }
 
 private pattern countInstances(at: ApplicationType, value){
-    value == count find applicationInstancesOfApplicationType(at, _ai);
+    value == count find applicationInstancesOfApplicationType(_ai, at);
 }
 
 private pattern useVarInEvalUtil(at: ApplicationType){
