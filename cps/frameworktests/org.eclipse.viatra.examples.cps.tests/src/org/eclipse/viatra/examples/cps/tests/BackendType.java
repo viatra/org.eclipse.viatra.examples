@@ -40,9 +40,9 @@ public enum BackendType {
         case LocalSearch:
             return LocalSearchHints.getDefault().build();
         case LocalSearch_Flat:
-            return LocalSearchHints.getDefault_flatten().build();
+            return LocalSearchHints.getDefaultFlatten().build();
         case LocalSearch_NoBase:
-            return LocalSearchHints.getDefault_nobase().build();
+            return LocalSearchHints.getDefaultNoBase().build();
         default:
             return new QueryEvaluationHint(getNewBackendInstance(), Collections.<String, Object>emptyMap());
         }
