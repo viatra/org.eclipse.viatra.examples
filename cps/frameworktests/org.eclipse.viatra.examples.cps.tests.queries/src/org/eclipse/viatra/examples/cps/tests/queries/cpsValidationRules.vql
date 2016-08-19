@@ -30,7 +30,7 @@ pattern AllReachableStates(
 
 @Constraint(
 	severity = "warning",
-	key = {"sm", "state"},
+	key = {sm, state},
 	message = "$state.identifier$ is unreachable from the initial state of $sm.identifier$"
 )
 pattern UnreachableStatesOfStateMachines(
