@@ -26,7 +26,7 @@ pattern enumNotEqual(a, s) {
 
 
 private pattern oneInstance(at: ApplicationType){
-    1 == count find applicationInstancesOfApplicationType(at, _ai);
+    1 == count find applicationInstancesOfApplicationType(_ai, at);
 }
 
 /*
