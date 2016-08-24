@@ -15,8 +15,12 @@ import org.eclipse.viatra.examples.cps.tests.queries.TransitionsOfApplicationTyp
 import org.eclipse.viatra.examples.cps.tests.queries.util.TransitionsOfApplicationTypeQuerySpecification
 import org.eclipse.viatra.query.patternlanguage.emf.EMFPatternLanguageStandaloneSetup
 import org.eclipse.viatra.query.patternlanguage.emf.eMFPatternLanguage.PatternModel
+import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
+import org.eclipse.viatra.query.runtime.api.ViatraQueryEngineOptions
 import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchBackendFactory
+import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints
 import org.eclipse.viatra.query.testing.core.ModelLoadHelper
 import org.eclipse.viatra.query.testing.core.SnapshotHelper
 import org.eclipse.viatra.query.testing.core.XmiModelUtil
@@ -256,5 +260,19 @@ class APICpsTest {
     def void immutablePBodyUsage() {
         val instance = TransitionsOfApplicationTypeQuerySpecification.instance
         instance.internalQueryRepresentation.disjunctBodies.bodies.forEach[assertFalse(it.mutable)]
+    }
+    
+    
+    @Test
+    def void engineOptionsSupported() {
+        val sns = snapshot
+
+        val engineOptions = ViatraQueryEngineOptions.defineOptions
+            .withDefaultBackend(LocalSearchBackendFactory.INSTANCE)
+            .withDefaultHint(LocalSearchHints.defaultNoBase.build)
+            .build
+        val engine = AdvancedViatraQueryEngine.on(new EMFScope(sns.EMFRootForSnapshot), engineOptions) as AdvancedViatraQueryEngine
+        val matcher = TransitionsOfApplicationTypeMatcher.on(engine)
+        assertTrue(matcher.capabilities instanceof LocalSearchHints)
     }
 }
