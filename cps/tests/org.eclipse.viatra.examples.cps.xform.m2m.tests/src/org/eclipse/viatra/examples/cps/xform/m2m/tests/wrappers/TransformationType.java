@@ -46,6 +46,16 @@ public enum TransformationType {
         }
         public boolean isIncremental(){return false;}
     },
+    BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
+    	public CPSTransformationWrapper getWrapper() {
+    		QueryEvaluationHint hint = new QueryEvaluationHint(LocalSearchBackendFactory.INSTANCE, ImmutableMap.<String, Object>of(
+    				LocalSearchHintKeys.ALLOW_INVERSE_NAVIGATION, Boolean.FALSE,
+    				LocalSearchHintKeys.USE_BASE_INDEX, Boolean.FALSE
+    				));
+    		return new BatchQueryOnly(hint);
+    	}
+    	public boolean isIncremental(){return false;}
+    },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
             return new BatchQueryOnly(LocalSearchHints.getDefaultNoBase().build());
