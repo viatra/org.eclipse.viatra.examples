@@ -5,10 +5,8 @@ import java.util.Collection
 import java.util.List
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import org.eclipse.viatra.examples.cps.tests.queries.util.MinCPU1QuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.MinCPU2QuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.MinCPU3QuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.MinCPU4QuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.HostInstanceWithMinCPU1QuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.HostInstanceWithMinCPU2QuerySpecification
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification
 import org.eclipse.viatra.query.testing.core.MatchSetRecordDiff
 import org.eclipse.viatra.query.testing.core.PatternBasedMatchSetModelProvider
@@ -32,7 +30,7 @@ class AggregatorComparisonTest {
             newHashSet(BackendType.values),
             #{"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"},
             <List<IQuerySpecification>>newHashSet(
-                #[MinCPU2QuerySpecification.instance, MinCPU3QuerySpecification.instance]
+                #[HostInstanceWithMinCPU1QuerySpecification.instance, HostInstanceWithMinCPU2QuerySpecification.instance]
             )
         ).map[it.toArray])
     }

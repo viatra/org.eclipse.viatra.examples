@@ -1,0 +1,41 @@
+package org.eclipse.viatra.examples.cps.tests.queries
+
+import "http://www.eclipse.org/emf/2002/Ecore"
+import "http://org.eclipse.viatra/model/cps"
+ 
+pattern avgCPU(n) {
+	find sumCPU(s);
+	find countHost(c);
+	n == eval(s / c);
+}
+
+pattern sumCPU(n) {
+	n == sum find availableCPU(_, #c);
+}
+
+pattern countHost(n) {
+	n == count find hostInstance(_);
+}
+
+pattern minCPU(n) {
+	n == min find availableCPU(_, #c);
+}
+
+pattern hostInstanceWithMinCPU1(host : HostInstance, value) {
+	value == min find availableCPU(_, #c);
+	find availableCPU(host, value);
+}
+
+pattern hostInstanceWithMinCPU2(host : HostInstance, value) {
+	find minCPU(value);	
+	find availableCPU(host, value);
+}
+
+// HELPER PATTERNS
+pattern availableCPU(host : HostInstance, value : EInt) {
+	HostInstance.availableCpu(host, value);
+}
+
+pattern hostInstance(host) {
+	HostInstance(host);
+}

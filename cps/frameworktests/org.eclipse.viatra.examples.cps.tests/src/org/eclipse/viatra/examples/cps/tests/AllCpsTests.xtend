@@ -26,6 +26,7 @@ import org.junit.runners.Suite.SuiteClasses
     VariableEqualityCpsTest,
     BaseIndexerTest,
     AggregatorTest,
-    AggregatorComparisonTest
+    AggregatorComparisonTest,
+    ModelManipulationAggregatorTest
 ])
 class AllCpsTests {}
