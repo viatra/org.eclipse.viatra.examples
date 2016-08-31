@@ -32,7 +32,7 @@ class AggregatorComparisonTest {
             newHashSet(BackendType.values),
             #{"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"},
             <List<IQuerySpecification>>newHashSet(
-                #[MinCPU1QuerySpecification.instance, MinCPU2QuerySpecification.instance, MinCPU3QuerySpecification.instance, MinCPU4QuerySpecification.instance]
+                #[MinCPU2QuerySpecification.instance, MinCPU3QuerySpecification.instance]
             )
         ).map[it.toArray])
     }
@@ -62,7 +62,7 @@ class AggregatorComparisonTest {
         for(var i=1;i<queries.length;i++){
             val actual = modelProvider.getMatchSetRecord(rs, queries.get(i), null)
             val diff = MatchSetRecordDiff.compute(reference, actual)
-            Assert.assertTrue(diff.toString, diff.empty);
+            Assert.assertTrue('''Additions: «diff.additions», Removals: «diff.removals»''', diff.empty);
         }
     }
 
