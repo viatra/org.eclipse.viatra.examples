@@ -7,7 +7,7 @@ pattern availableCPU(host : HostInstance, value : EInt) {
 	HostInstance.availableCpu(host, value);
 }
 
-search pattern minCPU1(n) {
+pattern minCPU1(n) {
 	n == min find availableCPU(_, #c);
 }
 
