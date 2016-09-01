@@ -4,7 +4,14 @@
     <!-- @generated Fowler -->
     <package class="org.eclipse.viatra.cep.examples.fowler.incquery.model.fowler.FowlerPackage" genModel="model/Fowler.genmodel" uri="fowler.meta"/>
   </extension>
-  <extension id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" point="org.eclipse.incquery.runtime.queryspecification">
-    <group group="org.eclipse.incquery.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries"/>
+  <extension id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries" id="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.FowlerQueries">
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.doorIsOpen"/>
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.doorIsClosed"/>
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.drawerIsOpen"/>
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.drawerIsClosed"/>
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.wallIsKnocked"/>
+      <query-specification fqn="org.eclipse.viatra.cep.examples.fowler.incquery.model.queries.wallIsNotKnocked"/>
+    </group>
   </extension>
 </plugin>
