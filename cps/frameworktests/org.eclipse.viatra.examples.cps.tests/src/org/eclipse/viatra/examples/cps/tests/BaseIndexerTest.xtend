@@ -106,6 +106,25 @@ class BaseIndexerTest {
     }
     
     @Test
+    def void testWildCardStatistics(){
+        val baseIndex = ViatraBaseFactory::instance.createNavigationHelper(rs, false, null)
+        baseIndex.wildcardLevel = IndexingLevel.STATISTICS
+        val expected = enumerateInstances(element).size
+        var counted = -1;
+        if (element instanceof EClass){
+            counted = baseIndex.countAllInstances(element)
+        }
+        if (element instanceof EStructuralFeature){
+            counted = baseIndex.countFeatures(element)
+        }
+        if (element instanceof EDataType){
+            counted = baseIndex.countDataTypeInstances(element)   
+        }
+        
+        Assert.assertEquals(expected, counted)
+    }
+    
+    @Test
     def void testStatistics(){
         val baseIndex = ViatraBaseFactory::instance.createNavigationHelper(rs, false, null)
         val expected = enumerateInstances(element).size
@@ -145,6 +164,81 @@ class BaseIndexerTest {
         }
         
         Assert.assertEquals(expected, counted)
+    }
+    
+    @Test
+    def void testWildcardFullWithOptions(){
+        val baseIndex = ViatraBaseFactory::instance.createNavigationHelper(rs, true, null)
+        val expected = enumerateInstances(element)
+        if (element instanceof EClass){
+            val instances = baseIndex.getAllInstances(element)
+            val symmetricDifference = Sets.symmetricDifference(Sets.newHashSet(expected), instances)
+            Assert.assertTrue(symmetricDifference.empty)
+        }
+        if (element instanceof EStructuralFeature){
+            val featureMap = baseIndex.getFeatureInstances(element)
+            val expectedFeatureMap = <EObject, Set<Object>>newHashMap()    
+            for(o : expected){
+                val entry = o as List<?>
+                var values = expectedFeatureMap.get(entry.get(0))
+                if (values == null){
+                    values = newHashSet()
+                    expectedFeatureMap.put(entry.get(0) as EObject, values)
+                }
+                values.add(entry.get(2))
+            }       
+            val diff = Maps.difference(featureMap, expectedFeatureMap)
+            Assert.assertTrue(diff.areEqual)
+        }
+        if (element instanceof EDataType){
+            val values = baseIndex.getDataTypeInstances(element)
+            val expectedValues = newHashSet()
+            for(o : expected){
+                val entry = o as List<?>
+                expectedValues.add(entry.get(2))
+            }
+            val symmetricDifference = Sets.symmetricDifference(values, expectedValues)
+            Assert.assertTrue(symmetricDifference.empty)
+        }
+        
+    }
+    
+    @Test
+    def void testWildcardFull(){
+        val baseIndex = ViatraBaseFactory::instance.createNavigationHelper(rs, false, null)
+        baseIndex.wildcardLevel = IndexingLevel.FULL
+        val expected = enumerateInstances(element)
+        if (element instanceof EClass){
+            val instances = baseIndex.getAllInstances(element)
+            val symmetricDifference = Sets.symmetricDifference(Sets.newHashSet(expected), instances)
+            Assert.assertTrue(symmetricDifference.empty)
+        }
+        if (element instanceof EStructuralFeature){
+            val featureMap = baseIndex.getFeatureInstances(element)
+            val expectedFeatureMap = <EObject, Set<Object>>newHashMap()    
+            for(o : expected){
+                val entry = o as List<?>
+                var values = expectedFeatureMap.get(entry.get(0))
+                if (values == null){
+                    values = newHashSet()
+                    expectedFeatureMap.put(entry.get(0) as EObject, values)
+                }
+                values.add(entry.get(2))
+            }       
+            val diff = Maps.difference(featureMap, expectedFeatureMap)
+            Assert.assertTrue(diff.areEqual)
+        }
+        if (element instanceof EDataType){
+            val values = baseIndex.getDataTypeInstances(element)
+            val expectedValues = newHashSet()
+            for(o : expected){
+                val entry = o as List<?>
+                expectedValues.add(entry.get(2))
+            }
+            val symmetricDifference = Sets.symmetricDifference(values, expectedValues)
+            Assert.assertTrue(symmetricDifference.empty)
+        }
+        
     }
     
     @Test
