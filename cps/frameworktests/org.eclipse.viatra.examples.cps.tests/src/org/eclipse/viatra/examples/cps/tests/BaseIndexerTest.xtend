@@ -281,4 +281,37 @@ class BaseIndexerTest {
         
     }
     
+    @Test
+    def void testStatisticsInCallback(){
+        val baseIndex = ViatraBaseFactory::instance.createNavigationHelper(rs, false, null)
+        val int[] counted = #[-1];
+        
+        baseIndex.coalesceTraversals([
+            baseIndex.executeAfterTraversal([
+                if (element instanceof EClass){
+                    counted.set(0,baseIndex.countAllInstances(element))
+                }
+                if (element instanceof EStructuralFeature){
+                    counted.set(0,baseIndex.countFeatures(element))
+                }
+                if (element instanceof EDataType){
+                    counted.set(0,baseIndex.countDataTypeInstances(element))   
+                }  
+            ])
+            if (element instanceof EClass){
+                baseIndex.registerEClasses(#{element}, IndexingLevel.STATISTICS)
+            }
+            if (element instanceof EStructuralFeature){
+                baseIndex.registerEStructuralFeatures(#{element}, IndexingLevel.STATISTICS)
+            }
+            if (element instanceof EDataType){
+                baseIndex.registerEDataTypes(#{element}, IndexingLevel.STATISTICS)
+            }  
+            return null;
+        ]);
+        val expected = enumerateInstances(element).size
+
+        Assert.assertEquals(expected, counted.get(0))
+    }
+    
 }
