@@ -27,6 +27,7 @@ import org.junit.runners.Suite.SuiteClasses
     BaseIndexerTest,
     AggregatorTest,
     AggregatorComparisonTest,
-    ModelManipulationAggregatorTest
+    ModelManipulationAggregatorTest,
+    LocalSearchPlanCostOverflowTest
 ])
 class AllCpsTests {}
