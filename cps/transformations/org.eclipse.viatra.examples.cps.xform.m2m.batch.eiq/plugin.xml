@@ -2,9 +2,6 @@
   <extension id="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.CpsXformM2M" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.CpsXformM2M" id="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.CpsXformM2M">
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.hostInstances"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.cps2depTrace"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.cps2depApplicationTrace"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.cpsBehaviorTrace"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.depTransition"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.stateMachineTransitions"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.applicationInstance"/>
@@ -16,6 +13,11 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.communicatingAppInstances"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.hostCommunication"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.reachableHosts"/>
+    </group>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces" id="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.cps2depTrace"/>
     </group>
   </extension>
 </plugin>

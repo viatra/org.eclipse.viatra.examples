@@ -24,37 +24,42 @@ public enum TransformationType {
     BATCH_VIATRA_QUERY_RETE {
     	public CPSTransformationWrapper getWrapper() {
     		QueryEvaluationHint hint = new QueryEvaluationHint(new ReteBackendFactory(), ImmutableMap.<String, Object>of());
-	    	return new BatchQueryOnly(hint);
+	    	return new BatchQueryOnly(hint, hint);
 	    }
     	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
     	public CPSTransformationWrapper getWrapper() {
-	    	return new BatchQueryOnly(LocalSearchHints.getDefaultFlatten().build());
+	    	QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
+			return new BatchQueryOnly(hint, hint);
 	    }
     	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
         public CPSTransformationWrapper getWrapper() {
-            return new BatchQueryOnly(LocalSearchHints.getDefault().build());
+            QueryEvaluationHint hint = LocalSearchHints.getDefault().build();
+			return new BatchQueryOnly(hint, hint);
         }
         public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
         public CPSTransformationWrapper getWrapper() {
-            return new BatchQueryOnly(LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build());
+            QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build();
+			return new BatchQueryOnly(hint, hint);
         }
         public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
     	public CPSTransformationWrapper getWrapper() {
-    		return new BatchQueryOnly(LocalSearchHints.getDefault().setAllowInverse(false).setUseBase(false).build());
+    		QueryEvaluationHint hint = LocalSearchHints.getDefault().setAllowInverse(false).setUseBase(false).build();
+			return new BatchQueryOnly(hint, hint);
     	}
     	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
-            return new BatchQueryOnly(LocalSearchHints.getDefaultNoBase().build());
+            QueryEvaluationHint hint = LocalSearchHints.getDefaultNoBase().build();
+			return new BatchQueryOnly(hint, hint);
         }
         public boolean isIncremental(){return false;}
     },

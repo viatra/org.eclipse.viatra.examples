@@ -39,16 +39,18 @@ import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
 import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.CpsXformM2M
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint
-import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory
 
 import static com.google.common.base.Preconditions.*
 
 import static extension org.eclipse.viatra.examples.cps.xform.m2m.util.NamingUtil.*
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces
+import org.eclipse.viatra.query.runtime.api.GenericQueryGroup
 
 class CPS2DeploymentBatchTransformationEiq {
 
 	extension Logger logger = Logger.getLogger("cps.xform.m2m.batch.eiq")
 	extension CpsXformM2M cpsXformM2M = CpsXformM2M.instance
+	extension Cps2DepTraces cpsTraces = Cps2DepTraces.instance
 
 	DeploymentFactory depFactory = DeploymentFactory.eINSTANCE
 	TraceabilityFactory tracFactory = TraceabilityFactory.eINSTANCE
@@ -56,6 +58,7 @@ class CPS2DeploymentBatchTransformationEiq {
 	CPSToDeployment mapping
 	AdvancedViatraQueryEngine engine
 	QueryEvaluationHint hint
+	QueryEvaluationHint tracesHint
 
 	Stopwatch clearModelPerformance;
 	Stopwatch hostTransformationPerformance;
@@ -84,7 +87,7 @@ class CPS2DeploymentBatchTransformationEiq {
 	 *             If either of the input arguments are null, or the mapping
 	 *             does not contain a cps and a deployment model.
 	 */
-	new(CPSToDeployment mapping, AdvancedViatraQueryEngine engine, QueryEvaluationHint hint) {
+	new(CPSToDeployment mapping, AdvancedViatraQueryEngine engine, QueryEvaluationHint hint, QueryEvaluationHint tracesHint) {
 		checkArgument(mapping != null, "Mapping cannot be null!")
 		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
 		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
@@ -93,10 +96,16 @@ class CPS2DeploymentBatchTransformationEiq {
 		this.mapping = mapping
 		this.engine = engine
 		this.hint = hint
+		this.tracesHint = tracesHint
 
 		debug("Preparing queries on engine.")
 		val watch = Stopwatch.createStarted
-		engine.prepareGroup(cpsXformM2M, hint)
+		if(hint != tracesHint){
+			engine.prepareGroup(cpsXformM2M, hint)
+			engine.prepareGroup(cpsTraces, tracesHint)
+		} else {
+			engine.prepareGroup(GenericQueryGroup.of(cpsXformM2M, cpsTraces), hint);
+		}
 		watch.stop
 		info('''Prepared queries on engine («watch.elapsed(TimeUnit.MILLISECONDS)» ms)''')
 	}

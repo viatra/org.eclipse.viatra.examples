@@ -22,6 +22,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 import static org.junit.Assert.*
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 @RunWith(Parameterized)
 class ActionMappingTest extends CPS2DepTest {
@@ -812,7 +813,8 @@ class ActionMappingTest extends CPS2DepTest {
 		cps2dep.assertActionMapping(transition, transition2)
 		
 		info("Removing host instance for wait")
-		host2.instances -= hostInstance2
+		//host2.instances -= hostInstance2
+		EcoreUtil.delete(hostInstance2);
 		executeTransformation
 		
 		cps2dep.assertNoTrigger(transition)

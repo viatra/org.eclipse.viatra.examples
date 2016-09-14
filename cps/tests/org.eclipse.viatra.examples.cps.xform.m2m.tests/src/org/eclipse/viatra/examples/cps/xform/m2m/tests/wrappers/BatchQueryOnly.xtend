@@ -22,14 +22,16 @@ class BatchQueryOnly extends CPSTransformationWrapper {
 	CPS2DeploymentBatchTransformationEiq xform
 	AdvancedViatraQueryEngine engine
 	QueryEvaluationHint hint
+	QueryEvaluationHint tracesHint
 
-	new(QueryEvaluationHint hint) {
+	new(QueryEvaluationHint hint, QueryEvaluationHint tracesHint) {
 		this.hint = hint
+		this.tracesHint = tracesHint
 	}
 
 	override initializeTransformation(CPSToDeployment cps2dep) {
 		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
-		xform = new CPS2DeploymentBatchTransformationEiq(cps2dep, engine, hint)
+		xform = new CPS2DeploymentBatchTransformationEiq(cps2dep, engine, hint, tracesHint)
 	}
 
 	override executeTransformation() {
