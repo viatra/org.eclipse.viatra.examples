@@ -813,7 +813,6 @@ class ActionMappingTest extends CPS2DepTest {
 		cps2dep.assertActionMapping(transition, transition2)
 		
 		info("Removing host instance for wait")
-		//host2.instances -= hostInstance2
 		EcoreUtil.delete(hostInstance2);
 		executeTransformation
 		
