@@ -14,18 +14,22 @@ package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentPackage;
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityPackage;
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
 import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints;
+import org.eclipse.viatra.query.runtime.localsearch.planner.cost.IConstraintEvaluationContext;
+import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.StatisticsBasedConstraintCostFunction;
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.VariableBindingBasedCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 
 public enum TransformationType {
     BATCH_SIMPLE {public CPSTransformationWrapper getWrapper() {return new BatchSimple();} public boolean isIncremental(){return false;}},
@@ -47,14 +51,30 @@ public enum TransformationType {
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_TRACE_STATS {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
-            final Map<IInputKey, IInputKey> substitutions = new HashMap<>();
+            final Map<IInputKey, IInputKey> substitutions = Maps.newHashMap();
             substitutions.put(new EClassTransitiveInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EClassTransitiveInstancesKey(DeploymentPackage.Literals.DEPLOYMENT_ELEMENT), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__DEPLOYMENT_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT__TRACES), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new TraceabilitySubstitutingStatisticsBasedConstraintCostFunction(substitutions)).build();
+            QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new StatisticsBasedConstraintCostFunction() {
+                
+                @Override
+                public long countTuples(IConstraintEvaluationContext input, IInputKey supplierKey) {
+                    if (supplierKey instanceof EClassTransitiveInstancesKey){
+                        EClass eclass = ((EClassTransitiveInstancesKey) supplierKey).getEmfKey();
+                        if (TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT.equals(eclass)){
+                            return 1l;
+                        }
+                    }
+                    if (substitutions.containsKey(supplierKey)){
+                        return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), null);
+                    }
+                    
+                    return input.getRuntimeContext().countTuples(supplierKey, null);
+                }
+            }).build();
             return new BatchQueryOnly(hint, traceHint);
         }
         public boolean isIncremental(){return false;}
