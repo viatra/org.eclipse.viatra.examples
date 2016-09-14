@@ -11,7 +11,6 @@
 
 package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
@@ -32,21 +31,23 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 public enum TransformationType {
-    BATCH_SIMPLE {public CPSTransformationWrapper getWrapper() {return new BatchSimple();} public boolean isIncremental(){return false;}},
-    BATCH_OPTIMIZED {public CPSTransformationWrapper getWrapper() {return new BatchOptimized();} public boolean isIncremental(){return false;}},
+    BATCH_SIMPLE {
+        public CPSTransformationWrapper getWrapper() {return new BatchSimple();}
+    },
+    BATCH_OPTIMIZED {
+        public CPSTransformationWrapper getWrapper() {return new BatchOptimized();}
+    },
     BATCH_VIATRA_QUERY_RETE {
     	public CPSTransformationWrapper getWrapper() {
     		QueryEvaluationHint hint = new QueryEvaluationHint(new ReteBackendFactory(), ImmutableMap.<String, Object>of());
 	    	return new BatchQueryOnly(hint, hint);
 	    }
-    	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
     	public CPSTransformationWrapper getWrapper() {
 	    	QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
 			return new BatchQueryOnly(hint, hint);
 	    }
-    	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_TRACE_STATS {
         public CPSTransformationWrapper getWrapper() {
@@ -57,7 +58,6 @@ public enum TransformationType {
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__DEPLOYMENT_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT__TRACES), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new StatisticsBasedConstraintCostFunction() {
                 
                 @Override
@@ -77,42 +77,46 @@ public enum TransformationType {
             }).build();
             return new BatchQueryOnly(hint, traceHint);
         }
-        public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefault().build();
 			return new BatchQueryOnly(hint, hint);
         }
-        public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build();
 			return new BatchQueryOnly(hint, hint);
         }
-        public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
     	public CPSTransformationWrapper getWrapper() {
     		QueryEvaluationHint hint = LocalSearchHints.getDefault().setAllowInverse(false).setUseBase(false).build();
 			return new BatchQueryOnly(hint, hint);
     	}
-    	public boolean isIncremental(){return false;}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefaultNoBase().build();
 			return new BatchQueryOnly(hint, hint);
         }
-        public boolean isIncremental(){return false;}
     },
-    BATCH_VIATRA_TRANSFORMATION {public CPSTransformationWrapper getWrapper() {return new BatchViatra();} public boolean isIncremental(){return false;}},
-    INCR_VIATRA_QUERY_RESULT_TRACEABILITY {public CPSTransformationWrapper getWrapper() {return new QueryResultTraceability();} public boolean isIncremental(){return true;}},
-    INCR_VIATRA_EXPLICIT_TRACEABILITY {public CPSTransformationWrapper getWrapper() {return new ExplicitTraceability();} public boolean isIncremental(){return true;}},
-    INCR_VIATRA_AGGREGATED {public CPSTransformationWrapper getWrapper() {return new PartialBatch();} public boolean isIncremental(){return true;}},
-    INCR_VIATRA_TRANSFORMATION {public CPSTransformationWrapper getWrapper() {return new ViatraTransformation();} public boolean isIncremental(){return true;}};
-    
+    BATCH_VIATRA_TRANSFORMATION {
+        public CPSTransformationWrapper getWrapper() {return new BatchViatra();}
+    },
+    INCR_VIATRA_QUERY_RESULT_TRACEABILITY {
+        public CPSTransformationWrapper getWrapper() {return new QueryResultTraceability();}
+    },
+    INCR_VIATRA_EXPLICIT_TRACEABILITY {
+        public CPSTransformationWrapper getWrapper() {return new ExplicitTraceability();}
+    },
+    INCR_VIATRA_AGGREGATED {
+        public CPSTransformationWrapper getWrapper() {return new PartialBatch();}
+    },
+    INCR_VIATRA_TRANSFORMATION {
+        public CPSTransformationWrapper getWrapper() {return new ViatraTransformation();}
+    };
+
     public abstract CPSTransformationWrapper getWrapper();
-    public abstract boolean isIncremental();
 }

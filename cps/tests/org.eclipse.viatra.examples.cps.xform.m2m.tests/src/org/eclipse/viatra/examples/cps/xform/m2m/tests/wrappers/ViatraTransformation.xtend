@@ -47,4 +47,8 @@ class ViatraTransformation extends CPSTransformationWrapper {
 		engine = null
 	}
 	
+	override isIncremental() {
+		true
+	}
+	
 }

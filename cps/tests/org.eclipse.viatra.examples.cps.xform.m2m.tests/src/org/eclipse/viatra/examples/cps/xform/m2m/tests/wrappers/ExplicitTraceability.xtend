@@ -42,4 +42,9 @@ class ExplicitTraceability extends CPSTransformationWrapper {
 		xform = null
 		engine = null
 	}
+	
+	override isIncremental() {
+		true
+	}
+	
 }

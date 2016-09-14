@@ -42,4 +42,8 @@ class BatchViatra extends CPSTransformationWrapper {
 		engine = null
 	}
 	
+	override isIncremental() {
+		false
+	}
+	
 }

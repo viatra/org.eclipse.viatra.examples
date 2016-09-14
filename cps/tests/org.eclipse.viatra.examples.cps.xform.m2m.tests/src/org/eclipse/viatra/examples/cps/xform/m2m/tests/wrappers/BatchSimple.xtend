@@ -32,5 +32,9 @@ class BatchSimple extends CPSTransformationWrapper {
 		}
 		xform = null
 	}
+	
+	override isIncremental() {
+		false
+	}
 
 }

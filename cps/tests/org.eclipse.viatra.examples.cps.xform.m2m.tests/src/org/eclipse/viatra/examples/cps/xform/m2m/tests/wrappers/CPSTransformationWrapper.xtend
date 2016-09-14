@@ -22,4 +22,7 @@ abstract class CPSTransformationWrapper {
 	def void executeTransformation()
 	
 	def void cleanupTransformation()
+	
+	def boolean isIncremental()
+	
 }

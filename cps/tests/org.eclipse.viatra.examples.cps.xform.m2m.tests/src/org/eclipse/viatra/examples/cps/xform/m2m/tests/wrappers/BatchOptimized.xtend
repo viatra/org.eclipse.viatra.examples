@@ -32,5 +32,9 @@ class BatchOptimized extends CPSTransformationWrapper {
 		}
 		xform = null
 	}
+	
+	override isIncremental() {
+		false
+	}
 
 }

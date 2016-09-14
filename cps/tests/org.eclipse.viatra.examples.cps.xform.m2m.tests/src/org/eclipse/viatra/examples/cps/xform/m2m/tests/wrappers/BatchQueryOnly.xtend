@@ -45,5 +45,9 @@ class BatchQueryOnly extends CPSTransformationWrapper {
 		engine = null
 		xform = null
 	}
+	
+	override isIncremental() {
+		false
+	}
 
 }

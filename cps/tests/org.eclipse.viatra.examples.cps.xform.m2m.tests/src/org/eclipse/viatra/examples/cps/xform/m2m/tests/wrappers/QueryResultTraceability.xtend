@@ -42,4 +42,9 @@ class QueryResultTraceability extends CPSTransformationWrapper {
 		engine = null
 		xform = null
 	}
+	
+	override isIncremental() {
+		true
+	}
+	
 }
