@@ -29,14 +29,20 @@ class PlanExecutor<FragmentType, InputType extends Initializer<FragmentType>> {
 	}
 	
 	def continueProcessing(IPlan<FragmentType> plan, FragmentType fragment) {
-		plan.phases.forEach[phase, i| 
-			debug("<< Begin Phase: " + phase.class.simpleName + " >>");
+		plan.phases.forEach[phase | 
+		    if(isDebugEnabled){
+    			debug("<< Begin Phase: " + phase.class.simpleName + " >>");
+		    }
 			val phaseSw = Stopwatch.createStarted;
-			phase.getOperations(fragment).forEach[operation, j|
+			phase.getOperations(fragment).forEach[operation |
 				try{
-					debug("< OPERATION " + operation.class.simpleName + " >");
+					if(isDebugEnabled){
+					    debug("< OPERATION " + operation.class.simpleName + " >");
+				    }
 					operation.execute(fragment);
-					debug("<-------------------- END OPERATION ----------------------->");
+					if(isDebugEnabled){
+					   debug("<-------------------- END OPERATION ----------------------->");
+				   }
 				}catch(Exception e){
 					info(e.message);
 				}
