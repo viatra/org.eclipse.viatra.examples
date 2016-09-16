@@ -46,7 +46,7 @@ public enum TransformationType {
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
     	public CPSTransformationWrapper getWrapper() {
 	    	QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
-			return new BatchQueryOnly(hint, hint);
+			return new BatchQueryLocalSearch(hint, hint);
 	    }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_TRACE_STATS {
@@ -75,31 +75,31 @@ public enum TransformationType {
                     return input.getRuntimeContext().countTuples(supplierKey, null);
                 }
             }).build();
-            return new BatchQueryOnly(hint, traceHint);
+            return new BatchQueryLocalSearch(hint, traceHint);
         }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefault().build();
-			return new BatchQueryOnly(hint, hint);
+			return new BatchQueryLocalSearch(hint, hint);
         }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build();
-			return new BatchQueryOnly(hint, hint);
+			return new BatchQueryLocalSearch(hint, hint);
         }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
     	public CPSTransformationWrapper getWrapper() {
     		QueryEvaluationHint hint = LocalSearchHints.getDefault().setAllowInverse(false).setUseBase(false).build();
-			return new BatchQueryOnly(hint, hint);
+			return new BatchQueryLocalSearch(hint, hint);
     	}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
             QueryEvaluationHint hint = LocalSearchHints.getDefaultNoBase().build();
-			return new BatchQueryOnly(hint, hint);
+			return new BatchQueryLocalSearch(hint, hint);
         }
     },
     BATCH_VIATRA_TRANSFORMATION {

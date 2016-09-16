@@ -36,29 +36,29 @@ import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
 import org.eclipse.viatra.examples.cps.traceability.CPS2DeploymentTrace
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces
 import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.CpsXformM2M
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
+import org.eclipse.viatra.query.runtime.api.GenericQueryGroup
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint
 
 import static com.google.common.base.Preconditions.*
 
 import static extension org.eclipse.viatra.examples.cps.xform.m2m.util.NamingUtil.*
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries.Cps2DepTraces
-import org.eclipse.viatra.query.runtime.api.GenericQueryGroup
 
 class CPS2DeploymentBatchTransformationEiq {
 
-	extension Logger logger = Logger.getLogger("cps.xform.m2m.batch.eiq")
-	extension CpsXformM2M cpsXformM2M = CpsXformM2M.instance
-	extension Cps2DepTraces cpsTraces = Cps2DepTraces.instance
+	extension protected Logger logger = Logger.getLogger("cps.xform.m2m.batch.eiq")
+	extension protected CpsXformM2M cpsXformM2M = CpsXformM2M.instance
+	extension protected Cps2DepTraces cpsTraces = Cps2DepTraces.instance
 
 	DeploymentFactory depFactory = DeploymentFactory.eINSTANCE
 	TraceabilityFactory tracFactory = TraceabilityFactory.eINSTANCE
 
 	CPSToDeployment mapping
-	AdvancedViatraQueryEngine engine
-	QueryEvaluationHint hint
-	QueryEvaluationHint tracesHint
+	protected AdvancedViatraQueryEngine engine
+	protected QueryEvaluationHint hint
+	protected QueryEvaluationHint tracesHint
 
 	Stopwatch clearModelPerformance;
 	Stopwatch hostTransformationPerformance;
@@ -132,10 +132,14 @@ class CPS2DeploymentBatchTransformationEiq {
 		mapping.cps.hostTypes.map[instances].flatten.forEach[transform]
 
 		debug("Running action transformations.")
-		engine.getMatcher(depTransition, hint).allMatches.map[depTransition].forEach[mapAction]
+		transformActions()
 
 		reportPerformance
 	}
+
+    protected def void transformActions() {
+        engine.getMatcher(depTransition, hint).allMatches.map[depTransition].forEach[mapAction]
+    }
 
 	private def initPerformanceTimers() {
 		clearModelPerformance = Stopwatch.createUnstarted
@@ -150,7 +154,7 @@ class CPS2DeploymentBatchTransformationEiq {
 	}
 
 	private def reportPerformance() {
-		debug(
+		info(
 			'''
 			>>>Cleared model in: «clearModelPerformance.elapsed(TimeUnit.MILLISECONDS)» ms
 			>>>Host transformation: «hostTransformationPerformance.elapsed(TimeUnit.MILLISECONDS)» ms
@@ -255,7 +259,7 @@ class CPS2DeploymentBatchTransformationEiq {
 		stateMachineTransformationPerformance.start
 		watch.reset.start
 		if (cpsBehavior.initial != null)
-			depBehavior.current = engine.getMatcher(cps2depTrace, hint).getAllMatches(mapping, null, cpsBehavior.initial, null).map[
+			depBehavior.current = engine.getMatcher(cps2depTrace, tracesHint).getAllMatches(null, cpsBehavior.initial, null).map[
 				depElement].filter(BehaviorState).findFirst[depBehavior.states.contains(it)]
 		else
 			depBehavior.current = null
@@ -336,7 +340,7 @@ class CPS2DeploymentBatchTransformationEiq {
 		otherTimer.start
 		addTraceOneToN(transition, #[depTransition])
 		otherTimer.stop
-		depTransition.to = engine.getMatcher(cps2depTrace, hint).getAllMatches(mapping, null, transition.targetState, null).map[
+		depTransition.to = engine.getMatcher(cps2depTrace, tracesHint).getAllMatches(null, transition.targetState, null).map[
 			depElement].filter(BehaviorState).findFirst [
 			depBehavior.states.contains(it)
 		]
@@ -354,21 +358,22 @@ class CPS2DeploymentBatchTransformationEiq {
 		trace('''Executing: mapAction(depTrigger = «depSendTransition.name»)''')
 		triggerTransformationPerformance.start
 		
-		val cpsSendTransition = engine.getMatcher(cps2depTrace, hint).getAllValuesOfcpsElement(mapping, null, depSendTransition).head as Transition
-		val cpsWaitTransitions = engine.getMatcher(triggerPair, hint).getAllValuesOfcpsTarget(cpsSendTransition).filter(Transition)
+		val cpsSendTransition = engine.getMatcher(cps2depTrace, tracesHint).getAllValuesOfcpsElement(null, depSendTransition).head as Transition
+		val cpsWaitTransitions = getWaitTransitionsForSendTransition(cpsSendTransition)
 
 		if(!cpsWaitTransitions.empty){
 			val senderDepApp = depSendTransition.eContainer.eContainer as DeploymentApplication
-			val cpsSendAppInstance = engine.getMatcher(cps2depTrace, hint).getAllValuesOfcpsElement(mapping, null, senderDepApp).head as ApplicationInstance
+			val cpsSendAppInstance = engine.getMatcher(cps2depTrace, tracesHint).getAllValuesOfcpsElement(null, senderDepApp).head as ApplicationInstance
 					
 			cpsWaitTransitions.forEach[cpsWaitTransition |
 				val cpsWaitAppInstances = engine.getMatcher(cpsApplicationTransition, hint).getAllValuesOfcpsApp(cpsWaitTransition)
 				val communicatingWaitAppInstances = cpsWaitAppInstances.filter[
-					engine.getMatcher(communicatingAppInstances, hint).hasMatch(cpsSendAppInstance, it)
+					val hasMatch = engine.getMatcher(communicatingAppInstances, hint).hasMatch(cpsSendAppInstance, it)
+					return hasMatch
 				]
 				communicatingWaitAppInstances.forEach[cpsWaitAppInstance |
-					val waitTransitionTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitTransition, null).filter(CPS2DeploymentTrace).head
-					val waitAppInstanceTrace = engine.getMatcher(cps2depTrace, hint).getAllValuesOftrace(mapping, cpsWaitAppInstance, null).filter(CPS2DeploymentTrace).head 
+					val waitTransitionTrace = engine.getMatcher(cps2depTrace, tracesHint).getAllValuesOftrace(cpsWaitTransition, null).filter(CPS2DeploymentTrace).head
+					val waitAppInstanceTrace = engine.getMatcher(cps2depTrace, tracesHint).getAllValuesOftrace(cpsWaitAppInstance, null).filter(CPS2DeploymentTrace).head 
 					
 					val depWaitApp = waitAppInstanceTrace.deploymentElements.filter(DeploymentApplication).head
 					val depWaitTransition = waitTransitionTrace.deploymentElements.filter(BehaviorTransition).findFirst[
@@ -382,6 +387,10 @@ class CPS2DeploymentBatchTransformationEiq {
 		triggerTransformationPerformance.stop
 		trace('''Execution ended: mapAction''')
 	}
+
+    protected def Iterable<Transition> getWaitTransitionsForSendTransition(Transition cpsSendTransition) {
+        engine.getMatcher(triggerPair, hint).getAllValuesOfcpsTarget(cpsSendTransition).filter(Transition)
+    }
 
 	/**
 	 * Creates a {@link DeploymentHost} representing the {@link HostInstance}
