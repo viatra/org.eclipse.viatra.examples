@@ -204,7 +204,7 @@ class CPS2DeploymentBatchTransformationEiq {
 	 * @param depHost
 	 *            The parent which will contain the transformed application.
 	 */
-	private def transform(ApplicationInstance cpsInstance, DeploymentHost depHost) {
+	protected def transform(ApplicationInstance cpsInstance, DeploymentHost depHost) {
 		trace('''Executing: transform(cpsInstance = «cpsInstance.name», depHost = «depHost.name»)''')
 		appTransformationPerformance.start
 		val depApp = cpsInstance.createDepApplication
