@@ -28,11 +28,8 @@ class CPSPhaseHostCommunication implements IPhase<CPSFragment>{
 	override getOperations(CPSFragment fragment) {
 		val operations = Lists.newArrayList();
 	
-		//val hostInstances = HostInstancesMatcher.on(fragment.engine).allValuesOfhostInstance.toList;
-
 		// Calculate hostclass to host instance map
 		val hostClassToInstanceMap = CPSModelBuilderUtil.calculateHostInstancesToHostClassMap(fragment);
-
 
 		// Generate communications
 		for(hostClass : fragment.hostTypes.keySet){ // HostClasses store the configuration
@@ -40,19 +37,19 @@ class CPSPhaseHostCommunication implements IPhase<CPSFragment>{
 			
 			for(hostType : fragment.hostTypes.get(hostClass)){ // Every HostInstance
 				for(hostInstance : hostType.instances){
-					// Initialize list of forbidden targets
-					var List<HostInstance> forbiddenTargetInstances = Lists.newArrayList;
-					// Add itself to the forbidden targets
-					forbiddenTargetInstances.add(hostInstance); 
+				    val possibleTargetCopy = Lists.newArrayList(possibleTargetInstances)
+					possibleTargetCopy.remove(hostInstance);
 					// Calculate the number of new communication links
 					val numberOfCommLinks = hostClass.numberOfCommunicationLines.randInt(fragment.random); 
 					// Create communication links
 					for(i : 0 ..< numberOfCommLinks){
 						// Randomize target node
-						val targetHostInstance = possibleTargetInstances.randElementExcept(forbiddenTargetInstances, fragment.random);
-						if(targetHostInstance != null){
-							forbiddenTargetInstances.add(targetHostInstance);
-							operations.add(new HostInstanceCommunicatesWithOperation(hostInstance, targetHostInstance));
+						if(!possibleTargetCopy.empty){
+    						val targetHostInstance = possibleTargetCopy.randElement(fragment.random);
+    						if(targetHostInstance != null){
+    							possibleTargetCopy.remove(targetHostInstance);
+    							operations.add(new HostInstanceCommunicatesWithOperation(hostInstance, targetHostInstance));
+    						}
 						}
 					}
 				}

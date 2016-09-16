@@ -75,6 +75,18 @@ class RandomUtils {
 	    return list.get(randNumber);
 	}
 	
+	def randElementIndex(int size, Random rand) throws ModelGeneratorException {
+		if(size == 0){
+			throw new ModelGeneratorException("The specified list is empty. (randElement(List list, Random rand))");
+		}
+		
+		val max = size-1;
+		
+		val randNumber = rand.nextInt((max - 0) + 1) + 0;
+		
+	    return randNumber;
+	}
+	
 	def <ListElement>randElementExcept(List<ListElement> list, Collection<ListElement> excepted, Random rand) throws ModelGeneratorException {
 		if(excepted.containsAll(list)){
 			return null;
@@ -84,9 +96,16 @@ class RandomUtils {
 			return list.get(0);
 		}
 		
-		var randElement = randElement(list, rand);
+		val listSize = list.size
+		var randElementIndex = randElementIndex(listSize, rand);
+		var randElement = list.get(randElementIndex)
+		var usedIndexes = newHashSet
 		while(excepted.contains(randElement)){
-			randElement = randElement(list, rand);
+		    usedIndexes.add(randElementIndex)
+		    do {
+    			randElementIndex = randElementIndex(listSize, rand);
+		    } while(usedIndexes.contains(randElementIndex))
+		    randElement = list.get(randElementIndex)
 		}
 		return randElement;	
 	}

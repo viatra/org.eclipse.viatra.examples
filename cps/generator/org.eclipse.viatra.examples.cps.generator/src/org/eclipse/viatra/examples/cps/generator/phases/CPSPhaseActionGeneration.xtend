@@ -44,15 +44,17 @@ class CPSPhaseActionGeneration implements IPhase<CPSFragment>{
 								// Generate SendSignal(AppTypeID, SignalID)
 								val signalNumber = fragment.numberOfSignals.randIntOneToMax(fragment.random);
 								val possibleTypeList = getPossibleAppTypesOf(appType, fragment).toList
-								
-								val targetAppType = possibleTypeList.randElementExcept(ImmutableList.of(appType), fragment.random);
-
-								if(targetAppType != null){
-									val action = SEND_METHOD_NAME + "(" + targetAppType.identifier + ", "+ signalNumber + ")";
-									debug(action)
-									operations.add(new ActionGenerationOperation(action, transition));
-								}else{
-									debug("#Warning: Cannot find target application type for Action of " + appType.identifier);
+								possibleTypeList.remove(appType)
+								if(!possibleTypeList.empty) {
+    								val targetAppType = possibleTypeList.randElement(fragment.random);
+    
+    								if(targetAppType != null){
+    									val action = SEND_METHOD_NAME + "(" + targetAppType.identifier + ", "+ signalNumber + ")";
+    									debug(action)
+    									operations.add(new ActionGenerationOperation(action, transition));
+    								}else{
+    									debug("#Warning: Cannot find target application type for Action of " + appType.identifier);
+    								}
 								}
 							}else{
 								// Generate WaitSignal(SignalID)

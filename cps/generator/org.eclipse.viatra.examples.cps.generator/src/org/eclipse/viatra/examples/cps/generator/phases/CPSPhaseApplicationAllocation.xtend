@@ -10,23 +10,23 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.generator.phases
 
+import com.google.common.collect.HashMultimap
 import com.google.common.collect.Lists
 import java.util.HashMap
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType
+import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance
 import org.eclipse.viatra.examples.cps.generator.dtos.AppClass
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.dtos.HostClass
 import org.eclipse.viatra.examples.cps.generator.dtos.Percentage
 import org.eclipse.viatra.examples.cps.generator.exceptions.ModelGeneratorException
 import org.eclipse.viatra.examples.cps.generator.operations.ApplicationInstanceAllocationOperation
+import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil
 import org.eclipse.viatra.examples.cps.generator.utils.MapUtil
 import org.eclipse.viatra.examples.cps.generator.utils.RandomUtils
 import org.eclipse.viatra.examples.cps.planexecutor.api.IPhase
-import com.google.common.collect.HashMultimap
-import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance
-import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil
 
 class CPSPhaseApplicationAllocation implements IPhase<CPSFragment>{
 	
@@ -73,11 +73,11 @@ class CPSPhaseApplicationAllocation implements IPhase<CPSFragment>{
 					val allocationMap = HashMultimap.<HostInstance, ApplicationInstance>create
 					
 					// Create allocation map
-					val forbiddenApps = Lists.<ApplicationInstance>newArrayList
+					val appInstanceCopy = Lists.newArrayList(appInstances)
 					for(targetHc : allocNumbers.keySet){
 						for(i : 0 ..< allocNumbers.get(targetHc)) {
-							val app = appInstances.randElementExcept(forbiddenApps, fragment.random);
-							forbiddenApps.add(app)
+							val app = appInstanceCopy.randElement(fragment.random);
+							appInstanceCopy.remove(app)
 							val hostInstance = hostInstacesToClass.get(targetHc).toList.randElement(fragment.random)
 							
 							debug(app.identifier + " --> " + hostInstance.identifier)
@@ -145,7 +145,7 @@ class CPSPhaseApplicationAllocation implements IPhase<CPSFragment>{
 	
 	def collectApplicationInstancesByAppClass(AppClass appClass, CPSFragment fragment) {
 		val appTypes = fragment.applicationTypes.get(appClass);
-		val appsForAllocateByAppClass = Lists.newArrayList;
+		val appsForAllocateByAppClass = newArrayList;
 		for(appType : appTypes){
 			appsForAllocateByAppClass.addAll(collectApplicationsForAllocation(appType, appClass, fragment));
 		}
@@ -154,9 +154,12 @@ class CPSPhaseApplicationAllocation implements IPhase<CPSFragment>{
 	
 	def collectApplicationsForAllocation(ApplicationType appType, AppClass appClass, CPSFragment fragment) {
 		var numberOfAllocations = Math.round(Percentage.value(appType.instances.size, appClass.percentOfAllocatedInstances)) as int;
-		var appsForAllocate = Lists.<ApplicationInstance>newArrayList;
+		var appsForAllocate = newArrayList;
+		val instances = Lists.newArrayList(appType.instances)
 		for(i : 0 ..< numberOfAllocations){
-			appsForAllocate.add(appType.instances.randElementExcept(appsForAllocate, fragment.random));
+			val app = instances.randElement(fragment.random)
+            appsForAllocate.add(app);
+			instances.remove(app)
 		}
 		return appsForAllocate;
 	}
