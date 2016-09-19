@@ -47,244 +47,244 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine;
  */
 public class StateMachineImpl extends MinimalEObjectImpl.Container implements StateMachine {
 	/**
-	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getStates() <em>States</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getStates()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getStates()
+     * @generated
+     * @ordered
+     */
 	protected EList<State> states;
 
 	/**
-	 * The cached value of the '{@link #getInitial() <em>Initial</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getInitial() <em>Initial</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInitial()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getInitial()
+     * @generated
+     * @ordered
+     */
 	protected State initial;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected StateMachineImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return CyberPhysicalSystemPackage.Literals.STATE_MACHINE;
-	}
+        return CyberPhysicalSystemPackage.Literals.STATE_MACHINE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getIdentifier() {
-		return identifier;
-	}
+        return identifier;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setIdentifier(String newIdentifier) {
-		String oldIdentifier = identifier;
-		identifier = newIdentifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER, oldIdentifier, identifier));
-	}
+        String oldIdentifier = identifier;
+        identifier = newIdentifier;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER, oldIdentifier, identifier));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<State> getStates() {
-		if (states == null) {
-			states = new EObjectContainmentEList<State>(State.class, this, CyberPhysicalSystemPackage.STATE_MACHINE__STATES);
-		}
-		return states;
-	}
+        if (states == null) {
+            states = new EObjectContainmentEList<State>(State.class, this, CyberPhysicalSystemPackage.STATE_MACHINE__STATES);
+        }
+        return states;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public State getInitial() {
-		if (initial != null && initial.eIsProxy()) {
-			InternalEObject oldInitial = (InternalEObject)initial;
-			initial = (State)eResolveProxy(oldInitial);
-			if (initial != oldInitial) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL, oldInitial, initial));
-			}
-		}
-		return initial;
-	}
+        if (initial != null && initial.eIsProxy()) {
+            InternalEObject oldInitial = (InternalEObject)initial;
+            initial = (State)eResolveProxy(oldInitial);
+            if (initial != oldInitial) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL, oldInitial, initial));
+            }
+        }
+        return initial;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public State basicGetInitial() {
-		return initial;
-	}
+        return initial;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setInitial(State newInitial) {
-		State oldInitial = initial;
-		initial = newInitial;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL, oldInitial, initial));
-	}
+        State oldInitial = initial;
+        initial = newInitial;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL, oldInitial, initial));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
-				return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
+                return ((InternalEList<?>)getStates()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
-				return getIdentifier();
-			case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
-				return getStates();
-			case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
-				if (resolve) return getInitial();
-				return basicGetInitial();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
+                return getIdentifier();
+            case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
+                return getStates();
+            case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
+                if (resolve) return getInitial();
+                return basicGetInitial();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
-				setIdentifier((String)newValue);
-				return;
-			case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
-				getStates().clear();
-				getStates().addAll((Collection<? extends State>)newValue);
-				return;
-			case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
-				setInitial((State)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
+                getStates().clear();
+                getStates().addAll((Collection<? extends State>)newValue);
+                return;
+            case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
+                setInitial((State)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
-				setIdentifier(IDENTIFIER_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
-				getStates().clear();
-				return;
-			case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
-				setInitial((State)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
+                getStates().clear();
+                return;
+            case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
+                setInitial((State)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
-				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
-				return states != null && !states.isEmpty();
-			case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
-				return initial != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.STATE_MACHINE__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case CyberPhysicalSystemPackage.STATE_MACHINE__STATES:
+                return states != null && !states.isEmpty();
+            case CyberPhysicalSystemPackage.STATE_MACHINE__INITIAL:
+                return initial != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (identifier: ");
-		result.append(identifier);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (identifier: ");
+        result.append(identifier);
+        result.append(')');
+        return result.toString();
+    }
 
 } //StateMachineImpl

@@ -41,355 +41,355 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ResourceRequirement;
  */
 public class ResourceRequirementImpl extends MinimalEObjectImpl.Container implements ResourceRequirement {
 	/**
-	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRequiredCpu() <em>Required Cpu</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getRequiredCpu() <em>Required Cpu</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredCpu()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredCpu()
+     * @generated
+     * @ordered
+     */
 	protected static final int REQUIRED_CPU_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getRequiredCpu() <em>Required Cpu</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getRequiredCpu() <em>Required Cpu</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredCpu()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredCpu()
+     * @generated
+     * @ordered
+     */
 	protected int requiredCpu = REQUIRED_CPU_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRequiredRam() <em>Required Ram</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getRequiredRam() <em>Required Ram</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredRam()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredRam()
+     * @generated
+     * @ordered
+     */
 	protected static final int REQUIRED_RAM_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getRequiredRam() <em>Required Ram</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getRequiredRam() <em>Required Ram</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredRam()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredRam()
+     * @generated
+     * @ordered
+     */
 	protected int requiredRam = REQUIRED_RAM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRequiredHdd() <em>Required Hdd</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getRequiredHdd() <em>Required Hdd</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredHdd()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredHdd()
+     * @generated
+     * @ordered
+     */
 	protected static final int REQUIRED_HDD_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getRequiredHdd() <em>Required Hdd</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getRequiredHdd() <em>Required Hdd</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRequiredHdd()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getRequiredHdd()
+     * @generated
+     * @ordered
+     */
 	protected int requiredHdd = REQUIRED_HDD_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getType() <em>Type</em>}' reference.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getType()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getType()
+     * @generated
+     * @ordered
+     */
 	protected HostType type;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ResourceRequirementImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT;
-	}
+        return CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getIdentifier() {
-		return identifier;
-	}
+        return identifier;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setIdentifier(String newIdentifier) {
-		String oldIdentifier = identifier;
-		identifier = newIdentifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER, oldIdentifier, identifier));
-	}
+        String oldIdentifier = identifier;
+        identifier = newIdentifier;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER, oldIdentifier, identifier));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getRequiredCpu() {
-		return requiredCpu;
-	}
+        return requiredCpu;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setRequiredCpu(int newRequiredCpu) {
-		int oldRequiredCpu = requiredCpu;
-		requiredCpu = newRequiredCpu;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU, oldRequiredCpu, requiredCpu));
-	}
+        int oldRequiredCpu = requiredCpu;
+        requiredCpu = newRequiredCpu;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU, oldRequiredCpu, requiredCpu));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getRequiredRam() {
-		return requiredRam;
-	}
+        return requiredRam;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setRequiredRam(int newRequiredRam) {
-		int oldRequiredRam = requiredRam;
-		requiredRam = newRequiredRam;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM, oldRequiredRam, requiredRam));
-	}
+        int oldRequiredRam = requiredRam;
+        requiredRam = newRequiredRam;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM, oldRequiredRam, requiredRam));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getRequiredHdd() {
-		return requiredHdd;
-	}
+        return requiredHdd;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setRequiredHdd(int newRequiredHdd) {
-		int oldRequiredHdd = requiredHdd;
-		requiredHdd = newRequiredHdd;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD, oldRequiredHdd, requiredHdd));
-	}
+        int oldRequiredHdd = requiredHdd;
+        requiredHdd = newRequiredHdd;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD, oldRequiredHdd, requiredHdd));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HostType getType() {
-		if (type != null && type.eIsProxy()) {
-			InternalEObject oldType = (InternalEObject)type;
-			type = (HostType)eResolveProxy(oldType);
-			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE, oldType, type));
-			}
-		}
-		return type;
-	}
+        if (type != null && type.eIsProxy()) {
+            InternalEObject oldType = (InternalEObject)type;
+            type = (HostType)eResolveProxy(oldType);
+            if (type != oldType) {
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE, oldType, type));
+            }
+        }
+        return type;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HostType basicGetType() {
-		return type;
-	}
+        return type;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setType(HostType newType) {
-		HostType oldType = type;
-		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE, oldType, type));
-	}
+        HostType oldType = type;
+        type = newType;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE, oldType, type));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
-				return getIdentifier();
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
-				return getRequiredCpu();
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
-				return getRequiredRam();
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
-				return getRequiredHdd();
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
-				if (resolve) return getType();
-				return basicGetType();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
+                return getIdentifier();
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
+                return getRequiredCpu();
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
+                return getRequiredRam();
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
+                return getRequiredHdd();
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
+                if (resolve) return getType();
+                return basicGetType();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
-				setIdentifier((String)newValue);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
-				setRequiredCpu((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
-				setRequiredRam((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
-				setRequiredHdd((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
-				setType((HostType)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
+                setRequiredCpu((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
+                setRequiredRam((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
+                setRequiredHdd((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
+                setType((HostType)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
-				setIdentifier(IDENTIFIER_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
-				setRequiredCpu(REQUIRED_CPU_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
-				setRequiredRam(REQUIRED_RAM_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
-				setRequiredHdd(REQUIRED_HDD_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
-				setType((HostType)null);
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
+                setRequiredCpu(REQUIRED_CPU_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
+                setRequiredRam(REQUIRED_RAM_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
+                setRequiredHdd(REQUIRED_HDD_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
+                setType((HostType)null);
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
-				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
-				return requiredCpu != REQUIRED_CPU_EDEFAULT;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
-				return requiredRam != REQUIRED_RAM_EDEFAULT;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
-				return requiredHdd != REQUIRED_HDD_EDEFAULT;
-			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
-				return type != null;
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
+                return requiredCpu != REQUIRED_CPU_EDEFAULT;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
+                return requiredRam != REQUIRED_RAM_EDEFAULT;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
+                return requiredHdd != REQUIRED_HDD_EDEFAULT;
+            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__TYPE:
+                return type != null;
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (identifier: ");
-		result.append(identifier);
-		result.append(", requiredCpu: ");
-		result.append(requiredCpu);
-		result.append(", requiredRam: ");
-		result.append(requiredRam);
-		result.append(", requiredHdd: ");
-		result.append(requiredHdd);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (identifier: ");
+        result.append(identifier);
+        result.append(", requiredCpu: ");
+        result.append(requiredCpu);
+        result.append(", requiredRam: ");
+        result.append(requiredRam);
+        result.append(", requiredHdd: ");
+        result.append(requiredHdd);
+        result.append(')');
+        return result.toString();
+    }
 
 } //ResourceRequirementImpl

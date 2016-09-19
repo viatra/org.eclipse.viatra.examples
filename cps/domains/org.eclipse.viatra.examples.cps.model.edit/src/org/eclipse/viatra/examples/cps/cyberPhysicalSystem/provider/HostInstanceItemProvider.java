@@ -49,333 +49,333 @@ public class HostInstanceItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public HostInstanceItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addIdentifierPropertyDescriptor(object);
-			addNodeIpPropertyDescriptor(object);
-			addAvailableCpuPropertyDescriptor(object);
-			addAvailableRamPropertyDescriptor(object);
-			addAvailableHddPropertyDescriptor(object);
-			addTotalCpuPropertyDescriptor(object);
-			addTotalRamPropertyDescriptor(object);
-			addTotalHddPropertyDescriptor(object);
-			addApplicationsPropertyDescriptor(object);
-			addCommunicateWithPropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addIdentifierPropertyDescriptor(object);
+            addNodeIpPropertyDescriptor(object);
+            addAvailableCpuPropertyDescriptor(object);
+            addAvailableRamPropertyDescriptor(object);
+            addAvailableHddPropertyDescriptor(object);
+            addTotalCpuPropertyDescriptor(object);
+            addTotalRamPropertyDescriptor(object);
+            addTotalHddPropertyDescriptor(object);
+            addApplicationsPropertyDescriptor(object);
+            addCommunicateWithPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the Identifier feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Identifier feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_identifier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
-				 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Identifiable_identifier_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
+                 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Node Ip feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Node Ip feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addNodeIpPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_nodeIp_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_nodeIp_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__NODE_IP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_nodeIp_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_nodeIp_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__NODE_IP,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Available Cpu feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Available Cpu feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addAvailableCpuPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_availableCpu_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableCpu_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_CPU,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_availableCpu_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableCpu_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_CPU,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Available Ram feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Available Ram feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addAvailableRamPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_availableRam_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableRam_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_RAM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_availableRam_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableRam_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_RAM,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Available Hdd feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Available Hdd feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addAvailableHddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_availableHdd_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableHdd_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_HDD,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_availableHdd_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_availableHdd_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__AVAILABLE_HDD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Total Cpu feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Total Cpu feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTotalCpuPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_totalCpu_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalCpu_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_CPU,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_totalCpu_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalCpu_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_CPU,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Total Ram feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Total Ram feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTotalRamPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_totalRam_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalRam_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_RAM,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_totalRam_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalRam_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_RAM,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Total Hdd feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Total Hdd feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTotalHddPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_totalHdd_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalHdd_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_HDD,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_totalHdd_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_totalHdd_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__TOTAL_HDD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Applications feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Applications feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addApplicationsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_applications_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_applications_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__APPLICATIONS,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_applications_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_applications_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__APPLICATIONS,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Communicate With feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Communicate With feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addCommunicateWithPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_HostInstance_communicateWith_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_communicateWith_feature", "_UI_HostInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__COMMUNICATE_WITH,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_HostInstance_communicateWith_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_HostInstance_communicateWith_feature", "_UI_HostInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.HOST_INSTANCE__COMMUNICATE_WITH,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns HostInstance.gif.
-	 * <!-- begin-user-doc -->
+     * This returns HostInstance.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/HostInstance"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/HostInstance"));
+    }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getText(Object object) {
-		String label = ((HostInstance)object).getIdentifier();
-		return label == null || label.length() == 0 ?
-			getString("_UI_HostInstance_type") :
-			getString("_UI_HostInstance_type") + " " + label;
-	}
+        String label = ((HostInstance)object).getIdentifier();
+        return label == null || label.length() == 0 ?
+            getString("_UI_HostInstance_type") :
+            getString("_UI_HostInstance_type") + " " + label;
+    }
 	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(HostInstance.class)) {
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__IDENTIFIER:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__NODE_IP:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_CPU:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_RAM:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_HDD:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_CPU:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_RAM:
-			case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_HDD:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+        switch (notification.getFeatureID(HostInstance.class)) {
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__IDENTIFIER:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__NODE_IP:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_CPU:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_RAM:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__AVAILABLE_HDD:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_CPU:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_RAM:
+            case CyberPhysicalSystemPackage.HOST_INSTANCE__TOTAL_HDD:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
-	}
+        return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+    }
 
 }

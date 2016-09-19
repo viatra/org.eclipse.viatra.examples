@@ -48,441 +48,441 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.util.CyberPhysicalSys
  */
 public class CyberPhysicalSystemItemProviderAdapterFactory extends CyberPhysicalSystemAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable, IChildCreationExtender {
 	/**
-	 * This keeps track of the root adapter factory that delegates to this adapter factory.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the root adapter factory that delegates to this adapter factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ComposedAdapterFactory parentAdapterFactory;
 
 	/**
-	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-	 * <!-- begin-user-doc -->
+     * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
 	/**
-	 * This helps manage the child creation extenders.
-	 * <!-- begin-user-doc -->
+     * This helps manage the child creation extenders.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ChildCreationExtenderManager childCreationExtenderManager = new ChildCreationExtenderManager(ModelEditPlugin.INSTANCE, CyberPhysicalSystemPackage.eNS_URI);
 
 	/**
-	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-	 * <!-- begin-user-doc -->
+     * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
 	/**
-	 * This constructs an instance.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public CyberPhysicalSystemItemProviderAdapterFactory() {
-		supportedTypes.add(IEditingDomainItemProvider.class);
-		supportedTypes.add(IStructuredItemContentProvider.class);
-		supportedTypes.add(ITreeItemContentProvider.class);
-		supportedTypes.add(IItemLabelProvider.class);
-		supportedTypes.add(IItemPropertySource.class);
-	}
+        supportedTypes.add(IEditingDomainItemProvider.class);
+        supportedTypes.add(IStructuredItemContentProvider.class);
+        supportedTypes.add(ITreeItemContentProvider.class);
+        supportedTypes.add(IItemLabelProvider.class);
+        supportedTypes.add(IItemPropertySource.class);
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected CyberPhysicalSystemItemProvider cyberPhysicalSystemItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createCyberPhysicalSystemAdapter() {
-		if (cyberPhysicalSystemItemProvider == null) {
-			cyberPhysicalSystemItemProvider = new CyberPhysicalSystemItemProvider(this);
-		}
+        if (cyberPhysicalSystemItemProvider == null) {
+            cyberPhysicalSystemItemProvider = new CyberPhysicalSystemItemProvider(this);
+        }
 
-		return cyberPhysicalSystemItemProvider;
-	}
+        return cyberPhysicalSystemItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ApplicationTypeItemProvider applicationTypeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createApplicationTypeAdapter() {
-		if (applicationTypeItemProvider == null) {
-			applicationTypeItemProvider = new ApplicationTypeItemProvider(this);
-		}
+        if (applicationTypeItemProvider == null) {
+            applicationTypeItemProvider = new ApplicationTypeItemProvider(this);
+        }
 
-		return applicationTypeItemProvider;
-	}
+        return applicationTypeItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected HostTypeItemProvider hostTypeItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createHostTypeAdapter() {
-		if (hostTypeItemProvider == null) {
-			hostTypeItemProvider = new HostTypeItemProvider(this);
-		}
+        if (hostTypeItemProvider == null) {
+            hostTypeItemProvider = new HostTypeItemProvider(this);
+        }
 
-		return hostTypeItemProvider;
-	}
+        return hostTypeItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ResourceRequirement} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ResourceRequirement} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ResourceRequirementItemProvider resourceRequirementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ResourceRequirement}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ResourceRequirement}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createResourceRequirementAdapter() {
-		if (resourceRequirementItemProvider == null) {
-			resourceRequirementItemProvider = new ResourceRequirementItemProvider(this);
-		}
+        if (resourceRequirementItemProvider == null) {
+            resourceRequirementItemProvider = new ResourceRequirementItemProvider(this);
+        }
 
-		return resourceRequirementItemProvider;
-	}
+        return resourceRequirementItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected HostInstanceItemProvider hostInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createHostInstanceAdapter() {
-		if (hostInstanceItemProvider == null) {
-			hostInstanceItemProvider = new HostInstanceItemProvider(this);
-		}
+        if (hostInstanceItemProvider == null) {
+            hostInstanceItemProvider = new HostInstanceItemProvider(this);
+        }
 
-		return hostInstanceItemProvider;
-	}
+        return hostInstanceItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected ApplicationInstanceItemProvider applicationInstanceItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createApplicationInstanceAdapter() {
-		if (applicationInstanceItemProvider == null) {
-			applicationInstanceItemProvider = new ApplicationInstanceItemProvider(this);
-		}
+        if (applicationInstanceItemProvider == null) {
+            applicationInstanceItemProvider = new ApplicationInstanceItemProvider(this);
+        }
 
-		return applicationInstanceItemProvider;
-	}
+        return applicationInstanceItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected RequestItemProvider requestItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createRequestAdapter() {
-		if (requestItemProvider == null) {
-			requestItemProvider = new RequestItemProvider(this);
-		}
+        if (requestItemProvider == null) {
+            requestItemProvider = new RequestItemProvider(this);
+        }
 
-		return requestItemProvider;
-	}
+        return requestItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected RequirementItemProvider requirementItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createRequirementAdapter() {
-		if (requirementItemProvider == null) {
-			requirementItemProvider = new RequirementItemProvider(this);
-		}
+        if (requirementItemProvider == null) {
+            requirementItemProvider = new RequirementItemProvider(this);
+        }
 
-		return requirementItemProvider;
-	}
+        return requirementItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected StateMachineItemProvider stateMachineItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createStateMachineAdapter() {
-		if (stateMachineItemProvider == null) {
-			stateMachineItemProvider = new StateMachineItemProvider(this);
-		}
+        if (stateMachineItemProvider == null) {
+            stateMachineItemProvider = new StateMachineItemProvider(this);
+        }
 
-		return stateMachineItemProvider;
-	}
+        return stateMachineItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.State} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.State} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected StateItemProvider stateItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.State}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.State}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createStateAdapter() {
-		if (stateItemProvider == null) {
-			stateItemProvider = new StateItemProvider(this);
-		}
+        if (stateItemProvider == null) {
+            stateItemProvider = new StateItemProvider(this);
+        }
 
-		return stateItemProvider;
-	}
+        return stateItemProvider;
+    }
 
 	/**
-	 * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition} instances.
-	 * <!-- begin-user-doc -->
+     * This keeps track of the one adapter used for all {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition} instances.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected TransitionItemProvider transitionItemProvider;
 
 	/**
-	 * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition}.
-	 * <!-- begin-user-doc -->
+     * This creates an adapter for a {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter createTransitionAdapter() {
-		if (transitionItemProvider == null) {
-			transitionItemProvider = new TransitionItemProvider(this);
-		}
+        if (transitionItemProvider == null) {
+            transitionItemProvider = new TransitionItemProvider(this);
+        }
 
-		return transitionItemProvider;
-	}
+        return transitionItemProvider;
+    }
 
 	/**
-	 * This returns the root adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+     * This returns the root adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-	}
+        return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+    }
 
 	/**
-	 * This sets the composed adapter factory that contains this factory.
-	 * <!-- begin-user-doc -->
+     * This sets the composed adapter factory that contains this factory.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
-		this.parentAdapterFactory = parentAdapterFactory;
-	}
+        this.parentAdapterFactory = parentAdapterFactory;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean isFactoryForType(Object type) {
-		return supportedTypes.contains(type) || super.isFactoryForType(type);
-	}
+        return supportedTypes.contains(type) || super.isFactoryForType(type);
+    }
 
 	/**
-	 * This implementation substitutes the factory itself as the key for the adapter.
-	 * <!-- begin-user-doc -->
+     * This implementation substitutes the factory itself as the key for the adapter.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Adapter adapt(Notifier notifier, Object type) {
-		return super.adapt(notifier, this);
-	}
+        return super.adapt(notifier, this);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object adapt(Object object, Object type) {
-		if (isFactoryForType(type)) {
-			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
-				return adapter;
-			}
-		}
+        if (isFactoryForType(type)) {
+            Object adapter = super.adapt(object, type);
+            if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+                return adapter;
+            }
+        }
 
-		return null;
-	}
+        return null;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public List<IChildCreationExtender> getChildCreationExtenders() {
-		return childCreationExtenderManager.getChildCreationExtenders();
-	}
+        return childCreationExtenderManager.getChildCreationExtenders();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public Collection<?> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-		return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
-	}
+        return childCreationExtenderManager.getNewChildDescriptors(object, editingDomain);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ResourceLocator getResourceLocator() {
-		return childCreationExtenderManager;
-	}
+        return childCreationExtenderManager;
+    }
 
 	/**
-	 * This adds a listener.
-	 * <!-- begin-user-doc -->
+     * This adds a listener.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void addListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.addListener(notifyChangedListener);
-	}
+        changeNotifier.addListener(notifyChangedListener);
+    }
 
 	/**
-	 * This removes a listener.
-	 * <!-- begin-user-doc -->
+     * This removes a listener.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
-		changeNotifier.removeListener(notifyChangedListener);
-	}
+        changeNotifier.removeListener(notifyChangedListener);
+    }
 
 	/**
-	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-	 * <!-- begin-user-doc -->
+     * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void fireNotifyChanged(Notification notification) {
-		changeNotifier.fireNotifyChanged(notification);
+        changeNotifier.fireNotifyChanged(notification);
 
-		if (parentAdapterFactory != null) {
-			parentAdapterFactory.fireNotifyChanged(notification);
-		}
-	}
+        if (parentAdapterFactory != null) {
+            parentAdapterFactory.fireNotifyChanged(notification);
+        }
+    }
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
-	 * <!-- begin-user-doc -->
+     * This disposes all of the item providers created by this factory. 
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void dispose() {
-		if (cyberPhysicalSystemItemProvider != null) cyberPhysicalSystemItemProvider.dispose();
-		if (applicationTypeItemProvider != null) applicationTypeItemProvider.dispose();
-		if (hostTypeItemProvider != null) hostTypeItemProvider.dispose();
-		if (resourceRequirementItemProvider != null) resourceRequirementItemProvider.dispose();
-		if (hostInstanceItemProvider != null) hostInstanceItemProvider.dispose();
-		if (applicationInstanceItemProvider != null) applicationInstanceItemProvider.dispose();
-		if (requestItemProvider != null) requestItemProvider.dispose();
-		if (requirementItemProvider != null) requirementItemProvider.dispose();
-		if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
-		if (stateItemProvider != null) stateItemProvider.dispose();
-		if (transitionItemProvider != null) transitionItemProvider.dispose();
-	}
+        if (cyberPhysicalSystemItemProvider != null) cyberPhysicalSystemItemProvider.dispose();
+        if (applicationTypeItemProvider != null) applicationTypeItemProvider.dispose();
+        if (hostTypeItemProvider != null) hostTypeItemProvider.dispose();
+        if (resourceRequirementItemProvider != null) resourceRequirementItemProvider.dispose();
+        if (hostInstanceItemProvider != null) hostInstanceItemProvider.dispose();
+        if (applicationInstanceItemProvider != null) applicationInstanceItemProvider.dispose();
+        if (requestItemProvider != null) requestItemProvider.dispose();
+        if (requirementItemProvider != null) requirementItemProvider.dispose();
+        if (stateMachineItemProvider != null) stateMachineItemProvider.dispose();
+        if (stateItemProvider != null) stateItemProvider.dispose();
+        if (transitionItemProvider != null) transitionItemProvider.dispose();
+    }
 
 }

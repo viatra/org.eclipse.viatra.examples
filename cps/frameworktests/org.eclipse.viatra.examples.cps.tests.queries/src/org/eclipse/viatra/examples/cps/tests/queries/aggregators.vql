@@ -3,6 +3,18 @@ package org.eclipse.viatra.examples.cps.tests.queries
 import "http://www.eclipse.org/emf/2002/Ecore"
 import "http://org.eclipse.viatra/model/cps"
  
+pattern sumPriority(s) {
+	s == sum find hostPriority(_h, _aT, #c);
+}
+
+pattern minPriority(m) {
+	m == min find hostPriority(_h, _aT, #c);
+}
+
+pattern maxPriority(m) {
+	m == max find hostPriority(_h, _aT, #c);
+}
+
 pattern avgCPU(n) {
 	find sumCPU(s);
 	find countHost(c);
@@ -34,6 +46,12 @@ pattern hostInstanceWithMinCPU2(host : HostInstance, value) {
 // HELPER PATTERNS
 pattern availableCPU(host : HostInstance, value : EInt) {
 	HostInstance.availableCpu(host, value);
+}
+
+pattern hostPriority(host, appType, priority) {
+	HostInstance.applications(host, app);
+	ApplicationInstance.type(app, appType);
+	ApplicationInstance.priority(app, priority);
 }
 
 pattern hostInstance(host) {
