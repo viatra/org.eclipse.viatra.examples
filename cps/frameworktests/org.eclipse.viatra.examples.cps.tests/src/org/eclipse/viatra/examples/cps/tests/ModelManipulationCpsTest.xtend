@@ -67,6 +67,7 @@ class ModelManipulationCpsTest {
     def void test_changeAppInstanceIdentifier() {
         ViatraQueryTest.test(ApplicationInstancesIdentifiersQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -86,6 +87,7 @@ class ModelManipulationCpsTest {
     def void test_changeAppTypeIdentifier() {
         ViatraQueryTest.test(ApplicationTypesIdentifiersQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -105,6 +107,7 @@ class ModelManipulationCpsTest {
     def void test_deleteAppInstance() {
         ViatraQueryTest.test(ApplicationInstancesQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -123,6 +126,7 @@ class ModelManipulationCpsTest {
     def void test_deleteAppType() {
         ViatraQueryTest.test(ApplicationTypesIdentifiersQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -141,6 +145,7 @@ class ModelManipulationCpsTest {
     def void test_newHostInstance() {
         ViatraQueryTest.test(CommunicateWithQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -165,6 +170,7 @@ class ModelManipulationCpsTest {
     def void test_changeAppInstanceAllocationLocation() {
         ViatraQueryTest.test(HostedApplicationsQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -186,6 +192,7 @@ class ModelManipulationCpsTest {
     def void test_changeAppInstanceType() {
         ViatraQueryTest.test(ApplicationTypeWithHostedInstancesQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -207,6 +214,7 @@ class ModelManipulationCpsTest {
     def void test_newTransition() {
         ViatraQueryTest.test(TransitionsOfApplicationTypeIdentifiersQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -228,6 +236,7 @@ class ModelManipulationCpsTest {
     def void test_deleteHostType() {
         ViatraQueryTest.test(InTheCommunicationChainsQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -242,6 +251,7 @@ class ModelManipulationCpsTest {
     def void test_newHostInstanceWithMoreRamThanHdd() {
         ViatraQueryTest.test(HostInstanceWithAtLeastAsMuchTotalRamAsTotalHddQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -264,6 +274,7 @@ class ModelManipulationCpsTest {
     def void test_newHostInstanceWithMoreHddThanRam() {
         ViatraQueryTest.test(HostInstanceWithAtLeastAsMuchTotalRamAsTotalHddQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -287,6 +298,7 @@ class ModelManipulationCpsTest {
     def void test_deleteHostInstanceWithTheMostHostedApplication() {
         ViatraQueryTest.test(FinalPatternQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -304,6 +316,7 @@ class ModelManipulationCpsTest {
         .and(InTheCommunicationChainsQuerySpecification.instance)
         .and(HasTheMostHostedApplicationsQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -319,6 +332,7 @@ class ModelManipulationCpsTest {
         ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceQuerySpecification.instance)
         .and(HasTheMostHostedApplicationsQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen
@@ -335,6 +349,7 @@ class ModelManipulationCpsTest {
         .and(TransitionsOfApplicationTypeQuerySpecification.instance)
         .and(InstancesQuerySpecification.instance)
                         .with(BackendType.Rete.newBackendInstance)
+                        .with(BackendType.LocalSearch.newBackendInstance)
                         .with(SNAPSHOT_PATH)
                         .assumeInputs
                         .assertEqualsThen

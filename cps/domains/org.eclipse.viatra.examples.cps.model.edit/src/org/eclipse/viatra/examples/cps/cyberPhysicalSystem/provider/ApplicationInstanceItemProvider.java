@@ -49,260 +49,284 @@ public class ApplicationInstanceItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-	 * This constructs an instance from a factory and a notifier.
-	 * <!-- begin-user-doc -->
+     * This constructs an instance from a factory and a notifier.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public ApplicationInstanceItemProvider(AdapterFactory adapterFactory) {
-		super(adapterFactory);
-	}
+        super(adapterFactory);
+    }
 
 	/**
-	 * This returns the property descriptors for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the property descriptors for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-		if (itemPropertyDescriptors == null) {
-			super.getPropertyDescriptors(object);
+        if (itemPropertyDescriptors == null) {
+            super.getPropertyDescriptors(object);
 
-			addIdentifierPropertyDescriptor(object);
-			addStatePropertyDescriptor(object);
-			addDbUserPropertyDescriptor(object);
-			addDbPasswordPropertyDescriptor(object);
-			addAllocatedToPropertyDescriptor(object);
-			addDependOnPropertyDescriptor(object);
-			addTypePropertyDescriptor(object);
-		}
-		return itemPropertyDescriptors;
-	}
+            addIdentifierPropertyDescriptor(object);
+            addStatePropertyDescriptor(object);
+            addDbUserPropertyDescriptor(object);
+            addDbPasswordPropertyDescriptor(object);
+            addAllocatedToPropertyDescriptor(object);
+            addDependOnPropertyDescriptor(object);
+            addTypePropertyDescriptor(object);
+            addPriorityPropertyDescriptor(object);
+        }
+        return itemPropertyDescriptors;
+    }
 
 	/**
-	 * This adds a property descriptor for the Identifier feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Identifier feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Identifiable_identifier_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
-				 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Identifiable_identifier_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
+                 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the State feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the State feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addStatePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_state_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_state_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__STATE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_state_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_state_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__STATE,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Db User feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Db User feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDbUserPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_dbUser_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dbUser_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DB_USER,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_dbUser_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dbUser_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DB_USER,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Db Password feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Db Password feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDbPasswordPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_dbPassword_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dbPassword_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DB_PASSWORD,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_dbPassword_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dbPassword_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DB_PASSWORD,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Allocated To feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Allocated To feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addAllocatedToPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_allocatedTo_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_allocatedTo_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__ALLOCATED_TO,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_allocatedTo_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_allocatedTo_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__ALLOCATED_TO,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Depend On feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Depend On feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addDependOnPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_dependOn_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dependOn_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DEPEND_ON,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_dependOn_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_dependOn_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__DEPEND_ON,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This adds a property descriptor for the Type feature.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Type feature.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected void addTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_ApplicationInstance_type_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_type_feature", "_UI_ApplicationInstance_type"),
-				 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__TYPE,
-				 true,
-				 false,
-				 true,
-				 null,
-				 null,
-				 null));
-	}
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_type_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_type_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__TYPE,
+                 true,
+                 false,
+                 true,
+                 null,
+                 null,
+                 null));
+    }
 
 	/**
-	 * This returns ApplicationInstance.gif.
-	 * <!-- begin-user-doc -->
+     * This adds a property descriptor for the Priority feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addPriorityPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_ApplicationInstance_priority_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_ApplicationInstance_priority_feature", "_UI_ApplicationInstance_type"),
+                 CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE__PRIORITY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
+     * This returns ApplicationInstance.gif.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/ApplicationInstance"));
-	}
+        return overlayImage(object, getResourceLocator().getImage("full/obj16/ApplicationInstance"));
+    }
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc -->
+     * This returns the label text for the adapted class.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String getText(Object object) {
-		String label = ((ApplicationInstance)object).getIdentifier();
-		return label == null || label.length() == 0 ?
-			getString("_UI_ApplicationInstance_type") :
-			getString("_UI_ApplicationInstance_type") + " " + label;
-	}
+        String label = ((ApplicationInstance)object).getIdentifier();
+        return label == null || label.length() == 0 ?
+            getString("_UI_ApplicationInstance_type") :
+            getString("_UI_ApplicationInstance_type") + " " + label;
+    }
 	
 
 	/**
-	 * This handles model notifications by calling {@link #updateChildren} to update any cached
-	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-	 * <!-- begin-user-doc -->
+     * This handles model notifications by calling {@link #updateChildren} to update any cached
+     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void notifyChanged(Notification notification) {
-		updateChildren(notification);
+        updateChildren(notification);
 
-		switch (notification.getFeatureID(ApplicationInstance.class)) {
-			case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__IDENTIFIER:
-			case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__STATE:
-			case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DB_USER:
-			case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DB_PASSWORD:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-		}
-		super.notifyChanged(notification);
-	}
+        switch (notification.getFeatureID(ApplicationInstance.class)) {
+            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__IDENTIFIER:
+            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__STATE:
+            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DB_USER:
+            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DB_PASSWORD:
+            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__PRIORITY:
+                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+                return;
+        }
+        super.notifyChanged(notification);
+    }
 
 	/**
-	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-	 * that can be created under this object.
-	 * <!-- begin-user-doc -->
+     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+     * that can be created under this object.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-		super.collectNewChildDescriptors(newChildDescriptors, object);
-	}
+        super.collectNewChildDescriptors(newChildDescriptors, object);
+    }
 
 	/**
-	 * Return the resource locator for this item provider's resources.
-	 * <!-- begin-user-doc -->
+     * Return the resource locator for this item provider's resources.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public ResourceLocator getResourceLocator() {
-		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
-	}
+        return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+    }
 
 }

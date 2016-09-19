@@ -52,427 +52,427 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType;
  */
 public class HostTypeImpl extends MinimalEObjectImpl.Container implements HostType {
 	/**
-	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIdentifier()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getIdentifier()
+     * @generated
+     * @ordered
+     */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefaultCpu() <em>Default Cpu</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getDefaultCpu() <em>Default Cpu</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultCpu()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultCpu()
+     * @generated
+     * @ordered
+     */
 	protected static final int DEFAULT_CPU_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getDefaultCpu() <em>Default Cpu</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDefaultCpu() <em>Default Cpu</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultCpu()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultCpu()
+     * @generated
+     * @ordered
+     */
 	protected int defaultCpu = DEFAULT_CPU_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefaultRam() <em>Default Ram</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getDefaultRam() <em>Default Ram</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultRam()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultRam()
+     * @generated
+     * @ordered
+     */
 	protected static final int DEFAULT_RAM_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getDefaultRam() <em>Default Ram</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDefaultRam() <em>Default Ram</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultRam()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultRam()
+     * @generated
+     * @ordered
+     */
 	protected int defaultRam = DEFAULT_RAM_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getDefaultHdd() <em>Default Hdd</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The default value of the '{@link #getDefaultHdd() <em>Default Hdd</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultHdd()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultHdd()
+     * @generated
+     * @ordered
+     */
 	protected static final int DEFAULT_HDD_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getDefaultHdd() <em>Default Hdd</em>}' attribute.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getDefaultHdd() <em>Default Hdd</em>}' attribute.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getDefaultHdd()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getDefaultHdd()
+     * @generated
+     * @ordered
+     */
 	protected int defaultHdd = DEFAULT_HDD_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getInstances() <em>Instances</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+     * The cached value of the '{@link #getInstances() <em>Instances</em>}' containment reference list.
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getInstances()
-	 * @generated
-	 * @ordered
-	 */
+     * @see #getInstances()
+     * @generated
+     * @ordered
+     */
 	protected EList<HostInstance> instances;
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	protected HostTypeImpl() {
-		super();
-	}
+        super();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	protected EClass eStaticClass() {
-		return CyberPhysicalSystemPackage.Literals.HOST_TYPE;
-	}
+        return CyberPhysicalSystemPackage.Literals.HOST_TYPE;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public String getIdentifier() {
-		return identifier;
-	}
+        return identifier;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setIdentifier(String newIdentifier) {
-		String oldIdentifier = identifier;
-		identifier = newIdentifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER, oldIdentifier, identifier));
-	}
+        String oldIdentifier = identifier;
+        identifier = newIdentifier;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER, oldIdentifier, identifier));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getDefaultCpu() {
-		return defaultCpu;
-	}
+        return defaultCpu;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDefaultCpu(int newDefaultCpu) {
-		int oldDefaultCpu = defaultCpu;
-		defaultCpu = newDefaultCpu;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU, oldDefaultCpu, defaultCpu));
-	}
+        int oldDefaultCpu = defaultCpu;
+        defaultCpu = newDefaultCpu;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU, oldDefaultCpu, defaultCpu));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getDefaultRam() {
-		return defaultRam;
-	}
+        return defaultRam;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDefaultRam(int newDefaultRam) {
-		int oldDefaultRam = defaultRam;
-		defaultRam = newDefaultRam;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM, oldDefaultRam, defaultRam));
-	}
+        int oldDefaultRam = defaultRam;
+        defaultRam = newDefaultRam;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM, oldDefaultRam, defaultRam));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public int getDefaultHdd() {
-		return defaultHdd;
-	}
+        return defaultHdd;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setDefaultHdd(int newDefaultHdd) {
-		int oldDefaultHdd = defaultHdd;
-		defaultHdd = newDefaultHdd;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD, oldDefaultHdd, defaultHdd));
-	}
+        int oldDefaultHdd = defaultHdd;
+        defaultHdd = newDefaultHdd;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD, oldDefaultHdd, defaultHdd));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public CyberPhysicalSystem getCps() {
-		if (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS) return null;
-		return (CyberPhysicalSystem)eInternalContainer();
-	}
+        if (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS) return null;
+        return (CyberPhysicalSystem)eInternalContainer();
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public NotificationChain basicSetCps(CyberPhysicalSystem newCps, NotificationChain msgs) {
-		msgs = eBasicSetContainer((InternalEObject)newCps, CyberPhysicalSystemPackage.HOST_TYPE__CPS, msgs);
-		return msgs;
-	}
+        msgs = eBasicSetContainer((InternalEObject)newCps, CyberPhysicalSystemPackage.HOST_TYPE__CPS, msgs);
+        return msgs;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public void setCps(CyberPhysicalSystem newCps) {
-		if (newCps != eInternalContainer() || (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS && newCps != null)) {
-			if (EcoreUtil.isAncestor(this, newCps))
-				throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
-			NotificationChain msgs = null;
-			if (eInternalContainer() != null)
-				msgs = eBasicRemoveFromContainer(msgs);
-			if (newCps != null)
-				msgs = ((InternalEObject)newCps).eInverseAdd(this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystem.class, msgs);
-			msgs = basicSetCps(newCps, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__CPS, newCps, newCps));
-	}
+        if (newCps != eInternalContainer() || (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS && newCps != null)) {
+            if (EcoreUtil.isAncestor(this, newCps))
+                throw new IllegalArgumentException("Recursive containment not allowed for " + toString());
+            NotificationChain msgs = null;
+            if (eInternalContainer() != null)
+                msgs = eBasicRemoveFromContainer(msgs);
+            if (newCps != null)
+                msgs = ((InternalEObject)newCps).eInverseAdd(this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystem.class, msgs);
+            msgs = basicSetCps(newCps, msgs);
+            if (msgs != null) msgs.dispatch();
+        }
+        else if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.HOST_TYPE__CPS, newCps, newCps));
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	public EList<HostInstance> getInstances() {
-		if (instances == null) {
-			instances = new EObjectContainmentEList<HostInstance>(HostInstance.class, this, CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES);
-		}
-		return instances;
-	}
+        if (instances == null) {
+            instances = new EObjectContainmentEList<HostInstance>(HostInstance.class, this, CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES);
+        }
+        return instances;
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				if (eInternalContainer() != null)
-					msgs = eBasicRemoveFromContainer(msgs);
-				return basicSetCps((CyberPhysicalSystem)otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                if (eInternalContainer() != null)
+                    msgs = eBasicRemoveFromContainer(msgs);
+                return basicSetCps((CyberPhysicalSystem)otherEnd, msgs);
+        }
+        return super.eInverseAdd(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				return basicSetCps(null, msgs);
-			case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
-				return ((InternalEList<?>)getInstances()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                return basicSetCps(null, msgs);
+            case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
+                return ((InternalEList<?>)getInstances()).basicRemove(otherEnd, msgs);
+        }
+        return super.eInverseRemove(otherEnd, featureID, msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public NotificationChain eBasicRemoveFromContainerFeature(NotificationChain msgs) {
-		switch (eContainerFeatureID()) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				return eInternalContainer().eInverseRemove(this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystem.class, msgs);
-		}
-		return super.eBasicRemoveFromContainerFeature(msgs);
-	}
+        switch (eContainerFeatureID()) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                return eInternalContainer().eInverseRemove(this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystem.class, msgs);
+        }
+        return super.eBasicRemoveFromContainerFeature(msgs);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
-				return getIdentifier();
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
-				return getDefaultCpu();
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
-				return getDefaultRam();
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
-				return getDefaultHdd();
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				return getCps();
-			case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
-				return getInstances();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
+                return getIdentifier();
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
+                return getDefaultCpu();
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
+                return getDefaultRam();
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
+                return getDefaultHdd();
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                return getCps();
+            case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
+                return getInstances();
+        }
+        return super.eGet(featureID, resolve, coreType);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
-				setIdentifier((String)newValue);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
-				setDefaultCpu((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
-				setDefaultRam((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
-				setDefaultHdd((Integer)newValue);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				setCps((CyberPhysicalSystem)newValue);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
-				getInstances().clear();
-				getInstances().addAll((Collection<? extends HostInstance>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
+                setIdentifier((String)newValue);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
+                setDefaultCpu((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
+                setDefaultRam((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
+                setDefaultHdd((Integer)newValue);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                setCps((CyberPhysicalSystem)newValue);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
+                getInstances().clear();
+                getInstances().addAll((Collection<? extends HostInstance>)newValue);
+                return;
+        }
+        super.eSet(featureID, newValue);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public void eUnset(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
-				setIdentifier(IDENTIFIER_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
-				setDefaultCpu(DEFAULT_CPU_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
-				setDefaultRam(DEFAULT_RAM_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
-				setDefaultHdd(DEFAULT_HDD_EDEFAULT);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				setCps((CyberPhysicalSystem)null);
-				return;
-			case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
-				getInstances().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
+                setIdentifier(IDENTIFIER_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
+                setDefaultCpu(DEFAULT_CPU_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
+                setDefaultRam(DEFAULT_RAM_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
+                setDefaultHdd(DEFAULT_HDD_EDEFAULT);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                setCps((CyberPhysicalSystem)null);
+                return;
+            case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
+                getInstances().clear();
+                return;
+        }
+        super.eUnset(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public boolean eIsSet(int featureID) {
-		switch (featureID) {
-			case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
-				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
-				return defaultCpu != DEFAULT_CPU_EDEFAULT;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
-				return defaultRam != DEFAULT_RAM_EDEFAULT;
-			case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
-				return defaultHdd != DEFAULT_HDD_EDEFAULT;
-			case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-				return getCps() != null;
-			case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
-				return instances != null && !instances.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+        switch (featureID) {
+            case CyberPhysicalSystemPackage.HOST_TYPE__IDENTIFIER:
+                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_CPU:
+                return defaultCpu != DEFAULT_CPU_EDEFAULT;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_RAM:
+                return defaultRam != DEFAULT_RAM_EDEFAULT;
+            case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
+                return defaultHdd != DEFAULT_HDD_EDEFAULT;
+            case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
+                return getCps() != null;
+            case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
+                return instances != null && !instances.isEmpty();
+        }
+        return super.eIsSet(featureID);
+    }
 
 	/**
-	 * <!-- begin-user-doc -->
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+     * @generated
+     */
 	@Override
 	public String toString() {
-		if (eIsProxy()) return super.toString();
+        if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (identifier: ");
-		result.append(identifier);
-		result.append(", defaultCpu: ");
-		result.append(defaultCpu);
-		result.append(", defaultRam: ");
-		result.append(defaultRam);
-		result.append(", defaultHdd: ");
-		result.append(defaultHdd);
-		result.append(')');
-		return result.toString();
-	}
+        StringBuffer result = new StringBuffer(super.toString());
+        result.append(" (identifier: ");
+        result.append(identifier);
+        result.append(", defaultCpu: ");
+        result.append(defaultCpu);
+        result.append(", defaultRam: ");
+        result.append(defaultRam);
+        result.append(", defaultHdd: ");
+        result.append(defaultHdd);
+        result.append(')');
+        return result.toString();
+    }
 
 } //HostTypeImpl
