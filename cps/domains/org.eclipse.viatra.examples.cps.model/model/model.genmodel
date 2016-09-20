@@ -61,7 +61,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ApplicationInstance/allocatedTo"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ApplicationInstance/dependOn"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//ApplicationInstance/type"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//ApplicationInstance/priority"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//Request">
       <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Request/requirements"/>

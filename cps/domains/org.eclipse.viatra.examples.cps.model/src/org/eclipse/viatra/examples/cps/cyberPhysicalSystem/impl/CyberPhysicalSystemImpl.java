@@ -52,325 +52,325 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request;
  */
 public class CyberPhysicalSystemImpl extends MinimalEObjectImpl.Container implements CyberPhysicalSystem {
 	/**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-     * The default value of the '{@link #getDbUrl() <em>Db Url</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getDbUrl() <em>Db Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getDbUrl()
-     * @generated
-     * @ordered
-     */
+	 * @see #getDbUrl()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String DB_URL_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getDbUrl() <em>Db Url</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getDbUrl() <em>Db Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getDbUrl()
-     * @generated
-     * @ordered
-     */
+	 * @see #getDbUrl()
+	 * @generated
+	 * @ordered
+	 */
 	protected String dbUrl = DB_URL_EDEFAULT;
 
 	/**
-     * The cached value of the '{@link #getAppTypes() <em>App Types</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAppTypes() <em>App Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getAppTypes()
-     * @generated
-     * @ordered
-     */
+	 * @see #getAppTypes()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<ApplicationType> appTypes;
 
 	/**
-     * The cached value of the '{@link #getRequests() <em>Requests</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRequests() <em>Requests</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getRequests()
-     * @generated
-     * @ordered
-     */
+	 * @see #getRequests()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Request> requests;
 
 	/**
-     * The cached value of the '{@link #getHostTypes() <em>Host Types</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getHostTypes() <em>Host Types</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getHostTypes()
-     * @generated
-     * @ordered
-     */
+	 * @see #getHostTypes()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<HostType> hostTypes;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected CyberPhysicalSystemImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return CyberPhysicalSystemPackage.Literals.CYBER_PHYSICAL_SYSTEM;
-    }
+		return CyberPhysicalSystemPackage.Literals.CYBER_PHYSICAL_SYSTEM;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getIdentifier() {
-        return identifier;
-    }
+		return identifier;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setIdentifier(String newIdentifier) {
-        String oldIdentifier = identifier;
-        identifier = newIdentifier;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER, oldIdentifier, identifier));
-    }
+		String oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER, oldIdentifier, identifier));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getDbUrl() {
-        return dbUrl;
-    }
+		return dbUrl;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setDbUrl(String newDbUrl) {
-        String oldDbUrl = dbUrl;
-        dbUrl = newDbUrl;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL, oldDbUrl, dbUrl));
-    }
+		String oldDbUrl = dbUrl;
+		dbUrl = newDbUrl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL, oldDbUrl, dbUrl));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<ApplicationType> getAppTypes() {
-        if (appTypes == null) {
-            appTypes = new EObjectContainmentWithInverseEList<ApplicationType>(ApplicationType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES, CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS);
-        }
-        return appTypes;
-    }
+		if (appTypes == null) {
+			appTypes = new EObjectContainmentWithInverseEList<ApplicationType>(ApplicationType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES, CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS);
+		}
+		return appTypes;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<Request> getRequests() {
-        if (requests == null) {
-            requests = new EObjectContainmentEList<Request>(Request.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS);
-        }
-        return requests;
-    }
+		if (requests == null) {
+			requests = new EObjectContainmentEList<Request>(Request.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS);
+		}
+		return requests;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<HostType> getHostTypes() {
-        if (hostTypes == null) {
-            hostTypes = new EObjectContainmentWithInverseEList<HostType>(HostType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystemPackage.HOST_TYPE__CPS);
-        }
-        return hostTypes;
-    }
+		if (hostTypes == null) {
+			hostTypes = new EObjectContainmentWithInverseEList<HostType>(HostType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystemPackage.HOST_TYPE__CPS);
+		}
+		return hostTypes;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getAppTypes()).basicAdd(otherEnd, msgs);
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getHostTypes()).basicAdd(otherEnd, msgs);
-        }
-        return super.eInverseAdd(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getAppTypes()).basicAdd(otherEnd, msgs);
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getHostTypes()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                return ((InternalEList<?>)getAppTypes()).basicRemove(otherEnd, msgs);
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
-                return ((InternalEList<?>)getRequests()).basicRemove(otherEnd, msgs);
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                return ((InternalEList<?>)getHostTypes()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				return ((InternalEList<?>)getAppTypes()).basicRemove(otherEnd, msgs);
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
+				return ((InternalEList<?>)getRequests()).basicRemove(otherEnd, msgs);
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				return ((InternalEList<?>)getHostTypes()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
-                return getIdentifier();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
-                return getDbUrl();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                return getAppTypes();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
-                return getRequests();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                return getHostTypes();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
+				return getIdentifier();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
+				return getDbUrl();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				return getAppTypes();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
+				return getRequests();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				return getHostTypes();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
-                setIdentifier((String)newValue);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
-                setDbUrl((String)newValue);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                getAppTypes().clear();
-                getAppTypes().addAll((Collection<? extends ApplicationType>)newValue);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
-                getRequests().clear();
-                getRequests().addAll((Collection<? extends Request>)newValue);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                getHostTypes().clear();
-                getHostTypes().addAll((Collection<? extends HostType>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
+				setIdentifier((String)newValue);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
+				setDbUrl((String)newValue);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				getAppTypes().clear();
+				getAppTypes().addAll((Collection<? extends ApplicationType>)newValue);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
+				getRequests().clear();
+				getRequests().addAll((Collection<? extends Request>)newValue);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				getHostTypes().clear();
+				getHostTypes().addAll((Collection<? extends HostType>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
-                setIdentifier(IDENTIFIER_EDEFAULT);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
-                setDbUrl(DB_URL_EDEFAULT);
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                getAppTypes().clear();
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
-                getRequests().clear();
-                return;
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                getHostTypes().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
+				setIdentifier(IDENTIFIER_EDEFAULT);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
+				setDbUrl(DB_URL_EDEFAULT);
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				getAppTypes().clear();
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
+				getRequests().clear();
+				return;
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				getHostTypes().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
-                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
-                return DB_URL_EDEFAULT == null ? dbUrl != null : !DB_URL_EDEFAULT.equals(dbUrl);
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
-                return appTypes != null && !appTypes.isEmpty();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
-                return requests != null && !requests.isEmpty();
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
-                return hostTypes != null && !hostTypes.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__IDENTIFIER:
+				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__DB_URL:
+				return DB_URL_EDEFAULT == null ? dbUrl != null : !DB_URL_EDEFAULT.equals(dbUrl);
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES:
+				return appTypes != null && !appTypes.isEmpty();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS:
+				return requests != null && !requests.isEmpty();
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES:
+				return hostTypes != null && !hostTypes.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (identifier: ");
-        result.append(identifier);
-        result.append(", dbUrl: ");
-        result.append(dbUrl);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (identifier: ");
+		result.append(identifier);
+		result.append(", dbUrl: ");
+		result.append(dbUrl);
+		result.append(')');
+		return result.toString();
+	}
 
 } //CyberPhysicalSystemImpl

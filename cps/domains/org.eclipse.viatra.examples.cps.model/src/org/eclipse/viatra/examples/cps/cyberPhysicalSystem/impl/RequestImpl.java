@@ -46,200 +46,200 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement;
  */
 public class RequestImpl extends MinimalEObjectImpl.Container implements Request {
 	/**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-     * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRequirements() <em>Requirements</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getRequirements()
-     * @generated
-     * @ordered
-     */
+	 * @see #getRequirements()
+	 * @generated
+	 * @ordered
+	 */
 	protected EList<Requirement> requirements;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected RequestImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return CyberPhysicalSystemPackage.Literals.REQUEST;
-    }
+		return CyberPhysicalSystemPackage.Literals.REQUEST;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getIdentifier() {
-        return identifier;
-    }
+		return identifier;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setIdentifier(String newIdentifier) {
-        String oldIdentifier = identifier;
-        identifier = newIdentifier;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.REQUEST__IDENTIFIER, oldIdentifier, identifier));
-    }
+		String oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.REQUEST__IDENTIFIER, oldIdentifier, identifier));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public EList<Requirement> getRequirements() {
-        if (requirements == null) {
-            requirements = new EObjectContainmentWithInverseEList<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
-        }
-        return requirements;
-    }
+		if (requirements == null) {
+			requirements = new EObjectContainmentWithInverseEList<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
+		}
+		return requirements;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequirements()).basicAdd(otherEnd, msgs);
-        }
-        return super.eInverseAdd(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getRequirements()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
-        }
-        return super.eInverseRemove(otherEnd, featureID, msgs);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				return ((InternalEList<?>)getRequirements()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
-                return getIdentifier();
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                return getRequirements();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
+				return getIdentifier();
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				return getRequirements();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
-                setIdentifier((String)newValue);
-                return;
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                getRequirements().clear();
-                getRequirements().addAll((Collection<? extends Requirement>)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
+				setIdentifier((String)newValue);
+				return;
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				getRequirements().clear();
+				getRequirements().addAll((Collection<? extends Requirement>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
-                setIdentifier(IDENTIFIER_EDEFAULT);
-                return;
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                getRequirements().clear();
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
+				setIdentifier(IDENTIFIER_EDEFAULT);
+				return;
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				getRequirements().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
-                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-            case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                return requirements != null && !requirements.isEmpty();
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
+				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+			case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
+				return requirements != null && !requirements.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (identifier: ");
-        result.append(identifier);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (identifier: ");
+		result.append(identifier);
+		result.append(')');
+		return result.toString();
+	}
 
 } //RequestImpl

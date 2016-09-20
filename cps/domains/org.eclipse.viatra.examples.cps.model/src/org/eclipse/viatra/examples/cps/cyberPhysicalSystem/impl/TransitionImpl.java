@@ -39,249 +39,249 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition;
  */
 public class TransitionImpl extends MinimalEObjectImpl.Container implements Transition {
 	/**
-     * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String IDENTIFIER_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIdentifier() <em>Identifier</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getIdentifier()
-     * @generated
-     * @ordered
-     */
+	 * @see #getIdentifier()
+	 * @generated
+	 * @ordered
+	 */
 	protected String identifier = IDENTIFIER_EDEFAULT;
 
 	/**
-     * The cached value of the '{@link #getTargetState() <em>Target State</em>}' reference.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getTargetState() <em>Target State</em>}' reference.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getTargetState()
-     * @generated
-     * @ordered
-     */
+	 * @see #getTargetState()
+	 * @generated
+	 * @ordered
+	 */
 	protected State targetState;
 
 	/**
-     * The default value of the '{@link #getAction() <em>Action</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getAction() <em>Action</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getAction()
-     * @generated
-     * @ordered
-     */
+	 * @see #getAction()
+	 * @generated
+	 * @ordered
+	 */
 	protected static final String ACTION_EDEFAULT = null;
 
 	/**
-     * The cached value of the '{@link #getAction() <em>Action</em>}' attribute.
-     * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getAction() <em>Action</em>}' attribute.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @see #getAction()
-     * @generated
-     * @ordered
-     */
+	 * @see #getAction()
+	 * @generated
+	 * @ordered
+	 */
 	protected String action = ACTION_EDEFAULT;
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected TransitionImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected EClass eStaticClass() {
-        return CyberPhysicalSystemPackage.Literals.TRANSITION;
-    }
+		return CyberPhysicalSystemPackage.Literals.TRANSITION;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getIdentifier() {
-        return identifier;
-    }
+		return identifier;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setIdentifier(String newIdentifier) {
-        String oldIdentifier = identifier;
-        identifier = newIdentifier;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER, oldIdentifier, identifier));
-    }
+		String oldIdentifier = identifier;
+		identifier = newIdentifier;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER, oldIdentifier, identifier));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public State getTargetState() {
-        if (targetState != null && targetState.eIsProxy()) {
-            InternalEObject oldTargetState = (InternalEObject)targetState;
-            targetState = (State)eResolveProxy(oldTargetState);
-            if (targetState != oldTargetState) {
-                if (eNotificationRequired())
-                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE, oldTargetState, targetState));
-            }
-        }
-        return targetState;
-    }
+		if (targetState != null && targetState.eIsProxy()) {
+			InternalEObject oldTargetState = (InternalEObject)targetState;
+			targetState = (State)eResolveProxy(oldTargetState);
+			if (targetState != oldTargetState) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE, oldTargetState, targetState));
+			}
+		}
+		return targetState;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public State basicGetTargetState() {
-        return targetState;
-    }
+		return targetState;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setTargetState(State newTargetState) {
-        State oldTargetState = targetState;
-        targetState = newTargetState;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE, oldTargetState, targetState));
-    }
+		State oldTargetState = targetState;
+		targetState = newTargetState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE, oldTargetState, targetState));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String getAction() {
-        return action;
-    }
+		return action;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public void setAction(String newAction) {
-        String oldAction = action;
-        action = newAction;
-        if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__ACTION, oldAction, action));
-    }
+		String oldAction = action;
+		action = newAction;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.TRANSITION__ACTION, oldAction, action));
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
-                return getIdentifier();
-            case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
-                if (resolve) return getTargetState();
-                return basicGetTargetState();
-            case CyberPhysicalSystemPackage.TRANSITION__ACTION:
-                return getAction();
-        }
-        return super.eGet(featureID, resolve, coreType);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
+				return getIdentifier();
+			case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
+				if (resolve) return getTargetState();
+				return basicGetTargetState();
+			case CyberPhysicalSystemPackage.TRANSITION__ACTION:
+				return getAction();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eSet(int featureID, Object newValue) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
-                setIdentifier((String)newValue);
-                return;
-            case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
-                setTargetState((State)newValue);
-                return;
-            case CyberPhysicalSystemPackage.TRANSITION__ACTION:
-                setAction((String)newValue);
-                return;
-        }
-        super.eSet(featureID, newValue);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
+				setIdentifier((String)newValue);
+				return;
+			case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
+				setTargetState((State)newValue);
+				return;
+			case CyberPhysicalSystemPackage.TRANSITION__ACTION:
+				setAction((String)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void eUnset(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
-                setIdentifier(IDENTIFIER_EDEFAULT);
-                return;
-            case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
-                setTargetState((State)null);
-                return;
-            case CyberPhysicalSystemPackage.TRANSITION__ACTION:
-                setAction(ACTION_EDEFAULT);
-                return;
-        }
-        super.eUnset(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
+				setIdentifier(IDENTIFIER_EDEFAULT);
+				return;
+			case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
+				setTargetState((State)null);
+				return;
+			case CyberPhysicalSystemPackage.TRANSITION__ACTION:
+				setAction(ACTION_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public boolean eIsSet(int featureID) {
-        switch (featureID) {
-            case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
-                return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
-            case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
-                return targetState != null;
-            case CyberPhysicalSystemPackage.TRANSITION__ACTION:
-                return ACTION_EDEFAULT == null ? action != null : !ACTION_EDEFAULT.equals(action);
-        }
-        return super.eIsSet(featureID);
-    }
+		switch (featureID) {
+			case CyberPhysicalSystemPackage.TRANSITION__IDENTIFIER:
+				return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
+			case CyberPhysicalSystemPackage.TRANSITION__TARGET_STATE:
+				return targetState != null;
+			case CyberPhysicalSystemPackage.TRANSITION__ACTION:
+				return ACTION_EDEFAULT == null ? action != null : !ACTION_EDEFAULT.equals(action);
+		}
+		return super.eIsSet(featureID);
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String toString() {
-        if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-        StringBuffer result = new StringBuffer(super.toString());
-        result.append(" (identifier: ");
-        result.append(identifier);
-        result.append(", action: ");
-        result.append(action);
-        result.append(')');
-        return result.toString();
-    }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (identifier: ");
+		result.append(identifier);
+		result.append(", action: ");
+		result.append(action);
+		result.append(')');
+		return result.toString();
+	}
 
 } //TransitionImpl

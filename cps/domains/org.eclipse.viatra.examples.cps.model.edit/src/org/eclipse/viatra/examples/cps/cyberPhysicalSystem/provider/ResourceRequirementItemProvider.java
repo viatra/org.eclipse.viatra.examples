@@ -49,214 +49,214 @@ public class ResourceRequirementItemProvider
 		IItemLabelProvider,
 		IItemPropertySource {
 	/**
-     * This constructs an instance from a factory and a notifier.
-     * <!-- begin-user-doc -->
+	 * This constructs an instance from a factory and a notifier.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ResourceRequirementItemProvider(AdapterFactory adapterFactory) {
-        super(adapterFactory);
-    }
+		super(adapterFactory);
+	}
 
 	/**
-     * This returns the property descriptors for the adapted class.
-     * <!-- begin-user-doc -->
+	 * This returns the property descriptors for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
-        if (itemPropertyDescriptors == null) {
-            super.getPropertyDescriptors(object);
+		if (itemPropertyDescriptors == null) {
+			super.getPropertyDescriptors(object);
 
-            addIdentifierPropertyDescriptor(object);
-            addRequiredCpuPropertyDescriptor(object);
-            addRequiredRamPropertyDescriptor(object);
-            addRequiredHddPropertyDescriptor(object);
-            addTypePropertyDescriptor(object);
-        }
-        return itemPropertyDescriptors;
-    }
+			addIdentifierPropertyDescriptor(object);
+			addRequiredCpuPropertyDescriptor(object);
+			addRequiredRamPropertyDescriptor(object);
+			addRequiredHddPropertyDescriptor(object);
+			addTypePropertyDescriptor(object);
+		}
+		return itemPropertyDescriptors;
+	}
 
 	/**
-     * This adds a property descriptor for the Identifier feature.
-     * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Identifier feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void addIdentifierPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_Identifiable_identifier_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
-                 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-                 null,
-                 null));
-    }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Identifiable_identifier_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Identifiable_identifier_feature", "_UI_Identifiable_type"),
+				 CyberPhysicalSystemPackage.Literals.IDENTIFIABLE__IDENTIFIER,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
 	/**
-     * This adds a property descriptor for the Required Cpu feature.
-     * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Required Cpu feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void addRequiredCpuPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ResourceRequirement_requiredCpu_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredCpu_feature", "_UI_ResourceRequirement_type"),
-                 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_CPU,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                 null,
-                 null));
-    }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceRequirement_requiredCpu_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredCpu_feature", "_UI_ResourceRequirement_type"),
+				 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_CPU,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
 	/**
-     * This adds a property descriptor for the Required Ram feature.
-     * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Required Ram feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void addRequiredRamPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ResourceRequirement_requiredRam_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredRam_feature", "_UI_ResourceRequirement_type"),
-                 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_RAM,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                 null,
-                 null));
-    }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceRequirement_requiredRam_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredRam_feature", "_UI_ResourceRequirement_type"),
+				 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_RAM,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
 	/**
-     * This adds a property descriptor for the Required Hdd feature.
-     * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Required Hdd feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void addRequiredHddPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ResourceRequirement_requiredHdd_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredHdd_feature", "_UI_ResourceRequirement_type"),
-                 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_HDD,
-                 true,
-                 false,
-                 false,
-                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-                 null,
-                 null));
-    }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceRequirement_requiredHdd_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_requiredHdd_feature", "_UI_ResourceRequirement_type"),
+				 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__REQUIRED_HDD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+				 null,
+				 null));
+	}
 
 	/**
-     * This adds a property descriptor for the Type feature.
-     * <!-- begin-user-doc -->
+	 * This adds a property descriptor for the Type feature.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	protected void addTypePropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add
-            (createItemPropertyDescriptor
-                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-                 getResourceLocator(),
-                 getString("_UI_ResourceRequirement_type_feature"),
-                 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_type_feature", "_UI_ResourceRequirement_type"),
-                 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__TYPE,
-                 true,
-                 false,
-                 true,
-                 null,
-                 null,
-                 null));
-    }
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_ResourceRequirement_type_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ResourceRequirement_type_feature", "_UI_ResourceRequirement_type"),
+				 CyberPhysicalSystemPackage.Literals.RESOURCE_REQUIREMENT__TYPE,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
 
 	/**
-     * This returns ResourceRequirement.gif.
-     * <!-- begin-user-doc -->
+	 * This returns ResourceRequirement.gif.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object getImage(Object object) {
-        return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceRequirement"));
-    }
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ResourceRequirement"));
+	}
 
 	/**
-     * This returns the label text for the adapted class.
-     * <!-- begin-user-doc -->
+	 * This returns the label text for the adapted class.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String getText(Object object) {
-        String label = ((ResourceRequirement)object).getIdentifier();
-        return label == null || label.length() == 0 ?
-            getString("_UI_ResourceRequirement_type") :
-            getString("_UI_ResourceRequirement_type") + " " + label;
-    }
+		String label = ((ResourceRequirement)object).getIdentifier();
+		return label == null || label.length() == 0 ?
+			getString("_UI_ResourceRequirement_type") :
+			getString("_UI_ResourceRequirement_type") + " " + label;
+	}
 	
 
 	/**
-     * This handles model notifications by calling {@link #updateChildren} to update any cached
-     * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
-     * <!-- begin-user-doc -->
+	 * This handles model notifications by calling {@link #updateChildren} to update any cached
+	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public void notifyChanged(Notification notification) {
-        updateChildren(notification);
+		updateChildren(notification);
 
-        switch (notification.getFeatureID(ResourceRequirement.class)) {
-            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
-            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
-            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
-            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
-                fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-                return;
-        }
-        super.notifyChanged(notification);
-    }
+		switch (notification.getFeatureID(ResourceRequirement.class)) {
+			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__IDENTIFIER:
+			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_CPU:
+			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_RAM:
+			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT__REQUIRED_HDD:
+				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+				return;
+		}
+		super.notifyChanged(notification);
+	}
 
 	/**
-     * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
-     * that can be created under this object.
-     * <!-- begin-user-doc -->
+	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
+	 * that can be created under this object.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
-        super.collectNewChildDescriptors(newChildDescriptors, object);
-    }
+		super.collectNewChildDescriptors(newChildDescriptors, object);
+	}
 
 	/**
-     * Return the resource locator for this item provider's resources.
-     * <!-- begin-user-doc -->
+	 * Return the resource locator for this item provider's resources.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public ResourceLocator getResourceLocator() {
-        return ((IChildCreationExtender)adapterFactory).getResourceLocator();
-    }
+		return ((IChildCreationExtender)adapterFactory).getResourceLocator();
+	}
 
 }

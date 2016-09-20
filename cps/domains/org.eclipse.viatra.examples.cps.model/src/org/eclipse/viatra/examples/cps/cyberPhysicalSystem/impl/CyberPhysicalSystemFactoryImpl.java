@@ -29,236 +29,236 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.*;
  */
 public class CyberPhysicalSystemFactoryImpl extends EFactoryImpl implements CyberPhysicalSystemFactory {
 	/**
-     * Creates the default factory implementation.
-     * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public static CyberPhysicalSystemFactory init() {
-        try {
-            CyberPhysicalSystemFactory theCyberPhysicalSystemFactory = (CyberPhysicalSystemFactory)EPackage.Registry.INSTANCE.getEFactory(CyberPhysicalSystemPackage.eNS_URI);
-            if (theCyberPhysicalSystemFactory != null) {
-                return theCyberPhysicalSystemFactory;
-            }
-        }
-        catch (Exception exception) {
-            EcorePlugin.INSTANCE.log(exception);
-        }
-        return new CyberPhysicalSystemFactoryImpl();
-    }
+		try {
+			CyberPhysicalSystemFactory theCyberPhysicalSystemFactory = (CyberPhysicalSystemFactory)EPackage.Registry.INSTANCE.getEFactory(CyberPhysicalSystemPackage.eNS_URI);
+			if (theCyberPhysicalSystemFactory != null) {
+				return theCyberPhysicalSystemFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new CyberPhysicalSystemFactoryImpl();
+	}
 
 	/**
-     * Creates an instance of the factory.
-     * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public CyberPhysicalSystemFactoryImpl() {
-        super();
-    }
+		super();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public EObject create(EClass eClass) {
-        switch (eClass.getClassifierID()) {
-            case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM: return createCyberPhysicalSystem();
-            case CyberPhysicalSystemPackage.APPLICATION_TYPE: return createApplicationType();
-            case CyberPhysicalSystemPackage.HOST_TYPE: return createHostType();
-            case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT: return createResourceRequirement();
-            case CyberPhysicalSystemPackage.HOST_INSTANCE: return createHostInstance();
-            case CyberPhysicalSystemPackage.APPLICATION_INSTANCE: return createApplicationInstance();
-            case CyberPhysicalSystemPackage.REQUEST: return createRequest();
-            case CyberPhysicalSystemPackage.REQUIREMENT: return createRequirement();
-            case CyberPhysicalSystemPackage.STATE_MACHINE: return createStateMachine();
-            case CyberPhysicalSystemPackage.STATE: return createState();
-            case CyberPhysicalSystemPackage.TRANSITION: return createTransition();
-            default:
-                throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eClass.getClassifierID()) {
+			case CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM: return createCyberPhysicalSystem();
+			case CyberPhysicalSystemPackage.APPLICATION_TYPE: return createApplicationType();
+			case CyberPhysicalSystemPackage.HOST_TYPE: return createHostType();
+			case CyberPhysicalSystemPackage.RESOURCE_REQUIREMENT: return createResourceRequirement();
+			case CyberPhysicalSystemPackage.HOST_INSTANCE: return createHostInstance();
+			case CyberPhysicalSystemPackage.APPLICATION_INSTANCE: return createApplicationInstance();
+			case CyberPhysicalSystemPackage.REQUEST: return createRequest();
+			case CyberPhysicalSystemPackage.REQUIREMENT: return createRequirement();
+			case CyberPhysicalSystemPackage.STATE_MACHINE: return createStateMachine();
+			case CyberPhysicalSystemPackage.STATE: return createState();
+			case CyberPhysicalSystemPackage.TRANSITION: return createTransition();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
-        switch (eDataType.getClassifierID()) {
-            case CyberPhysicalSystemPackage.APP_STATE:
-                return createAppStateFromString(eDataType, initialValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case CyberPhysicalSystemPackage.APP_STATE:
+				return createAppStateFromString(eDataType, initialValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
-        switch (eDataType.getClassifierID()) {
-            case CyberPhysicalSystemPackage.APP_STATE:
-                return convertAppStateToString(eDataType, instanceValue);
-            default:
-                throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
-        }
-    }
+		switch (eDataType.getClassifierID()) {
+			case CyberPhysicalSystemPackage.APP_STATE:
+				return convertAppStateToString(eDataType, instanceValue);
+			default:
+				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
+		}
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public CyberPhysicalSystem createCyberPhysicalSystem() {
-        CyberPhysicalSystemImpl cyberPhysicalSystem = new CyberPhysicalSystemImpl();
-        return cyberPhysicalSystem;
-    }
+		CyberPhysicalSystemImpl cyberPhysicalSystem = new CyberPhysicalSystemImpl();
+		return cyberPhysicalSystem;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ApplicationType createApplicationType() {
-        ApplicationTypeImpl applicationType = new ApplicationTypeImpl();
-        return applicationType;
-    }
+		ApplicationTypeImpl applicationType = new ApplicationTypeImpl();
+		return applicationType;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public HostType createHostType() {
-        HostTypeImpl hostType = new HostTypeImpl();
-        return hostType;
-    }
+		HostTypeImpl hostType = new HostTypeImpl();
+		return hostType;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ResourceRequirement createResourceRequirement() {
-        ResourceRequirementImpl resourceRequirement = new ResourceRequirementImpl();
-        return resourceRequirement;
-    }
+		ResourceRequirementImpl resourceRequirement = new ResourceRequirementImpl();
+		return resourceRequirement;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public HostInstance createHostInstance() {
-        HostInstanceImpl hostInstance = new HostInstanceImpl();
-        return hostInstance;
-    }
+		HostInstanceImpl hostInstance = new HostInstanceImpl();
+		return hostInstance;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public ApplicationInstance createApplicationInstance() {
-        ApplicationInstanceImpl applicationInstance = new ApplicationInstanceImpl();
-        return applicationInstance;
-    }
+		ApplicationInstanceImpl applicationInstance = new ApplicationInstanceImpl();
+		return applicationInstance;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Request createRequest() {
-        RequestImpl request = new RequestImpl();
-        return request;
-    }
+		RequestImpl request = new RequestImpl();
+		return request;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Requirement createRequirement() {
-        RequirementImpl requirement = new RequirementImpl();
-        return requirement;
-    }
+		RequirementImpl requirement = new RequirementImpl();
+		return requirement;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public StateMachine createStateMachine() {
-        StateMachineImpl stateMachine = new StateMachineImpl();
-        return stateMachine;
-    }
+		StateMachineImpl stateMachine = new StateMachineImpl();
+		return stateMachine;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public State createState() {
-        StateImpl state = new StateImpl();
-        return state;
-    }
+		StateImpl state = new StateImpl();
+		return state;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public Transition createTransition() {
-        TransitionImpl transition = new TransitionImpl();
-        return transition;
-    }
+		TransitionImpl transition = new TransitionImpl();
+		return transition;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public AppState createAppStateFromString(EDataType eDataType, String initialValue) {
-        AppState result = AppState.get(initialValue);
-        if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-        return result;
-    }
+		AppState result = AppState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public String convertAppStateToString(EDataType eDataType, Object instanceValue) {
-        return instanceValue == null ? null : instanceValue.toString();
-    }
+		return instanceValue == null ? null : instanceValue.toString();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @generated
-     */
+	 * @generated
+	 */
 	public CyberPhysicalSystemPackage getCyberPhysicalSystemPackage() {
-        return (CyberPhysicalSystemPackage)getEPackage();
-    }
+		return (CyberPhysicalSystemPackage)getEPackage();
+	}
 
 	/**
-     * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-     * @deprecated
-     * @generated
-     */
+	 * @deprecated
+	 * @generated
+	 */
 	@Deprecated
 	public static CyberPhysicalSystemPackage getPackage() {
-        return CyberPhysicalSystemPackage.eINSTANCE;
-    }
+		return CyberPhysicalSystemPackage.eINSTANCE;
+	}
 
 } //CyberPhysicalSystemFactoryImpl
