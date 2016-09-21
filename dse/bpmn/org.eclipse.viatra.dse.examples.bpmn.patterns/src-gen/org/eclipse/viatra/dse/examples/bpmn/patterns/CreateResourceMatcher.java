@@ -61,10 +61,21 @@ public class CreateResourceMatcher extends BaseMatcher<CreateResourceMatch> {
     // check if matcher already exists
     CreateResourceMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new CreateResourceMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (CreateResourceMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static CreateResourceMatcher create() throws ViatraQueryException {
+    return new CreateResourceMatcher();
   }
   
   private final static int POSITION_RTV = 0;
@@ -79,8 +90,8 @@ public class CreateResourceMatcher extends BaseMatcher<CreateResourceMatch> {
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private CreateResourceMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private CreateResourceMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

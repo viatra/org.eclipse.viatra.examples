@@ -56,10 +56,21 @@ public class EnoughResourceInstancesMatcher extends BaseMatcher<EnoughResourceIn
     // check if matcher already exists
     EnoughResourceInstancesMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new EnoughResourceInstancesMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (EnoughResourceInstancesMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static EnoughResourceInstancesMatcher create() throws ViatraQueryException {
+    return new EnoughResourceInstancesMatcher();
   }
   
   private final static Logger LOGGER = ViatraQueryLoggingUtil.getLogger(EnoughResourceInstancesMatcher.class);
@@ -72,8 +83,8 @@ public class EnoughResourceInstancesMatcher extends BaseMatcher<EnoughResourceIn
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private EnoughResourceInstancesMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private EnoughResourceInstancesMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

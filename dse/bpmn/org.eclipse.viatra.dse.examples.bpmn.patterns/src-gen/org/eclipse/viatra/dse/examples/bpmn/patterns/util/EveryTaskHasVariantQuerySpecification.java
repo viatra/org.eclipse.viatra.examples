@@ -13,6 +13,7 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
 import com.google.common.collect.Sets;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.EveryTaskHasVariantMatch;
@@ -22,6 +23,7 @@ import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFPQuery;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecification;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedParameter;
@@ -59,6 +61,11 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
   @Override
   protected EveryTaskHasVariantMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return EveryTaskHasVariantMatcher.on(engine);
+  }
+  
+  @Override
+  public EveryTaskHasVariantMatcher instantiate() throws ViatraQueryException {
+    return EveryTaskHasVariantMatcher.create();
   }
   
   @Override
@@ -100,6 +107,8 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static EveryTaskHasVariantQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
+    private final List<PParameter> parameters = Arrays.asList();
+    
     @Override
     public String getFullyQualifiedName() {
       return "org.eclipse.viatra.dse.examples.bpmn.patterns.everyTaskHasVariant";
@@ -112,12 +121,12 @@ public final class EveryTaskHasVariantQuerySpecification extends BaseGeneratedEM
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(
-      			);
+      return parameters;
     }
     
     @Override
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
+      setEvaluationHints(new QueryEvaluationHint(null, Collections.<String,Object>emptyMap()));
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
       	{

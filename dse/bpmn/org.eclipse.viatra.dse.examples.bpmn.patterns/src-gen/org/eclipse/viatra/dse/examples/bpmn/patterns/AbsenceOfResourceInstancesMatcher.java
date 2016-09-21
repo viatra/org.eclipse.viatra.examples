@@ -62,10 +62,21 @@ public class AbsenceOfResourceInstancesMatcher extends BaseMatcher<AbsenceOfReso
     // check if matcher already exists
     AbsenceOfResourceInstancesMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new AbsenceOfResourceInstancesMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (AbsenceOfResourceInstancesMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static AbsenceOfResourceInstancesMatcher create() throws ViatraQueryException {
+    return new AbsenceOfResourceInstancesMatcher();
   }
   
   private final static int POSITION_RTV = 0;
@@ -80,8 +91,8 @@ public class AbsenceOfResourceInstancesMatcher extends BaseMatcher<AbsenceOfReso
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private AbsenceOfResourceInstancesMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private AbsenceOfResourceInstancesMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

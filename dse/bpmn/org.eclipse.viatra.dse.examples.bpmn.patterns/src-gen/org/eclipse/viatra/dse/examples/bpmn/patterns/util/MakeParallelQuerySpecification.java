@@ -13,6 +13,7 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
 import com.google.common.collect.Sets;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
@@ -27,6 +28,7 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecificat
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
 import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Equality;
@@ -37,6 +39,7 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.Consta
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.PositivePatternCall;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameterDirection;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
 import org.eclipse.viatra.query.runtime.matchers.tuple.FlatTuple;
 
@@ -69,6 +72,11 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
   @Override
   protected MakeParallelMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return MakeParallelMatcher.on(engine);
+  }
+  
+  @Override
+  public MakeParallelMatcher instantiate() throws ViatraQueryException {
+    return MakeParallelMatcher.create();
   }
   
   @Override
@@ -110,6 +118,14 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static MakeParallelQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
+    private final PParameter parameter_pT1 = new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")), PParameterDirection.INOUT);
+    
+    private final PParameter parameter_pT2 = new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")), PParameterDirection.INOUT);
+    
+    private final PParameter parameter_pRoot = new PParameter("Root", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")), PParameterDirection.INOUT);
+    
+    private final List<PParameter> parameters = Arrays.asList(parameter_pT1, parameter_pT2, parameter_pRoot);
+    
     @Override
     public String getFullyQualifiedName() {
       return "org.eclipse.viatra.dse.examples.bpmn.patterns.makeParallel";
@@ -122,15 +138,12 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(
-      			 new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task"))),
-      			 new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task"))),
-      			 new PParameter("Root", "org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")))
-      			);
+      return parameters;
     }
     
     @Override
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
+      setEvaluationHints(new QueryEvaluationHint(null, Collections.<String,Object>emptyMap()));
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
       	{
@@ -138,35 +151,35 @@ public final class MakeParallelQuerySpecification extends BaseGeneratedEMFQueryS
       		PVariable var_T1 = body.getOrCreateVariableByName("T1");
       		PVariable var_T2 = body.getOrCreateVariableByName("T2");
       		PVariable var_Root = body.getOrCreateVariableByName("Root");
-      		PVariable var_out = body.getOrCreateVariableByName("out");
+      		PVariable var_outflow = body.getOrCreateVariableByName("outflow");
       		PVariable var___0_ = body.getOrCreateVariableByName("_<0>");
       		PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
       		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_T2), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-      		   new ExportedParameter(body, var_T1, "T1"),
-      		   new ExportedParameter(body, var_T2, "T2"),
-      		   new ExportedParameter(body, var_Root, "Root")
+      		   new ExportedParameter(body, var_T1, parameter_pT1),
+      		   new ExportedParameter(body, var_T2, parameter_pT2),
+      		   new ExportedParameter(body, var_Root, parameter_pRoot)
       		));
       		// 	SimplifiedBPMN(Root)
       		new TypeConstraint(body, new FlatTuple(var_Root), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SimplifiedBPMN")));
-      		// 	Task.outFlows(T1, out)
+      		// 	Task.outFlows(T1, outflow)
       		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
       		new TypeConstraint(body, new FlatTuple(var_T1, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "BaseElement", "outFlows")));
-      		new Equality(body, var__virtual_0_, var_out);
-      		// 	SequenceFlow.isDataFlow(out, false)
+      		new Equality(body, var__virtual_0_, var_outflow);
+      		// 	SequenceFlow.isDataFlow(outflow, false)
       		PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
       		new ConstantValue(body, var__virtual_1_, false);
-      		new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
+      		new TypeConstraint(body, new FlatTuple(var_outflow), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
       		PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-      		new TypeConstraint(body, new FlatTuple(var_out, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "isDataFlow")));
+      		new TypeConstraint(body, new FlatTuple(var_outflow, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "isDataFlow")));
       		new Equality(body, var__virtual_2_, var__virtual_1_);
-      		// 	SequenceFlow.target(out, T2)
-      		new TypeConstraint(body, new FlatTuple(var_out), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
+      		// 	SequenceFlow.target(outflow, T2)
+      		new TypeConstraint(body, new FlatTuple(var_outflow), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow")));
       		PVariable var__virtual_3_ = body.getOrCreateVariableByName(".virtual{3}");
-      		new TypeConstraint(body, new FlatTuple(var_out, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "target")));
+      		new TypeConstraint(body, new FlatTuple(var_outflow, var__virtual_3_), new EStructuralFeatureInstancesKey(getFeatureLiteral("org.eclipse.viatra.dse.examples.bpmn", "SequenceFlow", "target")));
       		new Equality(body, var__virtual_3_, var_T2);
       		// 	T1 != T2
       		new Inequality(body, var_T1, var_T2);

@@ -63,10 +63,21 @@ public class TaskOrderMatcher extends BaseMatcher<TaskOrderMatch> {
     // check if matcher already exists
     TaskOrderMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new TaskOrderMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (TaskOrderMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static TaskOrderMatcher create() throws ViatraQueryException {
+    return new TaskOrderMatcher();
   }
   
   private final static int POSITION_T1 = 0;
@@ -83,8 +94,8 @@ public class TaskOrderMatcher extends BaseMatcher<TaskOrderMatch> {
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private TaskOrderMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private TaskOrderMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

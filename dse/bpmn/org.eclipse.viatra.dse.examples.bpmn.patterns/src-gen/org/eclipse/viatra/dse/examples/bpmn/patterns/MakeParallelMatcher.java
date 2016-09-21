@@ -40,9 +40,9 @@ import org.eclipse.viatra.query.runtime.util.ViatraQueryLoggingUtil;
  * <code><pre>
  * pattern makeParallel(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
  * 	SimplifiedBPMN(Root);
- * 	Task.outFlows(T1, out);
- * 	SequenceFlow.isDataFlow(out, false);
- * 	SequenceFlow.target(out, T2);
+ * 	Task.outFlows(T1, outflow);
+ * 	SequenceFlow.isDataFlow(outflow, false);
+ * 	SequenceFlow.target(outflow, T2);
  * 	T1 != T2;
  * 	find taskOrder(T1,T2);
  * 	1 == count find inFlow(T2, _);
@@ -69,10 +69,21 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
     // check if matcher already exists
     MakeParallelMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new MakeParallelMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (MakeParallelMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static MakeParallelMatcher create() throws ViatraQueryException {
+    return new MakeParallelMatcher();
   }
   
   private final static int POSITION_T1 = 0;
@@ -91,8 +102,8 @@ public class MakeParallelMatcher extends BaseMatcher<MakeParallelMatch> {
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private MakeParallelMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private MakeParallelMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

@@ -64,10 +64,21 @@ public class AllocateTaskToVariantMatcher extends BaseMatcher<AllocateTaskToVari
     // check if matcher already exists
     AllocateTaskToVariantMatcher matcher = engine.getExistingMatcher(querySpecification());
     if (matcher == null) {
-    	matcher = new AllocateTaskToVariantMatcher(engine);
-    	// do not have to "put" it into engine.matchers, reportMatcherInitialized() will take care of it
+    	matcher = (AllocateTaskToVariantMatcher)engine.getMatcher(querySpecification());
     }
     return matcher;
+  }
+  
+  /**
+   * Initializes the pattern matcher within an existing VIATRA Query engine.
+   * If the pattern matcher is already constructed in the engine, only a light-weight reference is returned.
+   * The match set will be incrementally refreshed upon updates.
+   * @param engine the existing VIATRA Query engine in which this matcher will be created.
+   * @throws ViatraQueryException if an error occurs during pattern matcher creation
+   * 
+   */
+  public static AllocateTaskToVariantMatcher create() throws ViatraQueryException {
+    return new AllocateTaskToVariantMatcher();
   }
   
   private final static int POSITION_T = 0;
@@ -84,8 +95,8 @@ public class AllocateTaskToVariantMatcher extends BaseMatcher<AllocateTaskToVari
    * @throws ViatraQueryException if an error occurs during pattern matcher creation
    * 
    */
-  private AllocateTaskToVariantMatcher(final ViatraQueryEngine engine) throws ViatraQueryException {
-    super(engine, querySpecification());
+  private AllocateTaskToVariantMatcher() throws ViatraQueryException {
+    super(querySpecification());
   }
   
   /**

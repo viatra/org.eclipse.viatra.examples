@@ -11,12 +11,10 @@ Export-Package: org.eclipse.viatra.dse.examples.cps.dse,
 Require-Bundle: org.eclipse.emf.ecore,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.viatra.dse.examples.cps.model,
- org.eclipse.viatra.dse.base,
+ org.eclipse.viatra.dse,
  org.eclipse.viatra.dse.genetic,
  org.junit,
  org.eclipse.emf.ecore.xmi,
- org.eclipse.viatra.dse.examples.cps.patterns,
- org.eclipse.viatra.query.runtime,
- org.eclipse.viatra.transformation.evm
+ org.eclipse.viatra.dse.examples.cps.patterns
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Import-Package: org.apache.log4j

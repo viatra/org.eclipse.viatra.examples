@@ -35,9 +35,9 @@ private pattern outFlow(Element : BaseElement, Flow : SequenceFlow) {
 
 pattern makeParallel(T1 : Task, T2 : Task, Root : SimplifiedBPMN) {
 	SimplifiedBPMN(Root);
-	Task.outFlows(T1, out);
-	SequenceFlow.isDataFlow(out, false);
-	SequenceFlow.target(out, T2);
+	Task.outFlows(T1, outflow);
+	SequenceFlow.isDataFlow(outflow, false);
+	SequenceFlow.target(outflow, T2);
 	T1 != T2;
 	find taskOrder(T1,T2);
 	1 == count find inFlow(T2, _);

@@ -13,6 +13,7 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
 import com.google.common.collect.Sets;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
@@ -25,6 +26,7 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecificat
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
 import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PVariable;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.Equality;
@@ -32,6 +34,7 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedP
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.NegativePatternCall;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameterDirection;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
 import org.eclipse.viatra.query.runtime.matchers.tuple.FlatTuple;
 
@@ -64,6 +67,11 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
   @Override
   protected AbsenceOfResourceInstancesMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return AbsenceOfResourceInstancesMatcher.on(engine);
+  }
+  
+  @Override
+  public AbsenceOfResourceInstancesMatcher instantiate() throws ViatraQueryException {
+    return AbsenceOfResourceInstancesMatcher.create();
   }
   
   @Override
@@ -105,6 +113,10 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static AbsenceOfResourceInstancesQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
+    private final PParameter parameter_pRTV = new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")), PParameterDirection.INOUT);
+    
+    private final List<PParameter> parameters = Arrays.asList(parameter_pRTV);
+    
     @Override
     public String getFullyQualifiedName() {
       return "org.eclipse.viatra.dse.examples.bpmn.patterns.absenceOfResourceInstances";
@@ -117,13 +129,12 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(
-      			 new PParameter("RTV", "org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceTypeVariant", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")))
-      			);
+      return parameters;
     }
     
     @Override
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
+      setEvaluationHints(new QueryEvaluationHint(null, Collections.<String,Object>emptyMap()));
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
       	{
@@ -133,7 +144,7 @@ public final class AbsenceOfResourceInstancesQuerySpecification extends BaseGene
       		PVariable var___1_ = body.getOrCreateVariableByName("_<1>");
       		new TypeConstraint(body, new FlatTuple(var_RTV), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "ResourceTypeVariant")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-      		   new ExportedParameter(body, var_RTV, "RTV")
+      		   new ExportedParameter(body, var_RTV, parameter_pRTV)
       		));
       		// 	neg find instanceOfVariant(_, RTV)
       		new NegativePatternCall(body, new FlatTuple(var___0_, var_RTV), InstanceOfVariantQuerySpecification.instance().getInternalQueryRepresentation());

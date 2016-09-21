@@ -13,6 +13,7 @@ package org.eclipse.viatra.dse.examples.bpmn.patterns.util;
 
 import com.google.common.collect.Sets;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +25,7 @@ import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedEMFQuerySpecificat
 import org.eclipse.viatra.query.runtime.emf.types.EClassTransitiveInstancesKey;
 import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.IExpressionEvaluator;
 import org.eclipse.viatra.query.runtime.matchers.psystem.IValueProvider;
 import org.eclipse.viatra.query.runtime.matchers.psystem.PBody;
@@ -33,6 +35,7 @@ import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExportedP
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicdeferred.ExpressionEvaluation;
 import org.eclipse.viatra.query.runtime.matchers.psystem.basicenumerables.TypeConstraint;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameter;
+import org.eclipse.viatra.query.runtime.matchers.psystem.queries.PParameterDirection;
 import org.eclipse.viatra.query.runtime.matchers.psystem.queries.QueryInitializationException;
 import org.eclipse.viatra.query.runtime.matchers.tuple.FlatTuple;
 
@@ -65,6 +68,11 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
   @Override
   protected TaskOrderMatcher instantiate(final ViatraQueryEngine engine) throws ViatraQueryException {
     return TaskOrderMatcher.on(engine);
+  }
+  
+  @Override
+  public TaskOrderMatcher instantiate() throws ViatraQueryException {
+    return TaskOrderMatcher.create();
   }
   
   @Override
@@ -106,6 +114,12 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private final static TaskOrderQuerySpecification.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
+    private final PParameter parameter_pT1 = new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")), PParameterDirection.INOUT);
+    
+    private final PParameter parameter_pT2 = new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")), PParameterDirection.INOUT);
+    
+    private final List<PParameter> parameters = Arrays.asList(parameter_pT1, parameter_pT2);
+    
     @Override
     public String getFullyQualifiedName() {
       return "org.eclipse.viatra.dse.examples.bpmn.patterns.taskOrder";
@@ -118,14 +132,12 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
     
     @Override
     public List<PParameter> getParameters() {
-      return Arrays.asList(
-      			 new PParameter("T1", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task"))),
-      			 new PParameter("T2", "org.eclipse.viatra.dse.examples.simplifiedbpmn.Task", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("org.eclipse.viatra.dse.examples.bpmn", "Task")))
-      			);
+      return parameters;
     }
     
     @Override
     public Set<PBody> doGetContainedBodies() throws QueryInitializationException {
+      setEvaluationHints(new QueryEvaluationHint(null, Collections.<String,Object>emptyMap()));
       Set<PBody> bodies = Sets.newLinkedHashSet();
       try {
       	{
@@ -137,8 +149,8 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
       		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		new TypeConstraint(body, new FlatTuple(var_T2), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
       		body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
-      		   new ExportedParameter(body, var_T1, "T1"),
-      		   new ExportedParameter(body, var_T2, "T2")
+      		   new ExportedParameter(body, var_T1, parameter_pT1),
+      		   new ExportedParameter(body, var_T2, parameter_pT2)
       		));
       		//     Task.name(T1,name1)
       		new TypeConstraint(body, new FlatTuple(var_T1), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("org.eclipse.viatra.dse.examples.bpmn", "Task")));
@@ -152,25 +164,23 @@ public final class TaskOrderQuerySpecification extends BaseGeneratedEMFQuerySpec
       		new Equality(body, var__virtual_1_, var_name2);
       		//     check(name1 > name2)
       		new ExpressionEvaluation(body, new IExpressionEvaluator() {
-      		                            
-      		                            @Override
-      		                            public String getShortDescription() {
-      		                                return "Expression evaluation from pattern taskOrder";
-      		                            }
       		
-      		                            @Override
-      		                            public Iterable<String> getInputParameterNames() {
-      		                                return Arrays.asList("name1", "name2");
-      		                            }
+      		    @Override
+      		    public String getShortDescription() {
+      		        return "Expression evaluation from pattern taskOrder";
+      		    }
+      		    
+      		    @Override
+      		    public Iterable<String> getInputParameterNames() {
+      		        return Arrays.asList("name1", "name2");}
       		
-      		                            @Override
-      		                            public Object evaluateExpression(IValueProvider provider) throws Exception {
-      		                                    java.lang.String name1 = (java.lang.String) provider.getValue("name1");
-      		                                    java.lang.String name2 = (java.lang.String) provider.getValue("name2");
-      		                                    return evaluateExpression_1_1(name1, name2);
-      		                                }
-      		
-      		                        },  null); 
+      		    @Override
+      		    public Object evaluateExpression(IValueProvider provider) throws Exception {
+      		        String name1 = (String) provider.getValue("name1");
+      		        String name2 = (String) provider.getValue("name2");
+      		        return evaluateExpression_1_1(name1, name2);
+      		    }
+      		},  null); 
       		bodies.add(body);
       	}
       	// to silence compiler error
