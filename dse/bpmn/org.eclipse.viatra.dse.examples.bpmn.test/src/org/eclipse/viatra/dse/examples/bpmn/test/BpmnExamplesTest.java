@@ -36,7 +36,6 @@ import org.eclipse.viatra.dse.solutionstore.SolutionStore;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.transformation.evm.specific.ConflictResolvers;
 import org.eclipse.viatra.transformation.evm.specific.resolver.FixedPriorityConflictResolver;
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
