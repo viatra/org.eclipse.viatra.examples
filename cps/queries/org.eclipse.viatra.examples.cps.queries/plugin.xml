@@ -77,6 +77,7 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalHdd"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.availableGreaterThanTotalRam"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.nodeIpIsNotUnique"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.idContainsWhitespace"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.idIsNotUnique"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.initialStateNotContainedByStateMachine"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.model.validation.transitionWithoutTargetState"/>

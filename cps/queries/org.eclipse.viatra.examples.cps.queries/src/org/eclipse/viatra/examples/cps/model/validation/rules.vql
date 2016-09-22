@@ -79,6 +79,16 @@ private pattern nodeIpOfHost(host, ip){
 
 @Constraint(
 	key = {identifiable},
+	message = "The ID of $identifiable.identifier$ contains whitespace",
+	severity = "error"
+)
+pattern idContainsWhitespace(identifiable) {
+	find identifiableId(identifiable, id);
+	check(com.google.common.base.CharMatcher.WHITESPACE.matchesAnyOf(id));
+}
+
+@Constraint(
+	key = {identifiable},
 	message = "The ID of $identifiable.identifier$ is not unique",
 	severity = "error"
 )

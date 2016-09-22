@@ -32,4 +32,7 @@
   <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.multipleTransitionsWithSameAction" point="org.eclipse.viatra.addon.validation.runtime.constraint">
     <constraint class="org.eclipse.viatra.examples.cps.model.validation.MultipleTransitionsWithSameActionConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.multipleTransitionsWithSameAction"/>
   </extension>
+  <extension id="validation.constraint.org.eclipse.viatra.examples.cps.model.validation.idContainsWhitespace" point="org.eclipse.viatra.addon.validation.runtime.constraint">
+    <constraint class="org.eclipse.viatra.examples.cps.model.validation.IdContainsWhitespaceConstraint0" name="org.eclipse.viatra.examples.cps.model.validation.idContainsWhitespace"/>
+  </extension>
 </plugin>
