@@ -21,6 +21,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
+import org.apache.log4j.Level
 
 @RunWith(Parameterized)
 class ModelManipulationAvgAggregatorTest {
@@ -42,7 +43,9 @@ class ModelManipulationAvgAggregatorTest {
 		ViatraQueryTest.test(AvgCPUQuerySpecification.instance).with(BackendType.Rete.newBackendInstance)
 			.on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath)).
 			modify(HostInstance, [true], [host|host.availableCpu = 10]).with(
-				"org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_avgCPU.snapshot").assertEquals
+				"org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_avgCPU.snapshot")
+				//Divison by zero happens in an eval
+				.assertEquals(Level::WARN)
 	}
 
 }
