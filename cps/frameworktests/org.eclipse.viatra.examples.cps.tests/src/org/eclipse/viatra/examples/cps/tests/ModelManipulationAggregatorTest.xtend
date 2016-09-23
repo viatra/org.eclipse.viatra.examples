@@ -33,6 +33,7 @@ abstract class ModelManipulationAggregatorTest {
 	protected final static val test_max6_Priority = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_max6_Priority.snapshot"
 	protected final static val test_max7_Priority = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_max7_Priority.snapshot"
 	protected final static val test_sum21_Priority = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_sum21_Priority.snapshot"
+	protected final static val test_sum0_Priority = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_sum0_Priority.snapshot"
 
 	protected def void evaluateModifications(ViatraQueryTest test, Collection<Modification<EObject>> modifications) {
 		modifications.fold(test, [acc, modification |

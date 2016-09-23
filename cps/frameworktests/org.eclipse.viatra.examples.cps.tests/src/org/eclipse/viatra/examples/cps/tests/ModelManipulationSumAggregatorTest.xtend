@@ -112,5 +112,55 @@ class ModelManipulationSumAggregatorTest extends ModelManipulationAggregatorTest
 			XmiModelUtil::resolvePlatformURI(XmiModelUtil.XmiModelUtilRunningOptionEnum.BOTH, aggregators_baseLine))
 		evaluateModifications(test, modifications)
 	}
+	
+	@Test
+	/**
+	 * Test uses an already existing outer group. 
+	 * Add 2 new triplets (H, AT1, 0), (H, AT2, 0) - no effective change -  and then remove them. 
+	 */
+	def void testSumPriority_Neutralchange() {
+		val modifications = <Modification<EObject>>newArrayList
+		modifications.add(new Modification(CyberPhysicalSystem, [true], [ system |
+			val AT1 = findInstance(system, ApplicationType, [type|"AT1".equals(type.identifier)])
+			val A1 = createApplicationInstance(AT1, "Ax1", 0)
+			val A2 = createApplicationInstance(AT1, "Ax2", 0)
+			AT1.instances.add(A1)
+			AT1.instances.add(A2)
+			val H1 = findInstance(system, HostInstance, [host|"H1".equals(host.identifier)])
+			H1.applications.add(A1)
+			H1.applications.add(A2)
+		], test_sum21_Priority))
+		modifications.addAll(deletions)
+
+		val test = ViatraQueryTest.test(SumPriorityQuerySpecification.instance).with(
+			BackendType.Rete.newBackendInstance).with(BackendType.LocalSearch.newBackendInstance).on(
+			XmiModelUtil::resolvePlatformURI(XmiModelUtil.XmiModelUtilRunningOptionEnum.BOTH, aggregators_baseLine))
+		evaluateModifications(test, modifications)
+	}
+
+	@Test
+	/**
+	 * Test uses an already existing outer group. 
+	 * Add 2 new triplets (H, AT1, 0), (H, AT2, -21) - in effect the sum becomes zero, though the collection is nonempty - and then remove them. 
+	 */
+	def void testSumPriority_ZeroedOutchange() {
+		val modifications = <Modification<EObject>>newArrayList
+		modifications.add(new Modification(CyberPhysicalSystem, [true], [ system |
+			val AT1 = findInstance(system, ApplicationType, [type|"AT1".equals(type.identifier)])
+			val A1 = createApplicationInstance(AT1, "Ax1", 0)
+			val A2 = createApplicationInstance(AT1, "Ax2", -21)
+			AT1.instances.add(A1)
+			AT1.instances.add(A2)
+			val H1 = findInstance(system, HostInstance, [host|"H1".equals(host.identifier)])
+			H1.applications.add(A1)
+			H1.applications.add(A2)
+		], test_sum0_Priority))
+		modifications.addAll(deletions)
+
+		val test = ViatraQueryTest.test(SumPriorityQuerySpecification.instance).with(
+			BackendType.Rete.newBackendInstance).with(BackendType.LocalSearch.newBackendInstance).on(
+			XmiModelUtil::resolvePlatformURI(XmiModelUtil.XmiModelUtilRunningOptionEnum.BOTH, aggregators_baseLine))
+		evaluateModifications(test, modifications)
+	}
 
 }
