@@ -268,3 +268,8 @@ pattern instances(I) {
 } or {
 	ApplicationInstance(I);
 }
+
+pattern notApplicationInstanceIdentifiable(notApplicationInstance){
+    Identifiable(notApplicationInstance);
+    neg find applicationInstances(notApplicationInstance);
+}

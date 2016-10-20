@@ -11,11 +11,16 @@
 package org.eclipse.viatra.examples.cps.tests
 
 import java.util.Collection
+import org.eclipse.viatra.examples.cps.tests.queries.util.ArgumentsUnifiedByCallerQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.EnumNotEqualQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.NotApplicationInstanceIdentifiableQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.NotOneInstanceQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.PartiallyUnboundUnifiedExportedParametersQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.SameVariablesQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UnifiedParametersWithDifferentValues2QuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.UnifiedParametersWithDifferentValuesQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
 import org.eclipse.viatra.query.testing.core.XmiModelUtil
 import org.eclipse.viatra.query.testing.core.XmiModelUtil.XmiModelUtilRunningOptionEnum
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
@@ -24,10 +29,6 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
-import org.eclipse.viatra.examples.cps.tests.queries.util.MultipleEvalsQuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.UseVarInEvalQuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.NotOneInstanceQuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.ArgumentsUnifiedByCallerQuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
@@ -118,4 +119,12 @@ class VariableEqualityCpsTest {
                         .withAll
                         .assertEquals
     }
+     @Test
+    def void invalidInferredParameterType(){
+        ViatraQueryTest.test(NotApplicationInstanceIdentifiableQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .withAll
+                        .assertEquals
+    }
+    
 }
