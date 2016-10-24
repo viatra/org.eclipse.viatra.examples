@@ -29,6 +29,8 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
+import org.eclipse.viatra.examples.cps.tests.queries.util.NotApplicationInstanceIdentifiable3QuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.NotApplicationInstanceIdentifiable2QuerySpecification
 
 // This test is necessary because of 481263 and 491248 bugs
 @RunWith(Parameterized)
@@ -119,9 +121,24 @@ class VariableEqualityCpsTest {
                         .withAll
                         .assertEquals
     }
-     @Test
+    
+    @Test
     def void invalidInferredParameterType(){
         ViatraQueryTest.test(NotApplicationInstanceIdentifiableQuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .withAll
+                        .assertEquals
+    }
+    @Test
+    def void invalidInferredParameterType2(){
+        ViatraQueryTest.test(NotApplicationInstanceIdentifiable2QuerySpecification.instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .withAll
+                        .assertEquals
+    }
+    @Test
+    def void invalidInferredParameterType3(){
+        ViatraQueryTest.test(NotApplicationInstanceIdentifiable3QuerySpecification.instance)
                         .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals
