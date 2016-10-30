@@ -8,6 +8,7 @@ import org.junit.Test
 import org.eclipse.viatra.examples.cps.tests.queries.util.SumCPUQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.AvgCPUQuerySpecification
 import org.junit.Ignore
+import org.eclipse.viatra.examples.cps.tests.queries.util.HasOddApplicationsQuerySpecification
 
 class AggregatorTest {
         
@@ -37,6 +38,13 @@ class AggregatorTest {
     @Test
     def void testSumCPU() {
         ViatraQueryTest.test(SumCPUQuerySpecification::instance)
+                        .withAll
+                        .assertEquals 
+    }
+    
+    @Test
+    def void testHasOddApplications() {
+        ViatraQueryTest.test(HasOddApplicationsQuerySpecification::instance)
                         .withAll
                         .assertEquals 
     }

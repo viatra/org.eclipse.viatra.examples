@@ -43,6 +43,13 @@ pattern hostInstanceWithMinCPU2(host : HostInstance, value) {
 	find availableCPU(host, value);
 }
 
+pattern hasOddApplications(hostInst: HostInstance, appInst : ApplicationInstance) = {
+	CT == count find manyParams(hostInst, _a, _b, appInst, _c);
+	check (CT % 2 == 1);
+}
+
+
+
 // HELPER PATTERNS
 pattern availableCPU(host : HostInstance, value : EInt) {
 	HostInstance.availableCpu(host, value);
@@ -56,4 +63,11 @@ pattern hostPriority(host, appType, priority) {
 
 pattern hostInstance(host) {
 	HostInstance(host);
+}
+
+pattern manyParams(hostInst: HostInstance, a, b, appInst : ApplicationInstance, c) = {
+	a == 1;
+	b == 2;
+	c == 3;
+	HostInstance.applications(hostInst, appInst);
 }
