@@ -89,11 +89,6 @@
 						<artifactId>org.eclipse.viatra.examples.cps.xform.m2m.util</artifactId>
 						<version>${project.version}</version>
 					</dependency>
-					<dependency>
-						<groupId>com.google.guava</groupId>
-						<artifactId>guava</artifactId>
-						<version>15.0</version>
-					</dependency>
 				</dependencies>
 			</plugin>
 			<plugin>
