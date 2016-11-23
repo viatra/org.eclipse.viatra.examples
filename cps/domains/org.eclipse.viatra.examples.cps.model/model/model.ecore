@@ -77,13 +77,14 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Request" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="requirements" upperBound="-1"
-        eType="#//Requirement" containment="true" eOpposite="#//Requirement/request"/>
+        eType="#//Requirement" unsettable="true" containment="true" eOpposite="#//Requirement/request"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Requirement" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="count" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="request" lowerBound="1"
         eType="#//Request" eOpposite="#//Request/requirements"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//ApplicationType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//ApplicationType"
+        unsettable="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="applications" upperBound="-1"
         eType="#//ApplicationInstance"/>
   </eClassifiers>

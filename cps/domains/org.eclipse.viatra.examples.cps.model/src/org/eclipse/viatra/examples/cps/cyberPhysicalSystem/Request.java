@@ -40,11 +40,34 @@ public interface Request extends Identifiable {
 	 * </p>
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Requirements</em>' containment reference list.
+     * @see #isSetRequirements()
+     * @see #unsetRequirements()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequest_Requirements()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getRequest
-     * @model opposite="request" containment="true"
+     * @model opposite="request" containment="true" unsettable="true"
      * @generated
      */
 	EList<Requirement> getRequirements();
+
+    /**
+     * Unsets the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request#getRequirements <em>Requirements</em>}' containment reference list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSetRequirements()
+     * @see #getRequirements()
+     * @generated
+     */
+    void unsetRequirements();
+
+    /**
+     * Returns whether the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Request#getRequirements <em>Requirements</em>}' containment reference list is set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return whether the value of the '<em>Requirements</em>' containment reference list is set.
+     * @see #unsetRequirements()
+     * @see #getRequirements()
+     * @generated
+     */
+    boolean isSetRequirements();
 
 } // Request

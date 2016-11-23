@@ -25,6 +25,7 @@ import org.junit.runners.Suite.SuiteClasses
     TestingFrameworkTest,
     VariableEqualityCpsTest,
     BaseIndexerTest,
+    BaseIndexerUnsetTest,
     AggregatorTest,
     AggregatorComparisonTest,
     ModelManipulationSumAggregatorTest,

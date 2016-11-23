@@ -95,9 +95,11 @@ public interface Requirement extends Identifiable {
 	 * </p>
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Type</em>' reference.
+     * @see #isSetType()
+     * @see #unsetType()
      * @see #setType(ApplicationType)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement_Type()
-     * @model required="true"
+     * @model unsettable="true" required="true"
      * @generated
      */
 	ApplicationType getType();
@@ -107,12 +109,37 @@ public interface Requirement extends Identifiable {
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @param value the new value of the '<em>Type</em>' reference.
+     * @see #isSetType()
+     * @see #unsetType()
      * @see #getType()
      * @generated
      */
 	void setType(ApplicationType value);
 
 	/**
+     * Unsets the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getType <em>Type</em>}' reference.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isSetType()
+     * @see #getType()
+     * @see #setType(ApplicationType)
+     * @generated
+     */
+    void unsetType();
+
+    /**
+     * Returns whether the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getType <em>Type</em>}' reference is set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return whether the value of the '<em>Type</em>' reference is set.
+     * @see #unsetType()
+     * @see #getType()
+     * @see #setType(ApplicationType)
+     * @generated
+     */
+    boolean isSetType();
+
+    /**
      * Returns the value of the '<em><b>Applications</b></em>' reference list.
      * The list contents are of type {@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance}.
      * <!-- begin-user-doc -->

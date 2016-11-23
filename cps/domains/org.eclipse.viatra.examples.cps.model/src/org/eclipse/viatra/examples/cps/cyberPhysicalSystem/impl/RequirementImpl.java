@@ -101,6 +101,15 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	protected ApplicationType type;
 
 	/**
+     * This is true if the Type reference has been set.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    protected boolean typeESet;
+
+    /**
      * The cached value of the '{@link #getApplications() <em>Applications</em>}' reference list.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -246,11 +255,36 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	public void setType(ApplicationType newType) {
         ApplicationType oldType = type;
         type = newType;
+        boolean oldTypeESet = typeESet;
+        typeESet = true;
         if (eNotificationRequired())
-            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.REQUIREMENT__TYPE, oldType, type));
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.REQUIREMENT__TYPE, oldType, type, !oldTypeESet));
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void unsetType() {
+        ApplicationType oldType = type;
+        boolean oldTypeESet = typeESet;
+        type = null;
+        typeESet = false;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.UNSET, CyberPhysicalSystemPackage.REQUIREMENT__TYPE, oldType, null, oldTypeESet));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isSetType() {
+        return typeESet;
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -376,7 +410,7 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 setRequest((Request)null);
                 return;
             case CyberPhysicalSystemPackage.REQUIREMENT__TYPE:
-                setType((ApplicationType)null);
+                unsetType();
                 return;
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:
                 getApplications().clear();
@@ -400,7 +434,7 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__REQUEST:
                 return getRequest() != null;
             case CyberPhysicalSystemPackage.REQUIREMENT__TYPE:
-                return type != null;
+                return isSetType();
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:
                 return applications != null && !applications.isEmpty();
         }

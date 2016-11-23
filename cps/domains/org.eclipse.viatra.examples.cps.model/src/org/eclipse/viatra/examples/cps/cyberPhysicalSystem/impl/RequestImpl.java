@@ -122,12 +122,30 @@ public class RequestImpl extends MinimalEObjectImpl.Container implements Request
      */
 	public EList<Requirement> getRequirements() {
         if (requirements == null) {
-            requirements = new EObjectContainmentWithInverseEList<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
+            requirements = new EObjectContainmentWithInverseEList.Unsettable<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
         }
         return requirements;
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void unsetRequirements() {
+        if (requirements != null) ((InternalEList.Unsettable<?>)requirements).unset();
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isSetRequirements() {
+        return requirements != null && ((InternalEList.Unsettable<?>)requirements).isSet();
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -204,7 +222,7 @@ public class RequestImpl extends MinimalEObjectImpl.Container implements Request
                 setIdentifier(IDENTIFIER_EDEFAULT);
                 return;
             case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                getRequirements().clear();
+                unsetRequirements();
                 return;
         }
         super.eUnset(featureID);
@@ -221,7 +239,7 @@ public class RequestImpl extends MinimalEObjectImpl.Container implements Request
             case CyberPhysicalSystemPackage.REQUEST__IDENTIFIER:
                 return IDENTIFIER_EDEFAULT == null ? identifier != null : !IDENTIFIER_EDEFAULT.equals(identifier);
             case CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS:
-                return requirements != null && !requirements.isEmpty();
+                return isSetRequirements();
         }
         return super.eIsSet(featureID);
     }
