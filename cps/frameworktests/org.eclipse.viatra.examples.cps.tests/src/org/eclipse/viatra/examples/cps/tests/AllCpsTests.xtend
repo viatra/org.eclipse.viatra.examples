@@ -6,7 +6,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors:
- *     Akos Horvath, Abel Hegedus, Akos Menyhert, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Daniel Segesdi - initial API and implementation
+ *     Akos Horvath, Abel Hegedus, Akos Menyhert, Tamas Borbas, Marton Bur, 
+ * 	   Zoltan Ujhelyi, Daniel Segesdi, Gabor Bergmann
+ * 		 - initial API and implementation
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.tests
 
@@ -20,6 +22,7 @@ import org.junit.runners.Suite.SuiteClasses
     APICpsTest,
     BasicCpsTest,
     FlattenedPatternCallCpsTest,
+    FunctionalDependencyAnalysisTest,
     ModelManipulationCpsTest,
     RecursionCpsTest,
     TestingFrameworkTest,
