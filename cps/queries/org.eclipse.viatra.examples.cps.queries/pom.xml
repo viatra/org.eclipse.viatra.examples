@@ -49,6 +49,7 @@
 				</executions>
 				<configuration>
 					<outputDirectory>src-gen</outputDirectory>
+					<useProjectDependencies>true</useProjectDependencies>
 					<metamodels>
 						<metamodel>
 							<packageClass>org.eclipse.viatra.examples.cps.deployment.DeploymentPackage</packageClass>
@@ -61,23 +62,6 @@
 						</metamodel>
 					</metamodels>
 				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.eclipse.viatra.examples.cps</groupId>
-						<artifactId>org.eclipse.viatra.examples.cps.model</artifactId>
-						<version>${project.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.viatra.examples.cps</groupId>
-						<artifactId>org.eclipse.viatra.examples.cps.deployment</artifactId>
-						<version>${project.version}</version>
-					</dependency>
-					<dependency>
-						<groupId>org.eclipse.viatra.examples.cps</groupId>
-						<artifactId>org.eclipse.viatra.examples.cps.traceability</artifactId>
-						<version>${project.version}</version>
-					</dependency>
-				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
