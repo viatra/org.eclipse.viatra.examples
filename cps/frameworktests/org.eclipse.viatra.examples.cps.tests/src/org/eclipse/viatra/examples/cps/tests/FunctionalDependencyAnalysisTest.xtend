@@ -129,6 +129,15 @@ class FunctionalDependencyAnalysisTest {
 		})
 	}
 	
+	@Test
+	def disjunctiveDependenciesTest() {
+		assertDependencies(disjunctiveDependencies, true, #{})
+		assertDependencies(disjunctiveDependencies, false, #{
+			#{"obj"} -> #{"id"},
+			#{"id"} -> #{"obj"}	
+		})
+	}
+	
 	
 	
 	

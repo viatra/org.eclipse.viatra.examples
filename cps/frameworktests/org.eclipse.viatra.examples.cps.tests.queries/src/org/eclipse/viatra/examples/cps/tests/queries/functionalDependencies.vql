@@ -57,4 +57,12 @@ pattern constantWithSoft(obj, id) {
 	id == "weather";
 }
 
+@FunctionalDependency(forEach = id, unique = obj)
+@FunctionalDependency(forEach = obj, unique = id)
+pattern disjunctiveDependencies(obj, id) {
+	CyberPhysicalSystem.identifier(obj, id);
+} or {
+	HostType.identifier(obj, id);
+}
+
 
