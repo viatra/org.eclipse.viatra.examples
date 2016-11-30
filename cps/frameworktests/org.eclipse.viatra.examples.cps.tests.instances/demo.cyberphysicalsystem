@@ -35,6 +35,10 @@
       </states>
     </behavior>
   </appTypes>
+  <requests identifier="">
+    <requirements identifier="ReqMandatory" count="1" type="simple.cps.app.FirstAppClass0" applications="simple.cps.app.FirstAppClass0.inst0"/>
+    <requirements identifier="ReqOptional" type="simple.cps.app.FirstAppClass0" applications="simple.cps.app.FirstAppClass0.inst1" mandatory="false"/>
+  </requests>
   <hostTypes identifier="simple.cps.host.FirstHostClass0">
     <instances identifier="simple.cps.host.FirstHostClass0.inst0" nodeIp="simple.cps.host.FirstHostClass0.inst0"/>
     <instances identifier="simple.cps.host.FirstHostClass0.inst1" nodeIp="simple.cps.host.FirstHostClass0.inst1"/>

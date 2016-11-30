@@ -751,13 +751,22 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 	int REQUIREMENT__APPLICATIONS = IDENTIFIABLE_FEATURE_COUNT + 3;
 
 	/**
+     * The feature id for the '<em><b>Mandatory</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REQUIREMENT__MANDATORY = IDENTIFIABLE_FEATURE_COUNT + 4;
+
+    /**
      * The number of structural features of the '<em>Requirement</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int REQUIREMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 4;
+	int REQUIREMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
 
 	/**
      * The number of operations of the '<em>Requirement</em>' class.
@@ -1488,6 +1497,17 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 	EReference getRequirement_Applications();
 
 	/**
+     * Returns the meta object for the attribute '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#isMandatory <em>Mandatory</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Mandatory</em>'.
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#isMandatory()
+     * @see #getRequirement()
+     * @generated
+     */
+    EAttribute getRequirement_Mandatory();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine <em>State Machine</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2032,6 +2052,14 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 		EReference REQUIREMENT__APPLICATIONS = eINSTANCE.getRequirement_Applications();
 
 		/**
+         * The meta object literal for the '<em><b>Mandatory</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute REQUIREMENT__MANDATORY = eINSTANCE.getRequirement_Mandatory();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.StateMachineImpl <em>State Machine</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->

@@ -25,6 +25,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getRequest <em>Request</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getApplications <em>Applications</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#isMandatory <em>Mandatory</em>}</li>
  * </ul>
  *
  * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement()
@@ -154,5 +155,32 @@ public interface Requirement extends Identifiable {
      * @generated
      */
 	EList<ApplicationInstance> getApplications();
+
+    /**
+     * Returns the value of the '<em><b>Mandatory</b></em>' attribute.
+     * The default value is <code>"true"</code>.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Mandatory</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Mandatory</em>' attribute.
+     * @see #setMandatory(boolean)
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement_Mandatory()
+     * @model default="true"
+     * @generated
+     */
+    boolean isMandatory();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#isMandatory <em>Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Mandatory</em>' attribute.
+     * @see #isMandatory()
+     * @generated
+     */
+    void setMandatory(boolean value);
 
 } // Requirement

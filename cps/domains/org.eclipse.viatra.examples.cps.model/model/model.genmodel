@@ -71,6 +71,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Requirement/request"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Requirement/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference model.ecore#//Requirement/applications"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute model.ecore#//Requirement/mandatory"/>
     </genClasses>
     <genClasses ecoreClass="model.ecore#//StateMachine">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference model.ecore#//StateMachine/states"/>

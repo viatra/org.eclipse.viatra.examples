@@ -45,6 +45,7 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getRequest <em>Request</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getApplications <em>Applications</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#isMandatory <em>Mandatory</em>}</li>
  * </ul>
  *
  * @generated
@@ -120,6 +121,26 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 	protected EList<ApplicationInstance> applications;
 
 	/**
+     * The default value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isMandatory()
+     * @generated
+     * @ordered
+     */
+    protected static final boolean MANDATORY_EDEFAULT = true;
+
+    /**
+     * The cached value of the '{@link #isMandatory() <em>Mandatory</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #isMandatory()
+     * @generated
+     * @ordered
+     */
+    protected boolean mandatory = MANDATORY_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -298,6 +319,27 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public boolean isMandatory() {
+        return mandatory;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setMandatory(boolean newMandatory) {
+        boolean oldMandatory = mandatory;
+        mandatory = newMandatory;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY, oldMandatory, mandatory));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -359,6 +401,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 return basicGetType();
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:
                 return getApplications();
+            case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
+                return isMandatory();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -388,6 +432,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 getApplications().clear();
                 getApplications().addAll((Collection<? extends ApplicationInstance>)newValue);
                 return;
+            case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
+                setMandatory((Boolean)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -415,6 +462,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:
                 getApplications().clear();
                 return;
+            case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
+                setMandatory(MANDATORY_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -437,6 +487,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 return isSetType();
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:
                 return applications != null && !applications.isEmpty();
+            case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
+                return mandatory != MANDATORY_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -455,6 +507,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
         result.append(identifier);
         result.append(", count: ");
         result.append(count);
+        result.append(", mandatory: ");
+        result.append(mandatory);
         result.append(')');
         return result.toString();
     }

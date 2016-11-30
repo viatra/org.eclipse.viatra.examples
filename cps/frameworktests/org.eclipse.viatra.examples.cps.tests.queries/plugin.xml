@@ -26,6 +26,26 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.callee2"/>
     </group>
   </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.FunctionalDependencies" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.FunctionalDependencies" id="org.eclipse.viatra.examples.cps.tests.queries.FunctionalDependencies">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.toOneFeature"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.toOneFeatureWithSoftDep"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.hasCall"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.compositeKey"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.relativeID"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.evaluation"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.transitiveDep"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.constant"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.constantWithSoft"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.disjunctiveDependencies"/>
+    </group>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.LiteralUsage" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.LiteralUsage" id="org.eclipse.viatra.examples.cps.tests.queries.LiteralUsage">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.mandatoryRequirements"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.optionalRequirements"/>
+    </group>
+  </extension>
   <extension id="org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables" id="org.eclipse.viatra.examples.cps.tests.queries.UnnamedVariables">
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.hostInstancesTypeWithDefaultRam"/>

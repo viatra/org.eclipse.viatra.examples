@@ -74,6 +74,7 @@ public class RequirementItemProvider
             addRequestPropertyDescriptor(object);
             addTypePropertyDescriptor(object);
             addApplicationsPropertyDescriptor(object);
+            addMandatoryPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -189,6 +190,28 @@ public class RequirementItemProvider
     }
 
 	/**
+     * This adds a property descriptor for the Mandatory feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addMandatoryPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Requirement_mandatory_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Requirement_mandatory_feature", "_UI_Requirement_type"),
+                 CyberPhysicalSystemPackage.Literals.REQUIREMENT__MANDATORY,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns Requirement.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -228,6 +251,7 @@ public class RequirementItemProvider
         switch (notification.getFeatureID(Requirement.class)) {
             case CyberPhysicalSystemPackage.REQUIREMENT__IDENTIFIER:
             case CyberPhysicalSystemPackage.REQUIREMENT__COUNT:
+            case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }
