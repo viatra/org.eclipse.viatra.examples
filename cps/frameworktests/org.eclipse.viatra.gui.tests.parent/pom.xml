@@ -28,7 +28,7 @@
 		<tycho.version>0.24.0</tycho.version>
 		<xtend.compiler.version>2.10.0</xtend.compiler.version>
     	<rcptt.version>2.1.0</rcptt.version>
-		<viatra.compiler.version>1.4.0-SNAPSHOT</viatra.compiler.version>
+		<viatra.compiler.version>1.5.0-SNAPSHOT</viatra.compiler.version>
 		<cps.version>0.1.0-SNAPSHOT</cps.version>
         
         <jacoco.version>0.7.6.201602180812</jacoco.version>
