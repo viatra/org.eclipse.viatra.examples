@@ -75,11 +75,12 @@ class CPSModelBuilderUtil {
 		cps2dep
 	}
 	
-	def preparePersistedCPSModel(String dirUri, String modelName) {
+	def preparePersistedCPSModel(URI dirUri, String modelName) {
 		val rs = new ResourceSetImpl()
-		val cpsRes = rs.createResource(URI.createURI(dirUri + "/" + modelName + ".cyberphysicalsystem"))
-		val depRes = rs.createResource(URI.createURI(dirUri + "/" + modelName + ".deployment"))
-		val trcRes = rs.createResource(URI.createURI(dirUri + "/" + modelName + ".traceability"))
+		val modelNameURI = dirUri.appendSegment(modelName)
+		val cpsRes = rs.createResource(modelNameURI.appendFileExtension("cyberphysicalsystem"))
+		val depRes = rs.createResource(modelNameURI.appendFileExtension("deployment"))
+		val trcRes = rs.createResource(modelNameURI.appendFileExtension("traceability"))
 		
 		val cps = createCyberPhysicalSystem => [
 			identifier = modelName
@@ -95,6 +96,13 @@ class CPSModelBuilderUtil {
 		]
 		trcRes.contents += cps2dep
 		cps2dep
+	}
+	/**
+	 * @deprecated use {@link #preparePersistedCPSModel(URI, String)} instead
+	 */
+	@Deprecated
+	def preparePersistedCPSModel(String dirUri, String modelName) {
+		preparePersistedCPSModel(URI.createURI(dirUri), modelName)
 	}
 	
 	def prepareHostTypeWithId(CPSToDeployment cps2dep, String hostId) {

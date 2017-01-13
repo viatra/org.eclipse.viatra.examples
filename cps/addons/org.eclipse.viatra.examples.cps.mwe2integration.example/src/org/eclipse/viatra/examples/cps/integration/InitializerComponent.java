@@ -14,6 +14,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.mwe2.runtime.workflow.IWorkflowComponent;
@@ -132,7 +133,7 @@ public class InitializerComponent implements IWorkflowComponent {
         Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put(Resource.Factory.Registry.DEFAULT_EXTENSION,
                 new XMIResourceFactoryImpl());
 
-        CPSToDeployment cps2dep = modelBuilderUtil.preparePersistedCPSModel(modelDir + "/" + modelName, modelName);
+        CPSToDeployment cps2dep = modelBuilderUtil.preparePersistedCPSModel(URI.createFileURI(modelDir), modelName);
 
         // //////////////////////////////////
         // //// Generation phase
