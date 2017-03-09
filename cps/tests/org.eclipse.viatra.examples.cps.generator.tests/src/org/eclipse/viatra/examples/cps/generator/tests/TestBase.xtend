@@ -18,7 +18,6 @@ import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
 import org.eclipse.viatra.examples.cps.generator.queries.AppTypesMatcher
 import org.eclipse.viatra.examples.cps.generator.queries.HostTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.Validation
 import org.eclipse.viatra.examples.cps.generator.utils.CPSGeneratorBuilder
 import org.eclipse.viatra.examples.cps.generator.utils.PersistenceUtil
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
@@ -77,8 +76,6 @@ abstract class TestBase extends CPSTestBase{
 		assertInRange("NumberOfSignals", out.numberOfSignals, constraints.numberOfSignals.minValue, constraints.numberOfSignals.maxValue);
 		
 		val ViatraQueryEngine engine = ViatraQueryEngine.on(new EMFScope(out.modelRoot));
-		Validation.instance.prepare(engine);
-		
 		assertNotNull("ViatraQueryEngine is null", engine);
 		
 		//Show stats

@@ -16,23 +16,40 @@ pattern Transitions(t : Transition, SM : StateMachine) {
 	StateMachine.states.outgoingTransitions(SM, t);
 }
 
+pattern AllocatedAppInstances(A : ApplicationInstance, HI : HostInstance) {
+    ApplicationInstance.allocatedTo(A, HI);
+}
+
+pattern ConnectedHosts(H : HostInstance, Trg : HostInstance) {
+    HostInstance.communicateWith(H, Trg);
+}
+
 pattern ReachableAppTypes(From : ApplicationType, To : ApplicationType) {
-	ApplicationType.instances.allocatedTo.communicateWith.applications.type(From, To);
+    find appTypesOfHostInstanceApplications(FromH, From);
+    find appTypesOfHostInstanceApplications(ToH, To);
+	find ConnectedHosts(FromH, ToH);
+}
+
+pattern appTypesOfHostInstanceApplications(HostInstance : HostInstance, AppType : ApplicationType) {
+    find AllocatedAppInstances(App, HostInstance);
+    ApplicationInstance.type(App,AppType);
 }
 
 pattern AppTypesOfTransition(T : Transition, P : ApplicationType) {
-	ApplicationType.behavior.states.outgoingTransitions(P, T);
+//	ApplicationType.behavior.states.outgoingTransitions(P, T);
+    find outTransitionsOfAppTypeSM(P,_AppTypeId,_SM,T);
 }
 
 pattern ReceiverTransition(AppTypeId, Transition : Transition, SM : StateMachine){
-	ApplicationType.identifier(AppType, AppTypeId);
-	ApplicationType.behavior(AppType, SM);
-	StateMachine.states.outgoingTransitions(SM, Transition);
+//	ApplicationType.identifier(AppType, AppTypeId);
+//	ApplicationType.behavior(AppType, SM);
+//	StateMachine.states.outgoingTransitions(SM, Transition);
+	find outTransitionsOfAppTypeSM(_AppType,AppTypeId,SM,Transition);
 	neg find TransitionWithAction(Transition);
 }
 
 pattern PossibleReceiverType(Sender : Transition, ReceiverAppTypeId){
-	HostInstance.communicateWith(HSrc, HDst);
+	find ConnectedHosts(HSrc, HDst);
 	find TransitionOnAHost(HSrc,Sender,_);
 	find TransitionOnAHost(HDst,Receiver, ReceiverAppTypeId);
 	Sender != Receiver;
@@ -40,18 +57,50 @@ pattern PossibleReceiverType(Sender : Transition, ReceiverAppTypeId){
 }
 
 pattern TransitionOnAHost(H : HostInstance, T : Transition, AppTypeId){
-	StateMachine.states.outgoingTransitions(SM,T);
-	HostInstance.applications(H,App);
-	ApplicationInstance.type(App,AppType);
-	ApplicationType.identifier(AppType,AppTypeId);
-	ApplicationType.behavior(AppType,SM);
-	StateMachine.states.outgoingTransitions(SM,T);
+//	find Transitions(T, SM);
+	find appTypesOfHostInstanceApplications(H, AppType);
+//	HostInstance.applications(H,App);
+//	ApplicationInstance.type(App,AppType);
+	find outTransitionsOfAppTypeSM(AppType,AppTypeId,_SM,T);
+//	ApplicationType.identifier(AppType,AppTypeId);
+//	ApplicationType.behavior(AppType,SM);
+//	StateMachine.states.outgoingTransitions(SM,T);
 }
 
+private pattern outTransitionsOfAppTypeSM(AppType : ApplicationType, AppTypeId, SM : StateMachine, T : Transition) {
+    ApplicationType.identifier(AppType,AppTypeId);
+    ApplicationType.behavior(AppType,SM);
+    find Transitions(T, SM);
+}
 
 pattern TransitionWithoutAction(t:Transition){
 	neg find TransitionWithAction(t);
 }
+
 pattern TransitionWithAction(t:Transition){
 	Transition.action(t,_action);
+}
+
+pattern AppTypes(appType : ApplicationType) {
+    ApplicationType(appType);
+}
+
+pattern AppInstances(A : ApplicationInstance) {
+    ApplicationInstance(A);
+}
+
+pattern HostTypes(hostType : HostType) {
+    HostType(hostType);
+}
+
+pattern HostInstances(hostInstance : HostInstance) {
+    HostInstance(hostInstance);
+}
+
+pattern States(s : State) {
+    State(s);
+}
+
+pattern Transition(t : Transition) {
+    find Transitions(t, _);
 }
