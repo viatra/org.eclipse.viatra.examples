@@ -10,6 +10,7 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.ReceiverTransition"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.PossibleReceiverType"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionOnAHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.outTransitionsOfAppTypeSM"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutAction"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.TransitionWithAction"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.AppTypes"/>
@@ -17,7 +18,6 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.HostTypes"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.HostInstances"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.States"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.generator.queries.Transition"/>
     </group>
   </extension>
 </plugin>

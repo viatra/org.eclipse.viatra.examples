@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.generator.dtos
 
+import java.util.LinkedHashSet
 import org.apache.log4j.Logger
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition
@@ -24,15 +26,13 @@ import org.eclipse.viatra.examples.cps.generator.queries.ConnectedHostsMatcher
 import org.eclipse.viatra.examples.cps.generator.queries.HostInstancesMatcher
 import org.eclipse.viatra.examples.cps.generator.queries.HostTypesMatcher
 import org.eclipse.viatra.examples.cps.generator.queries.StatesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutActionMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.TransitionsMatcher
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
 import org.eclipse.viatra.examples.cps.generator.utils.SumProcessor
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.base.api.IEStructuralFeatureProcessor
 import org.eclipse.viatra.query.runtime.base.api.ViatraBaseFactory
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutActionMatcher
-import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
-import java.util.LinkedHashSet
 
 class CPSStats extends ModelStats {
 	
@@ -57,7 +57,7 @@ class CPSStats extends ModelStats {
 		this.hostTypeCount = HostTypesMatcher.on(engine).countMatches;
 		this.hostInstanceCount = HostInstancesMatcher.on(engine).countMatches;
 		this.stateCount = StatesMatcher.on(engine).countMatches;
-		this.transitionCount = TransitionMatcher.on(engine).countMatches;
+		this.transitionCount = TransitionsMatcher.on(engine).countMatches;
 		this.allocatedAppCount = AllocatedAppInstancesMatcher.on(engine).countMatches;
 		this.connectedHostCount = ConnectedHostsMatcher.on(engine).countMatches;
 		this.eObjects = model.eAllContents.size;

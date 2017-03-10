@@ -42,13 +42,13 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 		
 		matcher.allValuesOfSender.forEach [ senderTransition, index |
 			
-			val reachableTypeIds = matcher.getAllValuesOfReceiverAppTypeId(senderTransition)
+			val reachableTypes = matcher.getAllValuesOfReceiverAppType(senderTransition)
 			var boolean success = false;
-			for(typeId : reachableTypeIds){
+			for(type : reachableTypes){
 				
 				if(!success) {
 					 
-					val receiverMatches = receiverTransitionMatcher.getAllMatches(typeId, null, null)
+					val receiverMatches = receiverTransitionMatcher.getAllMatches(type, null, null)
 					var Transition firstReceiver = null
 					var StateMachine firstSM = null
 					var Transition secondReceiver = null
@@ -72,7 +72,7 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 						success = true
 						suppliedWithAction.add(senderTransition) 
 						// Create send action
-						val senderAction = SEND_METHOD_NAME + "(" + typeId + ", "+ index + ")"
+						val senderAction = SEND_METHOD_NAME + "(" + type.identifier + ", "+ index + ")"
 						debug(senderAction)
 						operations.add(new ActionGenerationOperation(senderAction, senderTransition));
 						 
