@@ -19,14 +19,37 @@ import org.eclipse.viatra.examples.cps.tests.queries.util.SumCPUQuerySpecificati
 import org.eclipse.viatra.examples.cps.tests.queries.util.AvgCPUQuerySpecification
 import org.junit.Ignore
 import org.eclipse.viatra.examples.cps.tests.queries.util.HasOddApplicationsQuerySpecification
+import org.junit.runners.Parameterized.Parameters
+import java.util.Collection
+import org.junit.runners.Parameterized.Parameter
+import org.eclipse.viatra.query.testing.core.XmiModelUtil
+import org.eclipse.viatra.query.testing.core.XmiModelUtil.XmiModelUtilRunningOptionEnum
+import org.junit.runners.Parameterized
+import org.junit.runner.RunWith
 
+@RunWith(Parameterized)
 class AggregatorTest {
         
     extension AllBackendTypes = new AllBackendTypes
     
+    
+    @Parameters(name = "Model: {0}")
+    def static Collection<Object[]> testData() {
+        newArrayList(
+            #[ 
+                "org.eclipse.viatra.examples.cps.tests.instances/aggregators.cyberphysicalsystem"
+            ]
+        )
+    }
+    
+    @Parameter(0)
+    public String modelPath
+    
+    
     @Test
     def void testMinCPU1() {
         ViatraQueryTest.test(MinCPUQuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }
@@ -34,6 +57,7 @@ class AggregatorTest {
     @Test
     def void testMinCPU2() {
         ViatraQueryTest.test(HostInstanceWithMinCPU1QuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }
@@ -41,6 +65,7 @@ class AggregatorTest {
     @Test
     def void testMinCPU3() {
         ViatraQueryTest.test(HostInstanceWithMinCPU2QuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }
@@ -48,6 +73,7 @@ class AggregatorTest {
     @Test
     def void testSumCPU() {
         ViatraQueryTest.test(SumCPUQuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }
@@ -55,14 +81,15 @@ class AggregatorTest {
     @Test
     def void testHasOddApplications() {
         ViatraQueryTest.test(HasOddApplicationsQuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }
     
-    @Ignore("Local search engine needs to be updated")
     @Test
     def void testAvgCPU() {
         ViatraQueryTest.test(AvgCPUQuerySpecification::instance)
+                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
                         .withAll
                         .assertEquals 
     }

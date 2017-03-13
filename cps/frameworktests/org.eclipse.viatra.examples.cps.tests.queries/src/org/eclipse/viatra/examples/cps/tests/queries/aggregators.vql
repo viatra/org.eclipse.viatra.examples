@@ -18,7 +18,7 @@ pattern maxPriority(m) {
 pattern avgCPU(n) {
 	find sumCPU(s);
 	find countHost(c);
-	n == eval(s / c);
+	n == eval(if (c == 0) null else (s / c));
 }
 
 pattern sumCPU(n) {
