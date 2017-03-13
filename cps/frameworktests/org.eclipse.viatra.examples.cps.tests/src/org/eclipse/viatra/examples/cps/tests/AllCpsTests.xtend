@@ -35,6 +35,7 @@ import org.junit.runners.Suite.SuiteClasses
     ModelManipulationMinMaxAggregatorTest,
     ModelManipulationAvgAggregatorTest,
     LocalSearchPlanCostOverflowTest,
-    LiteralValuesTest
+    LiteralValuesTest,
+    DanglingTest
 ])
 class AllCpsTests {}

@@ -23,5 +23,7 @@ pattern transitionToTransition2(transition1 : Transition, transition2 : Transiti
 	Transition.targetState.outgoingTransitions(transition1, transition2);
 }
 
-
+pattern stateIdentifier(state: State, id: java String) = {
+	State.identifier(state, id);
+}
 
