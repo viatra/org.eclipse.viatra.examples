@@ -12,8 +12,6 @@ package org.eclipse.viatra.examples.cps.view;
 
 import java.util.Collection;
 
-import org.eclipse.gef4.layout.LayoutAlgorithm;
-import org.eclipse.gef4.layout.algorithms.SpaceTreeLayoutAlgorithm;
 import org.eclipse.viatra.examples.cps.model.viewer.util.AppInstancesNoAllocationQuerySpecification;
 import org.eclipse.viatra.examples.cps.model.viewer.util.AppInstancesWithAllocationQuerySpecification;
 import org.eclipse.viatra.examples.cps.model.viewer.util.ConnectAppQuerySpecification;
@@ -25,10 +23,6 @@ import com.google.common.collect.ImmutableSet;
 
 public class CpsRequirementViewPart extends AbstractCpsViewPart {
 
-	protected LayoutAlgorithm getLayout() {
-		return new SpaceTreeLayoutAlgorithm();
-	}
-	
 	@Override
 	protected Collection<IQuerySpecification<?>> getSpecifications()
 			throws ViatraQueryException {

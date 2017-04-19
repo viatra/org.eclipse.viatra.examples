@@ -13,9 +13,8 @@ package org.eclipse.viatra.examples.cps.view;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.gef4.layout.LayoutAlgorithm;
-import org.eclipse.gef4.layout.algorithms.SpaceTreeLayoutAlgorithm;
-import org.eclipse.gef4.zest.core.viewers.GraphViewer;
+import org.eclipse.gef.layout.ILayoutAlgorithm;
+import org.eclipse.gef.layout.algorithms.SpaceTreeLayoutAlgorithm;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorPart;
@@ -34,6 +33,8 @@ import org.eclipse.viatra.addon.viewers.runtime.notation.Edge;
 import org.eclipse.viatra.addon.viewers.runtime.notation.Item;
 import org.eclipse.viatra.addon.viewers.runtime.zest.ViatraGraphViewers;
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemEditor;
+import org.eclipse.viatra.integration.zest.viewer.ModifiableZestContentViewer;
+import org.eclipse.viatra.integration.zest.viewer.ZestContentViewer;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
@@ -44,7 +45,7 @@ import com.google.common.collect.ImmutableSet;
 
 public abstract class AbstractCpsViewPart extends ViewPart implements IPartListener2 {
 
-		private GraphViewer viewer;
+		private ModifiableZestContentViewer viewer;
 		private ViatraQueryEngine engine = null;
 		protected IEditorPart activeEditor;
 		
@@ -61,7 +62,8 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 		
 		@Override
 		public void createPartControl(Composite parent) {
-			viewer = new GraphViewer(parent, SWT.None);
+	        this.viewer = new ModifiableZestContentViewer();
+	        viewer.createControl(parent, SWT.BORDER);
 		}
 
 		@Override
@@ -73,47 +75,14 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 			try {
 				ViewerState state = ViatraViewerDataModel.newViewerState(getEngine(), getSpecifications(), ViewerDataFilter.UNFILTERED,
 						ImmutableSet.of(ViewerStateFeature.EDGE, ViewerStateFeature.CONTAINMENT));
-				ViatraGraphViewers.bindWithIsolatedNodes(viewer, state, true);
+				ViatraGraphViewers.bind(viewer, state, true);
 				viewer.setLayoutAlgorithm(getLayout());
-				viewer.applyLayout();
-				state.addStateListener(new IViewerStateListener() {
-					
-					@Override
-					public void itemDisappeared(Item item) {
-						viewer.applyLayout();
-					}
-					
-					@Override
-					public void itemAppeared(Item item) {
-						viewer.applyLayout();
-					}
-					
-					@Override
-					public void edgeDisappeared(Edge edge) {
-						viewer.applyLayout();
-					}
-					
-					@Override
-					public void edgeAppeared(Edge edge) {
-						viewer.applyLayout();
-					}
-					
-					@Override
-					public void containmentDisappeared(Containment containment) {
-						viewer.applyLayout();
-					}
-					
-					@Override
-					public void containmentAppeared(Containment containment) {
-						viewer.applyLayout();
-					}
-				});
 			} catch (ViatraQueryException e) {
 				e.printStackTrace();
 			}
 		}
 
-		protected LayoutAlgorithm getLayout() {
+		protected ILayoutAlgorithm getLayout() {
 			return new SpaceTreeLayoutAlgorithm();
 		}
 		

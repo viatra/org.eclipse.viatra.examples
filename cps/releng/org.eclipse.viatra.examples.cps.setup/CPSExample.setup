@@ -124,12 +124,22 @@
         versionRange="[0.13.0,0.17.0)"/>
     <requirement
         name="org.eclipse.emf.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.fx.runtime.min.feature.feature.group"/>
+    <requirement
+        name="org.eclipse.gef.zest.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.gef.graph.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.gef.layout.sdk.feature.group"/>
     <repository
         url="http://download.eclipse.org/viatra/dependency"/>
     <repository
         url="${viatra.repository.url}"/>
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
+    <repository
+        url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0M6_gef-master_4201"/>
   </setupTask>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
@@ -165,12 +175,6 @@
           name="org.eclipse.emf.sdk.feature.group"
           versionRange="[2.9.0,3.0.0)"/>
       <requirement
-          name="org.eclipse.gef4.zest.sdk.feature.group"
-          versionRange="[0.1.0.201607041345,0.1.0.201607041345]"/>
-      <requirement
-          name="org.eclipse.gef4.geometry.feature.group"
-          versionRange="[0.1.0.201607041345,0.1.0.201607041345]"/>
-      <requirement
           name="com.google.inject.multibindings"
           versionRange="[3.0.0,4.0.0)"/>
       <requirement
@@ -189,6 +193,14 @@
       <requirement
           name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
           versionRange="[0.14.0,0.17.0)"/>
+      <requirement
+          name="org.eclipse.fx.runtime.min.feature.feature.group"/>
+      <requirement
+          name="org.eclipse.gef.zest.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.gef.graph.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.gef.layout.sdk.feature.group"/>
       <repositoryList
           name="Dependencies">
         <repository
@@ -201,6 +213,8 @@
             url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
         <repository
             url="${viatra.repository.url}"/>
+        <repository
+            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0M6_gef-master_4201"/>
       </repositoryList>
     </targlet>
   </setupTask>
