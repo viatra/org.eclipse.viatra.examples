@@ -10,10 +10,15 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.tests
 
+import java.io.File
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance
 import org.eclipse.viatra.examples.cps.tests.queries.util.IncreasingAlphabeticalCommunicationChainRecQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.IncreasingAlphabeticalCommunicationChainTCQuerySpecification
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
+import org.eclipse.viatra.query.testing.core.coverage.CoverageAnalyzer
+import org.eclipse.viatra.query.testing.core.coverage.CoverageReporter
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import org.junit.Test
 
 class RecursionCpsTest {
@@ -22,9 +27,22 @@ class RecursionCpsTest {
     String snpTCOrig = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_chainTC.snapshot"
     String snpTCModified = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_communicationRemoved_chainTC.snapshot"
     
+    static var CoverageAnalyzer coverage;
+    
+    @BeforeClass
+    static def void before(){
+        coverage = new CoverageAnalyzer();
+    }
+    
+    @AfterClass
+    static def void after(){
+        CoverageReporter.reportHtml(coverage, new File("RecursionCpsTest_coverage.html"))
+    }
+    
     @Test
     def void staticRecursionTest() {
         ViatraQueryTest.test(IncreasingAlphabeticalCommunicationChainRecQuerySpecification.instance)
+                        .analyzeWith(coverage)
                         .with(BackendType.Rete.newBackendInstance)
                         .with(snpRecOrig)
                         .assertEquals
@@ -33,6 +51,7 @@ class RecursionCpsTest {
     @Test
     def void staticTransitiveClosureTest() {
         ViatraQueryTest.test(IncreasingAlphabeticalCommunicationChainTCQuerySpecification.instance)
+                        .analyzeWith(coverage)
                         .with(BackendType.Rete.newBackendInstance)
                         .with(snpTCOrig)
                         .assertEquals
@@ -41,6 +60,7 @@ class RecursionCpsTest {
     @Test
     def void removeCommunicationRecursionTest() {
         ViatraQueryTest.test(IncreasingAlphabeticalCommunicationChainRecQuerySpecification.instance)
+                        .analyzeWith(coverage)
                         .with(BackendType.Rete.newBackendInstance)
                         .with(snpRecOrig)
                         .assertEqualsThen
@@ -54,6 +74,7 @@ class RecursionCpsTest {
     @Test
     def void removeCommunicationTransitiveClosureTest() {
         ViatraQueryTest.test(IncreasingAlphabeticalCommunicationChainTCQuerySpecification.instance)
+                        .analyzeWith(coverage)
                         .with(BackendType.Rete.newBackendInstance)
                         .with(snpTCOrig)
                         .assertEqualsThen

@@ -39,7 +39,12 @@ import org.eclipse.viatra.query.runtime.api.IPatternMatch
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
+import org.eclipse.viatra.query.testing.core.coverage.CoverageAnalyzer
+import org.eclipse.viatra.query.testing.core.coverage.CoverageReporter
+import org.junit.AfterClass
+import org.junit.BeforeClass
 import org.junit.Test
+import java.io.File
 
 class BasicCpsTest {
     
@@ -47,10 +52,22 @@ class BasicCpsTest {
     
     extension AllBackendTypes = new AllBackendTypes
     
+    static var CoverageAnalyzer coverage;
+    
+    @BeforeClass
+    static def void before(){
+        coverage = new CoverageAnalyzer();
+    }
+    
+    @AfterClass
+    static def void after(){
+        CoverageReporter.reportHtml(coverage, new File("BasicCpsTest_coverage.html"))
+    }
+    
     @Test
     def void testAllQueries() {
         SimpleCpsQueries.instance.specifications.forEach[
-            ViatraQueryTest.test(it as IQuerySpecification<ViatraQueryMatcher<IPatternMatch>>)
+            ViatraQueryTest.test(it as IQuerySpecification<ViatraQueryMatcher<IPatternMatch>>).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals
@@ -230,168 +247,168 @@ class BasicCpsTest {
     
     @Test
     def void mfTestApplicationTypes() {
-        ViatraQueryTest.test(ApplicationTypesQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationTypesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstances() {
-        ViatraQueryTest.test(ApplicationInstancesQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstancesOfApplicationType() {
-        ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstancesOfApplicationTypeIdentifiers() {
-        ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeIdentifiersQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeIdentifiersQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithHostedInstances() {
-        ViatraQueryTest.test(ApplicationTypeWithHostedInstancesQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationTypeWithHostedInstancesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithHostedInstanceIdentifiers() {
-        ViatraQueryTest.test(ApplicationTypeWithHostedInstanceIdentifiersQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationTypeWithHostedInstanceIdentifiersQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithoutHostedInstance() {
-        ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithoutHostedInstanceIdentifiers() {
-        ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceIdentifiersQuerySpecification.instance)
+        ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceIdentifiersQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestTransitionsOfApplicationType() {
-        ViatraQueryTest.test(TransitionsOfApplicationTypeQuerySpecification.instance)
+        ViatraQueryTest.test(TransitionsOfApplicationTypeQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestTransitionsOfApplicationTypeIdentifiers() {
-        ViatraQueryTest.test(TransitionsOfApplicationTypeIdentifiersQuerySpecification.instance)
+        ViatraQueryTest.test(TransitionsOfApplicationTypeIdentifiersQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstancesWithZeroTotalRam() {
-        ViatraQueryTest.test(HostInstancesWithZeroTotalRamQuerySpecification.instance)
+        ViatraQueryTest.test(HostInstancesWithZeroTotalRamQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstanceWithAtLeastAsMuchTotalRamAsTotalHdd() {
-        ViatraQueryTest.test(HostInstanceWithAtLeastAsMuchTotalRamAsTotalHddQuerySpecification.instance)
+        ViatraQueryTest.test(HostInstanceWithAtLeastAsMuchTotalRamAsTotalHddQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstanceWithPrimeTotalRam() {
-        ViatraQueryTest.test(HostInstanceWithPrimeTotalRamQuerySpecification.instance)
+        ViatraQueryTest.test(HostInstanceWithPrimeTotalRamQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreHostedApplicationInstances() {
-        ViatraQueryTest.test(HasMoreHostedApplicationInstancesQuerySpecification.instance)
+        ViatraQueryTest.test(HasMoreHostedApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostHostedApplicationInstances() {
-        ViatraQueryTest.test(HasTheMostHostedApplicationInstancesQuerySpecification.instance)
+        ViatraQueryTest.test(HasTheMostHostedApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestCommunicateWith() {
-        ViatraQueryTest.test(CommunicateWithQuerySpecification.instance)
+        ViatraQueryTest.test(CommunicateWithQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestInTheCommunicationChains() {
-        ViatraQueryTest.test(InTheCommunicationChainsQuerySpecification.instance)
+        ViatraQueryTest.test(InTheCommunicationChainsQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreCommunicationPartner() {
-        ViatraQueryTest.test(HasMoreCommunicationPartnerQuerySpecification.instance)
+        ViatraQueryTest.test(HasMoreCommunicationPartnerQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostCommunicationPartner() {
-        ViatraQueryTest.test(HasTheMostCommunicationPartnerQuerySpecification.instance)
+        ViatraQueryTest.test(HasTheMostCommunicationPartnerQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHostedApplications() {
-        ViatraQueryTest.test(HostedApplicationsQuerySpecification.instance)
+        ViatraQueryTest.test(HostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreHostedApplications() {
-        ViatraQueryTest.test(HasMoreHostedApplicationsQuerySpecification.instance)
+        ViatraQueryTest.test(HasMoreHostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostHostedApplications() {
-        ViatraQueryTest.test(HasTheMostHostedApplicationsQuerySpecification.instance)
+        ViatraQueryTest.test(HasTheMostHostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestFinalPattern() {
-        ViatraQueryTest.test(FinalPatternQuerySpecification.instance)
+        ViatraQueryTest.test(FinalPatternQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
     }
     @Test
     def void mfTestInstances() {
-        ViatraQueryTest.test(InstancesQuerySpecification.instance)
+        ViatraQueryTest.test(InstancesQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals 
@@ -399,7 +416,7 @@ class BasicCpsTest {
     
     @Test
     def void wildCardTestFinalPattern() {
-        ViatraQueryTest.test(FinalPatternQuerySpecification.instance)
+        ViatraQueryTest.test(FinalPatternQuerySpecification.instance).analyzeWith(coverage)
                         .with(snapshot)
                         .withAll
                         .assertEquals
