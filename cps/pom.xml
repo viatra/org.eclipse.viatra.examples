@@ -164,6 +164,33 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
+			     <plugin>
+                    <groupId>org.eclipse.tycho</groupId>
+                    <artifactId>tycho-compiler-plugin</artifactId>
+                    <version>${tycho.version}</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <!-- add JavaFX to classpath (jfxswt.jar for Java 8) -->
+                        <extraClasspathElements>
+                            <extraClasspathElement>
+                                <groupId>com.oracle</groupId>
+                                <artifactId>javafxswt</artifactId>
+                                <version>8.0.0-SNAPSHOT</version>
+                                <systemPath>${java.home}/lib/jfxswt.jar</systemPath>
+                                <scope>system</scope>
+                            </extraClasspathElement>
+                        </extraClasspathElements>
+                        <useJDK>BREE</useJDK>
+                        <useProjectSettings>true</useProjectSettings>
+                        <excludeResources>
+                            <excludeResource>**/.gitignore</excludeResource>
+                        </excludeResources>
+                        <compilerArgs>
+                          <compilerArg>-err:-forbidden</compilerArg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
 				<plugin>
 					<groupId>org.eclipse.xtend</groupId>
 					<artifactId>xtend-maven-plugin</artifactId>
