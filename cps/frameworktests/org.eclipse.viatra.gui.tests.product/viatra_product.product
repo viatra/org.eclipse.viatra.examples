@@ -3,7 +3,6 @@
 
 <product name="VIATRA Product" uid="org.eclipse.viatra.gui.tests.rcp.product" id="org.eclipse.platform.ide" application="org.eclipse.ui.ide.workbench" version="0.1.0" useFeatures="true" includeLaunchers="true">
 
-
    <configIni use="default">
    </configIni>
 
@@ -14,14 +13,12 @@
 
    <windowImages/>
 
-
    <launcher>
       <solaris/>
       <win useIco="false">
          <bmp/>
       </win>
    </launcher>
-
 
    <vm>
    </vm>
@@ -58,7 +55,6 @@
       <feature id="org.eclipse.xtext.runtime"/>
       <feature id="org.eclipse.emf.edit"/>
       <feature id="org.eclipse.emf.transaction"/>
-      <feature id="org.eclipse.gef4.zest" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.emf.ecore"/>
       <feature id="org.eclipse.xtext.ui"/>
       <feature id="org.eclipse.emf.databinding"/>
@@ -85,9 +81,7 @@
       <feature id="org.eclipse.emf.ecore.edit"/>
       <feature id="org.eclipse.emf.ecore.editor"/>
       <feature id="org.eclipse.draw2d"/>
-      <feature id="org.eclipse.gef4.geometry" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.viatra.examples.cps.dependencies.feature" version="0.1.0.qualifier"/>
-      <feature id="org.eclipse.gef4.zest.sdk" version="0.1.0.201607041345"/>
       <feature id="org.eclipse.uml2"/>
       <feature id="org.eclipse.uml2.common"/>
       <feature id="org.eclipse.uml2.codegen.ecore.ui"/>
@@ -98,6 +92,8 @@
       <feature id="org.eclipse.emf.converter"/>
       <feature id="org.eclipse.emf.mapping.ecore"/>
       <feature id="org.eclipse.emf.mapping"/>
+      <feature id="org.eclipse.gef.geometry"/>
+      <feature id="org.eclipse.gef.zest.sdk"/>
    </features>
 
    <configurations>
