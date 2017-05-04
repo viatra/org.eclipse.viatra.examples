@@ -14,10 +14,11 @@ import org.eclipse.viatra.examples.cps.tests.queries.util.MandatoryRequirementsQ
 import org.eclipse.viatra.examples.cps.tests.queries.util.OptionalRequirementsQuerySpecification
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.junit.Test
+import org.eclipse.viatra.examples.cps.tests.queries.util.RunningAppInstancesQuerySpecification
 
 class LiteralValuesTest {
     
-    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_mandatoryRequirements.snapshot"
+    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_literalUsage.snapshot"
     
     extension AllBackendTypes = new AllBackendTypes
     
@@ -31,6 +32,13 @@ class LiteralValuesTest {
     @Test
     def void booleanTrueTest() {
         ViatraQueryTest.test(MandatoryRequirementsQuerySpecification.instance)
+                        .with(snapshot)
+                        .withAll
+                        .assertEquals
+    }
+    @Test
+    def void enumLiteralTest() {
+        ViatraQueryTest.test(RunningAppInstancesQuerySpecification.instance)
                         .with(snapshot)
                         .withAll
                         .assertEquals

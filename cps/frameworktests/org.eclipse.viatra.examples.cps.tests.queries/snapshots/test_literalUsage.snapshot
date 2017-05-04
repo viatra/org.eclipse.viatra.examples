@@ -16,5 +16,23 @@
     </matches>
     <filter/>
   </matchSetRecords>
+  <matchSetRecords patternQualifiedName="org.eclipse.viatra.examples.cps.tests.queries.runningAppInstances">
+    <matches>
+      <substitutions xsi:type="vqSnapshot:EMFSubstitution" parameterName="appI">
+        <value href="../../org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem#simple.cps.app.FirstAppClass0.inst1"/>
+      </substitutions>
+    </matches>
+    <matches>
+      <substitutions xsi:type="vqSnapshot:EMFSubstitution" parameterName="appI">
+        <value href="../../org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem#simple.cps.app.SecondAppClass0.inst0"/>
+      </substitutions>
+    </matches>
+    <matches>
+      <substitutions xsi:type="vqSnapshot:EMFSubstitution" parameterName="appI">
+        <value href="../../org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem#simple.cps.app.FirstAppClass0.inst0"/>
+      </substitutions>
+    </matches>
+    <filter/>
+  </matchSetRecords>
   <modelRoots href="../../org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem#testModel6504822858552"/>
 </vqSnapshot:QuerySnapshot>

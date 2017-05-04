@@ -19,3 +19,7 @@ pattern mandatoryRequirements(r : Requirement) {
 pattern optionalRequirements(r : Requirement) {
 	Requirement.mandatory(r, false);
 }
+
+pattern runningAppInstances(appI : ApplicationInstance) {
+	ApplicationInstance.state(appI, ::Running);
+}
