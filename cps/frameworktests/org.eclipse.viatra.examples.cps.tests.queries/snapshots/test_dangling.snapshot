@@ -352,6 +352,4 @@
     <filter/>
   </matchSetRecords>
   <modelRoots href="../../org.eclipse.viatra.examples.cps.tests.instances/dangling.cyberphysicalsystem#testModel6504822858552"/>
-  <modelRoots href="../../org.eclipse.viatra.examples.cps.model/model/model.genmodel#/"/>
-  <modelRoots href="../../org.eclipse.viatra.examples.cps.model/model/model.ecore#/"/>
 </vqSnapshot:QuerySnapshot>
