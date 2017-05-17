@@ -125,7 +125,7 @@
     <requirement
         name="org.eclipse.emf.sdk.feature.group"/>
     <requirement
-        name="org.eclipse.fx.runtime.min.feature.feature.group"/>
+        name="org.eclipse.fx.ide.feature.feature.group"/>
     <requirement
         name="org.eclipse.gef.zest.sdk.feature.group"/>
     <requirement
