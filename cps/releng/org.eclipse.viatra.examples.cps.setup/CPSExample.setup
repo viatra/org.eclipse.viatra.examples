@@ -103,7 +103,7 @@
         versionRange="[0.14.0,0.17.0)"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
-        versionRange="[2.10.0,2.11.0)"/>
+        versionRange="[2.10.0,2.13.0)"/>
     <requirement
         name="org.eclipse.gef4.geometry.feature.group"
         versionRange="[0.1.0.201607041345,0.1.0.201607041345]"/>
@@ -132,12 +132,14 @@
         name="org.eclipse.gef.graph.sdk.feature.group"/>
     <requirement
         name="org.eclipse.gef.layout.sdk.feature.group"/>
+    <requirement
+        name="org.eclipse.viatra.transformation.debug.feature.feature.group"/>
     <repository
         url="http://download.eclipse.org/viatra/dependency"/>
     <repository
         url="${viatra.repository.url}"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
     <repository
         url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0M6_gef-master_4201"/>
   </setupTask>
@@ -201,6 +203,9 @@
           name="org.eclipse.gef.graph.sdk.feature.group"/>
       <requirement
           name="org.eclipse.gef.layout.sdk.feature.group"/>
+      <requirement
+          name="org.eclipse.viatra.transformation.debug.feature.feature.group"
+          versionRange="[0.13.0,0.17.0)"/>
       <repositoryList
           name="Dependencies">
         <repository
@@ -210,7 +215,7 @@
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
         <repository
-            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
         <repository
             url="${viatra.repository.url}"/>
         <repository
