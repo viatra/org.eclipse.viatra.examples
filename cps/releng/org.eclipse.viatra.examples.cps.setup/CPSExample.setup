@@ -135,8 +135,6 @@
     <requirement
         name="org.eclipse.viatra.transformation.debug.feature.feature.group"/>
     <repository
-        url="http://download.eclipse.org/viatra/dependency"/>
-    <repository
         url="${viatra.repository.url}"/>
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
@@ -172,7 +170,7 @@
           name="org.eclipse.sdk.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.10.0,2.11.0)"/>
+          versionRange="[2.10.0,2.13.0)"/>
       <requirement
           name="org.eclipse.emf.sdk.feature.group"
           versionRange="[2.9.0,3.0.0)"/>
@@ -209,8 +207,6 @@
       <repositoryList
           name="Dependencies">
         <repository
-            url="http://download.eclipse.org/viatra/dependency"/>
-        <repository
             url="http://download.eclipse.org/releases/mars"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
@@ -219,7 +215,7 @@
         <repository
             url="${viatra.repository.url}"/>
         <repository
-            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0M6_gef-master_4201"/>
+            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC1_gef-master_4353"/>
       </repositoryList>
     </targlet>
   </setupTask>

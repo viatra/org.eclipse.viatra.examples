@@ -25,7 +25,6 @@
 
 		<!-- Addons -->
 		<module>addons/org.eclipse.viatra.examples.cps.queries.validation</module>
-		<module>addons/org.eclipse.viatra.examples.cps.view</module>
 		<module>addons/org.eclipse.viatra.examples.cps.mwe2integration.example</module>
 		
 
@@ -57,21 +56,23 @@
 		<module>tests/org.eclipse.viatra.examples.cps.xform.m2t.tests</module>
 		<module>tests/org.eclipse.viatra.examples.cps.xform.serializer.test</module>
 		
-		<!-- Ignored because we are not able to resolve mondo-sam (no update site) -->
-		<!-- 
-		<module>tests/org.eclipse.incquery.examples.cps.performance.tests</module>
-		<module>tests/org.eclipse.incquery.examples.cps.mwe2integration.performancetest</module>
-		
-		<module>releng/org.eclipse.incquery.examples.cps.rcpapplication.headless</module>
-		<module>releng/org.eclipse.incquery.examples.cps.rcpapplication.headless.product</module>
-		-->
-	
 		<!--  p2 repository -->
 		<module>releng/org.eclipse.viatra.examples.cps.update</module>
 	</modules>
+	<profiles>
+		<profile>
+			<id>cps.view.gef5</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<modules>
+				<module>addons/org.eclipse.viatra.examples.cps.view</module>
+			</modules>
+		</profile>
+	</profiles>
 	<properties>
 		<tycho.version>0.24.0</tycho.version>
-		<xtend.compiler.version>2.11.0</xtend.compiler.version>
+		<xtend.compiler.version>2.10.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
 		<viatra.compiler.version>1.6.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
