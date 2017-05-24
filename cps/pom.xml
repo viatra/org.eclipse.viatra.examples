@@ -71,9 +71,9 @@
 	</modules>
 	<properties>
 		<tycho.version>0.24.0</tycho.version>
-		<xtend.compiler.version>2.10.0</xtend.compiler.version>
+		<xtend.compiler.version>2.11.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
-		<viatra.compiler.version>1.5.0-SNAPSHOT</viatra.compiler.version>
+		<viatra.compiler.version>1.6.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.7</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -97,7 +97,6 @@
 			</plugin>
 			<plugin>
 		        <artifactId>maven-toolchains-plugin</artifactId>
-		        <version>1.1</version>
 		    </plugin>
 			<plugin>
 				<groupId>org.eclipse.tycho</groupId>
