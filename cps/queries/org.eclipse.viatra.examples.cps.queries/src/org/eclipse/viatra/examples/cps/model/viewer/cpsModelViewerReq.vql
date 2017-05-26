@@ -14,7 +14,7 @@ import "http://org.eclipse.viatra/model/cps"
 
 @Item(item = request, label = "Request")
 @Format(color = "#777777", textColor = "#000000")
-pattern requests(request) {
+pattern requests(request : Request) {
 	Request(request);
 }
 

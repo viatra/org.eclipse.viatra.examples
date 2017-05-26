@@ -88,10 +88,10 @@ class CPS2DeploymentBatchTransformationEiq {
 	 *             does not contain a cps and a deployment model.
 	 */
 	new(CPSToDeployment mapping, AdvancedViatraQueryEngine engine, QueryEvaluationHint hint, QueryEvaluationHint tracesHint) {
-		checkArgument(mapping != null, "Mapping cannot be null!")
-		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
-		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
-		checkArgument(engine != null, "Engine cannot be null!")
+		checkArgument(mapping !== null, "Mapping cannot be null!")
+		checkArgument(mapping.cps !== null, "CPS not defined in mapping!")
+		checkArgument(mapping.deployment !== null, "Deployment not defined in mapping!")
+		checkArgument(engine !== null, "Engine cannot be null!")
 
 		this.mapping = mapping
 		this.engine = engine
@@ -258,7 +258,7 @@ class CPS2DeploymentBatchTransformationEiq {
 		debug("Resolving initial state.")
 		stateMachineTransformationPerformance.start
 		watch.reset.start
-		if (cpsBehavior.initial != null)
+		if (cpsBehavior.initial !== null)
 			depBehavior.current = engine.getMatcher(cps2depTrace, tracesHint).getAllMatches(null, cpsBehavior.initial, null).map[
 				depElement].filter(BehaviorState).findFirst[depBehavior.states.contains(it)]
 		else
@@ -313,7 +313,7 @@ class CPS2DeploymentBatchTransformationEiq {
 		//		val depState = engine.getMatcher(cps2depTrace.getAllMatches(mapping, null, cpsState, null).map[depElement].filter(
 		//			BehaviorState).findFirst[depBehavior.states.contains(it)]
 		val depState = stateTable.get(cpsState, depBehavior)
-		cpsState.outgoingTransitions.filter[targetState != null && cpsBehavior.states.contains(targetState)].forEach [
+		cpsState.outgoingTransitions.filter[targetState !== null && cpsBehavior.states.contains(targetState)].forEach [
 			mapTransition(depState, depBehavior)
 		]
 		transitionTransformationPerformance.stop
@@ -499,7 +499,7 @@ class CPS2DeploymentBatchTransformationEiq {
 
 		//var trace = engine.getMatcher(cps2depTrace.getOneArbitraryMatch(mapping, null, cpsElement, null)?.trace
 		var trace = traceTable.get(cpsElement)
-		if (trace == null) {
+		if (trace === null) {
 			trace = tracFactory.createCPS2DeploymentTrace
 			traceTable.put(cpsElement, trace)
 

@@ -12,7 +12,7 @@ package org.eclipse.viatra.examples.cps.deployment.common
 
 import "http://org.eclipse.viatra/model/deployment"
 
-pattern deploymentElements(element) {
+pattern deploymentElements(element : DeploymentElement) {
 	DeploymentElement(element);
 }
 

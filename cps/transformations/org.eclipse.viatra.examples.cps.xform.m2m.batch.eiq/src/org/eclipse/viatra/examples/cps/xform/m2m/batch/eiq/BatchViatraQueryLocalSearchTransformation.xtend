@@ -35,11 +35,11 @@ class BatchViatraQueryLocalSearchTransformation extends CPS2DeploymentBatchTrans
     
     override protected getWaitTransitionsForSendTransition(Transition cpsSendTransition) {
         val sendTransitionMatch = engine.getMatcher(sendTransitionAppSignal, hint).getOneArbitraryMatch(cpsSendTransition, null, null)
-        if(sendTransitionMatch == null){
+        if(sendTransitionMatch === null){
             return emptySet
         }
         val app = appTypes.get(sendTransitionMatch.app)
-        if(app == null){
+        if(app === null){
             return emptySet
         }
         return engine.getMatcher(waitTransitionAppSignal, hint).getAllValuesOftransition(app, sendTransitionMatch.signal)

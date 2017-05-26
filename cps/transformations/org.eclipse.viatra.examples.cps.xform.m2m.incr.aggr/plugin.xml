@@ -14,8 +14,6 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.sm2Deploymentbehavior"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.transition2AppType"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.cps2depTrace"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.cps2depApplicationTrace"/>
-      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.cpsBehaviorTrace"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.depTransition"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.applicationInstance"/>
       <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.cpsApplicationTransition"/>

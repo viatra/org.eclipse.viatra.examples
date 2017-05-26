@@ -16,58 +16,58 @@ import "http://org.eclipse.viatra/model/cps-traceability"
 
 import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
 
-pattern mappedCPS(cps2dep, cps, deployment) {
+pattern mappedCPS(cps2dep : CPSToDeployment, cps : CyberPhysicalSystem, deployment : Deployment) {
 	CPSToDeployment.cps(cps2dep, cps);
 	CPSToDeployment.deployment(cps2dep, deployment);
 }
 
-pattern cps2depTrace(cps2dep, trace, cpsElement, depElement) {
+pattern cps2depTrace(cps2dep : CPSToDeployment, trace : CPS2DeploymentTrace, cpsElement : Identifiable, depElement : DeploymentElement) {
 	CPSToDeployment.traces(cps2dep, trace);
 	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
 	CPS2DeploymentTrace.deploymentElements(trace, depElement);
 }
 
-pattern hostInstance(hostInstance) {
+pattern hostInstance(hostInstance : HostInstance) {
 	HostInstance(hostInstance);
 }
 
-pattern applicationInstance(appType, appInstance){
+pattern applicationInstance(appType : ApplicationType, appInstance : ApplicationInstance){
 	HostInstance.applications(_, appInstance);
 	ApplicationType.instances(appType, appInstance);
 }
 
-pattern stateMachine(appInstance, stateMachine) {
+pattern stateMachine(appInstance : ApplicationInstance, stateMachine : StateMachine) {
 	find applicationInstance(appType, appInstance);
 	ApplicationType.behavior(appType, stateMachine);
 }
 
-pattern state(appInstance, stateMachine, state) {
+pattern state(appInstance : ApplicationInstance, stateMachine : StateMachine, state : State) {
 	find stateMachine(appInstance, stateMachine);
 	StateMachine.states(stateMachine, state);
 }
 
-pattern transition(appInstance, srcState, targetState, transition) {
+pattern transition(appInstance : ApplicationInstance, srcState : State, targetState : State, transition : Transition) {
 	find state(appInstance, stateMachine, srcState);
 	State.outgoingTransitions(srcState, transition);
 	Transition.targetState(transition, targetState);
 	StateMachine.states(stateMachine, targetState);
 }
 
-pattern depBehaviorsStateAndTransitions(depBehavior, depState, depTransition) {
+pattern depBehaviorsStateAndTransitions(depBehavior : DeploymentBehavior, depState : BehaviorState, depTransition : BehaviorTransition) {
 	DeploymentBehavior.states(depBehavior, depState);
 	DeploymentBehavior.transitions(depBehavior, depTransition);
 }
 
-pattern allocatedDeploymentApplication(depHost, depApp) {
+pattern allocatedDeploymentApplication(depHost : DeploymentHost, depApp : DeploymentApplication) {
 	DeploymentHost.applications(depHost, depApp);
 }
 
-pattern applicationInstanceWithHost(appType, appInstance, host) {
+pattern applicationInstanceWithHost(appType : ApplicationType, appInstance : ApplicationInstance, host : HostInstance) {
 	find applicationInstance(appType, appInstance);
 	ApplicationInstance.allocatedTo(appInstance, host);
 }
 
-pattern sendTransitionAppSignal(transition, app, appType, signal) {
+pattern sendTransitionAppSignal(transition : Transition, app : java String, appType : ApplicationType, signal : java String) {
  	ApplicationType.behavior(appType, stateMachine);
 	StateMachine.states(stateMachine, source);
 	State.outgoingTransitions(source, transition);
@@ -76,7 +76,7 @@ pattern sendTransitionAppSignal(transition, app, appType, signal) {
  	signal == eval(SignalUtil.getSignalId(action));
 }
 
-pattern waitTransitionAppSignal(transition, appType, signal) {
+pattern waitTransitionAppSignal(transition : Transition, appType : ApplicationType, signal : java String) {
  	ApplicationType.behavior(appType, stateMachine);
 	StateMachine.states(stateMachine, source);
 	State.outgoingTransitions(source, transition);
@@ -87,12 +87,12 @@ pattern waitTransitionAppSignal(transition, appType, signal) {
  	signal == eval(SignalUtil.getSignalId(action));
 }
 
-pattern hostFromTransition(appType, appInstance, transition, hostInstance) {
+pattern hostFromTransition(appType : ApplicationType, appInstance : ApplicationInstance, transition : Transition, hostInstance : HostInstance) {
 	find appInstanceTransition(appInstance, transition);
 	find applicationInstanceWithHost(appType, appInstance, hostInstance);
 }
 
-private pattern triggerPairWithoutReachability(sourceHostInstance, targetHostInstance, appInstanceTrigger, appInstanceTarget, cpsTrigger, cpsTarget) {
+private pattern triggerPairWithoutReachability(sourceHostInstance : HostInstance, targetHostInstance : HostInstance, appInstanceTrigger : ApplicationInstance, appInstanceTarget : ApplicationInstance, cpsTrigger : Transition, cpsTarget : Transition) {
 	find sendTransitionAppSignal(cpsTrigger, appId, triggerApp, signal);
 	find waitTransitionAppSignal(cpsTarget, waitApp, signal);
 	ApplicationType.identifier(waitApp, appId);
@@ -101,27 +101,27 @@ private pattern triggerPairWithoutReachability(sourceHostInstance, targetHostIns
 	find hostFromTransition(waitApp, appInstanceTarget, cpsTarget, targetHostInstance);
 }
 
-pattern triggerPair(sourceHostInstance, targetHostInstance, appInstanceTrigger, appInstanceTarget, cpsTrigger, cpsTarget) {
+pattern triggerPair(sourceHostInstance : HostInstance, targetHostInstance : HostInstance, appInstanceTrigger : ApplicationInstance, appInstanceTarget : ApplicationInstance, cpsTrigger : Transition, cpsTarget : Transition) {
 	find triggerPairWithoutReachability(sourceHostInstance, targetHostInstance, appInstanceTrigger, appInstanceTarget, cpsTrigger, cpsTarget);		
 	find reachableHosts(sourceHostInstance, targetHostInstance);
 }
 
-pattern appInstanceTransition(appInstance, transition) {
+pattern appInstanceTransition(appInstance : ApplicationInstance, transition : Transition) {
 	find applicationInstance(appType, appInstance);
 	ApplicationType.behavior.states.outgoingTransitions(appType, transition);
 }
 
-pattern communicatingAppInstances(sourceAppInstance, targetAppInstance) {
+pattern communicatingAppInstances(sourceAppInstance : ApplicationInstance, targetAppInstance : ApplicationInstance) {
 	find applicationInstanceWithHost(_, sourceAppInstance, sourceHostInstance);
 	find applicationInstanceWithHost(_, targetAppInstance, targetHostInstance);
 	find reachableHosts(sourceHostInstance, targetHostInstance);
 }
 
-pattern hostCommunication(fromHost, toHost) {
+pattern hostCommunication(fromHost : HostInstance, toHost : HostInstance) {
 	HostInstance.communicateWith(fromHost, toHost);
 }
 
-pattern reachableHosts(source, target) {
+pattern reachableHosts(source : HostInstance, target : HostInstance) {
 	find hostCommunication(source, target);
 } or {
 	HostInstance(source);

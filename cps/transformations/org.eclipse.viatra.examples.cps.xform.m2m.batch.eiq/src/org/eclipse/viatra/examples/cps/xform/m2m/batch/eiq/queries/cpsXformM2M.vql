@@ -14,25 +14,25 @@ import "http://org.eclipse.viatra/model/cps"
 import "http://org.eclipse.viatra/model/deployment"
 import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
 
-pattern hostInstances(hostType, hostInstance) {
+pattern hostInstances(hostType : HostType, hostInstance : HostInstance) {
 	HostType.instances(hostType, hostInstance);
 }
 
-pattern depTransition(depTransition) {
+pattern depTransition(depTransition : BehaviorTransition) {
 	BehaviorTransition(depTransition);
 }
 
-pattern stateMachineTransitions(cpsBeh, trans) {
+pattern stateMachineTransitions(cpsBeh : StateMachine, trans : Transition) {
 	StateMachine.states(cpsBeh, state);
 	State.outgoingTransitions(state, trans);
 }
 
-pattern applicationInstance(appType, appInstance, host) {
+pattern applicationInstance(appType : ApplicationType, appInstance : ApplicationInstance, host : HostInstance) {
 	ApplicationType.instances(appType, appInstance);
 	ApplicationInstance.allocatedTo(appInstance, host);
 }
 
-pattern transitionAction(transition, appType, action) {
+pattern transitionAction(transition : Transition, appType : ApplicationType, action : java String) {
 	State.outgoingTransitions(state, transition);
 	StateMachine.states(sm, state);
 	ApplicationType.behavior(appType, sm);
@@ -44,14 +44,14 @@ pattern cpsApplicationTransition(cpsApp : ApplicationInstance, cpsTransition : T
 	ApplicationType.behavior.states.outgoingTransitions(cpsAppType, cpsTransition);
 }
 
-pattern sendTransitionAppSignal(transition, app, signal) {
+pattern sendTransitionAppSignal(transition : Transition, app : java String, signal : java String) {
  	Transition.action(transition, action);
  	check(SignalUtil.isSend(action));
  	app == eval(SignalUtil.getAppId(action));
  	signal == eval(SignalUtil.getSignalId(action));
 }
 
-pattern waitTransitionAppSignal(transition, appType, signal) {
+pattern waitTransitionAppSignal(transition : Transition, appType : ApplicationType, signal : java String) {
  	ApplicationType.behavior(appType, stateMachine);
 	StateMachine.states(stateMachine, source);
 	State.outgoingTransitions(source, transition);
@@ -60,23 +60,23 @@ pattern waitTransitionAppSignal(transition, appType, signal) {
  	signal == eval(SignalUtil.getSignalId(action));
 }
 
-pattern triggerPair(cpsTrigger, cpsTarget) {
+pattern triggerPair(cpsTrigger : Transition, cpsTarget : Transition) {
 	find sendTransitionAppSignal(cpsTrigger, appId, signal);
 	find waitTransitionAppSignal(cpsTarget, waitApp, signal);
 	ApplicationType.identifier(waitApp, appId);
 }
 
-pattern communicatingAppInstances(sourceAppInstance, targetAppInstance) {
+pattern communicatingAppInstances(sourceAppInstance : ApplicationInstance, targetAppInstance : ApplicationInstance) {
 	find applicationInstance(_, sourceAppInstance, sourceHostInstance);
 	find applicationInstance(_, targetAppInstance, targetHostInstance);
 	find reachableHosts(sourceHostInstance, targetHostInstance);
 }
 
-pattern hostCommunication(fromHost, toHost) {
+pattern hostCommunication(fromHost : HostInstance, toHost : HostInstance) {
 	HostInstance.communicateWith(fromHost, toHost);
 }
 
-pattern reachableHosts(source, target) {
+pattern reachableHosts(source : HostInstance, target : HostInstance) {
 	find hostCommunication(source, target);
 } or {
 	HostInstance(source);

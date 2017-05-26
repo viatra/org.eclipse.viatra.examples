@@ -67,13 +67,13 @@ pattern availableGreaterThanTotalRam(host : HostInstance) {
 	message = "The IP address $host.nodeIp$ of $host.identifier$ is not unique",
 	severity = "error"
 )
-pattern nodeIpIsNotUnique(host){
+pattern nodeIpIsNotUnique(host : HostInstance){
 	find nodeIpOfHost(host, ip);
 	find nodeIpOfHost(otherHost, ip);
 	host != otherHost;
 }
 
-private pattern nodeIpOfHost(host, ip){
+private pattern nodeIpOfHost(host : HostInstance, ip : java String){
 	HostInstance.nodeIp(host, ip);
 }
 
@@ -82,7 +82,7 @@ private pattern nodeIpOfHost(host, ip){
 	message = "The ID of $identifiable.identifier$ contains whitespace",
 	severity = "error"
 )
-pattern idContainsWhitespace(identifiable) {
+pattern idContainsWhitespace(identifiable : Identifiable) {
 	find identifiableId(identifiable, id);
 	check(com.google.common.base.CharMatcher.WHITESPACE.matchesAnyOf(id));
 }
@@ -92,13 +92,13 @@ pattern idContainsWhitespace(identifiable) {
 	message = "The ID of $identifiable.identifier$ is not unique",
 	severity = "error"
 )
-pattern idIsNotUnique(identifiable) {
+pattern idIsNotUnique(identifiable : Identifiable) {
 	find identifiableId(identifiable, id);
 	find identifiableId(otherIdentifiable, id);
 	identifiable != otherIdentifiable; 
 }
 
-private pattern identifiableId(identifiable, id) {
+private pattern identifiableId(identifiable : Identifiable, id : java String) {
 	Identifiable.identifier(identifiable, id);
 }
 
@@ -107,12 +107,12 @@ private pattern identifiableId(identifiable, id) {
 	message = "The initial state $state.identifier$ of $statemachine.identifier$ is not included in its states",
 	severity = "error"
 )
-pattern initialStateNotContainedByStateMachine(statemachine, state) {
+pattern initialStateNotContainedByStateMachine(statemachine : StateMachine, state : State) {
 	StateMachine.initial(statemachine, state);
 	neg find statemachineState(statemachine, state);
 }
 
-private pattern statemachineState(statemachine, state) {
+private pattern statemachineState(statemachine : StateMachine, state : State) {
 	StateMachine.states(statemachine, state);
 }
 
@@ -121,12 +121,12 @@ private pattern statemachineState(statemachine, state) {
 	message = "No target state set for $transition.identifier$",
 	severity = "error"
 )
-pattern transitionWithoutTargetState(transition) {
+pattern transitionWithoutTargetState(transition : Transition) {
 	State.outgoingTransitions(source, transition);
 	neg find stateTransition(source, transition, _);
 }
 
-private pattern stateTransition(source, transition, target) {
+private pattern stateTransition(source : State, transition : Transition, target : State) {
 	State.outgoingTransitions(source, transition);
 	Transition.targetState(transition, target);
 }
@@ -136,7 +136,7 @@ private pattern stateTransition(source, transition, target) {
 	message = "The target state $target.identifier$ of $transition.identifier$ is not in the same state machine",
 	severity = "error"
 )
-pattern targetStateNotContainedBySameStateMachine(transition, target) {
+pattern targetStateNotContainedBySameStateMachine(transition : Transition, target : State) {
 	find stateTransition(source, transition, target);
 	find statemachineState(statemachine, source);
 	neg find statemachineState(statemachine, target);
@@ -147,7 +147,7 @@ pattern targetStateNotContainedBySameStateMachine(transition, target) {
 	message = "Multiple outgoing transitions of $state.identifier$ define the same action ($action$)",
 	severity = "error"
 )
-pattern multipleTransitionsWithSameAction(state, action) {
+pattern multipleTransitionsWithSameAction(state : State, action : java String) {
 	State.outgoingTransitions(state, transition);
 	State.outgoingTransitions(state, otherTransition);
 	find actionOfTransition(transition, action);
@@ -155,7 +155,7 @@ pattern multipleTransitionsWithSameAction(state, action) {
 	transition != otherTransition;
 }
 
-private pattern actionOfTransition(transition, action) {
+private pattern actionOfTransition(transition : Transition, action : java String) {
 	Transition.action(transition, action);
 }
 
@@ -164,22 +164,22 @@ private pattern actionOfTransition(transition, action) {
 	message = "Multiple instances of $app.identifier$ are reachable from $sourceHostInstance.identifier$",
 	severity = "error"
 )
-pattern multipleApplicationInstanceInCommunicationGroup(sourceHostInstance, app) {
+pattern multipleApplicationInstanceInCommunicationGroup(sourceHostInstance : HostInstance, app : ApplicationType) {
 	find reachableAppInstance(sourceHostInstance, app, appInstance);
 	find reachableAppInstance(sourceHostInstance, app, otherAppInstance);
 	appInstance != otherAppInstance;
 }
 
-pattern appTypeInstanceAndHost(app, appInstance, hostInstance) {
+pattern appTypeInstanceAndHost(app : ApplicationType, appInstance : ApplicationInstance, hostInstance : HostInstance) {
 	ApplicationInstance.type(appInstance, app);
 	ApplicationInstance.allocatedTo(appInstance, hostInstance);
 }
 
-pattern hostCommunication(fromHost, toHost) {
+pattern hostCommunication(fromHost : HostInstance, toHost : HostInstance) {
 	HostInstance.communicateWith(fromHost, toHost);
 }
 
-pattern reachableHosts(source, target) {
+pattern reachableHosts(source : HostInstance, target : HostInstance) {
 	find hostCommunication+(source, target);
 } or {
 	HostInstance(source);
@@ -187,7 +187,7 @@ pattern reachableHosts(source, target) {
 	source == target;
 }
 
-pattern reachableAppInstance(sourceHostInstance, app, appInstance) {
+pattern reachableAppInstance(sourceHostInstance : HostInstance, app : ApplicationType, appInstance : ApplicationInstance) {
 	find appTypeInstanceAndHost(app, appInstance, targetHostInstance);
 	// there is a source hostInstance that could communicate with either hostInstance
 	find reachableHosts(sourceHostInstance, targetHostInstance);

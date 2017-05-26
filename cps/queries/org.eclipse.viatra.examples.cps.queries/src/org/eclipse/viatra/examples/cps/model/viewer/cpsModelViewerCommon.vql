@@ -14,25 +14,25 @@ import "http://org.eclipse.viatra/model/cps"
 
 @Item(item = host, label = "$host.identifier$")
 @Format(color = "#CC6600", textColor = "#000000")
-pattern allHostInstances(host) {
+pattern allHostInstances(host : HostInstance) {
 	HostInstance(host);
 }
 
 @Item(item = app, label = "$app.identifier$")
 @Format(color = "#996600", textColor = "#000000")
-pattern appInstancesWithAllocation(app) {
+pattern appInstancesWithAllocation(app : ApplicationInstance) {
 	ApplicationInstance(app);
 	ApplicationInstance.allocatedTo(app, _);
 }
 
 @Item(item = app, label = "$app.identifier$")
 @Format(color = "#FF0000", textColor = "#000000")
-pattern appInstancesNoAllocation(app) {
+pattern appInstancesNoAllocation(app : ApplicationInstance) {
 	ApplicationInstance(app);
 	neg find appInstancesWithAllocation(app);
 }
 
 @Edge(source = host, target = app, label = "$app.identifier$ - $host.identifier$")
-pattern connectAppAndHost(app, host) {
+pattern connectAppAndHost(app : ApplicationInstance, host : HostInstance) {
 	ApplicationInstance.allocatedTo(app, host);
 }

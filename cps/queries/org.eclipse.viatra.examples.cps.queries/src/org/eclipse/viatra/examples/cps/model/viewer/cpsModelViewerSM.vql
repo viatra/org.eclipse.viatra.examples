@@ -13,36 +13,36 @@ package org.eclipse.viatra.examples.cps.model.viewer
 import "http://org.eclipse.viatra/model/cps"
 
 @Item(item = machine, label = "$machine.identifier$")
-pattern statemachines(machine) {
+pattern statemachines(machine : StateMachine) {
 	StateMachine(machine);
 }
 
 @Edge(source = app, target = machine, label = "behavior")
-pattern machineOfAppType(app, machine) {
+pattern machineOfAppType(app : ApplicationType, machine : StateMachine) {
 	ApplicationType.behavior(app, machine);
 }
 
 @Edge(source = machine, target = state, label = "states")
-pattern cpsStatemachineStateEdge(machine, state) {
+pattern cpsStatemachineStateEdge(machine : StateMachine, state : State) {
 	StateMachine.states(machine, state);
 }
 
 @Format(color = "#2DF618", textColor = "#000000")
 @Item(item = state, label = "$machine.identifier$ $state.identifier$")
-pattern initialState(machine, state) {
+pattern initialState(machine : StateMachine, state : State) {
 	StateMachine.initial(machine, state);
 }
 
 @Format(color = "#00F8EF", textColor = "#000000")
 @Item(item = state, label = "$machine.identifier$ $state.identifier$")
-pattern states(machine, state) {
+pattern states(machine : StateMachine, state : State) {
 	StateMachine.states(machine, state);
 	neg find initialState(machine, state);
 }
 
 @Format(lineColor = "#000000")
 @Edge(source = sourceState, target = targetState, label = "$transition.action$")
-pattern transitions(sourceState, targetState, transition) {
+pattern transitions(sourceState : State, targetState : State, transition : Transition) {
 	State.outgoingTransitions(sourceState, transition);
 	Transition.targetState(transition, targetState);
 }

@@ -10,10 +10,12 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.traceability
 
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
 import "http://org.eclipse.viatra/model/cps-traceability"
 
 @Edge(source = identifiable, target = element, label = "cps2depl")
-pattern identifiableToDeplymentElement(trace, identifiable, element) {
+pattern identifiableToDeplymentElement(trace : CPS2DeploymentTrace, identifiable : Identifiable, element : DeploymentElement) {
 	CPS2DeploymentTrace.cpsElements(trace, identifiable);
 	CPS2DeploymentTrace.deploymentElements(trace, element);
 }

@@ -16,56 +16,56 @@ import "http://org.eclipse.viatra/model/cps-traceability"
 
 import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
 
-pattern hostInstance(hostInstance) {
+pattern hostInstance(hostInstance : HostInstance) {
 	HostInstance(hostInstance);
 }
 
-pattern cps2depTrace(cps2dep, trace, cpsElement, depElement) {
+pattern cps2depTrace(cps2dep : CPSToDeployment, trace : CPS2DeploymentTrace, cpsElement : Identifiable, depElement : DeploymentElement) {
 	CPSToDeployment.traces(cps2dep, trace);
 	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
 	CPS2DeploymentTrace.deploymentElements(trace, depElement);
 }
 
-pattern applicationInstance(appType, appInstance) {
+pattern applicationInstance(appType : ApplicationType, appInstance : ApplicationInstance) {
 	HostInstance.applications(_, appInstance);
 	ApplicationType.instances(appType, appInstance);
 }
 
-pattern appInstanceWithStateMachine(appType, appInstance, stateMachine) {
+pattern appInstanceWithStateMachine(appType : ApplicationType, appInstance : ApplicationInstance, stateMachine : StateMachine) {
 	find applicationInstance(appType, appInstance);
 	ApplicationType.behavior(appType, stateMachine);
 }
 
-pattern state(appInstance, stateMachine, state) {
+pattern state(appInstance : ApplicationInstance, stateMachine : StateMachine, state : State) {
 	find appInstanceWithStateMachine(_, appInstance, stateMachine);
 	StateMachine.states(stateMachine, state);
 }
 
-pattern transition(appInstance, sourceState, transition, targetState) {
+pattern transition(appInstance : ApplicationInstance, sourceState : State, transition : Transition, targetState : State) {
 	find state(appInstance, _, sourceState);
 	find state(appInstance, _, targetState);
 	State.outgoingTransitions(sourceState, transition);
 	Transition.targetState(transition, targetState);
 }
 
-pattern action(appInstance, transition, action, signalId) {
+pattern action(appInstance : ApplicationInstance, transition : Transition, action : java String, signalId : java String) {
 	find transition(appInstance, _, transition, _);
 	Transition.action(transition, action);
 	signalId == eval(SignalUtil.getSignalId(action));
 }
 
-pattern sendAction(appInstance, transition, action, signalId, appTypeId) {
+pattern sendAction(appInstance : ApplicationInstance, transition : Transition, action : java String, signalId : java String, appTypeId : java String) {
 	find action(appInstance, transition, action, signalId);
 	check(SignalUtil.isSend(action));
 	appTypeId == eval(SignalUtil.getAppId(action));
 }
 
-pattern waitAction(appInstance, transition, action, signalId) {
+pattern waitAction(appInstance : ApplicationInstance, transition : Transition, action : java String, signalId : java String) {
 	find action(appInstance, transition, action, signalId);
 	check(SignalUtil.isWait(action));
 }
 
-pattern actionPair(sendTransition, sendAppInstance, waitTransition, waitAppInstance) {
+pattern actionPair(sendTransition : Transition, sendAppInstance : ApplicationInstance, waitTransition : Transition, waitAppInstance : ApplicationInstance) {
 	find sendAction(sendAppInstance, sendTransition, _, signalId, appTypeId);
 	find waitAction(waitAppInstance, waitTransition, _, signalId);
 	ApplicationInstance.type.identifier(waitAppInstance, appTypeId);
@@ -75,7 +75,7 @@ pattern actionPair(sendTransition, sendAppInstance, waitTransition, waitAppInsta
 	find reachableHosts(sendHostInstance, waitHostInstance);
 }
 
-pattern reachableHosts(source, target) {
+pattern reachableHosts(source : HostInstance, target : HostInstance) {
 	HostInstance.communicateWith(source, target);
 } or {
 	HostInstance(source);

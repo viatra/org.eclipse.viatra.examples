@@ -14,16 +14,16 @@ import "http://org.eclipse.viatra/model/cps"
 
 @Item(item = app, label = "$app.identifier$")
 @Format(color = "#800000", textColor = "#FFFFFF")
-pattern applicationTypes(app) {
+pattern applicationTypes(app : ApplicationType) {
 	ApplicationType(app);
 }
 
 @ContainsItem(container = type, item = instance)
-pattern connectTypesAndInstancesApp(type, instance) {
+pattern connectTypesAndInstancesApp(type : ApplicationType, instance : ApplicationInstance) {
 	ApplicationType.instances(type,instance);
 }
 
 @Edge(source = i1, target = i2)
-pattern dependencies(i1, i2) {
+pattern dependencies(i1 : ApplicationInstance, i2 : ApplicationInstance) {
 	ApplicationInstance.dependOn(i1,i2);
 }

@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries
 
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
 import "http://org.eclipse.viatra/model/cps-traceability"
 
-pattern cps2depTrace(trace, cpsElement, depElement) {
+pattern cps2depTrace(trace : CPS2DeploymentTrace, cpsElement : Identifiable, depElement : DeploymentElement) {
 	CPS2DeploymentTrace.cpsElements(trace, cpsElement);
 	CPS2DeploymentTrace.deploymentElements(trace, depElement);
 }

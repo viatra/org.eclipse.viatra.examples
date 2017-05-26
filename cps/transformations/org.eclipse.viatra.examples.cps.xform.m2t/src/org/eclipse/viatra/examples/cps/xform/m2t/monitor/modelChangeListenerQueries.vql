@@ -12,7 +12,7 @@ package org.eclipse.viatra.examples.cps.xform.m2t.monitor
 
 import "http://org.eclipse.viatra/model/deployment" 
 
-pattern deploymentHostsChange(deployment : Deployment, host) {
+pattern deploymentHostsChange(deployment : Deployment, host : DeploymentHost) {
 	Deployment.hosts(deployment, host);
 }
 
@@ -37,7 +37,7 @@ pattern applicationIdChange(app : DeploymentApplication) {
 }
 
 pattern
-applicationBehaviorCurrentStateChange(app : DeploymentApplication, beh) {
+applicationBehaviorCurrentStateChange(app : DeploymentApplication, beh : DeploymentBehavior) {
 	DeploymentApplication.behavior(app, beh);
 	DeploymentBehavior.current(beh, _);
 }
@@ -52,7 +52,7 @@ pattern transitionChange(behavior : DeploymentBehavior) {
 	DeploymentBehavior.transitions(behavior, _);
 }
 
-pattern triggerChange(behavior : DeploymentBehavior,transition) {
+pattern triggerChange(behavior : DeploymentBehavior,transition : BehaviorTransition) {
 	DeploymentBehavior.transitions(behavior,transition);
 	BehaviorTransition.trigger(transition,_);
 }

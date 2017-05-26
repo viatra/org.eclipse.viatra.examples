@@ -14,16 +14,16 @@ import "http://org.eclipse.viatra/model/cps"
 
 @Item(item = host, label = "$host.identifier$")
 @Format(color = "#0033CC", textColor = "#FFFFFF")
-pattern hostTypes(host) {
+pattern hostTypes(host : HostType) {
 	HostType(host);
 }
 
 @ContainsItem(container = type, item = instance)
-pattern connectTypesAndInstancesHost(type, instance) {
+pattern connectTypesAndInstancesHost(type : HostType, instance : HostInstance) {
 	HostType.instances(type,instance);
 }
 
 @Edge(source = i1, target = i2, label = "comm")
-pattern communications(i1, i2) {
+pattern communications(i1 : HostInstance, i2 : HostInstance) {
 	HostInstance.communicateWith(i1,i2);
 }

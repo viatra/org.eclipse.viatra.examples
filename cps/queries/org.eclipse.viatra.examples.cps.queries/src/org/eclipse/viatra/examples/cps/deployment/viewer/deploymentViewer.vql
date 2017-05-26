@@ -14,67 +14,67 @@ import "http://org.eclipse.viatra/model/deployment"
 
 @Format(color = "#FBFE00")
 @Item(item = host, label = "Host $host.ip$")
-pattern deploymentHostItem(host) {
+pattern deploymentHostItem(host : DeploymentHost) {
 	DeploymentHost(host);
 }
 
 @Format(color = "#996600")
 @Item(item = app, label = "App $app.id$")
-pattern deploymentApplicationItem(app) {
+pattern deploymentApplicationItem(app : DeploymentApplication) {
 	DeploymentApplication(app);
 }
 
 @Edge(source = host, target = app, label = "apps")
-pattern deploymentHostApplicationEdge(host, app) {
+pattern deploymentHostApplicationEdge(host : DeploymentHost, app : DeploymentApplication) {
 	DeploymentHost.applications(host, app);
 }
 
 @Item(item = behavior, label = "Behavior $behavior.description$")
-pattern deploymentBehaviorItem(behavior) {
+pattern deploymentBehaviorItem(behavior : DeploymentBehavior) {
 	DeploymentBehavior(behavior);
 }
 
 @Edge(source = app, target = behavior, label = "behavior")
-pattern deploymentApplicationBehaviorEdge(app, behavior) {
+pattern deploymentApplicationBehaviorEdge(app : DeploymentApplication, behavior : DeploymentBehavior) {
 	DeploymentApplication.behavior(app, behavior);
 }
 
 @Format(color = "#FF5F00", textColor = "#000000")
 @Item(item = state, label = "State $state.description$")
-pattern depoymentCurrentStateItem(state) {
+pattern depoymentCurrentStateItem(state : BehaviorState) {
 	DeploymentBehavior.current(_, state);
 }
 
 @Format(color = "#00F8EF", textColor = "#000000")
 @Item(item = state, label = "State $state.description$")
-pattern depoymentStateItem(state) {
+pattern depoymentStateItem(state : BehaviorState) {
 	BehaviorState(state);
 	neg find depoymentCurrentStateItem(state);
 }
 
 
 @Edge(source = behavior, target = state, label = "states")
-pattern deploymentBehaviorStateEdge(behavior, state) {
+pattern deploymentBehaviorStateEdge(behavior : DeploymentBehavior, state : BehaviorState) {
 	DeploymentBehavior.states(behavior, state);
 }
 
 @Format(color = "#009A9A", textColor = "#000000")
 @Item(item = transition, label = "Tr $transition.description$")
-pattern depoymentTransitionItem(transition) {
+pattern depoymentTransitionItem(transition : BehaviorTransition) {
 	BehaviorTransition(transition);
 }
 
 @Edge(source = state, target = transition, label = "out")
-pattern deploymentStateOutgoingEdge(state, transition) {
+pattern deploymentStateOutgoingEdge(state : BehaviorState, transition : BehaviorTransition) {
 	BehaviorState.outgoing(state, transition);
 }
 
 @Edge(source = transition, target = state, label = "in")
-pattern deploymentTransitionOutEdge(transition, state) {
+pattern deploymentTransitionOutEdge(transition : BehaviorTransition, state : BehaviorState) {
 	BehaviorTransition.to(transition, state);
 }
 
 @Edge(source = transition, target = triggeredTrans, label = "triggers")
-pattern deploymentTransitionTriggerEdge(transition, triggeredTrans) {
+pattern deploymentTransitionTriggerEdge(transition : BehaviorTransition, triggeredTrans : BehaviorTransition) {
 	BehaviorTransition.trigger(transition, triggeredTrans);
 }
