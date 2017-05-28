@@ -15,9 +15,11 @@ import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.provider.ModelEditPlugin;
+import org.eclipse.viatra.examples.cps.deployment.provider.DeploymentEditPlugin;
 
 /**
- * This is the central singleton for the Model editor plugin.
+ * This is the central singleton for the Traceability editor plugin.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -48,6 +50,8 @@ public final class ModelEditorPlugin extends EMFPlugin {
 	public ModelEditorPlugin() {
         super
             (new ResourceLocator [] {
+                DeploymentEditPlugin.INSTANCE,
+                ModelEditPlugin.INSTANCE,
             });
     }
 

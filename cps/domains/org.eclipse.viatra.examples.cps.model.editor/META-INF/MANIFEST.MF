@@ -8,9 +8,13 @@ Bundle-Activator: org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentati
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation
+Export-Package: org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation,
+ org.eclipse.viatra.examples.cps.traceability.presentation,
+ org.eclipse.viatra.examples.cps.deployment.presentation
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.core.resources;visibility:=reexport,
+ org.eclipse.viatra.examples.cps.traceability.edit;visibility:=reexport,
+ org.eclipse.viatra.examples.cps.deployment.edit;visibility:=reexport,
  org.eclipse.viatra.examples.cps.model.edit;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
  org.eclipse.emf.edit.ui;visibility:=reexport,

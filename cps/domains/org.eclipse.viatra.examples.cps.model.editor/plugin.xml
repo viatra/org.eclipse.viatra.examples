@@ -9,16 +9,50 @@
    <extension point="org.eclipse.ui.newWizards">
       <!-- @generated model -->
       <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            id="org.eclipse.viatra.examples.cps.category"
             name="%_UI_Wizard_category"/>
       <wizard
             id="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemModelWizardID"
             name="%_UI_CyberPhysicalSystemModelWizard_label"
             class="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            category="org.eclipse.viatra.examples.cps.category"
             icon="icons/full/obj16/CyberPhysicalSystemModelFile.gif">
          <description>%_UI_CyberPhysicalSystemModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+      <wizard
+            category="org.eclipse.viatra.examples.cps.category"
+            class="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentModelWizard"
+            icon="icons/full/obj16/DeploymentModelFile.gif"
+            id="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentModelWizardID"
+            name="%_UI_DeploymentModelWizard_label">
+         <description>
+            %_UI_DeploymentModelWizard_description
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
+      </wizard>
+      <wizard
+            category="org.eclipse.viatra.examples.cps.category"
+            class="org.eclipse.emf.common.ui.wizard.ExampleInstallerWizard"
+            icon="icons/full/obj16/CyberPhysicalSystemModelFile.gif"
+            id="org.eclipse.viatra.examples.cps.model.editor.examplewizard"
+            name="CPS Demonstrator Example"
+            project="true">
+      </wizard>
+      <wizard
+            category="org.eclipse.viatra.examples.cps.category"
+            class="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityModelWizard"
+            icon="icons/full/obj16/TraceabilityModelFile.gif"
+            id="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityModelWizardID"
+            name="%_UI_TraceabilityModelWizard_label">
+         <description>
+            %_UI_TraceabilityModelWizard_description
+         </description>
+         <selection
+               class="org.eclipse.core.resources.IResource">
+         </selection>
       </wizard>
    </extension>
 
@@ -32,5 +66,33 @@
             class="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemEditor"
             contributorClass="org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemActionBarContributor">
       </editor>
+      <editor
+            class="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentEditor"
+            contributorClass="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentActionBarContributor"
+            extensions="deployment"
+            icon="icons/full/obj16/DeploymentModelFile.gif"
+            id="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentEditorID"
+            name="%_UI_DeploymentEditor_label">
+      </editor>
+      <editor
+            class="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityEditor"
+            contributorClass="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityActionBarContributor"
+            extensions="traceability"
+            icon="icons/full/obj16/TraceabilityModelFile.gif"
+            id="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityEditorID"
+            name="%_UI_TraceabilityEditor_label">
+      </editor>
    </extension>
+   <extension
+         point="org.eclipse.emf.common.ui.examples">
+      <example
+            wizardID="org.eclipse.viatra.examples.cps.model.editor.examplewizard">
+         <projectDescriptor
+               contentURI="examples/cps-example.zip"
+               name="org.eclipse.viatra.examples.cps.model.editor.example">
+         </projectDescriptor>
+      </example>
+   </extension>
+
+
 </plugin>

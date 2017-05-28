@@ -11,13 +11,11 @@
 	    <!-- Domains -->
         <module>../../domains/org.eclipse.viatra.examples.cps.deployment</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.deployment.edit</module>
-        <module>../../domains/org.eclipse.viatra.examples.cps.deployment.editor</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.model</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.model.edit</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.model.editor</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.traceability</module>
         <module>../../domains/org.eclipse.viatra.examples.cps.traceability.edit</module>
-        <module>../../domains/org.eclipse.viatra.examples.cps.traceability.editor</module>
         <!-- Feature -->
         <module>../../releng/org.eclipse.viatra.examples.cps.metamodel.feature</module>
 	</modules>
