@@ -7,8 +7,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory=""
     testSuiteClass="" importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0"
     copyrightFields="false" editorPluginID="org.eclipse.viatra.examples.cps.model.editor"
-    testsPluginID="org.eclipse.viatra.examples.cps.traceability.tests" language=""
-    usedGenPackages="../../org.eclipse.viatra.examples.cps.deployment/model/deployment.genmodel#//deployment ../../org.eclipse.viatra.examples.cps.model/model/model.genmodel#//cyberPhysicalSystem"
+    testsPluginID="org.eclipse.viatra.examples.cps.traceability.tests" runtimeVersion="2.11"
+    language="" usedGenPackages="../../org.eclipse.viatra.examples.cps.deployment/model/deployment.genmodel#//deployment ../../org.eclipse.viatra.examples.cps.model/model/model.genmodel#//cyberPhysicalSystem"
     operationReflection="true" importOrganizing="true">
   <foreignModel>traceability.ecore</foreignModel>
   <genPackages prefix="Traceability" basePackage="org.eclipse.viatra.examples.cps"

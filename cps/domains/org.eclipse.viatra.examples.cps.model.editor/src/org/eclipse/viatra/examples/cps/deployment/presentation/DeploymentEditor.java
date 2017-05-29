@@ -661,11 +661,14 @@ public class DeploymentEditor
             }
 
             if (markerHelper.hasMarkers(editingDomain.getResourceSet())) {
-                try {
-                    markerHelper.updateMarkers(diagnostic);
-                }
-                catch (CoreException exception) {
-                    ModelEditorPlugin.INSTANCE.log(exception);
+                markerHelper.deleteMarkers(editingDomain.getResourceSet());
+                if (diagnostic.getSeverity() != Diagnostic.OK) {
+                    try {
+                        markerHelper.createMarkers(diagnostic);
+                    }
+                    catch (CoreException exception) {
+                        ModelEditorPlugin.INSTANCE.log(exception);
+                    }
                 }
             }
         }

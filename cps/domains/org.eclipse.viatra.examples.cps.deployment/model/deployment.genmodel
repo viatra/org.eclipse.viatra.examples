@@ -7,7 +7,7 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" testsDirectory=""
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
     editorPluginID="org.eclipse.viatra.examples.cps.model.editor" testsPluginID="org.eclipse.viatra.examples.cps.deployment.tests"
-    operationReflection="true" importOrganizing="true">
+    runtimeVersion="2.11" operationReflection="true" importOrganizing="true">
   <foreignModel>deployment.ecore</foreignModel>
   <genPackages prefix="Deployment" basePackage="org.eclipse.viatra.examples.cps" disposableProviderFactory="true"
       extensibleProviderFactory="true" ecorePackage="deployment.ecore#/">

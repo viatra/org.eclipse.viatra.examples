@@ -4,7 +4,7 @@
     modelDirectory="/org.eclipse.viatra.examples.cps.model/src" modelPluginID="org.eclipse.viatra.examples.cps.model"
     modelName="Model" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    operationReflection="true" importOrganizing="true">
+    runtimeVersion="2.11" operationReflection="true" importOrganizing="true">
   <foreignModel>model.ecore</foreignModel>
   <genPackages prefix="CyberPhysicalSystem" basePackage="org.eclipse.viatra.examples.cps"
       disposableProviderFactory="true" extensibleProviderFactory="true" ecorePackage="model.ecore#/">
