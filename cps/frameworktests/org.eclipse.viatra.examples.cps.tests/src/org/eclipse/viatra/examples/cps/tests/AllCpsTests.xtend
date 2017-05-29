@@ -37,6 +37,7 @@ import org.junit.runners.Suite.SuiteClasses
     ModelManipulationTrickyJoinTest,
     LocalSearchPlanCostOverflowTest,
     LiteralValuesTest,
-    DanglingTest
+    DanglingTest,
+    DRedTest
 ])
 class AllCpsTests {}
