@@ -95,58 +95,6 @@
    </extension>
 
 
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated deployment -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentModelWizardID"
-            name="%_UI_DeploymentModelWizard_label"
-            class="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/DeploymentModelFile.gif">
-         <description>%_UI_DeploymentModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
 
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated deployment -->
-      <editor
-            id="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentEditorID"
-            name="%_UI_DeploymentEditor_label"
-            icon="icons/full/obj16/DeploymentModelFile.gif"
-            extensions="deployment"
-            class="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentEditor"
-            contributorClass="org.eclipse.viatra.examples.cps.deployment.presentation.DeploymentActionBarContributor">
-      </editor>
-   </extension>
-   <extension point="org.eclipse.ui.newWizards">
-      <!-- @generated traceability -->
-      <category
-            id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
-      <wizard
-            id="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityModelWizardID"
-            name="%_UI_TraceabilityModelWizard_label"
-            class="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityModelWizard"
-            category="org.eclipse.emf.ecore.Wizard.category.ID"
-            icon="icons/full/obj16/TraceabilityModelFile.gif">
-         <description>%_UI_TraceabilityModelWizard_description</description>
-         <selection class="org.eclipse.core.resources.IResource"/>
-      </wizard>
-   </extension>
 
-   <extension point="org.eclipse.ui.editors">
-      <!-- @generated traceability -->
-      <editor
-            id="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityEditorID"
-            name="%_UI_TraceabilityEditor_label"
-            icon="icons/full/obj16/TraceabilityModelFile.gif"
-            extensions="traceability"
-            class="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityEditor"
-            contributorClass="org.eclipse.viatra.examples.cps.traceability.presentation.TraceabilityActionBarContributor">
-      </editor>
-   </extension>
 </plugin>
