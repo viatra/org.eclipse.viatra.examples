@@ -105,13 +105,6 @@
         name="org.eclipse.xtext.sdk.feature.group"
         versionRange="[2.10.0,2.13.0)"/>
     <requirement
-        name="org.eclipse.gef4.geometry.feature.group"
-        versionRange="[0.1.0.201607041345,0.1.0.201607041345]"/>
-    <requirement
-        name="org.eclipse.gef4.zest.sdk.feature.group"
-        versionRange="[0.1.0.201607041345,0.1.0.201607041345]"
-        filter=""/>
-    <requirement
         name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
     <requirement
         name="com.google.inject.multibindings"
