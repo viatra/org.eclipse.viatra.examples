@@ -26,6 +26,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getApplications <em>Applications</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#isMandatory <em>Mandatory</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getAvailablePorts <em>Available Ports</em>}</li>
  * </ul>
  *
  * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement()
@@ -182,5 +183,21 @@ public interface Requirement extends Identifiable {
      * @generated
      */
     void setMandatory(boolean value);
+
+    /**
+     * Returns the value of the '<em><b>Available Ports</b></em>' attribute list.
+     * The list contents are of type {@link java.lang.Integer}.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Available Ports</em>' attribute list isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Available Ports</em>' attribute list.
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement_AvailablePorts()
+     * @model
+     * @generated
+     */
+    EList<Integer> getAvailablePorts();
 
 } // Requirement

@@ -75,6 +75,7 @@ public class RequirementItemProvider
             addTypePropertyDescriptor(object);
             addApplicationsPropertyDescriptor(object);
             addMandatoryPropertyDescriptor(object);
+            addAvailablePortsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -212,6 +213,28 @@ public class RequirementItemProvider
     }
 
     /**
+     * This adds a property descriptor for the Available Ports feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void addAvailablePortsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add
+            (createItemPropertyDescriptor
+                (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+                 getResourceLocator(),
+                 getString("_UI_Requirement_availablePorts_feature"),
+                 getString("_UI_PropertyDescriptor_description", "_UI_Requirement_availablePorts_feature", "_UI_Requirement_type"),
+                 CyberPhysicalSystemPackage.Literals.REQUIREMENT__AVAILABLE_PORTS,
+                 true,
+                 false,
+                 false,
+                 ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
+                 null,
+                 null));
+    }
+
+    /**
      * This returns Requirement.gif.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -252,6 +275,7 @@ public class RequirementItemProvider
             case CyberPhysicalSystemPackage.REQUIREMENT__IDENTIFIER:
             case CyberPhysicalSystemPackage.REQUIREMENT__COUNT:
             case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
+            case CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS:
                 fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
                 return;
         }

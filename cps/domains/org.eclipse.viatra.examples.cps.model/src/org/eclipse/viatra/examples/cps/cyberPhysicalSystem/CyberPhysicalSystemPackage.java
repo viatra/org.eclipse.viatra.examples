@@ -760,13 +760,22 @@ public interface CyberPhysicalSystemPackage extends EPackage {
     int REQUIREMENT__MANDATORY = IDENTIFIABLE_FEATURE_COUNT + 4;
 
     /**
+     * The feature id for the '<em><b>Available Ports</b></em>' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int REQUIREMENT__AVAILABLE_PORTS = IDENTIFIABLE_FEATURE_COUNT + 5;
+
+    /**
      * The number of structural features of the '<em>Requirement</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int REQUIREMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 5;
+	int REQUIREMENT_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
      * The number of operations of the '<em>Requirement</em>' class.
@@ -1508,6 +1517,17 @@ public interface CyberPhysicalSystemPackage extends EPackage {
     EAttribute getRequirement_Mandatory();
 
     /**
+     * Returns the meta object for the attribute list '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getAvailablePorts <em>Available Ports</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute list '<em>Available Ports</em>'.
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getAvailablePorts()
+     * @see #getRequirement()
+     * @generated
+     */
+    EAttribute getRequirement_AvailablePorts();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine <em>State Machine</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2058,6 +2078,14 @@ public interface CyberPhysicalSystemPackage extends EPackage {
          * @generated
          */
         EAttribute REQUIREMENT__MANDATORY = eINSTANCE.getRequirement_Mandatory();
+
+        /**
+         * The meta object literal for the '<em><b>Available Ports</b></em>' attribute list feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute REQUIREMENT__AVAILABLE_PORTS = eINSTANCE.getRequirement_AvailablePorts();
 
         /**
          * The meta object literal for the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.StateMachineImpl <em>State Machine</em>}' class.

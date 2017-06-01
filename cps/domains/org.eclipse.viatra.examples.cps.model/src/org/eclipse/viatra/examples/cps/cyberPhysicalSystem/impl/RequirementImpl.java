@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
@@ -46,6 +47,7 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getApplications <em>Applications</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#isMandatory <em>Mandatory</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.RequirementImpl#getAvailablePorts <em>Available Ports</em>}</li>
  * </ul>
  *
  * @generated
@@ -139,6 +141,16 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
      * @ordered
      */
     protected boolean mandatory = MANDATORY_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getAvailablePorts() <em>Available Ports</em>}' attribute list.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getAvailablePorts()
+     * @generated
+     * @ordered
+     */
+    protected EList<Integer> availablePorts;
 
     /**
      * <!-- begin-user-doc -->
@@ -340,6 +352,18 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EList<Integer> getAvailablePorts() {
+        if (availablePorts == null) {
+            availablePorts = new EDataTypeUniqueEList<Integer>(Integer.class, this, CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS);
+        }
+        return availablePorts;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -403,6 +427,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 return getApplications();
             case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
                 return isMandatory();
+            case CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS:
+                return getAvailablePorts();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -435,6 +461,10 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
                 setMandatory((Boolean)newValue);
                 return;
+            case CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS:
+                getAvailablePorts().clear();
+                getAvailablePorts().addAll((Collection<? extends Integer>)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -465,6 +495,9 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
                 setMandatory(MANDATORY_EDEFAULT);
                 return;
+            case CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS:
+                getAvailablePorts().clear();
+                return;
         }
         super.eUnset(featureID);
     }
@@ -489,6 +522,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
                 return applications != null && !applications.isEmpty();
             case CyberPhysicalSystemPackage.REQUIREMENT__MANDATORY:
                 return mandatory != MANDATORY_EDEFAULT;
+            case CyberPhysicalSystemPackage.REQUIREMENT__AVAILABLE_PORTS:
+                return availablePorts != null && !availablePorts.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -509,6 +544,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
         result.append(count);
         result.append(", mandatory: ");
         result.append(mandatory);
+        result.append(", availablePorts: ");
+        result.append(availablePorts);
         result.append(')');
         return result.toString();
     }

@@ -663,6 +663,15 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
 
     /**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getRequirement_AvailablePorts() {
+        return (EAttribute)requirementEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -830,6 +839,7 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         createEReference(requirementEClass, REQUIREMENT__TYPE);
         createEReference(requirementEClass, REQUIREMENT__APPLICATIONS);
         createEAttribute(requirementEClass, REQUIREMENT__MANDATORY);
+        createEAttribute(requirementEClass, REQUIREMENT__AVAILABLE_PORTS);
 
         stateMachineEClass = createEClass(STATE_MACHINE);
         createEReference(stateMachineEClass, STATE_MACHINE__STATES);
@@ -947,6 +957,7 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         initEReference(getRequirement_Type(), this.getApplicationType(), null, "type", null, 1, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getRequirement_Applications(), this.getApplicationInstance(), null, "applications", null, 0, -1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEAttribute(getRequirement_Mandatory(), ecorePackage.getEBoolean(), "mandatory", "true", 0, 1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getRequirement_AvailablePorts(), ecorePackage.getEInt(), "availablePorts", null, 0, -1, Requirement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(stateMachineEClass, StateMachine.class, "StateMachine", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEReference(getStateMachine_States(), this.getState(), null, "states", null, 0, -1, StateMachine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
