@@ -132,31 +132,12 @@
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
     <repository
-        url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0M6_gef-master_4201"/>
+        url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
   </setupTask>
   <setupTask
       xsi:type="setup.targlets:TargletTask">
     <targlet
         name="Demo Targlet Platform">
-      <annotation
-          source="http:/www.eclipse.org/oomph/targlets/TargetDefinitionGenerator">
-        <detail
-            key="location">
-          <value>${git.clone.viatra.cps.location/releng/org.eclipse.viatra.examples.cps.target/cps-demonstrator_oomphgen.target}</value>
-        </detail>
-        <detail
-            key="includeAllPlatforms">
-          <value>false</value>
-        </detail>
-        <detail
-            key="includeSource">
-          <value>false</value>
-        </detail>
-        <detail
-            key="generateVersions">
-          <value>true</value>
-        </detail>
-      </annotation>
       <requirement
           name="org.eclipse.equinox.sdk.feature.group"/>
       <requirement
@@ -208,7 +189,7 @@
         <repository
             url="${viatra.repository.url}"/>
         <repository
-            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC1_gef-master_4353"/>
+            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
       </repositoryList>
     </targlet>
   </setupTask>
