@@ -55,7 +55,7 @@ class BaseIndexProxyResolutionTest {
         ]
         
         // Remove failed loaded resource
-        rs.resources.removeIf([URI == r2.URI])
+        rs.resources -= rs.resources.filter[URI == r2.URI].toList
         // Add second resource
         rs.resources += r2
         // Resolve all proxies
