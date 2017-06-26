@@ -49,6 +49,9 @@
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.serializer.eclipse</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.serializer.javaio</module>
 		
+		<!--  Application -->
+		<module>application/org.eclipse.viatra.examples.cps.application.ui</module>
+		
 		<!-- Tests -->
 		<module>tests/org.eclipse.viatra.examples.cps.generator.tests</module>
 		<module>tests/org.eclipse.viatra.examples.cps.tests.util</module>

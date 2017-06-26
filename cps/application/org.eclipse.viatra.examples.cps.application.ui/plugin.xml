@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension
+      point="org.eclipse.ui.views">
+    <view
+         category="org.eclipse.viatra.query.tooling.ui"
+         class="org.eclipse.viatra.examples.cps.application.ui.transformationview.TransformationManagerView"
+         id="org.eclipse.viatra.examples.cps.application.ui.transformationview.TransformationManagerView"
+         name="CPS Transformations"
+         icon="platform:/plugin/org.eclipse.viatra.query.tooling.ui/icons/logo2.png"></view>
+  </extension>
+</plugin>

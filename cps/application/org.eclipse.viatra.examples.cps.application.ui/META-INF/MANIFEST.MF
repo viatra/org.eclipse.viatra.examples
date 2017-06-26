@@ -1,0 +1,24 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: CPS Demonstrator UI Contributions
+Bundle-Vendor: Eclipse VIATRA Project
+Bundle-SymbolicName: org.eclipse.viatra.examples.cps.application.ui;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: com.google.guava,
+ org.eclipse.core.databinding.observable,
+ org.eclipse.emf.edit,
+ org.eclipse.emf.transaction,
+ org.eclipse.jface,
+ org.eclipse.jface.databinding,
+ org.eclipse.ui,
+ org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0",
+ org.eclipse.viatra.examples.cps.xform.m2m.tests;bundle-version="0.1.0",
+ org.eclipse.viatra.query.tooling.ui.browser;bundle-version="[1.6.0,1.8.0)",
+ org.eclipse.viatra.query.tooling.ui;bundle-version="[1.6.0,1.8.0)",
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro,
+ org.eclipse.xtext.xbase.lib
+Bundle-Activator: org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin
+Bundle-ActivationPolicy: lazy
+

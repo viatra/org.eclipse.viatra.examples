@@ -10,35 +10,38 @@
   </parent>
   <artifactId>org.eclipse.viatra.examples.cps.generator.tests</artifactId>
   <packaging>eclipse-test-plugin</packaging>
+  <properties>
+    <java.version>1.8</java.version>
+  </properties>
   <build>
-	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-clean-plugin</artifactId>
-			<configuration>
-				<filesets>
-					<fileset>
-						<directory>xtend-gen</directory>
-						<excludes>
-							<exclude>.gitignore</exclude>
-						</excludes>
-					</fileset>
-				</filesets>
-			</configuration>
-		</plugin>
-		<plugin>
-			<groupId>org.eclipse.xtend</groupId>
-			<artifactId>xtend-maven-plugin</artifactId>
-			<version>${xtend.compiler.version}</version>
-			<executions>
-				<execution>
-					<goals>
-						<goal>compile</goal>
-						<goal>testCompile</goal>
-					</goals>
-				</execution>
-			</executions>
-		</plugin>
-	</plugins>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <configuration>
+                <filesets>
+                    <fileset>
+                        <directory>xtend-gen</directory>
+                        <excludes>
+                            <exclude>.gitignore</exclude>
+                        </excludes>
+                    </fileset>
+                </filesets>
+            </configuration>
+        </plugin>
+        <plugin>
+            <groupId>org.eclipse.xtend</groupId>
+            <artifactId>xtend-maven-plugin</artifactId>
+            <version>${xtend.compiler.version}</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>compile</goal>
+                        <goal>testCompile</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
   </build>
 </project>
