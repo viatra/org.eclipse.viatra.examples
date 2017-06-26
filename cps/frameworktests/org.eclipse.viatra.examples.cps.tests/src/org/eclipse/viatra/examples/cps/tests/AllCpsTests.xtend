@@ -34,6 +34,7 @@ import org.junit.runners.Suite.SuiteClasses
     ModelManipulationSumAggregatorTest,
     ModelManipulationMinMaxAggregatorTest,
     ModelManipulationAvgAggregatorTest,
+    ModelManipulationTrickyJoinTest,
     LocalSearchPlanCostOverflowTest,
     LiteralValuesTest,
     DanglingTest
