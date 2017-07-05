@@ -8,12 +8,12 @@
  * Contributors:
  *     Akos Horvath, Abel Hegedus, Akos Menyhert, Tamas Borbas, Zoltan Ujhelyi - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.examples.cps.generator.tests.constraints
+package org.eclipse.viatra.examples.cps.generator.dtos.constraints.impl
 
 import com.google.common.collect.ImmutableList
 import org.eclipse.viatra.examples.cps.generator.dtos.HostClass
 import org.eclipse.viatra.examples.cps.generator.dtos.MinMaxData
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
 import java.util.HashMap
 
 class OnlyHostTypesCPSConstraints implements ICPSConstraints {

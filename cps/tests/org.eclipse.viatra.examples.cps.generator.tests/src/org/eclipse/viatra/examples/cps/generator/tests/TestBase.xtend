@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.generator.CPSPlans
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
 import org.eclipse.viatra.examples.cps.generator.queries.AppTypesMatcher
 import org.eclipse.viatra.examples.cps.generator.queries.HostTypesMatcher
 import org.eclipse.viatra.examples.cps.generator.utils.CPSGeneratorBuilder

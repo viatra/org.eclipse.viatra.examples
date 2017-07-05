@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.generator.dtos
 
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
 import org.eclipse.viatra.examples.cps.generator.dtos.MinMaxData
 import org.eclipse.viatra.examples.cps.generator.dtos.AppClass
 import org.eclipse.viatra.examples.cps.generator.dtos.HostClass

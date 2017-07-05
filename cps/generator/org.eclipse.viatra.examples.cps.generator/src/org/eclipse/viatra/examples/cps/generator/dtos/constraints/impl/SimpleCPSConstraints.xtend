@@ -8,29 +8,20 @@
  * Contributors:
  *     Akos Horvath, Abel Hegedus, Akos Menyhert, Tamas Borbas, Zoltan Ujhelyi - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.examples.cps.generator.tests.constraints
+package org.eclipse.viatra.examples.cps.generator.dtos.constraints.impl
 
 import java.util.HashMap
 import org.eclipse.viatra.examples.cps.generator.dtos.AppClass
 import org.eclipse.viatra.examples.cps.generator.dtos.HostClass
 import org.eclipse.viatra.examples.cps.generator.dtos.MinMaxData
 import org.eclipse.viatra.examples.cps.generator.dtos.Percentage
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
 
-class AllocationCPSConstraints implements ICPSConstraints {
+class SimpleCPSConstraints implements ICPSConstraints {
 	
-	
-	public String name = "Allocation"
+	public String name = "Simple"
 	val hostClass = new HostClass(
 						"FirstHostClass",
-						new MinMaxData(1, 1), // HostTypes
-						new MinMaxData(2, 2), // HostInstances
-						new MinMaxData(1, 1) // CommLines
-						,new HashMap // Host Comm Ratio
-					)
-					
-	val hostClass2 = new HostClass(
-						"SecondHostClass",
 						new MinMaxData(1, 1), // HostTypes
 						new MinMaxData(2, 2), // HostInstances
 						new MinMaxData(1, 1) // CommLines
@@ -44,12 +35,11 @@ class AllocationCPSConstraints implements ICPSConstraints {
 	override getApplicationClasses() {
 		val firstAppClassAllocations = new HashMap();
 		firstAppClassAllocations.put(hostClass, 1);
-		firstAppClassAllocations.put(hostClass2, 1);
 		#[
 			new AppClass(
 				"FirstAppClass",
 				new MinMaxData(1, 1), // AppTypes
-				new MinMaxData(6, 6), // AppInstances
+				new MinMaxData(1, 1), // AppInstances
 				new MinMaxData(2, 2), // States
 				new MinMaxData(1, 1) // Transitions
 				, new Percentage(100)
@@ -62,12 +52,8 @@ class AllocationCPSConstraints implements ICPSConstraints {
 	
 	override getHostClasses() {
 		hostClass.communicationRatios.put(hostClass, 1);
-		hostClass.communicationRatios.put(hostClass2, 1);
-		
-		hostClass2.communicationRatios.put(hostClass2, 1);
 		#[
-			hostClass,
-			hostClass2
+			hostClass
 		];
 	}
 

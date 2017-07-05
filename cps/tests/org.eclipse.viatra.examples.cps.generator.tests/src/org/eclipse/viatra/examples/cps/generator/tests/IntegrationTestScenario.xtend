@@ -11,7 +11,7 @@
 package org.eclipse.viatra.examples.cps.generator.tests
 
 import java.util.Random
-import org.eclipse.viatra.examples.cps.generator.tests.constraints.scenarios.BasicScenario
+import org.eclipse.viatra.examples.cps.generator.dtos.scenario.impl.BasicScenario
 import org.junit.Test
 import org.junit.Ignore
 

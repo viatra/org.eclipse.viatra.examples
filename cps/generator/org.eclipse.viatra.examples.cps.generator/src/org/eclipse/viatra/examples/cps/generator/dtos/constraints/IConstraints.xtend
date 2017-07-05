@@ -8,7 +8,7 @@
  * Contributors:
  *     Akos Horvath, Abel Hegedus, Akos Menyhert, Zoltan Ujhelyi - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.examples.cps.generator.interfaces
+package org.eclipse.viatra.examples.cps.generator.dtos.constraints
 
 
 interface IConstraints {

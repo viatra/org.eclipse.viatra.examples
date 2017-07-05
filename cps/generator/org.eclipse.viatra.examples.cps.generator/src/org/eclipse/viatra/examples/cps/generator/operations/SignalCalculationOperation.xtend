@@ -1,7 +1,7 @@
 package org.eclipse.viatra.examples.cps.generator.operations
 
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
 import org.eclipse.viatra.examples.cps.generator.utils.RandomUtils
 import org.eclipse.viatra.examples.cps.planexecutor.api.IOperation
 

@@ -29,7 +29,7 @@ import org.eclipse.viatra.examples.cps.generator.dtos.HostClass;
 import org.eclipse.viatra.examples.cps.generator.dtos.MinMaxData;
 import org.eclipse.viatra.examples.cps.generator.dtos.Percentage;
 import org.eclipse.viatra.examples.cps.generator.exceptions.ModelGeneratorException;
-import org.eclipse.viatra.examples.cps.generator.interfaces.ICPSConstraints;
+import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints;
 import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil;
 import org.eclipse.viatra.examples.cps.planexecutor.PlanExecutor;
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment;

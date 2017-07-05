@@ -8,7 +8,7 @@
  * Contributors:
  *     Akos Horvath, Abel Hegedus, Akos Menyhert, Tamas Borbas, Zoltan Ujhelyi - initial API and implementation
  *******************************************************************************/
-package org.eclipse.viatra.examples.cps.generator.tests.constraints.scenarios
+package org.eclipse.viatra.examples.cps.generator.dtos.scenario.impl
 
 import com.google.common.collect.ImmutableList
 import com.google.common.collect.Lists
