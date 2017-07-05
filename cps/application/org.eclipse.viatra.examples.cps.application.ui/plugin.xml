@@ -10,4 +10,14 @@
          name="CPS Transformations"
          icon="platform:/plugin/org.eclipse.viatra.query.tooling.ui/icons/logo2.png"></view>
   </extension>
+  <extension
+        point="org.eclipse.ui.newWizards">
+     <wizard
+           category="org.eclipse.viatra.examples.cps.category"
+           class="org.eclipse.viatra.examples.cps.application.ui.cpsgenerator.CPSGeneratorWizard"
+           icon="platform:/plugin/org.eclipse.viatra.examples.cps.model.editor/icons/full/obj16/CyberPhysicalSystemModelFile.gif"
+           id="org.eclipse.viatra.examples.cps.application.ui.cpsgenerator.CPSGeneratorWizard"
+           name="Generate CPS Model">
+     </wizard>
+  </extension>
 </plugin>

@@ -10,6 +10,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.application.ui
 
+import org.eclipse.core.runtime.ILog
+import org.eclipse.core.runtime.IStatus
+import org.eclipse.core.runtime.Status
 import org.eclipse.jface.resource.ImageRegistry
 import org.eclipse.ui.plugin.AbstractUIPlugin
 import org.osgi.framework.BundleContext
@@ -20,11 +23,14 @@ import org.osgi.framework.BundleContext
  */
 class CPSApplicationUIPlugin extends AbstractUIPlugin {
 
+    public static val String PLUGIN_ID = "org.eclipse.viatra.examples.cps.application.ui"
+
     private static CPSApplicationUIPlugin plugin
 
     public static val ICON_LOAD_QUERY = "load_query"
     public static val ICON_RUN = "run"
     public static val ICON_STOP = "stop"
+    public static val CPS_NEW = "NewCyberPhysicalSystem"
 
     public override void start(BundleContext context) throws Exception {
         super.start(context)
@@ -47,6 +53,13 @@ class CPSApplicationUIPlugin extends AbstractUIPlugin {
                 imageDescriptorFromPlugin("org.eclipse.viatra.query.tooling.ui.browser", "/icons/load_query.png"))
             put(ICON_RUN, imageDescriptorFromPlugin("org.eclipse.viatra.query.tooling.ui", "/icons/load.gif"))
             put(ICON_STOP, imageDescriptorFromPlugin("org.eclipse.viatra.query.tooling.ui", "/icons/unload.gif"))
+            put(CPS_NEW, imageDescriptorFromPlugin("org.eclipse.viatra.examples.cps.model.editor",
+                "/icons/full/wizban/NewCyberPhysicalSystem.gif"))
         ]
+    }
+
+    def void logException(String message, Throwable exception) {
+        var ILog logger = getLog()
+        logger.log(new Status(IStatus.ERROR, PLUGIN_ID, message, exception))
     }
 }

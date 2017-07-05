@@ -5,8 +5,7 @@ Bundle-Vendor: Eclipse VIATRA Project
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.application.ui;singleton:=true
 Bundle-Version: 0.1.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: com.google.guava,
- org.eclipse.core.databinding.observable,
+Require-Bundle: org.eclipse.core.databinding.observable,
  org.eclipse.emf.edit,
  org.eclipse.emf.transaction,
  org.eclipse.jface,
@@ -18,7 +17,11 @@ Require-Bundle: com.google.guava,
  org.eclipse.viatra.query.tooling.ui;bundle-version="[1.6.0,1.8.0)",
  org.eclipse.xtend.lib,
  org.eclipse.xtend.lib.macro,
- org.eclipse.xtext.xbase.lib
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.core.databinding,
+ org.eclipse.core.databinding.property,
+ org.eclipse.ui.ide,
+ org.eclipse.emf.ecore.xmi
 Bundle-Activator: org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin
 Bundle-ActivationPolicy: lazy
 
