@@ -9,17 +9,29 @@
  *   Akos Horvath, Abel Hegedus, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Robert Doczi, Daniel Segesdi, Peter Lunk - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers
+package org.eclipse.viatra.examples.cps.xform.m2m.launcher
 
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized.CPS2DeploymentBatchTransformationOptimized
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.CPS2DeploymentBatchTransformationEiq
+import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
+import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint
 
-class BatchOptimized extends CPSTransformationWrapper {
+class BatchQueryOnly extends CPSTransformationWrapper {
 
-	CPS2DeploymentBatchTransformationOptimized xform
+	CPS2DeploymentBatchTransformationEiq xform
+	AdvancedViatraQueryEngine engine
+	QueryEvaluationHint hint
+	QueryEvaluationHint tracesHint
+
+	new(QueryEvaluationHint hint, QueryEvaluationHint tracesHint) {
+		this.hint = hint
+		this.tracesHint = tracesHint
+	}
 
 	override initializeTransformation(CPSToDeployment cps2dep) {
-		xform = new CPS2DeploymentBatchTransformationOptimized(cps2dep)
+		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
+		xform = new CPS2DeploymentBatchTransformationEiq(cps2dep, engine, hint, tracesHint)
 	}
 
 	override executeTransformation() {
@@ -27,9 +39,10 @@ class BatchOptimized extends CPSTransformationWrapper {
 	}
 
 	override cleanupTransformation() {
-		if(xform != null){
-			xform.dispose
+		if (engine != null) {
+			engine.dispose
 		}
+		engine = null
 		xform = null
 	}
 	

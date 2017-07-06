@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.application.ui.transformationview.util
 
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 
 /**
  * Utility class to get friendly names and filter for the transformations in {@linkplain org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType TransformationType}.

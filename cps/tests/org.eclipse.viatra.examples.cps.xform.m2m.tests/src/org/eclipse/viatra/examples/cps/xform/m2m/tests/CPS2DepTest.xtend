@@ -13,8 +13,8 @@ package org.eclipse.viatra.examples.cps.xform.m2m.tests
 
 import com.google.common.collect.ImmutableSet
 import org.eclipse.viatra.examples.cps.tests.util.PropertiesUtil
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.CPSTransformationWrapper
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 import org.junit.runners.Parameterized.Parameters
 
 class CPS2DepTest extends CPS2DepTestWithoutParameters {

@@ -9,42 +9,32 @@
  *   Akos Horvath, Abel Hegedus, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Robert Doczi, Daniel Segesdi, Peter Lunk - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers
+package org.eclipse.viatra.examples.cps.xform.m2m.launcher
 
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.CPS2DeploymentTransformation
-import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
-import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.simple.CPS2DeploymentBatchTransformationSimple
 
-class ExplicitTraceability extends CPSTransformationWrapper {
-	
-	CPS2DeploymentTransformation xform 
-	AdvancedViatraQueryEngine engine
-	
+class BatchSimple extends CPSTransformationWrapper {
+
+	CPS2DeploymentBatchTransformationSimple xform
+
 	override initializeTransformation(CPSToDeployment cps2dep) {
-		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
-		xform = new CPS2DeploymentTransformation
-		xform.initialize(cps2dep, engine)
+		xform = new CPS2DeploymentBatchTransformationSimple(cps2dep)
 	}
-	
+
 	override executeTransformation() {
-		xform.execute()
-		debug("Explicit Traceability transformation is incremental")
+		xform.execute
 	}
-	
+
 	override cleanupTransformation() {
 		if(xform != null){
 			xform.dispose
 		}
-		if(engine != null){
-			engine.dispose
-		}
 		xform = null
-		engine = null
 	}
 	
 	override isIncremental() {
-		true
+		false
 	}
-	
+
 }

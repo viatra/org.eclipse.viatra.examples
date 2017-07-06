@@ -16,7 +16,7 @@ import java.util.Map
 import java.util.Set
 import org.eclipse.ui.IEditorPart
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 import org.eclipse.xtend.lib.annotations.Accessors
 import org.eclipse.viatra.examples.cps.application.ui.transformationview.util.TransformationConnector
 

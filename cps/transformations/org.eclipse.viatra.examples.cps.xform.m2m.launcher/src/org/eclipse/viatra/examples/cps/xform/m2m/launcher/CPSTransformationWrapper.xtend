@@ -9,7 +9,7 @@
  *   Akos Horvath, Abel Hegedus, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Robert Doczi, Daniel Segesdi, Peter Lunk - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers
+package org.eclipse.viatra.examples.cps.xform.m2m.launcher
 
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment

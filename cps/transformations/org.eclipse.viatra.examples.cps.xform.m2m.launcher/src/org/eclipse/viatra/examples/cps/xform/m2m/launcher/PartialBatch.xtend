@@ -9,29 +9,21 @@
  *   Akos Horvath, Abel Hegedus, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Robert Doczi, Daniel Segesdi, Peter Lunk - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers
+package org.eclipse.viatra.examples.cps.xform.m2m.launcher
 
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.BatchViatraQueryLocalSearchTransformation
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.CPS2DeploymentPartialBatchTransformation
 import org.eclipse.viatra.query.runtime.emf.EMFScope
-import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint
 
-class BatchQueryLocalSearch extends CPSTransformationWrapper {
+class PartialBatch extends CPSTransformationWrapper {
 
-	BatchViatraQueryLocalSearchTransformation xform
+	CPS2DeploymentPartialBatchTransformation xform
 	AdvancedViatraQueryEngine engine
-	QueryEvaluationHint hint
-	QueryEvaluationHint tracesHint
-
-	new(QueryEvaluationHint hint, QueryEvaluationHint tracesHint) {
-		this.hint = hint
-		this.tracesHint = tracesHint
-	}
 
 	override initializeTransformation(CPSToDeployment cps2dep) {
 		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
-		xform = new BatchViatraQueryLocalSearchTransformation(cps2dep, engine, hint, tracesHint)
+		xform = new CPS2DeploymentPartialBatchTransformation(cps2dep, engine)
 	}
 
 	override executeTransformation() {
@@ -39,6 +31,9 @@ class BatchQueryLocalSearch extends CPSTransformationWrapper {
 	}
 
 	override cleanupTransformation() {
+		if(xform != null){
+			xform.dispose
+		}
 		if (engine != null) {
 			engine.dispose
 		}
@@ -47,7 +42,7 @@ class BatchQueryLocalSearch extends CPSTransformationWrapper {
 	}
 	
 	override isIncremental() {
-		false
+		true
 	}
 
 }

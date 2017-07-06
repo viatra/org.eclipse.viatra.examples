@@ -14,7 +14,7 @@ package org.eclipse.viatra.examples.cps.xform.m2m.tests
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil
 import org.eclipse.viatra.examples.cps.tests.util.CPSTestBase
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.CPSTransformationWrapper
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
 import org.junit.After
 
 class CPS2DepTestWithoutParameters extends CPSTestBase {

@@ -9,21 +9,17 @@
  *   Akos Horvath, Abel Hegedus, Tamas Borbas, Marton Bur, Zoltan Ujhelyi, Robert Doczi, Daniel Segesdi, Peter Lunk - initial API and implementation
  *******************************************************************************/
 
-package org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers
+package org.eclipse.viatra.examples.cps.xform.m2m.launcher
 
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.CPS2DeploymentPartialBatchTransformation
-import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized.CPS2DeploymentBatchTransformationOptimized
 
-class PartialBatch extends CPSTransformationWrapper {
+class BatchOptimized extends CPSTransformationWrapper {
 
-	CPS2DeploymentPartialBatchTransformation xform
-	AdvancedViatraQueryEngine engine
+	CPS2DeploymentBatchTransformationOptimized xform
 
 	override initializeTransformation(CPSToDeployment cps2dep) {
-		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
-		xform = new CPS2DeploymentPartialBatchTransformation(cps2dep, engine)
+		xform = new CPS2DeploymentBatchTransformationOptimized(cps2dep)
 	}
 
 	override executeTransformation() {
@@ -34,15 +30,11 @@ class PartialBatch extends CPSTransformationWrapper {
 		if(xform != null){
 			xform.dispose
 		}
-		if (engine != null) {
-			engine.dispose
-		}
-		engine = null
 		xform = null
 	}
 	
 	override isIncremental() {
-		true
+		false
 	}
 
 }

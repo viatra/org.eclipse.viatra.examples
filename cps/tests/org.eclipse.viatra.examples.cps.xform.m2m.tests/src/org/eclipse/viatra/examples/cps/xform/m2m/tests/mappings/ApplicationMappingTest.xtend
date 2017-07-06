@@ -15,7 +15,7 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.xform.m2m.tests.CPS2DepTest
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.CPSTransformationWrapper
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

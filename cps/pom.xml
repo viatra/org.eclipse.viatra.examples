@@ -29,6 +29,7 @@
 		
 
 		<!-- M2M Transformations -->
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.launcher</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.util</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.simple</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized</module>

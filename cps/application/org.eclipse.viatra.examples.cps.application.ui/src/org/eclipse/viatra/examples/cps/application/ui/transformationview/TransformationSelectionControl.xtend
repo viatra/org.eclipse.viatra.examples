@@ -18,7 +18,7 @@ import org.eclipse.jface.viewers.StructuredSelection
 import org.eclipse.swt.SWT
 import org.eclipse.swt.widgets.Composite
 import org.eclipse.ui.menus.WorkbenchWindowControlContribution
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.wrappers.TransformationType
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 import org.eclipse.viatra.examples.cps.application.ui.transformationview.util.TransformationTypeNames
 
 /**
