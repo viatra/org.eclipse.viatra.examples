@@ -56,7 +56,7 @@ public class ChangeMonitorJob<Match extends IPatternMatch> extends StatelessJob<
 	@SuppressWarnings("unchecked")
 	private void store(DeploymentElement changedElement,Context context) {
 		Map<DeploymentElement, String> map = (Map<DeploymentElement, String>) context.get(OUTDATED_ELEMENTS);
-		// Sotre the old data in the values of the map
+		// Store the old data in the values of the map
 		if(changedElement instanceof DeploymentHost){
 			map.put(changedElement, ((Map<DeploymentHost,String>)context.get(HOSTS)).get((DeploymentHost)changedElement));						
 		}

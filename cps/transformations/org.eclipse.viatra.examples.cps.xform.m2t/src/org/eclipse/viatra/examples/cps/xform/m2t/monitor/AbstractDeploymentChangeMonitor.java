@@ -42,7 +42,8 @@ public abstract class AbstractDeploymentChangeMonitor {
 	public abstract DeploymentChangeDelta createCheckpoint();
 	
 	/**
-	 * Returns all changed elements between the last two checkpoints
+	 * Returns all changed elements since the last call to {@link #createCheckpoint()}
+	 * 
 	 * @return the DTO containing the changed elements
 	 */
 	public abstract DeploymentChangeDelta getDeltaSinceLastCheckpoint();

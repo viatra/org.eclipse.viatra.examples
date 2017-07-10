@@ -97,13 +97,18 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 	
 	@Override 
 	public DeploymentChangeDelta createCheckpoint() {
-		appearBetweenCheckpoints = appearAccumulator;
+		// Save current values
+	    appearBetweenCheckpoints = appearAccumulator;
 		updateBetweenCheckpoints = updateAccumulator;
 		disappearBetweenCheckpoints = disappearAccumulator;
+		deploymentBetweenCheckpointsChanged = deploymentChanged;
+
+		// Reset current values
 		appearAccumulator = Sets.newHashSet();
 		updateAccumulator = Sets.newHashSet();
 		disappearAccumulator = Sets.newHashSet();
-		deploymentBetweenCheckpointsChanged = deploymentChanged;
+		deploymentChanged = false;
+		
 		Map<DeploymentElement, String> elementsUpdatedOrDeleted = (Map<DeploymentElement, String>) executionSchema.getContext().get(ChangeMonitorJob.OUTDATED_ELEMENTS);
 		if(elementsUpdatedOrDeleted == null){
 		    elementsUpdatedOrDeleted = Maps.newHashMap();
