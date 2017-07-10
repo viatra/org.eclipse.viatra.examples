@@ -52,6 +52,9 @@
 		
 		<!--  Application -->
 		<module>application/org.eclipse.viatra.examples.cps.application.ui</module>
+		<module>releng/org.eclipse.viatra.examples.cps.application.dependencies.feature</module>
+		<module>releng/org.eclipse.viatra.examples.cps.application.feature</module>
+		<module>releng/org.eclipse.viatra.examples.cps.application.product</module>
 		
 		<!-- Tests -->
 		<module>tests/org.eclipse.viatra.examples.cps.generator.tests</module>
@@ -117,11 +120,6 @@
 						</artifact>
 					</target>
 					<environments>
-						<environment>
-							<os>win32</os>
-							<ws>win32</ws>
-							<arch>x86</arch>
-						</environment>
 						<environment>
 							<os>win32</os>
 							<ws>win32</ws>

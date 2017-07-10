@@ -6,12 +6,16 @@
             <unit id="com.google.inject.multibindings" version="3.0.0.v201402270930"/>
             <unit id="org.eclipse.emf.sdk.feature.group" version="2.13.0.v20170504-0807"/>
             <unit id="org.eclipse.emf.transaction.feature.group" version="1.11.0.201706061339"/>
+            <unit id="org.eclipse.emf.validation.feature.group" version="1.11.0.201706061352"/>
             <unit id="org.eclipse.equinox.sdk.feature.group" version="3.13.0.v20170531-1133"/>
             <unit id="org.eclipse.sdk.feature.group" version="4.7.0.v20170531-2000"/>
+            <unit id="org.eclipse.draw2d.feature.group" version="3.10.100.201606061308"/>
+            <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.9.1.201705291011"/>
             <repository location="http://download.eclipse.org/releases/oxygen/201706091000"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <unit id="org.eclipse.xtext.sdk.feature.group" version="2.10.0.v201605250459"/>
+            <unit id="org.eclipse.xtext.redist.feature.group" version="2.10.0.v201605250459"/>
             <repository location="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.10.0"/>
         </location>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">

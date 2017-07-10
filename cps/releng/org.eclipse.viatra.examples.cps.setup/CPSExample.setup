@@ -178,6 +178,10 @@
       <requirement
           name="org.eclipse.viatra.transformation.debug.feature.feature.group"
           versionRange="[0.13.0,0.18.0)"/>
+      <requirement
+          name="org.eclipse.draw2d.feature.group"/>
+      <requirement
+          name="org.eclipse.emf.validation.feature.group"/>
       <repositoryList
           name="Dependencies">
         <repository
