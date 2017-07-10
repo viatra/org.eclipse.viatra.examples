@@ -32,6 +32,8 @@ import org.eclipse.ui.IEditorPart
 import org.eclipse.emf.edit.domain.IEditingDomainProvider
 import org.eclipse.emf.common.command.IdentityCommand
 import org.eclipse.viatra.examples.cps.application.ui.transformationview.util.TransformationConnector
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
+import org.eclipse.jface.dialogs.MessageDialog
 
 /** 
  * A view to load, start and remove VIATRA transformations on a selected CPS To Deployment model.
@@ -107,43 +109,50 @@ class TransformationManagerView extends ViewPart {
 
         loadTransformAction = new Action("Load New Transformation on CPS To Deployment") {
             override void run() {
-                super.run()
-                val editorPart = site?.page?.activeEditor
+                var CPSTransformationWrapper wrapper
+                try {
+                    super.run()
+                    val editorPart = site?.page?.activeEditor
 
-                if (editorPart === null)
-                    return;
+                    if (editorPart === null)
+                        return;
 
-                if (!TransformationRegistry.instance.containsKey(editorPart)) {
+                    if (!TransformationRegistry.instance.containsKey(editorPart)) {
 
-                    val transformationType = TransformationRegistry.instance.newTransformationType
-                    val wrapper = transformationType.wrapper
+                        val transformationType = TransformationRegistry.instance.newTransformationType
+                        wrapper = transformationType.wrapper
 
-                    val modelConnector = AdapterUtil.getModelConnectorFromIEditorPart(editorPart) as EMFModelConnector
-                    modelConnector.loadModel(IModelConnectorTypeEnum.RESOURCESET)
-                    val tracemodel = modelConnector.selectedEObjects.onlyElement as CPSToDeployment
+                        val modelConnector = AdapterUtil.
+                            getModelConnectorFromIEditorPart(editorPart) as EMFModelConnector
+                        modelConnector.loadModel(IModelConnectorTypeEnum.RESOURCESET)
+                        val tracemodel = modelConnector.selectedEObjects.onlyElement as CPSToDeployment
 
-                    val transformationConnector = new TransformationConnector(transformationType, wrapper,
-                        modelConnector, tracemodel)
+                        val transformationConnector = new TransformationConnector(transformationType, wrapper,
+                            modelConnector, tracemodel)
 
-                    modelConnector.addListener(new IModelConnectorListener() {
-                        override modelUnloaded(IModelConnector it) {
+                        wrapper.initializeTransformation(tracemodel)
 
-                            val modelConnector = transformationConnector.modelConnector
-                            modelConnector.removeListener(this)
-                            val editorPart = modelConnector.owner as IEditorPart
+                        modelConnector.addListener(new IModelConnectorListener() {
+                            override modelUnloaded(IModelConnector it) {
 
-                            transformationConnector.wrapper.cleanupTransformation
+                                val modelConnector = transformationConnector.modelConnector
+                                modelConnector.removeListener(this)
+                                val editorPart = modelConnector.owner as IEditorPart
 
-                            TransformationRegistry.instance.remove(editorPart)
-                        }
-                    })
+                                transformationConnector.wrapper.cleanupTransformation
 
-                    TransformationRegistry.instance.put(editorPart, transformationConnector)
+                                TransformationRegistry.instance.remove(editorPart)
+                            }
+                        })
 
-                    wrapper.initializeTransformation(tracemodel)
+                        TransformationRegistry.instance.put(editorPart, transformationConnector)
+                    }
+
+                    selectionHandler.refreshState()
+                } catch (Exception e) {
+                    wrapper?.cleanupTransformation
+                    MessageDialog.openError(site?.shell, "Error loading transformation", e.message)
                 }
-
-                selectionHandler.refreshState()
             }
         }
         loadTransformAction => [
