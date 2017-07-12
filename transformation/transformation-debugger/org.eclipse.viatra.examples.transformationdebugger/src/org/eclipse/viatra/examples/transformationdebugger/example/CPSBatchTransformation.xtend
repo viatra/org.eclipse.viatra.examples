@@ -87,7 +87,7 @@ class CPSBatchTransformation implements CPSTransformation {
     private def createTransformation() {
         this.manipulation = new SimpleModelManipulations(engine)
         transformation = BatchTransformation.forEngine(engine).addAdapterConfiguration(
-            new TransformationDebuggerConfiguration()).build
+            new TransformationDebuggerConfiguration("CPSBatchTransformation")).build
         statements = transformation.transformationStatements
     }
 

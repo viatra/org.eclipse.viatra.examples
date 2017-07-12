@@ -109,7 +109,7 @@ public class CPSEventDrivenTransformation implements CPSTransformation {
     private def createTransformation() {
         transformation = EventDrivenTransformation.forEngine(engine).setConflictResolver(createConflictResolver).
             addRule(getHostRule).addRule(getApplicationRule) // Create a debug adapter
-            .addAdapterConfiguration(new TransformationDebuggerConfiguration())
+            .addAdapterConfiguration(new TransformationDebuggerConfiguration("CPSEventDrivenTransformation"))
             .build
     }
 
