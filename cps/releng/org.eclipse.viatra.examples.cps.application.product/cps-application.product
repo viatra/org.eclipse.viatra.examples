@@ -8,6 +8,9 @@
 
    <launcherArgs>
       <vmArgs>-Dosgi.framework.extensions=org.eclipse.fx.osgi -Xms512M -Xmx3G
+-Dcom.sun.management.jmxremote.port=&quot;10990&quot;
+-Dcom.sun.management.jmxremote.authenticate=false
+-Dcom.sun.management.jmxremote.ssl=false
       </vmArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts
       </vmArgsMac>

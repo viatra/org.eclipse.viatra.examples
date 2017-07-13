@@ -21,6 +21,7 @@ import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchT
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformationStatements
 
 import static com.google.common.base.Preconditions.*
+import org.eclipse.viatra.transformation.debug.configuration.TransformationDebuggerConfiguration
 
 class CPS2DeploymentBatchViatra {
 	extension Logger logger = Logger.getLogger("cps.xform.m2m.batch.viatra")
@@ -38,6 +39,10 @@ class CPS2DeploymentBatchViatra {
     private var initialized = false;
 
     def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine) {
+        initialize(cps2dep, engine, false, null)
+    }
+    
+    def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine, boolean isDebuggable, String debugName) {
         checkArgument(cps2dep != null, "Mapping cannot be null!")
         checkArgument(cps2dep.cps != null, "CPS not defined in mapping!")
         checkArgument(cps2dep.deployment != null, "Deployment not defined in mapping!")
@@ -48,7 +53,14 @@ class CPS2DeploymentBatchViatra {
             this.engine = engine
             ruleProvider = new RuleProvider(engine, cps2dep)
             
-            transformation = BatchTransformation.forEngine(engine).build
+            val transformationBuilder = BatchTransformation.forEngine(engine)
+
+            if (isDebuggable) {
+                val debuggerConfig = new TransformationDebuggerConfiguration(debugName ?: "CPS2DeploymentBatchViatra")
+                transformationBuilder.addAdapterConfiguration(debuggerConfig)
+            }
+
+            transformation = transformationBuilder.build
             statements = transformation.transformationStatements
             
             debug("Preparing queries on engine.")

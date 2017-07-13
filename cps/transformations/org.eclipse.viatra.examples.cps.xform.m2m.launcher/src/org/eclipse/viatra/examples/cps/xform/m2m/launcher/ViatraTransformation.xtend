@@ -16,18 +16,15 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.CPS2DeploymentTrans
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine
 import org.eclipse.viatra.query.runtime.emf.EMFScope
 
-class ViatraTransformation extends CPSTransformationWrapper {
+class ViatraTransformation extends CPSViatraTransformationWrapper {
 	
 	CPS2DeploymentTransformationViatra xform 
 	AdvancedViatraQueryEngine engine
-	
-	
-	
-	override initializeTransformation(CPSToDeployment cps2dep) {
+    
+    override initializeDebuggableTransformation(CPSToDeployment cps2dep, boolean isDebuggable, String debugName) {
 		engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(cps2dep.eResource.resourceSet));
 		xform = new CPS2DeploymentTransformationViatra
-		xform.initialize(cps2dep,engine)
-
+		xform.initialize(cps2dep, engine, isDebuggable, debugName)
 	}
 	
 	override executeTransformation() {

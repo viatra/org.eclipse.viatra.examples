@@ -23,6 +23,7 @@ import org.eclipse.viatra.transformation.evm.api.Scheduler.ISchedulerFactory
 import org.eclipse.viatra.transformation.runtime.emf.transformation.eventdriven.EventDrivenTransformation
 
 import static com.google.common.base.Preconditions.*
+import org.eclipse.viatra.transformation.debug.configuration.TransformationDebuggerConfiguration
 
 class CPS2DeploymentTransformationViatra {
 
@@ -38,6 +39,10 @@ class CPS2DeploymentTransformationViatra {
     private var initialized = false;
 
     def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine) {
+        initialize(cps2dep, engine, false, null)
+    }
+    
+    def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine, boolean isDebuggable, String debugName) {
         checkArgument(cps2dep != null, "Mapping cannot be null!")
         checkArgument(cps2dep.cps != null, "CPS not defined in mapping!")
         checkArgument(cps2dep.deployment != null, "Deployment not defined in mapping!")
@@ -55,7 +60,7 @@ class CPS2DeploymentTransformationViatra {
             info("Preparing transformation rules.")
             watch = Stopwatch.createStarted
             ruleProvider = new RuleProvider(engine, cps2dep)
-            createTransformation
+            createTransformation(isDebuggable, debugName)
             info('''Prepared transformation rules («watch.elapsed(TimeUnit.MILLISECONDS)» ms)''')
             initialized = true
         }
@@ -73,7 +78,7 @@ class CPS2DeploymentTransformationViatra {
     }
     
 
-    private def createTransformation() {
+    private def createTransformation(boolean isDebuggable, String debugName) {
         val fixedPriorityResolver = new PerJobFixedPriorityConflictResolver
         fixedPriorityResolver.setPriority(hostRule.ruleSpecification, 1)
         fixedPriorityResolver.setPriority(applicationRule.ruleSpecification, 2)
@@ -90,12 +95,17 @@ class CPS2DeploymentTransformationViatra {
              .addRule(stateRule)
              .addRule(transitionRule)
              .addRule(triggerRule)
-         if(factory!=null){
-             builder.schedulerFactory = factory
-         }
-         
-         transform = builder.build 
-       }
+        if (factory != null) {
+            builder.schedulerFactory = factory
+        }
+        if (isDebuggable) {
+            val debuggerConfig = new TransformationDebuggerConfiguration(debugName ?:
+                "CPS2DeploymentTransformationViatra")
+            builder.addAdapterConfiguration(debuggerConfig)
+        }
+
+        transform = builder.build
+    }
 
     def dispose() {
         if (transform != null) {

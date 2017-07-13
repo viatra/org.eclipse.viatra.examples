@@ -34,6 +34,11 @@ class TransformationRegistry {
 
     @Accessors
     TransformationType newTransformationType = TransformationType.BATCH_VIATRA_TRANSFORMATION
+    
+    def void setNewTransformationType(TransformationType newTransformationType) {
+        this.newTransformationType = newTransformationType;
+        listeners.forEach[transformationTypeChanged(newTransformationType)]
+    }
 
     private static class LazyHolder {
         final static TransformationRegistry INSTANCE = new TransformationRegistry()
@@ -68,8 +73,10 @@ class TransformationRegistry {
     def boolean addListener(ITransformationRegistryListener listener, boolean notifyForCurrentElements) {
         val added = listeners.add(listener)
         
-        if (notifyForCurrentElements)
+        if (notifyForCurrentElements) {
             transformationMap.values.forEach[listener.transformationAdded(it)]
+            listener.transformationTypeChanged(newTransformationType)
+        }
             
         return added
     }

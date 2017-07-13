@@ -104,6 +104,10 @@ public enum TransformationType {
     },
     BATCH_VIATRA_TRANSFORMATION {
         public CPSTransformationWrapper getWrapper() {return new BatchViatra();}
+
+        public boolean isDebuggable() {
+            return true;
+        }
     },
     INCR_VIATRA_QUERY_RESULT_TRACEABILITY {
         public CPSTransformationWrapper getWrapper() {return new QueryResultTraceability();}
@@ -116,7 +120,15 @@ public enum TransformationType {
     },
     INCR_VIATRA_TRANSFORMATION {
         public CPSTransformationWrapper getWrapper() {return new ViatraTransformation();}
+
+        public boolean isDebuggable() {
+            return true;
+        }
     };
 
     public abstract CPSTransformationWrapper getWrapper();
+
+    public boolean isDebuggable() {
+        return false;
+    }
 }

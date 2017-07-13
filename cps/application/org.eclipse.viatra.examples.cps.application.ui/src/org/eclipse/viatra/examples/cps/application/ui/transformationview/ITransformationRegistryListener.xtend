@@ -11,6 +11,7 @@
 package org.eclipse.viatra.examples.cps.application.ui.transformationview
 
 import org.eclipse.viatra.examples.cps.application.ui.transformationview.util.TransformationConnector
+import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 
 /**
  * Interface for listening for changes in {@link ManageTransformationsModel}.
@@ -20,4 +21,6 @@ interface ITransformationRegistryListener {
     def void transformationRemoved(TransformationConnector connector)
 
     def void transformationAdded(TransformationConnector connector)
+    
+    def void transformationTypeChanged(TransformationType newTransformationType)
 }
