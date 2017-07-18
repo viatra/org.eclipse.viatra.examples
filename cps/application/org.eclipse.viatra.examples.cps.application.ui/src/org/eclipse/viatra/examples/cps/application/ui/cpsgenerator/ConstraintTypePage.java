@@ -55,6 +55,8 @@ public class ConstraintTypePage extends WizardPage {
     private Label scaleLabel;
     private Text scaleText;
     private Button openModelCheckButton;
+    private Label seedLabel;
+    private Text seedText;
 
     public ConstraintTypePage() {
         super("wizardPage");
@@ -127,6 +129,15 @@ public class ConstraintTypePage extends WizardPage {
 
         Label separator = new Label(container, SWT.SEPARATOR | SWT.HORIZONTAL);
         separator.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 2, 1));
+        
+        seedLabel = new Label(container, SWT.NONE);
+        seedLabel.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+        seedLabel.setText("Random seed:");
+        
+        seedText = new Text(container, SWT.BORDER);
+        seedText.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 1, 1));
+        seedText.addModifyListener((e) -> getWizard().getContainer().updateButtons());
+        seedText.setText(Long.toString(System.nanoTime()));
 
         openModelCheckButton = new Button(container, SWT.CHECK);
         openModelCheckButton.setSelection(true);
@@ -142,10 +153,14 @@ public class ConstraintTypePage extends WizardPage {
         if (scalableRadioButton.getSelection()) {
             ScalableConstraints constraints = (ScalableConstraints) scalableType.getStructuredSelection()
                     .getFirstElement();
-            return constraints.getConstraints(Integer.parseInt(scaleText.getText()), new Random(0));
+            return constraints.getConstraints(Integer.parseInt(scaleText.getText()), new Random(getSeed()));
         }
 
         return null;
+    }
+    
+    public long getSeed() {
+        return Long.parseLong(seedText.getText());
     }
 
     public boolean shouldOpenModel() {
@@ -173,13 +188,27 @@ public class ConstraintTypePage extends WizardPage {
         }
     }
 
+    private boolean isSeedValid() {
+        try {
+            Long.parseLong(seedText.getText());
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     private boolean validate() {
         // If validation happens before the control was created
-        if (scalableRadioButton == null)
+        if (scalableRadioButton == null || seedText == null)
             return false;
 
         if (scalableRadioButton.getSelection() && !isScaleValid()) {
             setErrorMessage("Enter a positive integer as scaling factor");
+            return false;
+        }
+
+        if (!isSeedValid()) {
+            setErrorMessage("Enter an integer as seed");
             return false;
         }
 

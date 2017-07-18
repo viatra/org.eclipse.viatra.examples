@@ -170,7 +170,7 @@ public class CPSGeneratorWizard extends Wizard implements INewWizard {
         ICPSConstraints plainConstaints = constraintPage.getConstraints();
         ICPSConstraints constraints = plainConstaints != null ? plainConstaints : detailsPage.getConstraints();
 
-        CPSGeneratorInput input = new CPSGeneratorInput(0, constraints, cps);
+        CPSGeneratorInput input = new CPSGeneratorInput(constraintPage.getSeed(), constraints, cps);
         PlanExecutor<CPSFragment, CPSGeneratorInput> generator = new PlanExecutor<>();
         CPSFragment fragment = generator.process(CPSPlanBuilder.buildDefaultPlan(), input);
 
