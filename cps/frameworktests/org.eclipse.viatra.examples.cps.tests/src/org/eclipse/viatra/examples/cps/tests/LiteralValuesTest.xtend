@@ -18,7 +18,7 @@ import org.eclipse.viatra.examples.cps.tests.queries.util.RunningAppInstancesQue
 
 class LiteralValuesTest {
     
-    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_literalUsage.snapshot"
+    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_literalUsage.snapshot"
     
     extension AllBackendTypes = new AllBackendTypes
     

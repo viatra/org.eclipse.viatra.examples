@@ -37,7 +37,7 @@ class FlattenedPatternCallCpsTest {
     def static Collection<Object[]> testData() {
         newArrayList(Sets.cartesianProduct(
             newHashSet(BackendType.values),
-            #{"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"},
+            #{"org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"},
             newHashSet(CalleeQuerySpecification.instance, Callee2QuerySpecification.instance)
         ).map[it.toArray])
     }

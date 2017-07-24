@@ -33,7 +33,7 @@ import org.junit.Test
 
 class LocalSearchPlanCostOverflowTest {
  
-    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test.snapshot"
+    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
     
     ResourceSet rs
     

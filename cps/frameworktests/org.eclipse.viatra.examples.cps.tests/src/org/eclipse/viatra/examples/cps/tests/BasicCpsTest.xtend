@@ -48,7 +48,7 @@ import java.io.File
 
 class BasicCpsTest {
     
-    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test.snapshot"
+    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
     
     extension AllBackendTypes = new AllBackendTypes
     

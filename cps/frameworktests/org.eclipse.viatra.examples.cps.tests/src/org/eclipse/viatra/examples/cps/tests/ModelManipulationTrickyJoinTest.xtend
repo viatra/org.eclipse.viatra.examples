@@ -25,7 +25,7 @@ import org.junit.runners.Parameterized.Parameter
 
 @RunWith(Parameterized)
 class ModelManipulationTrickyJoinTest {
-    public static val SNAPSHOT_PATH = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_trickyJoin.snapshot"
+    public static val SNAPSHOT_PATH = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_trickyJoin.snapshot"
     
     @Parameters(name = "{index}: {1}")
     public static def data() {
@@ -59,7 +59,7 @@ class ModelManipulationTrickyJoinTest {
                             	val newIdentifier = identifier.substring(0, lastCharIndex) + replacement
                             	identifier = newIdentifier
 							])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_trickyJoin.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_trickyJoin.snapshot")
                         .assertEquals
     }
     

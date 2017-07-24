@@ -55,7 +55,7 @@ class BaseIndexerTest {
             CyberPhysicalSystemPackage.eINSTANCE.hostInstance_CommunicateWith,
             EcorePackage.eINSTANCE.EString
         }
-        val models = #{"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"}
+        val models = #{"org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"}
         val datas = Sets.cartesianProduct(elements, models);
         return Collections2.transform(datas, [it.toArray]);
     }

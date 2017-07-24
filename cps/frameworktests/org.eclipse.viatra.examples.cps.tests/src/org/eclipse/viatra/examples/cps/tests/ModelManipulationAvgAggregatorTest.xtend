@@ -30,7 +30,7 @@ class ModelManipulationAvgAggregatorTest {
 	def static Collection<Object[]> testData() {
 		newArrayList(
 			#[
-				"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+				"org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"
 			]
 		)
 	}
@@ -43,7 +43,7 @@ class ModelManipulationAvgAggregatorTest {
 		ViatraQueryTest.test(AvgCPUQuerySpecification.instance).with(BackendType.Rete.newBackendInstance)
 			.on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath)).
 			modify(HostInstance, [true], [host|host.availableCpu = 10]).with(
-				"org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_avgCPU.snapshot")
+				"org.eclipse.viatra.examples.cps.tests/models/snapshots/test_avgCPU.snapshot")
 				//Divison by zero happens in an eval
 				.assertEquals(Level::WARN)
 	}

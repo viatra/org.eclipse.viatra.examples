@@ -37,7 +37,7 @@ class AggregatorTest {
     def static Collection<Object[]> testData() {
         newArrayList(
             #[ 
-                "org.eclipse.viatra.examples.cps.tests.instances/aggregators.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests/models/instances/aggregators.cyberphysicalsystem"
             ]
         )
     }

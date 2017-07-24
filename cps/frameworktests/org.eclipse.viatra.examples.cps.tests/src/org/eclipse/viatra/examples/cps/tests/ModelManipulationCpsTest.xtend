@@ -39,7 +39,7 @@ import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.junit.Test
 
 class ModelManipulationCpsTest {
-    public static val SNAPSHOT_PATH = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test.snapshot"
+    public static val SNAPSHOT_PATH = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
 
     @Test
     def void test_newAppInstance() {
@@ -59,7 +59,7 @@ class ModelManipulationCpsTest {
                                     it.type = appType
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newAppInstance.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newAppInstance.snapshot")
                         .assertEquals
     }
 
@@ -79,7 +79,7 @@ class ModelManipulationCpsTest {
                                 // identifier to "simple.cps.app.FirstAppClass0.instModified"
                                 appInst.identifier = "simple.cps.app.FirstAppClass0.instModified"
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_changeAppInstanceIdentifier.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_changeAppInstanceIdentifier.snapshot")
                         .assertEquals
     }
 
@@ -99,7 +99,7 @@ class ModelManipulationCpsTest {
                                 // identifier to "simple.cps.app.FirstAppClassModified"
                                 appType.identifier = "simple.cps.app.FirstAppClassModified"
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_changeAppTypeIdentifier.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_changeAppTypeIdentifier.snapshot")
                         .assertEquals
     }
     
@@ -118,7 +118,7 @@ class ModelManipulationCpsTest {
                                 // delete the Application Instance "simple.cps.app.FirstAppClass0.inst1"
                                 EcoreUtil.delete(appInst)
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteAppInstance.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteAppInstance.snapshot")
                         .assertEquals
     }
 
@@ -137,7 +137,7 @@ class ModelManipulationCpsTest {
                                 // delete the Application Type "simple.cps.app.FirstAppClass0"
                                 EcoreUtil.delete(appType)
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteAppType.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteAppType.snapshot")
                         .assertEquals
     }
     
@@ -162,7 +162,7 @@ class ModelManipulationCpsTest {
                                     it.communicateWith += hostInst
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newHostInstance.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newHostInstance.snapshot")
                         .assertEquals
     }
     
@@ -184,7 +184,7 @@ class ModelManipulationCpsTest {
                                                         .findFirst[it.identifier == "simple.cps.host.SecondHostClass0.inst0"]
                                 appInst.allocatedTo = hostInst
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_changeAppInstanceAllocationLocation.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_changeAppInstanceAllocationLocation.snapshot")
                         .assertEquals
     }
     
@@ -206,7 +206,7 @@ class ModelManipulationCpsTest {
                                                         .findFirst[it.identifier == "simple.cps.app.SecondAppClass0"]
                                 appInst.type = appType
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_changeAppInstanceType.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_changeAppInstanceType.snapshot")
                         .assertEquals
     }
     
@@ -228,7 +228,7 @@ class ModelManipulationCpsTest {
                                     state.outgoingTransitions += it
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newTransition.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newTransition.snapshot")
                         .assertEquals
     }
     
@@ -243,7 +243,7 @@ class ModelManipulationCpsTest {
                         .modify(HostType,
                             [it.identifier == "simple.cps.host.FirstHostClass0"],
                             [ EcoreUtil.delete(it, true) ] )
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteHostType.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteHostType.snapshot")
                         .assertEquals
     }
     
@@ -266,7 +266,7 @@ class ModelManipulationCpsTest {
                                     hostType.instances += it
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newHostInstanceWithMoreRamThanHdd.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newHostInstanceWithMoreRamThanHdd.snapshot")
                         .assertEquals
     }
     
@@ -290,7 +290,7 @@ class ModelManipulationCpsTest {
                                     hostType.instances += it
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newHostInstanceWithMoreHddThanRam.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newHostInstanceWithMoreHddThanRam.snapshot")
                         .assertEquals
     }
     
@@ -305,7 +305,7 @@ class ModelManipulationCpsTest {
                         .modify(HostInstance,
                             [it.identifier == "simple.cps.host.SecondHostClass0.inst1"],
                             [ EcoreUtil.delete(it) ] )
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteHostInstanceWithTheMostHostedApplication.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteHostInstanceWithTheMostHostedApplication.snapshot")
                         .assertEquals
     }
     
@@ -323,7 +323,7 @@ class ModelManipulationCpsTest {
                         .modify(HostType,
                             [true],
                             [ EcoreUtil.delete(it) ] )
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteAllHostType.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteAllHostType.snapshot")
                         .assertEquals
     }
     
@@ -339,7 +339,7 @@ class ModelManipulationCpsTest {
                         .modify(HostInstance,
                             [true],
                             [ EcoreUtil.delete(it) ] )
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_deleteAllHostInstance.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_deleteAllHostInstance.snapshot")
                         .assertEquals
     }
     
@@ -399,7 +399,7 @@ class ModelManipulationCpsTest {
                                     ]
                                 ]
                             ])
-                        .with("org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_newComplexStructure.snapshot")
+                        .with("org.eclipse.viatra.examples.cps.tests/models/snapshots/test_newComplexStructure.snapshot")
                         .assertEquals
     }
 }

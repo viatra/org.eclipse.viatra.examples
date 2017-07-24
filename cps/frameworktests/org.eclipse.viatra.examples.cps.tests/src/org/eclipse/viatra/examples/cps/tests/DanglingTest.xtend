@@ -17,8 +17,8 @@ import org.eclipse.viatra.query.runtime.base.api.BaseIndexOptions
 import org.eclipse.viatra.query.testing.snapshot.QuerySnapshot
 
 class DanglingTest {
-    val snapshot = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dangling.snapshot"
-    public String modelPath = "org.eclipse.viatra.examples.cps.tests.instances/dangling.cyberphysicalsystem"
+    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dangling.snapshot"
+    public String modelPath = "org.eclipse.viatra.examples.cps.tests/models/instances/dangling.cyberphysicalsystem"
    
      
     extension AllBackendTypes = new AllBackendTypes

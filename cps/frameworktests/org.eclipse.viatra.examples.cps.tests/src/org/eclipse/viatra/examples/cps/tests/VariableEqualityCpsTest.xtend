@@ -41,7 +41,7 @@ class VariableEqualityCpsTest {
     def static Collection<Object[]> testData() {
         newArrayList(
             #[ 
-                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"
             ]
         )
     }

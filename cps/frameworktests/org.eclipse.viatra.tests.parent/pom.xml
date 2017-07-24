@@ -16,14 +16,12 @@
         
         <!-- CPS based unit tests -->
         <module>../org.eclipse.viatra.examples.cps.tests</module>
-        <module>../org.eclipse.viatra.examples.cps.tests.instances</module>
-        <module>../org.eclipse.viatra.examples.cps.tests.queries</module>
     </modules>
     
     <properties>
         <tycho.version>1.0.0</tycho.version>
         <xtend.compiler.version>2.11.0</xtend.compiler.version>
-        <viatra.compiler.version>1.6.0-SNAPSHOT</viatra.compiler.version>
+        <viatra.compiler.version>1.7.0-SNAPSHOT</viatra.compiler.version>
         
         <jacoco.version>0.7.6.201602180812</jacoco.version>
         <jacoco.targetdir>${project.basedir}/../target</jacoco.targetdir>

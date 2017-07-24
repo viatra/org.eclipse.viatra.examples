@@ -23,12 +23,12 @@ import org.junit.Test
 
 class DRedTest {
 
-	val initial = "org.eclipse.viatra.examples.cps.tests.instances/dred.cyberphysicalsystem"
-	val snapshot_dred_deps_init = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dred_deps_init.snapshot"
-	val snapshot_dred_deps_a3a2_del = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dred_deps_a3a2_del.snapshot"
-	val snapshot_dred_deps_a3a5_del = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dred_deps_a3a5_del.snapshot"
-	val snapshot_dred_deps_all = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dred_deps_all.snapshot"
-	val snapshot_dred_deps_components = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_dred_deps_components.snapshot"
+	val initial = "org.eclipse.viatra.examples.cps.tests/models/instances/dred.cyberphysicalsystem"
+	val snapshot_dred_deps_init = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dred_deps_init.snapshot"
+	val snapshot_dred_deps_a3a2_del = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dred_deps_a3a2_del.snapshot"
+	val snapshot_dred_deps_a3a5_del = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dred_deps_a3a5_del.snapshot"
+	val snapshot_dred_deps_all = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dred_deps_all.snapshot"
+	val snapshot_dred_deps_components = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_dred_deps_components.snapshot"
 
 	@Test
 	def void testInitialDependencies() {

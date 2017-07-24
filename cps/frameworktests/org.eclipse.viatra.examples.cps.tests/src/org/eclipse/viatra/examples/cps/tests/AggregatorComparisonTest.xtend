@@ -28,7 +28,7 @@ class AggregatorComparisonTest {
     def static Collection<Object[]> testData() {
         newArrayList(Sets.cartesianProduct(
             newHashSet(BackendType.values),
-            #{"org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"},
+            #{"org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"},
             <List<IQuerySpecification>>newHashSet(
                 #[HostInstanceWithMinCPU1QuerySpecification.instance, HostInstanceWithMinCPU2QuerySpecification.instance]
             )

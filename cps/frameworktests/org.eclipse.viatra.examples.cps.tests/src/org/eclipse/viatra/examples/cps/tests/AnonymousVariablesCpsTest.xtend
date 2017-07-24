@@ -37,10 +37,10 @@ class AnonymousVariablesCpsTest {
     def static Collection<Object[]> testData() {
         newArrayList(
             #[  BackendType.Rete,
-                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"
             ],
             #[  BackendType.LocalSearch,
-                "org.eclipse.viatra.examples.cps.tests.instances/demo.cyberphysicalsystem"
+                "org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"
             ]
         )
     }

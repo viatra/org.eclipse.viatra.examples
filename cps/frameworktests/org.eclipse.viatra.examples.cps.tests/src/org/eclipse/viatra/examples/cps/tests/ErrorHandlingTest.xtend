@@ -23,7 +23,7 @@ import org.apache.log4j.Level
 class ErrorHandlingTest {
     
     def getScope() {
-        val uri = URI.createPlatformPluginURI("org.eclipse.viatra.examples.cps.tests.instances/dangling.cyberphysicalsystem", false)
+        val uri = URI.createPlatformPluginURI("org.eclipse.viatra.examples.cps.tests/models/instances/dangling.cyberphysicalsystem", false)
         val ResourceSet rSet = new ResourceSetImpl()
         rSet.getResource(uri , true)
         return new EMFScope(rSet)

@@ -22,10 +22,10 @@ import org.junit.BeforeClass
 import org.junit.Test
 
 class RecursionCpsTest {
-    String snpRecOrig = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_chainRec.snapshot"
-    String snpRecModified = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_communicationRemoved_chainRec.snapshot"
-    String snpTCOrig = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_chainTC.snapshot"
-    String snpTCModified = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test_recursion_communicationRemoved_chainTC.snapshot"
+    String snpRecOrig = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_recursion_chainRec.snapshot"
+    String snpRecModified = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_recursion_communicationRemoved_chainRec.snapshot"
+    String snpTCOrig = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_recursion_chainTC.snapshot"
+    String snpTCModified = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_recursion_communicationRemoved_chainTC.snapshot"
     
     static var CoverageAnalyzer coverage;
     

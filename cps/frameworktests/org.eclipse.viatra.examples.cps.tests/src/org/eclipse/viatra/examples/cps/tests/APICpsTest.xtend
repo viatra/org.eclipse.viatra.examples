@@ -36,8 +36,8 @@ class APICpsTest {
     extension SnapshotHelper = new SnapshotHelper
 
     public static val TESTED_PATTERN = "org.eclipse.viatra.examples.cps.tests.queries.transitionsOfApplicationType"
-    public static val TESTED_QUERY_FILE = "org.eclipse.viatra.examples.cps.tests.queries/org/eclipse/viatra/examples/cps/tests/queries/simpleCpsQueries.vql"
-    public static val TESTED_SNAPSHOT = "org.eclipse.viatra.examples.cps.tests.queries/snapshots/test.snapshot"
+    public static val TESTED_QUERY_FILE = "org.eclipse.viatra.examples.cps.tests/org/eclipse/viatra/examples/cps/tests/queries/simpleCpsQueries.vql"
+    public static val TESTED_SNAPSHOT = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
 
     @BeforeClass
     static def initParser() {
