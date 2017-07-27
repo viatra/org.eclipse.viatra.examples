@@ -251,10 +251,20 @@ public class HostTypeImpl extends MinimalEObjectImpl.Container implements HostTy
      */
 	public CyberPhysicalSystem getCps() {
         if (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS) return null;
-        return (CyberPhysicalSystem)eInternalContainer();
+        return (CyberPhysicalSystem)eContainer();
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CyberPhysicalSystem basicGetCps() {
+        if (eContainerFeatureID() != CyberPhysicalSystemPackage.HOST_TYPE__CPS) return null;
+        return (CyberPhysicalSystem)eInternalContainer();
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -292,7 +302,7 @@ public class HostTypeImpl extends MinimalEObjectImpl.Container implements HostTy
      */
 	public EList<HostInstance> getInstances() {
         if (instances == null) {
-            instances = new EObjectContainmentEList<HostInstance>(HostInstance.class, this, CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES);
+            instances = new EObjectContainmentEList.Resolving<HostInstance>(HostInstance.class, this, CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES);
         }
         return instances;
     }
@@ -360,7 +370,8 @@ public class HostTypeImpl extends MinimalEObjectImpl.Container implements HostTy
             case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
                 return getDefaultHdd();
             case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-                return getCps();
+                if (resolve) return getCps();
+                return basicGetCps();
             case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
                 return getInstances();
         }
@@ -446,7 +457,7 @@ public class HostTypeImpl extends MinimalEObjectImpl.Container implements HostTy
             case CyberPhysicalSystemPackage.HOST_TYPE__DEFAULT_HDD:
                 return defaultHdd != DEFAULT_HDD_EDEFAULT;
             case CyberPhysicalSystemPackage.HOST_TYPE__CPS:
-                return getCps() != null;
+                return basicGetCps() != null;
             case CyberPhysicalSystemPackage.HOST_TYPE__INSTANCES:
                 return instances != null && !instances.isEmpty();
         }

@@ -44,7 +44,7 @@ public interface Request extends Identifiable {
      * @see #unsetRequirements()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequest_Requirements()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Requirement#getRequest
-     * @model opposite="request" containment="true" unsettable="true"
+     * @model opposite="request" containment="true" resolveProxies="true" unsettable="true"
      * @generated
      */
 	EList<Requirement> getRequirements();

@@ -122,7 +122,7 @@ public class RequestImpl extends MinimalEObjectImpl.Container implements Request
      */
 	public EList<Requirement> getRequirements() {
         if (requirements == null) {
-            requirements = new EObjectContainmentWithInverseEList.Unsettable<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
+            requirements = new EObjectContainmentWithInverseEList.Unsettable.Resolving<Requirement>(Requirement.class, this, CyberPhysicalSystemPackage.REQUEST__REQUIREMENTS, CyberPhysicalSystemPackage.REQUIREMENT__REQUEST);
         }
         return requirements;
     }

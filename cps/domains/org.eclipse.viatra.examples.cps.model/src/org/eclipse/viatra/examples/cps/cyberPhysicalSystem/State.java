@@ -40,7 +40,7 @@ public interface State extends Identifiable {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Outgoing Transitions</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getState_OutgoingTransitions()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	EList<Transition> getOutgoingTransitions();

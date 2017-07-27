@@ -71,7 +71,7 @@ public interface CyberPhysicalSystem extends Identifiable {
      * @return the value of the '<em>App Types</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getCyberPhysicalSystem_AppTypes()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getCps
-     * @model opposite="cps" containment="true"
+     * @model opposite="cps" containment="true" resolveProxies="true"
      * @generated
      */
 	EList<ApplicationType> getAppTypes();
@@ -87,7 +87,7 @@ public interface CyberPhysicalSystem extends Identifiable {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Requests</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getCyberPhysicalSystem_Requests()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	EList<Request> getRequests();
@@ -105,7 +105,7 @@ public interface CyberPhysicalSystem extends Identifiable {
      * @return the value of the '<em>Host Types</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getCyberPhysicalSystem_HostTypes()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType#getCps
-     * @model opposite="cps" containment="true"
+     * @model opposite="cps" containment="true" resolveProxies="true"
      * @generated
      */
 	EList<HostType> getHostTypes();

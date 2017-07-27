@@ -220,10 +220,20 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
      */
 	public Request getRequest() {
         if (eContainerFeatureID() != CyberPhysicalSystemPackage.REQUIREMENT__REQUEST) return null;
-        return (Request)eInternalContainer();
+        return (Request)eContainer();
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public Request basicGetRequest() {
+        if (eContainerFeatureID() != CyberPhysicalSystemPackage.REQUIREMENT__REQUEST) return null;
+        return (Request)eInternalContainer();
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -419,7 +429,8 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__COUNT:
                 return getCount();
             case CyberPhysicalSystemPackage.REQUIREMENT__REQUEST:
-                return getRequest();
+                if (resolve) return getRequest();
+                return basicGetRequest();
             case CyberPhysicalSystemPackage.REQUIREMENT__TYPE:
                 if (resolve) return getType();
                 return basicGetType();
@@ -515,7 +526,7 @@ public class RequirementImpl extends MinimalEObjectImpl.Container implements Req
             case CyberPhysicalSystemPackage.REQUIREMENT__COUNT:
                 return count != COUNT_EDEFAULT;
             case CyberPhysicalSystemPackage.REQUIREMENT__REQUEST:
-                return getRequest() != null;
+                return basicGetRequest() != null;
             case CyberPhysicalSystemPackage.REQUIREMENT__TYPE:
                 return isSetType();
             case CyberPhysicalSystemPackage.REQUIREMENT__APPLICATIONS:

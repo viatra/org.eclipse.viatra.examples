@@ -355,10 +355,20 @@ public class ApplicationInstanceImpl extends MinimalEObjectImpl.Container implem
      */
 	public ApplicationType getType() {
         if (eContainerFeatureID() != CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE) return null;
-        return (ApplicationType)eInternalContainer();
+        return (ApplicationType)eContainer();
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public ApplicationType basicGetType() {
+        if (eContainerFeatureID() != CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE) return null;
+        return (ApplicationType)eInternalContainer();
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -482,7 +492,8 @@ public class ApplicationInstanceImpl extends MinimalEObjectImpl.Container implem
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DEPEND_ON:
                 return getDependOn();
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE:
-                return getType();
+                if (resolve) return getType();
+                return basicGetType();
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__PRIORITY:
                 return getPriority();
         }
@@ -584,7 +595,7 @@ public class ApplicationInstanceImpl extends MinimalEObjectImpl.Container implem
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__DEPEND_ON:
                 return dependOn != null && !dependOn.isEmpty();
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE:
-                return getType() != null;
+                return basicGetType() != null;
             case CyberPhysicalSystemPackage.APPLICATION_INSTANCE__PRIORITY:
                 return priority != PRIORITY_EDEFAULT;
         }

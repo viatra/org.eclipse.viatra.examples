@@ -124,7 +124,7 @@ public interface ApplicationType extends Identifiable {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Requirements</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Requirements()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	EList<ResourceRequirement> getRequirements();
@@ -170,7 +170,7 @@ public interface ApplicationType extends Identifiable {
      * @return the value of the '<em>Instances</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Instances()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance#getType
-     * @model opposite="type" containment="true"
+     * @model opposite="type" containment="true" resolveProxies="true"
      * @generated
      */
 	EList<ApplicationInstance> getInstances();
@@ -186,7 +186,7 @@ public interface ApplicationType extends Identifiable {
      * @return the value of the '<em>Behavior</em>' containment reference.
      * @see #setBehavior(StateMachine)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Behavior()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	StateMachine getBehavior();

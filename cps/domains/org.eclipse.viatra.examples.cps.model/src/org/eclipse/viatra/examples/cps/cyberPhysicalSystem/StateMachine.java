@@ -41,7 +41,7 @@ public interface StateMachine extends Identifiable {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>States</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getStateMachine_States()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	EList<State> getStates();

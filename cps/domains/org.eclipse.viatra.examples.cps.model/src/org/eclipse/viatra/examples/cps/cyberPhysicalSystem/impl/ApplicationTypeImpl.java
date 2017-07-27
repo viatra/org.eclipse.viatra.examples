@@ -276,7 +276,7 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
      */
 	public EList<ResourceRequirement> getRequirements() {
         if (requirements == null) {
-            requirements = new EObjectContainmentEList<ResourceRequirement>(ResourceRequirement.class, this, CyberPhysicalSystemPackage.APPLICATION_TYPE__REQUIREMENTS);
+            requirements = new EObjectContainmentEList.Resolving<ResourceRequirement>(ResourceRequirement.class, this, CyberPhysicalSystemPackage.APPLICATION_TYPE__REQUIREMENTS);
         }
         return requirements;
     }
@@ -288,10 +288,20 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
      */
 	public CyberPhysicalSystem getCps() {
         if (eContainerFeatureID() != CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS) return null;
-        return (CyberPhysicalSystem)eInternalContainer();
+        return (CyberPhysicalSystem)eContainer();
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public CyberPhysicalSystem basicGetCps() {
+        if (eContainerFeatureID() != CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS) return null;
+        return (CyberPhysicalSystem)eInternalContainer();
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -329,7 +339,7 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
      */
 	public EList<ApplicationInstance> getInstances() {
         if (instances == null) {
-            instances = new EObjectContainmentWithInverseEList<ApplicationInstance>(ApplicationInstance.class, this, CyberPhysicalSystemPackage.APPLICATION_TYPE__INSTANCES, CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE);
+            instances = new EObjectContainmentWithInverseEList.Resolving<ApplicationInstance>(ApplicationInstance.class, this, CyberPhysicalSystemPackage.APPLICATION_TYPE__INSTANCES, CyberPhysicalSystemPackage.APPLICATION_INSTANCE__TYPE);
         }
         return instances;
     }
@@ -340,10 +350,33 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
      * @generated
      */
 	public StateMachine getBehavior() {
+        if (behavior != null && behavior.eIsProxy()) {
+            InternalEObject oldBehavior = (InternalEObject)behavior;
+            behavior = (StateMachine)eResolveProxy(oldBehavior);
+            if (behavior != oldBehavior) {
+                InternalEObject newBehavior = (InternalEObject)behavior;
+                NotificationChain msgs = oldBehavior.eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR, null, null);
+                if (newBehavior.eInternalContainer() == null) {
+                    msgs = newBehavior.eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR, null, msgs);
+                }
+                if (msgs != null) msgs.dispatch();
+                if (eNotificationRequired())
+                    eNotify(new ENotificationImpl(this, Notification.RESOLVE, CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR, oldBehavior, behavior));
+            }
+        }
         return behavior;
     }
 
 	/**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public StateMachine basicGetBehavior() {
+        return behavior;
+    }
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -449,11 +482,13 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__REQUIREMENTS:
                 return getRequirements();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS:
-                return getCps();
+                if (resolve) return getCps();
+                return basicGetCps();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__INSTANCES:
                 return getInstances();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:
-                return getBehavior();
+                if (resolve) return getBehavior();
+                return basicGetBehavior();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -552,7 +587,7 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__REQUIREMENTS:
                 return requirements != null && !requirements.isEmpty();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS:
-                return getCps() != null;
+                return basicGetCps() != null;
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__INSTANCES:
                 return instances != null && !instances.isEmpty();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:

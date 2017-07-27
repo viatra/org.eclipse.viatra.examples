@@ -122,7 +122,7 @@ public class StateImpl extends MinimalEObjectImpl.Container implements State {
      */
 	public EList<Transition> getOutgoingTransitions() {
         if (outgoingTransitions == null) {
-            outgoingTransitions = new EObjectContainmentEList<Transition>(Transition.class, this, CyberPhysicalSystemPackage.STATE__OUTGOING_TRANSITIONS);
+            outgoingTransitions = new EObjectContainmentEList.Resolving<Transition>(Transition.class, this, CyberPhysicalSystemPackage.STATE__OUTGOING_TRANSITIONS);
         }
         return outgoingTransitions;
     }

@@ -150,7 +150,7 @@ public interface HostType extends Identifiable {
 	 * <!-- end-user-doc -->
      * @return the value of the '<em>Instances</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_Instances()
-     * @model containment="true"
+     * @model containment="true" resolveProxies="true"
      * @generated
      */
 	EList<HostInstance> getInstances();

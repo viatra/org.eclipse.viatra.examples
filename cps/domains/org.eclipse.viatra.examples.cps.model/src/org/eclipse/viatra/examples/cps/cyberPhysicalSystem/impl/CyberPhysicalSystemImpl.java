@@ -189,7 +189,7 @@ public class CyberPhysicalSystemImpl extends MinimalEObjectImpl.Container implem
      */
 	public EList<ApplicationType> getAppTypes() {
         if (appTypes == null) {
-            appTypes = new EObjectContainmentWithInverseEList<ApplicationType>(ApplicationType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES, CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS);
+            appTypes = new EObjectContainmentWithInverseEList.Resolving<ApplicationType>(ApplicationType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__APP_TYPES, CyberPhysicalSystemPackage.APPLICATION_TYPE__CPS);
         }
         return appTypes;
     }
@@ -201,7 +201,7 @@ public class CyberPhysicalSystemImpl extends MinimalEObjectImpl.Container implem
      */
 	public EList<Request> getRequests() {
         if (requests == null) {
-            requests = new EObjectContainmentEList<Request>(Request.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS);
+            requests = new EObjectContainmentEList.Resolving<Request>(Request.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__REQUESTS);
         }
         return requests;
     }
@@ -213,7 +213,7 @@ public class CyberPhysicalSystemImpl extends MinimalEObjectImpl.Container implem
      */
 	public EList<HostType> getHostTypes() {
         if (hostTypes == null) {
-            hostTypes = new EObjectContainmentWithInverseEList<HostType>(HostType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystemPackage.HOST_TYPE__CPS);
+            hostTypes = new EObjectContainmentWithInverseEList.Resolving<HostType>(HostType.class, this, CyberPhysicalSystemPackage.CYBER_PHYSICAL_SYSTEM__HOST_TYPES, CyberPhysicalSystemPackage.HOST_TYPE__CPS);
         }
         return hostTypes;
     }

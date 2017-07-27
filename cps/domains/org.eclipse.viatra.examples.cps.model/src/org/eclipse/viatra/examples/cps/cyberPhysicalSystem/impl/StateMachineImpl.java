@@ -133,7 +133,7 @@ public class StateMachineImpl extends MinimalEObjectImpl.Container implements St
      */
 	public EList<State> getStates() {
         if (states == null) {
-            states = new EObjectContainmentEList<State>(State.class, this, CyberPhysicalSystemPackage.STATE_MACHINE__STATES);
+            states = new EObjectContainmentEList.Resolving<State>(State.class, this, CyberPhysicalSystemPackage.STATE_MACHINE__STATES);
         }
         return states;
     }
