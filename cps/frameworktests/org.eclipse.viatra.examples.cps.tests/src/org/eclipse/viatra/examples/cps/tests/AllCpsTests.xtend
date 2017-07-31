@@ -38,6 +38,7 @@ import org.junit.runners.Suite.SuiteClasses
     LocalSearchPlanCostOverflowTest,
     LiteralValuesTest,
     DanglingTest,
-    DRedTest
+    DRedTest,
+    TransitiveClosureTest
 ])
 class AllCpsTests {}

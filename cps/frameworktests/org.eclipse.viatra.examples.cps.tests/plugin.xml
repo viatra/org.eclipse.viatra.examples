@@ -116,6 +116,11 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.instances"/>
     </group>
   </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.TransitiveClosureQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.TransitiveClosureQueries" id="org.eclipse.viatra.examples.cps.tests.queries.TransitiveClosureQueries">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.statesTC"/>
+    </group>
+  </extension>
   <extension id="org.eclipse.viatra.examples.cps.tests.queries.TrickyJoin" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.TrickyJoin" id="org.eclipse.viatra.examples.cps.tests.queries.TrickyJoin">
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.trickyJoin1"/>
