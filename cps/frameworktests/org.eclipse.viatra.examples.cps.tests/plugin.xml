@@ -24,6 +24,18 @@
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.UnreachableStatesOfStateMachines"/>
     </group>
   </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.CrossResourceContainmentTestQuery" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.CrossResourceContainmentTestQuery" id="org.eclipse.viatra.examples.cps.tests.queries.CrossResourceContainmentTestQuery">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.hostInstancesPerHostTypes"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.hostInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.hostTypes"/>
+    </group>
+  </extension>
+  <extension id="org.eclipse.viatra.examples.cps.tests.queries.CrossResourceReferenceTestQuery" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.CrossResourceReferenceTestQuery" id="org.eclipse.viatra.examples.cps.tests.queries.CrossResourceReferenceTestQuery">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.AppInstanceAllocatedToHostInstance"/>
+    </group>
+  </extension>
   <extension id="org.eclipse.viatra.examples.cps.tests.queries.DanglingTestQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
     <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.tests.queries.DanglingTestQueries" id="org.eclipse.viatra.examples.cps.tests.queries.DanglingTestQueries">
       <query-specification fqn="org.eclipse.viatra.examples.cps.tests.queries.stateToState1"/>
