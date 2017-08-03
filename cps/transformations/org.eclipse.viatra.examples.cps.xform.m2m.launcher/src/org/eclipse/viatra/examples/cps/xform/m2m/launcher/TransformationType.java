@@ -27,7 +27,6 @@ import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 
 public enum TransformationType {
@@ -39,7 +38,7 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_RETE {
     	public CPSTransformationWrapper getWrapper() {
-    		QueryEvaluationHint hint = new QueryEvaluationHint(new ReteBackendFactory(), ImmutableMap.<String, Object>of());
+    		QueryEvaluationHint hint = new QueryEvaluationHint(null, new ReteBackendFactory());
 	    	return new BatchQueryOnly(hint, hint);
 	    }
     },
@@ -92,7 +91,7 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
     	public CPSTransformationWrapper getWrapper() {
-    		QueryEvaluationHint hint = LocalSearchHints.getDefault().setAllowInverse(false).setUseBase(false).build();
+    		QueryEvaluationHint hint = LocalSearchHints.getDefault().setUseBase(false).build();
 			return new BatchQueryLocalSearch(hint, hint);
     	}
     },
