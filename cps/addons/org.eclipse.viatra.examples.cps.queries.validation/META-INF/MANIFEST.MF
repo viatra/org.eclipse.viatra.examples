@@ -5,11 +5,11 @@ Bundle-SymbolicName: org.eclipse.viatra.examples.cps.queries.validation;singleto
 Bundle-Version: 0.1.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Require-Bundle: org.eclipse.viatra.examples.cps.queries,
- com.google.guava,
- org.eclipse.viatra.examples.cps.model,
- org.eclipse.viatra.examples.cps.traceability,
- org.eclipse.viatra.examples.cps.deployment,
- org.eclipse.viatra.query.runtime,
- org.eclipse.viatra.addon.validation.core,
- org.eclipse.viatra.addon.validation.runtime
+  com.google.guava,
+  org.eclipse.viatra.examples.cps.model,
+  org.eclipse.viatra.examples.cps.traceability,
+  org.eclipse.viatra.examples.cps.deployment,
+  org.eclipse.viatra.query.runtime,
+  org.eclipse.viatra.addon.validation.core,
+  org.eclipse.viatra.addon.validation.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
