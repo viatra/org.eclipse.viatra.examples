@@ -78,7 +78,7 @@ class CrossResourceContainmentTest {
         Assert.assertTrue(matches.empty)
     }
 
-    // Source is in scope, Target is not
+    // Source is in scope, Target is not (Resource scope)
     @Test
     def void crossContTest_2() {        
         val option = new BaseIndexOptions().withDanglingFreeAssumption(danglingFreeAssum)
@@ -92,7 +92,7 @@ class CrossResourceContainmentTest {
         Assert.assertTrue(danglingFreeAssum || matches.empty)
     }
 
-    // Target and Source are in the Scope
+    // Target and Source are in the Scope (ResourceSet scope)
     @Test
     def void crossContTest_3() {                
         val option = new BaseIndexOptions().withDanglingFreeAssumption(danglingFreeAssum)
@@ -107,4 +107,18 @@ class CrossResourceContainmentTest {
         Assert.assertEquals(matches.get(0).get(1), myHostInstance)
     }
     
+    // Target and Source are in the Scope (Resource scope)
+    @Test
+    def void crossContTest_4() {        
+        val option = new BaseIndexOptions().withDanglingFreeAssumption(danglingFreeAssum)
+        val AdvancedViatraQueryEngine engine = AdvancedViatraQueryEngine.createUnmanagedEngine(
+            new EMFScope(myHostType, option));
+        val ViatraQueryMatcher<? extends IPatternMatch> matcher = engine.getMatcher(
+            HostInstancesPerHostTypesQuerySpecification.instance);
+        val Collection<? extends IPatternMatch> matches = matcher.getAllMatches();
+
+        Assert.assertFalse(matches.empty)
+        Assert.assertEquals(matches.get(0).get(0), myHostType)
+        Assert.assertEquals(matches.get(0).get(1), myHostInstance)
+    }
 }
