@@ -30,6 +30,7 @@
         eType="#//ApplicationInstance" containment="true" eOpposite="#//ApplicationInstance/type"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behavior" eType="#//StateMachine"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="exeFileSize" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HostType" eSuperTypes="#//Identifiable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultCpu" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

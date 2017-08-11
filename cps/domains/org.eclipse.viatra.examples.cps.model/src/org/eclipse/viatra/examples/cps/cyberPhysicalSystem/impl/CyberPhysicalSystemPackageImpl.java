@@ -330,6 +330,15 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public EAttribute getApplicationType_ExeFileSize() {
+        return (EAttribute)applicationTypeEClass.getEStructuralFeatures().get(7);
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -796,6 +805,7 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         createEReference(applicationTypeEClass, APPLICATION_TYPE__CPS);
         createEReference(applicationTypeEClass, APPLICATION_TYPE__INSTANCES);
         createEReference(applicationTypeEClass, APPLICATION_TYPE__BEHAVIOR);
+        createEAttribute(applicationTypeEClass, APPLICATION_TYPE__EXE_FILE_SIZE);
 
         hostTypeEClass = createEClass(HOST_TYPE);
         createEAttribute(hostTypeEClass, HOST_TYPE__DEFAULT_CPU);
@@ -914,6 +924,7 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         initEReference(getApplicationType_Cps(), this.getCyberPhysicalSystem(), this.getCyberPhysicalSystem_AppTypes(), "cps", null, 1, 1, ApplicationType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getApplicationType_Instances(), this.getApplicationInstance(), this.getApplicationInstance_Type(), "instances", null, 0, -1, ApplicationType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
         initEReference(getApplicationType_Behavior(), this.getStateMachine(), null, "behavior", null, 0, 1, ApplicationType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+        initEAttribute(getApplicationType_ExeFileSize(), ecorePackage.getELong(), "exeFileSize", null, 0, 1, ApplicationType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
         initEClass(hostTypeEClass, HostType.class, "HostType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
         initEAttribute(getHostType_DefaultCpu(), ecorePackage.getEInt(), "defaultCpu", null, 0, 1, HostType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

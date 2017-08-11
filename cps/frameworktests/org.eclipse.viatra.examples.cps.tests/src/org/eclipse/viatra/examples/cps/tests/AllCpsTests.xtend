@@ -41,6 +41,7 @@ import org.junit.runners.Suite.SuiteClasses
     DRedTest,
     TransitiveClosureTest,
     CrossResourceContainmentTest,
-    CrossResourceReferenceTest
+    CrossResourceReferenceTest,
+    LongLiteralTest
 ])
 class AllCpsTests {}

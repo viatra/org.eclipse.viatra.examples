@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getCps <em>Cps</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getInstances <em>Instances</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getBehavior <em>Behavior</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getExeFileSize <em>Exe File Size</em>}</li>
  * </ul>
  *
  * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType()
@@ -200,5 +201,31 @@ public interface ApplicationType extends Identifiable {
      * @generated
      */
 	void setBehavior(StateMachine value);
+
+    /**
+     * Returns the value of the '<em><b>Exe File Size</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Exe File Size</em>' attribute isn't clear,
+     * there really should be more of a description here...
+     * </p>
+     * <!-- end-user-doc -->
+     * @return the value of the '<em>Exe File Size</em>' attribute.
+     * @see #setExeFileSize(long)
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_ExeFileSize()
+     * @model
+     * @generated
+     */
+    long getExeFileSize();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getExeFileSize <em>Exe File Size</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value the new value of the '<em>Exe File Size</em>' attribute.
+     * @see #getExeFileSize()
+     * @generated
+     */
+    void setExeFileSize(long value);
 
 } // ApplicationType

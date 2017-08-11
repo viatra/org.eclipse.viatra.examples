@@ -23,3 +23,12 @@ pattern optionalRequirements(r : Requirement) {
 pattern runningAppInstances(appI : ApplicationInstance) {
 	ApplicationInstance.state(appI, ::Running);
 }
+
+pattern longValueConstant(appT : ApplicationType){
+    ApplicationType.exeFileSize(appT, 0l);
+}
+
+pattern longValueConstantWithCheck(appT : ApplicationType){
+    ApplicationType.exeFileSize(appT, value);
+    check(value == 0l);
+}

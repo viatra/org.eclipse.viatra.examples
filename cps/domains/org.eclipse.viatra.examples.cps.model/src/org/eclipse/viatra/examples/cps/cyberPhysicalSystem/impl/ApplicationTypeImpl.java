@@ -51,6 +51,7 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine;
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.ApplicationTypeImpl#getCps <em>Cps</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.ApplicationTypeImpl#getInstances <em>Instances</em>}</li>
  *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.ApplicationTypeImpl#getBehavior <em>Behavior</em>}</li>
+ *   <li>{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.ApplicationTypeImpl#getExeFileSize <em>Exe File Size</em>}</li>
  * </ul>
  *
  * @generated
@@ -167,6 +168,26 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
 	protected StateMachine behavior;
 
 	/**
+     * The default value of the '{@link #getExeFileSize() <em>Exe File Size</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getExeFileSize()
+     * @generated
+     * @ordered
+     */
+    protected static final long EXE_FILE_SIZE_EDEFAULT = 0L;
+
+    /**
+     * The cached value of the '{@link #getExeFileSize() <em>Exe File Size</em>}' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see #getExeFileSize()
+     * @generated
+     * @ordered
+     */
+    protected long exeFileSize = EXE_FILE_SIZE_EDEFAULT;
+
+    /**
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
@@ -412,6 +433,27 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
 
 	/**
      * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public long getExeFileSize() {
+        return exeFileSize;
+    }
+
+    /**
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    public void setExeFileSize(long newExeFileSize) {
+        long oldExeFileSize = exeFileSize;
+        exeFileSize = newExeFileSize;
+        if (eNotificationRequired())
+            eNotify(new ENotificationImpl(this, Notification.SET, CyberPhysicalSystemPackage.APPLICATION_TYPE__EXE_FILE_SIZE, oldExeFileSize, exeFileSize));
+    }
+
+    /**
+     * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      */
@@ -489,6 +531,8 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:
                 if (resolve) return getBehavior();
                 return basicGetBehavior();
+            case CyberPhysicalSystemPackage.APPLICATION_TYPE__EXE_FILE_SIZE:
+                return getExeFileSize();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -528,6 +572,9 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:
                 setBehavior((StateMachine)newValue);
                 return;
+            case CyberPhysicalSystemPackage.APPLICATION_TYPE__EXE_FILE_SIZE:
+                setExeFileSize((Long)newValue);
+                return;
         }
         super.eSet(featureID, newValue);
     }
@@ -564,6 +611,9 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:
                 setBehavior((StateMachine)null);
                 return;
+            case CyberPhysicalSystemPackage.APPLICATION_TYPE__EXE_FILE_SIZE:
+                setExeFileSize(EXE_FILE_SIZE_EDEFAULT);
+                return;
         }
         super.eUnset(featureID);
     }
@@ -592,6 +642,8 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
                 return instances != null && !instances.isEmpty();
             case CyberPhysicalSystemPackage.APPLICATION_TYPE__BEHAVIOR:
                 return behavior != null;
+            case CyberPhysicalSystemPackage.APPLICATION_TYPE__EXE_FILE_SIZE:
+                return exeFileSize != EXE_FILE_SIZE_EDEFAULT;
         }
         return super.eIsSet(featureID);
     }
@@ -614,6 +666,8 @@ public class ApplicationTypeImpl extends MinimalEObjectImpl.Container implements
         result.append(exeType);
         result.append(", zipFileUrl: ");
         result.append(zipFileUrl);
+        result.append(", exeFileSize: ");
+        result.append(exeFileSize);
         result.append(')');
         return result.toString();
     }

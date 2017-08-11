@@ -259,13 +259,22 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 	int APPLICATION_TYPE__BEHAVIOR = IDENTIFIABLE_FEATURE_COUNT + 6;
 
 	/**
+     * The feature id for the '<em><b>Exe File Size</b></em>' attribute.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     * @ordered
+     */
+    int APPLICATION_TYPE__EXE_FILE_SIZE = IDENTIFIABLE_FEATURE_COUNT + 7;
+
+    /**
      * The number of structural features of the '<em>Application Type</em>' class.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
      * @generated
      * @ordered
      */
-	int APPLICATION_TYPE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 7;
+	int APPLICATION_TYPE_FEATURE_COUNT = IDENTIFIABLE_FEATURE_COUNT + 8;
 
 	/**
      * The number of operations of the '<em>Application Type</em>' class.
@@ -1116,6 +1125,17 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 	EReference getApplicationType_Behavior();
 
 	/**
+     * Returns the meta object for the attribute '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getExeFileSize <em>Exe File Size</em>}'.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return the meta object for the attribute '<em>Exe File Size</em>'.
+     * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType#getExeFileSize()
+     * @see #getApplicationType()
+     * @generated
+     */
+    EAttribute getApplicationType_ExeFileSize();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostType <em>Host Type</em>}'.
      * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1772,6 +1792,14 @@ public interface CyberPhysicalSystemPackage extends EPackage {
 		EReference APPLICATION_TYPE__BEHAVIOR = eINSTANCE.getApplicationType_Behavior();
 
 		/**
+         * The meta object literal for the '<em><b>Exe File Size</b></em>' attribute feature.
+         * <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         * @generated
+         */
+        EAttribute APPLICATION_TYPE__EXE_FILE_SIZE = eINSTANCE.getApplicationType_ExeFileSize();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.viatra.examples.cps.cyberPhysicalSystem.impl.HostTypeImpl <em>Host Type</em>}' class.
          * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
