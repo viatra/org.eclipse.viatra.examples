@@ -33,6 +33,7 @@ import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameter
 import org.junit.runners.Parameterized.Parameters
+import com.google.inject.Injector
 
 /**
  * This test reproduces bug 520878. As the bug only affects the generated code, this test executes the same patterns with {@link GenericQuerySpecification}
@@ -54,11 +55,11 @@ class LongLiteralTest {
     public String modelPath
 
     ResourceSet rs
-    
+    Injector injector
     
     @Before
     def void prepareTest() {
-        EMFPatternLanguageStandaloneSetup.doSetup
+        injector = new EMFPatternLanguageStandaloneSetup().createInjectorAndDoEMFRegistration
         val modelUri = XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath)
         rs = new ResourceSetImpl
         rs.getResource(modelUri, true)
@@ -81,7 +82,7 @@ class LongLiteralTest {
         val hint = backendType.hints
         val modelProvider = new PatternBasedMatchSetModelProvider(hint)
         
-        val patterns = PatternParsingUtil.parsePatterns('''
+        val patterns = PatternParsingUtil.parseQueryDefinitions('''
             package test
             import "http://org.eclipse.viatra/model/cps"        
 
@@ -93,7 +94,7 @@ class LongLiteralTest {
                 ApplicationType.exeFileSize(appT, value);
                 check(value == 0l);
             }        
-        ''')
+        ''', injector)
         
         val equalityMatchSet = modelProvider.getMatchSetRecord(rs, patterns.findFirst[it.fullyQualifiedName == "test.longValueConstant"] as IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, null)
         val withCheckMatchSet = modelProvider.getMatchSetRecord(rs, patterns.findFirst[it.fullyQualifiedName == "test.longValueConstantWithCheck"] as IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, null)
