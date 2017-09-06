@@ -3,7 +3,8 @@
       id="org.eclipse.viatra.examples.cps.application.dependencies.feature"
       label="CPS Demonstrator Application dependencies"
       version="0.1.0.qualifier"
-      provider-name="IncQuery Labs Ltd.">
+      provider-name="IncQuery Labs Ltd."
+      license-feature="org.eclipse.license">
 
    <description url="http://www.example.com/description">
       [Enter Feature Description here.]
@@ -12,10 +13,6 @@
    <copyright url="http://www.example.com/copyright">
       [Enter Copyright Description here.]
    </copyright>
-
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
 
    <plugin
          id="com.google.guava"
