@@ -105,10 +105,10 @@ class CPS2DeploymentPartialBatchTransformation {
 	 *             does not contain a cps and a deployment model.
 	 */
 	new(CPSToDeployment mapping, ViatraQueryEngine engine) {
-		checkArgument(mapping != null, "Mapping cannot be null!")
-		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
-		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
-		checkArgument(engine != null, "Engine cannot be null!")
+		checkArgument(mapping !== null, "Mapping cannot be null!")
+		checkArgument(mapping.cps !== null, "CPS not defined in mapping!")
+		checkArgument(mapping.deployment !== null, "Deployment not defined in mapping!")
+		checkArgument(engine !== null, "Engine cannot be null!")
 
 		this.mapping = mapping
 		this.engine = engine
@@ -318,7 +318,7 @@ class CPS2DeploymentPartialBatchTransformation {
 			debug("Resolving initial state.")
 			stateMachineTransformationPerformance.start
 			watch.reset.start
-			if (cpsBehavior.initial != null)
+			if (cpsBehavior.initial !== null)
 				depBehavior.current = engine.cps2depTrace.getAllMatches(mapping, null, cpsBehavior.initial, null).map[
 					depElement].filter(BehaviorState).findFirst[depBehavior.states.contains(it)]
 			else
@@ -373,7 +373,7 @@ class CPS2DeploymentPartialBatchTransformation {
 		transitionTransformationPerformance.start
 
 		val depState = stateTable.get(cpsState, depBehavior)
-		cpsState.outgoingTransitions.filter[targetState != null && cpsBehavior.states.contains(targetState)].forEach [
+		cpsState.outgoingTransitions.filter[targetState !== null && cpsBehavior.states.contains(targetState)].forEach [
 			mapTransition(depState, depBehavior)
 		]
 		transitionTransformationPerformance.stop
@@ -563,7 +563,7 @@ class CPS2DeploymentPartialBatchTransformation {
 				if (b instanceof TransitionsMatch) {
 					val transition = b.transition
 					val action = transitionMap.get(transition)
-					if (action != null && SignalUtil.isWait(action)) {
+					if (action !== null && SignalUtil.isWait(action)) {
 						val id = SignalUtil.getSignalId(action)
 						engine.sendTransitionAppSignal.getAllMatches(null, null, id).forEach [ match |
 							match.transition.removeTransition
@@ -607,7 +607,7 @@ class CPS2DeploymentPartialBatchTransformation {
 	private def removeAppInstance(ApplicationInstance app) {
 			trace('''Executing: removeAppinstance(app = «app.name»)''')
 			engine.cps2depTrace.getAllMatches(mapping, null, app, null).forEach [ c |
-				if (c.depElement != null) {
+				if (c.depElement !== null) {
 					mapping.traces.remove(c.trace)
 					val depapp = c.depElement as DeploymentApplication
 					engine.depApp2depHost.getAllMatches(depapp, null).forEach [ match |
@@ -646,7 +646,7 @@ class CPS2DeploymentPartialBatchTransformation {
 
 			trace('''Executing: removeStateMachine(sm = «sm.name»)''')
 			engine.cps2depTrace.getAllMatches(mapping, null, sm, null).forEach [ c |
-				if (c.depElement != null) {
+				if (c.depElement !== null) {
 					mapping.traces.remove(c.trace)
 					val depBehavior = c.depElement as DeploymentBehavior
 					engine.depBehavior2depApp.getAllMatches(depBehavior, null).forEach [ match |
@@ -661,7 +661,7 @@ class CPS2DeploymentPartialBatchTransformation {
 				state.outgoingTransitions.forEach [ trans |
 					if (recursive) {
 						val action = transitionMap.get(trans)
-						if (action != null && SignalUtil.isWait(action)) {
+						if (action !== null && SignalUtil.isWait(action)) {
 							val id = SignalUtil.getSignalId(action)
 							engine.sendTransitionAppSignal.getAllMatches(null, null, id).forEach [ match |
 								engine.transition2StateMachine.getAllMatches(match.transition, null).forEach [ m |
@@ -687,7 +687,7 @@ class CPS2DeploymentPartialBatchTransformation {
 
 			trace('''Executing: removeState(trans = «state.name»)''')
 			engine.cps2depTrace.getAllMatches(mapping, null, state, null).forEach [ c |
-				if (c.depElement != null) {
+				if (c.depElement !== null) {
 					mapping.traces.remove(c.trace)
 				}
 			]
@@ -704,7 +704,7 @@ class CPS2DeploymentPartialBatchTransformation {
 	private def removeTransition(Transition trans) {
 			trace('''Executing: removeTransition(trans = «trans.name»)''')
 			engine.cps2depTrace.getAllMatches(mapping, null, trans, null).forEach [ c |
-				if (c.depElement != null) {
+				if (c.depElement !== null) {
 					mapping.traces.remove(c.trace)
 					val depTrans = c.depElement as BehaviorTransition
 					depTrans.trigger.clear
@@ -726,7 +726,7 @@ class CPS2DeploymentPartialBatchTransformation {
 
 		//var trace = engine.cps2depTrace.getOneArbitraryMatch(mapping, null, cpsElement, null)?.trace
 		var trace = traceTable.get(cpsElement)
-		if (trace == null) {
+		if (trace === null) {
 			trace = tracFactory.createCPS2DeploymentTrace
 			traceTable.put(cpsElement, trace)
 
@@ -759,7 +759,7 @@ class CPS2DeploymentPartialBatchTransformation {
 	
 	def dispose() {
 		trace("dispose")
-		if(monitor != null){
+		if(monitor !== null){
 			monitor.dispose
 		}
 		monitor = null

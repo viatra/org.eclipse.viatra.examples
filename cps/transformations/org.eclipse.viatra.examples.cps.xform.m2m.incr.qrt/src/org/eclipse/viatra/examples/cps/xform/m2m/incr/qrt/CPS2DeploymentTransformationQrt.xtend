@@ -41,10 +41,10 @@ class CPS2DeploymentTransformationQrt {
 	ViatraQueryEngine engine
 
 	def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine) {
-		checkArgument(cps2dep != null, "Mapping cannot be null!")
-		checkArgument(cps2dep.cps != null, "CPS not defined in mapping!")
-		checkArgument(cps2dep.deployment != null, "Deployment not defined in mapping!")
-		checkArgument(engine != null, "Engine cannot be null!")
+		checkArgument(cps2dep !== null, "Mapping cannot be null!")
+		checkArgument(cps2dep.cps !== null, "CPS not defined in mapping!")
+		checkArgument(cps2dep.deployment !== null, "Deployment not defined in mapping!")
+		checkArgument(engine !== null, "Engine cannot be null!")
 
 		this.cps2dep = cps2dep
 		this.engine = engine
@@ -56,7 +56,7 @@ class CPS2DeploymentTransformationQrt {
 	}
 
 	def execute() {
-		if (schema == null) {
+		if (schema === null) {
 			info(
 				'''
 				Executing transformation on:

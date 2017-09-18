@@ -18,7 +18,6 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.patterns.CpsXformM2
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.rules.RuleProvider
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.util.PerJobFixedPriorityConflictResolver
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
-import org.eclipse.viatra.transformation.evm.api.Executor
 import org.eclipse.viatra.transformation.evm.api.Scheduler.ISchedulerFactory
 import org.eclipse.viatra.transformation.runtime.emf.transformation.eventdriven.EventDrivenTransformation
 
@@ -43,10 +42,10 @@ class CPS2DeploymentTransformationViatra {
     }
     
     def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine, boolean isDebuggable, String debugName) {
-        checkArgument(cps2dep != null, "Mapping cannot be null!")
-        checkArgument(cps2dep.cps != null, "CPS not defined in mapping!")
-        checkArgument(cps2dep.deployment != null, "Deployment not defined in mapping!")
-        checkArgument(engine != null, "Engine cannot be null!")
+        checkArgument(cps2dep !== null, "Mapping cannot be null!")
+        checkArgument(cps2dep.cps !== null, "CPS not defined in mapping!")
+        checkArgument(cps2dep.deployment !== null, "Deployment not defined in mapping!")
+        checkArgument(engine !== null, "Engine cannot be null!")
 
         if (!initialized) {
             this.cps2dep = cps2dep
@@ -68,7 +67,7 @@ class CPS2DeploymentTransformationViatra {
 
     def execute() {
         debug('''Executing transformation on: Cyber-physical system: «cps2dep.cps.identifier»''')
-        if(factory == null){
+        if(factory === null){
             transform.executionSchema.startUnscheduledExecution
         }
     }
@@ -95,7 +94,7 @@ class CPS2DeploymentTransformationViatra {
              .addRule(stateRule)
              .addRule(transitionRule)
              .addRule(triggerRule)
-        if (factory != null) {
+        if (factory !== null) {
             builder.schedulerFactory = factory
         }
         if (isDebuggable) {
@@ -108,7 +107,7 @@ class CPS2DeploymentTransformationViatra {
     }
 
     def dispose() {
-        if (transform != null) {
+        if (transform !== null) {
             transform.executionSchema.dispose
         }
         transform = null

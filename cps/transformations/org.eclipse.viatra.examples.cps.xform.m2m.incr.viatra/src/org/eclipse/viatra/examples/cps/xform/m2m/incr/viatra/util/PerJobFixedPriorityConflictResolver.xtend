@@ -38,7 +38,7 @@ class PerJobFixedPriorityConflictResolver extends FixedPriorityConflictResolver 
 		}
 
 		override removeActivation(Activation<?> activation) {
-			checkArgument(activation != null, "Activation cannot be null!")
+			checkArgument(activation !== null, "Activation cannot be null!")
 			val rulePriority = getRulePriority(activation)
 			return priorityBuckets.remove(rulePriority, activation) ||
 				priorityBuckets.remove((-1) * rulePriority, activation)

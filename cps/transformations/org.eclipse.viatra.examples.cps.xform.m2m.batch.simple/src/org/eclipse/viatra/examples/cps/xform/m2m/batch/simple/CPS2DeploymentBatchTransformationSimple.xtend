@@ -56,8 +56,8 @@ class CPS2DeploymentBatchTransformationSimple {
 		traceBegin("constructor")
 
 		checkNotNull(mapping, "Mapping cannot be null!")
-		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
-		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
+		checkArgument(mapping.cps !== null, "CPS not defined in mapping!")
+		checkArgument(mapping.deployment !== null, "Deployment not defined in mapping!")
 
 		this.mapping = mapping;
 
@@ -189,7 +189,7 @@ class CPS2DeploymentBatchTransformationSimple {
 	 */
 	private def isTransitionSender(Transition transition) {
 		traceBegin('''isTransitionSender(«transition.name»)''')
-		if (transition.action == null) {
+		if (transition.action === null) {
 			return false
 		}
 
@@ -222,7 +222,7 @@ class CPS2DeploymentBatchTransformationSimple {
 	 */
 	private def isTransitionReceiver(Transition transition) {
 		traceBegin('''isTransitionReceiver(«transition.name»)''')
-		if (transition.action == null) {
+		if (transition.action === null) {
 			return false
 		}
 
@@ -281,7 +281,7 @@ class CPS2DeploymentBatchTransformationSimple {
 		appInstance.createOrAddTrace(deploymentApp)
 
 		// Transform state machines
-		if (appInstance.type.behavior != null)
+		if (appInstance.type.behavior !== null)
 			deploymentApp.behavior = appInstance.type.behavior.transform
 
 		traceEnd('''transform(«appInstance.name»)''')
@@ -311,10 +311,10 @@ class CPS2DeploymentBatchTransformationSimple {
 				behavior.states.contains(it)
 			]
 			behaviorTransitions.addAll(
-				state.outgoingTransitions.filter[targetState != null].filter [ transition |
+				state.outgoingTransitions.filter[targetState !== null].filter [ transition |
 					mapping.traces.findFirst [
 						it.cpsElements.contains(transition.targetState)
-					] != null && /* Need to check, if it is in the model */ transition.targetState != null
+					] !== null && /* Need to check, if it is in the model */ transition.targetState !== null
 				].map [
 					transform(parentBehaviorState)
 				]
@@ -379,7 +379,7 @@ class CPS2DeploymentBatchTransformationSimple {
 	private def setCurrentState(StateMachine stateMachine, DeploymentBehavior behavior) {
 		traceBegin('''transform(«stateMachine.name», «behavior.name»)''')
 		val initial = stateMachine.states.findFirst[stateMachine.initial == it]
-		if (initial != null) {
+		if (initial !== null) {
 			val mappingForInitialState = mapping.traces.findFirst[it.cpsElements.contains(initial)]
 
 			val initialBehaviorState = mappingForInitialState.deploymentElements.findFirst[behavior.states.contains(it)]

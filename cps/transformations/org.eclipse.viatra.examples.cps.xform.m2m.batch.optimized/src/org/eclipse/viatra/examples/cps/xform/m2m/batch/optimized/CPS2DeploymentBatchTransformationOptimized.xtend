@@ -90,9 +90,9 @@ class CPS2DeploymentBatchTransformationOptimized {
 		traceBegin("constructor")
 		
 
-		checkNotNull(mapping != null, "Mapping cannot be null!")
-		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
-		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
+		checkNotNull(mapping !== null, "Mapping cannot be null!")
+		checkArgument(mapping.cps !== null, "CPS not defined in mapping!")
+		checkArgument(mapping.deployment !== null, "Deployment not defined in mapping!")
 
 		this.mapping = mapping;
 
@@ -190,7 +190,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 	private def void createTransitionCache(CPS2DeploymentTrace transitionTrace) {
 		transitionMappingCachingPerformance.start
 		val transition = transitionTrace.cpsElements.head as Transition
-		if (transition.action == null) {
+		if (transition.action === null) {
 			transitionMappingCachingPerformance.stop
 			return
 		}
@@ -285,7 +285,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 	 */
 	private def isTransitionSender(Transition transition) {
 		traceBegin('''isTransitionSender(«transition.name»)''')
-		if (transition.action == null) {
+		if (transition.action === null) {
 			return false
 		}
 
@@ -318,7 +318,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 	 */
 	private def isTransitionReceiver(Transition transition) {
 		traceBegin('''isTransitionReceiver(«transition.name»)''')
-		if (transition.action == null) {
+		if (transition.action === null) {
 			return false
 		}
 
@@ -383,7 +383,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 
 		appTransformationPerformance.stop
 		// Transform state machines
-		if (appInstance.type.behavior != null)
+		if (appInstance.type.behavior !== null)
 			deploymentApp.behavior = appInstance.type.behavior.transform
 
 		traceEnd('''transform(«appInstance.name»)''')
@@ -416,8 +416,8 @@ class CPS2DeploymentBatchTransformationOptimized {
 			] as BehaviorState
 			behaviorTransitions.addAll(
 				state.outgoingTransitions
-					.filter[targetState != null]
-					.filter[transition|mappingCache.get(transition.targetState) != null && /* Need to check, if it is in the model */ transition.targetState.eContainer != null]
+					.filter[targetState !== null]
+					.filter[transition|mappingCache.get(transition.targetState) !== null && /* Need to check, if it is in the model */ transition.targetState.eContainer !== null]
 					.map[
 						transform(parentBehaviorState)
 					]
@@ -484,7 +484,7 @@ class CPS2DeploymentBatchTransformationOptimized {
 	private def setCurrentState(StateMachine stateMachine, DeploymentBehavior behavior) {
 		traceBegin('''transform(«stateMachine.name», «behavior.name»)''')
 		val initial = stateMachine.initial
-		if (initial != null) {
+		if (initial !== null) {
 
 			val initialBehaviorState = mappingCache.get(initial).findFirst[behavior.states.contains(it)]
 

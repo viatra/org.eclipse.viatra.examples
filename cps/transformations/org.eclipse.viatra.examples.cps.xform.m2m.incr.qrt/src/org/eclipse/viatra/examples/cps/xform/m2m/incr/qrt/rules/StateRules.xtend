@@ -107,7 +107,7 @@ class StateMapping extends AbstractRule<StateMatch> {
 					BehaviorState).findFirst[depApp.behavior.states.contains(it)];
 				val stateId = depState.description
 				logger.debug('''Removing state with ID: «stateId»''')
-				if (depBehavior != null) {
+				if (depBehavior !== null) {
 					depBehavior.states -= depState
 					if (depBehavior.current == depState) {
 						depBehavior.current = null

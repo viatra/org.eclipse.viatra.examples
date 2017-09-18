@@ -145,7 +145,7 @@ class Generator {
 		]
 		ctorBody.statements += superCall
 
-		if(application?.behavior?.current != null){
+		if(application?.behavior?.current !== null){
 			val currentState = ast.newAssignment => [
 				leftHandSide = ast.newSimpleName("currentState")
 				rightHandSide = ast.newQualifiedName(
@@ -460,7 +460,7 @@ class Generator {
 	}
 
 	def calculateSendTriggerParameters(BehaviorState srcState, BehaviorTransition transition) {
-		if (transition != null) {
+		if (transition !== null) {
 			#[transition.trigger.head.host.ip, transition.trigger.head.app.id, transition.trigger.head.name]
 		} else {
 			throw new CPSGeneratorException(
@@ -470,7 +470,7 @@ class Generator {
 
 	def DeploymentHost host(BehaviorTransition transition) {
 		val app = transition?.eContainer?.eContainer?.eContainer
-		if (app != null && app instanceof DeploymentHost) {
+		if (app !== null && app instanceof DeploymentHost) {
 			return app as DeploymentHost
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Host of the Transition (" + transition.name + ")")
@@ -478,7 +478,7 @@ class Generator {
 
 	def DeploymentApplication app(BehaviorTransition transition) {
 		val app = transition?.eContainer?.eContainer
-		if (app != null && app instanceof DeploymentApplication) {
+		if (app !== null && app instanceof DeploymentApplication) {
 			return app as DeploymentApplication
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Application of the Transition (" + transition.name + ")")

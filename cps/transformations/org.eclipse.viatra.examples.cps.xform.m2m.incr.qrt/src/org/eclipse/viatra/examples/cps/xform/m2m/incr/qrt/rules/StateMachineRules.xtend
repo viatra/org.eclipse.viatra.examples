@@ -18,7 +18,6 @@ import org.eclipse.viatra.transformation.evm.specific.Rules
 import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEnum
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
 import org.eclipse.viatra.examples.cps.deployment.DeploymentBehavior
-import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
 
 class StateMachineRules {
 	static def getRules(ViatraQueryEngine engine) {

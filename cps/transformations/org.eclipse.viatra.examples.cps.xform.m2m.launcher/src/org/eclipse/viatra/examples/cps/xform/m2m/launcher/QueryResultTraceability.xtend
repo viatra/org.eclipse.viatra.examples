@@ -33,10 +33,10 @@ class QueryResultTraceability extends CPSTransformationWrapper {
 	}
 	
 	override cleanupTransformation() {
-		if(xform != null){
+		if(xform !== null){
 			xform.dispose
 		}
-		if(engine != null){
+		if(engine !== null){
 			engine.dispose
 		}
 		engine = null

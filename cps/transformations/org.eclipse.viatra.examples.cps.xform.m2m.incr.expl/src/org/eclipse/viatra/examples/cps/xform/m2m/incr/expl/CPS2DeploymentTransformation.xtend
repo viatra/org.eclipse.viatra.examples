@@ -40,10 +40,10 @@ class CPS2DeploymentTransformation {
 	ViatraQueryEngine engine
 	
 	def initialize(CPSToDeployment mapping, ViatraQueryEngine iqEngine) {
-		checkArgument(mapping != null, "Mapping cannot be null!")
-		checkArgument(mapping.cps != null, "CPS not defined in mapping!")
-		checkArgument(mapping.deployment != null, "Deployment not defined in mapping!")
-		checkArgument(iqEngine != null, "Engine cannot be null!")
+		checkArgument(mapping !== null, "Mapping cannot be null!")
+		checkArgument(mapping.cps !== null, "CPS not defined in mapping!")
+		checkArgument(mapping.deployment !== null, "Deployment not defined in mapping!")
+		checkArgument(iqEngine !== null, "Engine cannot be null!")
 		
 		this.cps2dep = mapping
 		this.engine = iqEngine
@@ -57,7 +57,7 @@ class CPS2DeploymentTransformation {
 	
 	def execute() {
 		
-		if(schema == null){
+		if(schema === null){
 			info('''
 				Executing transformation on:
 					Cyber-physical system: «cps2dep.cps.identifier»''')
@@ -92,7 +92,7 @@ class CPS2DeploymentTransformation {
 	}
 	
 	def dispose() {
-		if(schema != null){
+		if(schema !== null){
 			schema.dispose
 		}
 		engine = null

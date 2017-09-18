@@ -92,7 +92,7 @@ class Generator {
 			public «appClassName»(Host host) {
 				super(host);
 				
-				«IF app?.behavior?.current != null»
+				«IF app?.behavior?.current !== null»
 				// Set initial State
 				currentState = «behavior».«app.behavior.current.description.purifyAndToUpperCamel»;
 				«ENDIF»
@@ -200,7 +200,7 @@ class Generator {
 	
 	def String calculateSendTriggerParameters(BehaviorState srcState, BehaviorTransition transition){
 		//"152.66.102.5", "IBM System Storage", "ISSReceiving"
-		if(transition != null){
+		if(transition !== null){
 			'''"«transition.trigger.head.host.ip»", "«transition.trigger.head.app.id»", "«transition.trigger.head.name»"'''
 		}else{
 			throw new CPSGeneratorException("#Error: Cannot find transition from " + srcState.name + " to " + transition.to.name)
@@ -209,7 +209,7 @@ class Generator {
 	
 	def DeploymentApplication app(BehaviorTransition transition){
 		val app = transition?.eContainer?.eContainer
-		if(app != null && app instanceof DeploymentApplication){
+		if(app !== null && app instanceof DeploymentApplication){
 			return app as DeploymentApplication
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Application of the Transition (" + transition.name + ")")
@@ -217,7 +217,7 @@ class Generator {
 	
 	def DeploymentHost host(BehaviorTransition transition){
 		val app = transition?.eContainer?.eContainer?.eContainer
-		if(app != null && app instanceof DeploymentHost){
+		if(app !== null && app instanceof DeploymentHost){
 			return app as DeploymentHost
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Host of the Transition (" + transition.name + ")")
@@ -225,7 +225,7 @@ class Generator {
 	
 	def DeploymentApplication app(BehaviorState state){
 		val app = state?.eContainer?.eContainer
-		if(app != null && app instanceof DeploymentApplication){
+		if(app !== null && app instanceof DeploymentApplication){
 			return app as DeploymentApplication
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Application of the State (" + state.name + ")")
@@ -233,7 +233,7 @@ class Generator {
 	
 	def DeploymentHost host(BehaviorState state){
 		val host = state?.eContainer?.eContainer?.eContainer
-		if(host != null && host instanceof DeploymentHost){
+		if(host !== null && host instanceof DeploymentHost){
 			return host as DeploymentHost
 		}
 		throw new CPSGeneratorException("#Error: Cannot find Host of the State (" + state.name + ")")

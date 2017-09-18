@@ -39,7 +39,7 @@ class BatchQueryLocalSearch extends CPSTransformationWrapper {
 	}
 
 	override cleanupTransformation() {
-		if (engine != null) {
+		if (engine !== null) {
 			engine.dispose
 		}
 		engine = null

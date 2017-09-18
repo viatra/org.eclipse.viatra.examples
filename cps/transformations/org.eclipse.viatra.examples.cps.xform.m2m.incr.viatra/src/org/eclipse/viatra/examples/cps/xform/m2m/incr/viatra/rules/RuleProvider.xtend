@@ -62,7 +62,7 @@ public class RuleProvider {
 	}
 
 	public def getHostRule() {
-		if (hostRule == null) {
+		if (hostRule === null) {
 			hostRule = createRule.name("HostRule").precondition(HostInstanceMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [	
 				debug('''Mapping host with IP: «hostInstance.nodeIp»''')
@@ -92,7 +92,7 @@ public class RuleProvider {
 	}
 
 	public def getApplicationRule() {
-		if (applicationRule == null) {
+		if (applicationRule === null) {
 
 			applicationRule = createRule.name("ApplicationRule").precondition(ApplicationInstanceMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [
@@ -122,7 +122,7 @@ public class RuleProvider {
 	}
 
 	public def getStateMachineRule() {
-		if (stateMachineRule == null) {
+		if (stateMachineRule === null) {
 			stateMachineRule = createRule.name("StateMachineRule").precondition(StateMachineMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, appInstance).filter(
@@ -177,7 +177,7 @@ public class RuleProvider {
 	}
 
 	public def getStateRule() {
-		if (stateRule == null) {
+		if (stateRule === null) {
 			stateRule = createRule.name("StateRule").precondition(StateMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, appInstance).head as DeploymentApplication
@@ -227,7 +227,7 @@ public class RuleProvider {
 				val stateId = depState.description
 				
 				logger.debug('''Removing state with ID: «stateId»''')
-				if (depBehavior != null) {
+				if (depBehavior !== null) {
 					depBehavior.remove(deploymentBehavior_States, depState)
 					if (depBehavior.current == depState) {
 						depBehavior.set(deploymentBehavior_Current, null)
@@ -247,7 +247,7 @@ public class RuleProvider {
 	}
 
 	public def getTransitionRule() {
-		if (transitionRule == null) {
+		if (transitionRule === null) {
 			transitionRule = createRule.name("TransitionRule").precondition(TransitionMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, appInstance).filter(
@@ -336,7 +336,7 @@ public class RuleProvider {
 	}
 
 	public def getTriggerRule() {
-		if (triggerRule == null) {
+		if (triggerRule === null) {
 			triggerRule = createRule.name("TriggerRule").precondition(TriggerPairMatcher.querySpecification).action(
 				CRUDActivationStateEnum.CREATED) [
 				val depAppTrigger = engine.cps2depTrace.getAllValuesOfdepElement(null, null, appInstanceTrigger).

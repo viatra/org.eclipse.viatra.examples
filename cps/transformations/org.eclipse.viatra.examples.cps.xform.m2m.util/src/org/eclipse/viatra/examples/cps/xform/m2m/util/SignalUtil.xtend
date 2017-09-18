@@ -33,7 +33,7 @@ class SignalUtil {
 	@Pure
 	static def getSignalId(String action) {
 		val sendId = sendPattern.getGroupOfMatch(action, 2)
-		if(sendId == null) {
+		if(sendId === null) {
 			waitPattern.getGroupOfMatch(action, 1)
 		} else {
 			sendId

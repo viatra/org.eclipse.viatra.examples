@@ -59,7 +59,7 @@ class RuleProvider {
 	
 	
 	public def getHostRule() {
-		if (hostRule == null) {
+		if (hostRule === null) {
 			hostRule = createRule.name("HostRule").precondition(HostInstanceMatcher.querySpecification).action[
 				val cpsHostInstance = it.hostInstance
 				val nodeIp = it.hostInstance.nodeIp
@@ -78,7 +78,7 @@ class RuleProvider {
 	}
 	
 	public def getApplicationRule() {
-		if (applicationRule == null) {
+		if (applicationRule === null) {
 			applicationRule = createRule.name("ApplicationRule").precondition(ApplicationInstanceMatcher.querySpecification).action[
 				val cpsApplicationInstance = it.appInstance
 				val appId = it.appInstance.identifier
@@ -104,7 +104,7 @@ class RuleProvider {
 	}
 	
 	public def getStateMachineRule() {
-		if (stateMachineRule == null) {
+		if (stateMachineRule === null) {
 			stateMachineRule = createRule.name("StateMachineRule").precondition(AppInstanceWithStateMachineMatcher.querySpecification).action[
 				val cpsApplicationInstance = it.appInstance
 				val cpsStateMachine = it.stateMachine
@@ -117,7 +117,7 @@ class RuleProvider {
 				depApplication.behavior = depBehavior
 				
 				val trace = getTraceForCPSElement(cpsStateMachine)
-				if (trace == null){
+				if (trace === null){
 					mapping.traces += createCPS2DeploymentTrace => [
 						cpsElements += cpsStateMachine
 						deploymentElements += depBehavior
@@ -132,7 +132,7 @@ class RuleProvider {
 	}
 	
 	public def getStateRule() {
-		if (stateRule == null) {
+		if (stateRule === null) {
 			stateRule = createRule.name("StateRule").precondition(StateMatcher.querySpecification).action[
 				val cpsStateMachine = it.stateMachine
 				val cpsAppInstance = it.appInstance
@@ -149,7 +149,7 @@ class RuleProvider {
 				depBehavior.states += behaviorState
 				
 				val trace = getTraceForCPSElement(cpsState)
-				if (trace == null) {
+				if (trace === null) {
 					mapping.traces += createCPS2DeploymentTrace => [
 						cpsElements += cpsState
 						deploymentElements += behaviorState
@@ -167,7 +167,7 @@ class RuleProvider {
 	}
 	
 	public def getTransitionRule() {
-		if (transitionRule == null) {
+		if (transitionRule === null) {
 			transitionRule = createRule.name("TransitionRule").precondition(TransitionMatcher.querySpecification).action[
 				val cpsAppInstance = it.appInstance
 				val cpsState = it.sourceState
@@ -185,7 +185,7 @@ class RuleProvider {
 				depBehavior.transitions += behaviorTransition
 				
 				val trace = getTraceForCPSElement(cpsTransition)
-				if (trace == null){
+				if (trace === null){
 					mapping.traces += createCPS2DeploymentTrace => [
 						cpsElements += cpsTransition
 						deploymentElements += behaviorTransition
@@ -205,7 +205,7 @@ class RuleProvider {
 	}
 	
 	public def getActionRule() {
-		if (actionRule == null) {
+		if (actionRule === null) {
 			actionRule = createRule.name("ActionRule").precondition(ActionPairMatcher.querySpecification).action[
 				val cpsSendTransition = sendTransition
 				val cpsSendAppInstance = sendAppInstance

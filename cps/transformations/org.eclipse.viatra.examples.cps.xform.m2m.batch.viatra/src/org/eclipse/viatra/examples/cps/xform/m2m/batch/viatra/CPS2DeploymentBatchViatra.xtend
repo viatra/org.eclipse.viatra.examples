@@ -43,10 +43,10 @@ class CPS2DeploymentBatchViatra {
     }
     
     def initialize(CPSToDeployment cps2dep, ViatraQueryEngine engine, boolean isDebuggable, String debugName) {
-        checkArgument(cps2dep != null, "Mapping cannot be null!")
-        checkArgument(cps2dep.cps != null, "CPS not defined in mapping!")
-        checkArgument(cps2dep.deployment != null, "Deployment not defined in mapping!")
-        checkArgument(engine != null, "Engine cannot be null!")
+        checkArgument(cps2dep !== null, "Mapping cannot be null!")
+        checkArgument(cps2dep.cps !== null, "CPS not defined in mapping!")
+        checkArgument(cps2dep.deployment !== null, "Deployment not defined in mapping!")
+        checkArgument(engine !== null, "Engine cannot be null!")
         
         if (!initialized) {
             this.mapping = cps2dep
@@ -92,7 +92,7 @@ class CPS2DeploymentBatchViatra {
     
     
     def dispose(){
-        if(transformation != null){
+        if(transformation !== null){
             transformation.ruleEngine.dispose
         }
         transformation = null
