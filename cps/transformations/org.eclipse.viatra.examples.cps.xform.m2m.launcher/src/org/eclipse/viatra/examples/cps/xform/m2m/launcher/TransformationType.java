@@ -22,7 +22,6 @@ import org.eclipse.viatra.query.runtime.emf.types.EStructuralFeatureInstancesKey
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints;
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.IConstraintEvaluationContext;
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.StatisticsBasedConstraintCostFunction;
-import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.VariableBindingBasedCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
@@ -44,56 +43,16 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
     	public CPSTransformationWrapper getWrapper() {
-	    	QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
-			return new BatchQueryLocalSearch(hint, hint);
+			QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
+			QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new EndOfTransformationCostFunction()).build();
+			return new BatchQueryLocalSearch(hint, traceHint);
 	    }
     },
-    BATCH_VIATRA_QUERY_LOCAL_SEARCH_TRACE_STATS {
+    BATCH_VIATRA_QUERY_LOCAL_SEARCH_GENERIC {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
-            final Map<IInputKey, IInputKey> substitutions = Maps.newHashMap();
-            substitutions.put(new EClassTransitiveInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            substitutions.put(new EClassTransitiveInstancesKey(DeploymentPackage.Literals.DEPLOYMENT_ELEMENT), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__DEPLOYMENT_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT__TRACES), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
-            QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new StatisticsBasedConstraintCostFunction() {
-                
-                @Override
-                public long countTuples(IConstraintEvaluationContext input, IInputKey supplierKey) {
-                    if (supplierKey instanceof EClassTransitiveInstancesKey){
-                        EClass eclass = ((EClassTransitiveInstancesKey) supplierKey).getEmfKey();
-                        if (TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT.equals(eclass)){
-                            return 1l;
-                        }
-                    }
-                    if (substitutions.containsKey(supplierKey)){
-                        return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), null);
-                    }
-                    
-                    return input.getRuntimeContext().countTuples(supplierKey, null);
-                }
-            }).build();
-            return new BatchQueryLocalSearch(hint, traceHint);
+            QueryEvaluationHint hint = LocalSearchHints.getDefaultGeneric().build();
+            return new BatchQueryLocalSearch(hint, hint);
         }
-    },
-    BATCH_VIATRA_QUERY_LOCAL_SEARCH_NO_FLAT {
-        public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = LocalSearchHints.getDefault().build();
-			return new BatchQueryLocalSearch(hint, hint);
-        }
-    },
-    BATCH_VIATRA_QUERY_LOCAL_SEARCH_DUMB_PLANNER {
-        public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().setCostFunction(new VariableBindingBasedCostFunction()).build();
-			return new BatchQueryLocalSearch(hint, hint);
-        }
-    },
-    BATCH_VIATRA_QUERY_LOCAL_SEARCH_STATISTICS {
-    	public CPSTransformationWrapper getWrapper() {
-    		QueryEvaluationHint hint = LocalSearchHints.getDefault().setUseBase(false).build();
-			return new BatchQueryLocalSearch(hint, hint);
-    	}
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_WO_INDEXER {
         public CPSTransformationWrapper getWrapper() {
@@ -104,6 +63,7 @@ public enum TransformationType {
     BATCH_VIATRA_TRANSFORMATION {
         public CPSTransformationWrapper getWrapper() {return new BatchViatra();}
 
+        @Override
         public boolean isDebuggable() {
             return true;
         }
@@ -120,10 +80,40 @@ public enum TransformationType {
     INCR_VIATRA_TRANSFORMATION {
         public CPSTransformationWrapper getWrapper() {return new ViatraTransformation();}
 
+        @Override
         public boolean isDebuggable() {
             return true;
         }
     };
+
+    private final class EndOfTransformationCostFunction extends StatisticsBasedConstraintCostFunction {
+        final Map<IInputKey, IInputKey> substitutions;
+
+        public EndOfTransformationCostFunction() {
+            super();
+            substitutions = Maps.newHashMap();
+            substitutions.put(new EClassTransitiveInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
+            substitutions.put(new EClassTransitiveInstancesKey(DeploymentPackage.Literals.DEPLOYMENT_ELEMENT), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
+            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__CPS_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
+            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE__DEPLOYMENT_ELEMENTS), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
+            substitutions.put(new EStructuralFeatureInstancesKey(TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT__TRACES), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
+        }
+
+        @Override
+        public long countTuples(IConstraintEvaluationContext input, IInputKey supplierKey) {
+            if (supplierKey instanceof EClassTransitiveInstancesKey){
+                EClass eclass = ((EClassTransitiveInstancesKey) supplierKey).getEmfKey();
+                if (TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT.equals(eclass)){
+                    return 1l;
+                }
+            }
+            if (substitutions.containsKey(supplierKey)){
+                return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), null);
+            }
+            
+            return input.getRuntimeContext().countTuples(supplierKey, null);
+        }
+    }
 
     public abstract CPSTransformationWrapper getWrapper();
 
