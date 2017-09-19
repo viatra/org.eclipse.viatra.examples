@@ -50,7 +50,7 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_GENERIC {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = LocalSearchHints.getDefaultGeneric().build();
+            QueryEvaluationHint hint = LocalSearchHints.getDefaultGeneric().setCostFunction(new EndOfTransformationCostFunction()).build();
             return new BatchQueryLocalSearch(hint, hint);
         }
     },
