@@ -12,7 +12,6 @@ package org.eclipse.viatra.examples.cps.generator.phases
 
 import com.google.common.collect.HashMultimap
 import com.google.common.collect.Lists
-import java.util.List
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.dtos.HostClass
@@ -46,7 +45,7 @@ class CPSPhaseHostCommunication implements IPhase<CPSFragment>{
 						// Randomize target node
 						if(!possibleTargetCopy.empty){
     						val targetHostInstance = possibleTargetCopy.randElement(fragment.random);
-    						if(targetHostInstance != null){
+    						if(targetHostInstance !== null){
     							possibleTargetCopy.remove(targetHostInstance);
     							operations.add(new HostInstanceCommunicatesWithOperation(hostInstance, targetHostInstance));
     						}

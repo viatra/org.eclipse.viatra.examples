@@ -16,6 +16,7 @@ import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSea
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints;
 import org.eclipse.viatra.query.runtime.matchers.backend.IQueryBackendFactory;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
+import org.eclipse.viatra.query.runtime.matchers.backend.QueryHintOption;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 public enum BackendType {
@@ -35,6 +36,7 @@ public enum BackendType {
         }
     }
     
+    @SuppressWarnings("rawtypes")
     public QueryEvaluationHint getHints(){
         switch(this){
         case LocalSearch:
@@ -44,7 +46,7 @@ public enum BackendType {
         case LocalSearch_NoBase:
             return LocalSearchHints.getDefaultNoBase().build();
         default:
-            return new QueryEvaluationHint(getNewBackendInstance(), Collections.<String, Object>emptyMap());
+            return new QueryEvaluationHint(Collections.<QueryHintOption, Object>emptyMap(), getNewBackendInstance());
         }
     }
 }

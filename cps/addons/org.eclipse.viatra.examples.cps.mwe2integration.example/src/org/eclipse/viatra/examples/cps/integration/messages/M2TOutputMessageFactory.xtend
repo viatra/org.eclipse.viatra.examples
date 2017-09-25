@@ -19,7 +19,7 @@ import org.eclipse.viatra.integration.mwe2.mwe2impl.exceptions.InvalidParameterT
 class M2TOutputMessageFactory implements IMessageFactory<List<M2TOutputRecord>, M2TOutputMessage> {
 	override boolean isValidParameter(Object parameter) {
 		var List<M2TOutputRecord> list = (parameter as List<M2TOutputRecord>)
-		if(list != null){
+		if(list !== null){
 			return true
 		}else {
 			return false

@@ -30,7 +30,7 @@ class PropertiesUtil {
     	try {
     		//load a properties file
             inputStream = PropertiesUtil.classLoader.getResourceAsStream(configPath)
-            if(inputStream != null){
+            if(inputStream !== null){
 	            properties.load(inputStream);
             } else {
 	    		logger.debug('''Could not find properties at «configPath»''')
@@ -38,7 +38,7 @@ class PropertiesUtil {
     	} catch (IOException ex) {
     		logger.debug('''Could not load properties at «configPath»''')
         } finally {
-            if (inputStream != null) {
+            if (inputStream !== null) {
                 try {
                     inputStream.close()
                 } catch (IOException e) {
@@ -50,7 +50,7 @@ class PropertiesUtil {
 	}
 	
 	def static getPropertyValue(String propertyKey, String defaultValue) {
-		if(properties != null){
+		if(properties !== null){
 			properties.getProperty(propertyKey, defaultValue)
 		}
 	}

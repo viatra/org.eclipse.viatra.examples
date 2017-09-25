@@ -15,7 +15,7 @@ import org.eclipse.xtend.lib.annotations.Data
 
 
 /*
- * If this DTO class was annotated with @Đata, then this would potentially cause a StackOverflowException 
+ * If this DTO class was annotated with @{@link Data}, then this would potentially cause a StackOverflowException 
  * when calculating hash code for the conatined communicationRation maps, for this map might contain 
  * a HostClass instance, whose communicationRatios map contains the container map's HostClass instance
  */ 

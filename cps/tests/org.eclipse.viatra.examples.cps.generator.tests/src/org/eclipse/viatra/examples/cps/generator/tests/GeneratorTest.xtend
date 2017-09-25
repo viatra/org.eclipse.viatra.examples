@@ -196,7 +196,7 @@ class GeneratorTest extends TestBase {
 		val CPSModelBuilderUtil mb = new CPSModelBuilderUtil;
 		val cps2dep = mb.prepareEmptyModel("testModel"+System.nanoTime);
 			
-		if(cps2dep != null && cps2dep.cps != null){
+		if(cps2dep !== null && cps2dep.cps !== null){
 			return cps2dep.cps;
 		}else{
 			info("!!! Error: Cannot create CPS model");

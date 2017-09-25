@@ -29,7 +29,7 @@ class RandomUtils {
      * @see Random#nextInt(int)
      */
     def int randInt(MinMaxData<Integer> minMaxData, Random rand) throws ModelGeneratorException {
-        if(minMaxData == null){
+        if(minMaxData === null){
             throw new ModelGeneratorException("MinMaxData is null. (randInt(long seed, int min, int max))");
         }
             

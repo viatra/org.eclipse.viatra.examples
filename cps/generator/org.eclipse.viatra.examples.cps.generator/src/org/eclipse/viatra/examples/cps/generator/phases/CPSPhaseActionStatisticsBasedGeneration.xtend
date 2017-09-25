@@ -56,18 +56,18 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 					
 					// Find receiver pairs, there will be 1 or 2
 					for(receiverMatch : receiverMatches){
-						if(firstReceiver == null){
+						if(firstReceiver === null){
 							if(!suppliedWithAction.contains(receiverMatch.transition)){
 								firstReceiver = receiverMatch.transition
 								firstSM = receiverMatch.SM
 							}
-						} else if(secondReceiver == null && receiverMatch.SM != firstSM){
+						} else if(secondReceiver === null && receiverMatch.SM != firstSM){
 							if(!suppliedWithAction.contains(receiverMatch.transition)){
 								secondReceiver = receiverMatch.transition
 							}					
 						}
 					}
-					if(!suppliedWithAction.contains(senderTransition) && firstReceiver != null /* && !suppliedWithAction.contains(firstReceiver) <- this condition is implied by the firstReceiver !=null*/){
+					if(!suppliedWithAction.contains(senderTransition) && firstReceiver !== null /* && !suppliedWithAction.contains(firstReceiver) <- this condition is implied by the firstReceiver !=null*/){
 						// Successfully found pairable transitions
 						success = true
 						suppliedWithAction.add(senderTransition) 
@@ -83,7 +83,7 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 						debug(receiverAction1)
 						operations.add(new ActionGenerationOperation(receiverAction1, firstReceiver));
 						/* } <- end of if that is always true here */
-						if(secondReceiver != null){
+						if(secondReceiver !== null){
 							suppliedWithAction.add(secondReceiver) 
 							val receiverAction2 = WAIT_METHOD_NAME + "(" + index + ")";
 							debug(receiverAction2)

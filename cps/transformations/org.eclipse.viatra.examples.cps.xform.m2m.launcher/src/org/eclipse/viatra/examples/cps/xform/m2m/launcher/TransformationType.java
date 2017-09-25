@@ -36,13 +36,13 @@ public enum TransformationType {
         public CPSTransformationWrapper getWrapper() {return new BatchOptimized();}
     },
     BATCH_VIATRA_QUERY_RETE {
-    	public CPSTransformationWrapper getWrapper() {
-    		QueryEvaluationHint hint = new QueryEvaluationHint(null, new ReteBackendFactory());
-	    	return new BatchQueryOnly(hint, hint);
+    	    public CPSTransformationWrapper getWrapper() {
+    		    QueryEvaluationHint hint = new QueryEvaluationHint(null, new ReteBackendFactory());
+    		    return new BatchQueryOnly(hint, hint);
 	    }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
-    	public CPSTransformationWrapper getWrapper() {
+        public CPSTransformationWrapper getWrapper() {
 			QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
 			QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new EndOfTransformationCostFunction()).build();
 			return new BatchQueryLocalSearch(hint, traceHint);

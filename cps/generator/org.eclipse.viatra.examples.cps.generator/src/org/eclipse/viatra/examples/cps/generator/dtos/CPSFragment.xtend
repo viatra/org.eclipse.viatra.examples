@@ -29,7 +29,7 @@ class CPSFragment extends GeneratorFragment<CyberPhysicalSystem>{
 	
 	new(GeneratorInput<CyberPhysicalSystem> input) throws ModelGeneratorException {
 		super(input)
-		if(modelRoot != null){
+		if(modelRoot !== null){
 			engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(modelRoot));
 		}else{
 			throw new ModelGeneratorException("Cannot initialize IncQueryEngine on a null model.");

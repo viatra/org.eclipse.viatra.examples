@@ -53,7 +53,7 @@ class ApplicationTypeGenerationOperation implements IOperation<CPSFragment> {
 			}
 			
 			// Initial State
-			if(states.get(0) != null && sm != null){
+			if(states.get(0) !== null && sm !== null){
 				var initState = states.get(0)
 				sm.setInitial(initState)
 			}

@@ -33,7 +33,7 @@ class CPSGeneratorBuilder {
 		val CPSModelBuilderUtil mb = new CPSModelBuilderUtil;
 		val cps2dep = mb.prepareEmptyModel("testModel"+System.nanoTime);
 		
-		if(cps2dep != null && cps2dep.cps != null){
+		if(cps2dep !== null && cps2dep.cps !== null){
 			return buildAndGenerateModel(seed, constraints, cps2dep.cps, cpsplan);
 		}else{
 			info("!!! Error: Cannot create CPS model");

@@ -28,7 +28,7 @@ class CPSPhaseInstanceGeneration implements IPhase<CPSFragment>{
 		for(appClass : fragment.applicationTypes.keySet){
 			var sumAppType = 0
 			val appTypes = fragment.applicationTypes.get(appClass);
-			if(appTypes != null){
+			if(appTypes !== null){
 				for(appType : appTypes){
 					operations.add(new ApplicationInstanceGenerationOperation(appClass, appType));
 					sumAppType++
@@ -43,7 +43,7 @@ class CPSPhaseInstanceGeneration implements IPhase<CPSFragment>{
 		for(hostClass : fragment.hostTypes.keySet){
 			val types = fragment.hostTypes.get(hostClass);
 			// HostTypes
-			if(types != null){
+			if(types !== null){
 				for(type : types){
 					operations.add(new HostInstanceGenerationOperation(hostClass, type));
 				}

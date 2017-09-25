@@ -10,7 +10,6 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.generator.phases
 
-import com.google.common.collect.ImmutableList
 import com.google.common.collect.Lists
 import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType
@@ -34,7 +33,7 @@ class CPSPhaseActionGeneration implements IPhase<CPSFragment>{
 		
 		for(appClass : fragment.applicationTypes.keySet){
 			var appTypes = fragment.applicationTypes.get(appClass);
-			if(appTypes != null){
+			if(appTypes !== null){
 				for(appType : appTypes){
 					for(transition : getTransitionsOf(appType, fragment)){
 						// Generate Action or not
@@ -48,7 +47,7 @@ class CPSPhaseActionGeneration implements IPhase<CPSFragment>{
 								if(!possibleTypeList.empty) {
     								val targetAppType = possibleTypeList.randElement(fragment.random);
     
-    								if(targetAppType != null){
+    								if(targetAppType !== null){
     									val action = SEND_METHOD_NAME + "(" + targetAppType.identifier + ", "+ signalNumber + ")";
     									debug(action)
     									operations.add(new ActionGenerationOperation(action, transition));

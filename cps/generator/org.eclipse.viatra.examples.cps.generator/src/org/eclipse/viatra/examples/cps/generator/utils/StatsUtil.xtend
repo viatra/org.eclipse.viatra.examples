@@ -47,9 +47,9 @@ class StatsUtil {
 			for(feature : eObject.eClass.EAllReferences){
 				val value = eObject.eGet(feature);
 				if (feature.isMany()) {
-					countTriples += (value as Collection).size
+					countTriples += (value as Collection<?>).size
 				} else {
-					if (value!= null) {
+					if (value!== null) {
 						countTriples++;
 					}
 				}

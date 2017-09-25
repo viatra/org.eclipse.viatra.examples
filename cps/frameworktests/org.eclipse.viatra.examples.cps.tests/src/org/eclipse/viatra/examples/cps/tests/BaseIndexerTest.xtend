@@ -81,7 +81,7 @@ class BaseIndexerTest {
                 list.add(#[eobject, feature, u])
             }
         } else {
-            if (o != null){
+            if (o !== null){
                 list.add(#[eobject, feature, o])
             }
         }
@@ -191,7 +191,7 @@ class BaseIndexerTest {
             for(o : expected){
                 val entry = o as List<?>
                 var values = expectedFeatureMap.get(entry.get(0))
-                if (values == null){
+                if (values === null){
                     values = newHashSet()
                     expectedFeatureMap.put(entry.get(0) as EObject, values)
                 }
@@ -229,7 +229,7 @@ class BaseIndexerTest {
             for(o : expected){
                 val entry = o as List<?>
                 var values = expectedFeatureMap.get(entry.get(0))
-                if (values == null){
+                if (values === null){
                     values = newHashSet()
                     expectedFeatureMap.put(entry.get(0) as EObject, values)
                 }
@@ -268,7 +268,7 @@ class BaseIndexerTest {
             for(o : expected){
                 val entry = o as List<?>
                 var values = expectedFeatureMap.get(entry.get(0))
-                if (values == null){
+                if (values === null){
                     values = newHashSet()
                     expectedFeatureMap.put(entry.get(0) as EObject, values)
                 }

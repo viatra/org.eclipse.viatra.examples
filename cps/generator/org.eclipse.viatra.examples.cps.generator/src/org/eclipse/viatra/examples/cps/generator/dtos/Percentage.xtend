@@ -46,7 +46,7 @@ class Percentage {
 			throw new ModelGeneratorException("Total must be greater than or equal to zero");
 		}
 		
-		if(percentage == null){
+		if(percentage === null){
 			throw new ModelGeneratorException("Total must be valid");
 		}
 		

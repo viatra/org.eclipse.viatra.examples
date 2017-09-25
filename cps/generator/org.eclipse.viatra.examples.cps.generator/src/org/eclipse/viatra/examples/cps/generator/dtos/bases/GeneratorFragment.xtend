@@ -21,7 +21,7 @@ class GeneratorFragment<ModelType extends EObject> extends GeneratorConfiguratio
 	new(GeneratorInput<ModelType> input) {
 		this.input = input;
 		this.modelRoot = input.modelRoot;
-		if(input != null){
+		if(input !== null){
 			this.rand = new Random(input.seed);
 		}else{
 			this.rand = new Random(0);
@@ -34,7 +34,7 @@ class GeneratorFragment<ModelType extends EObject> extends GeneratorConfiguratio
 	}
 	
 	def getSeed(){
-		if(input != null){
+		if(input !== null){
 			return input.seed;
 		}
 		return 0;

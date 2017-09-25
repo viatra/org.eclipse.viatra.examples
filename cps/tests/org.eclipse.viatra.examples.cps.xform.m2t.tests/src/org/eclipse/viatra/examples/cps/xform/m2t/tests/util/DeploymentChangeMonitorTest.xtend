@@ -109,13 +109,13 @@ class DeploymentChangeMonitorTest {
 
 	private def void assertContainments(DeploymentElement appeared, DeploymentElement updated,
 		DeploymentElement disappeared, int appearedCount, int updatedCount, int disappearedCount) {
-		if (appeared != null) {
+		if (appeared !== null) {
 			assertTrue(ELEMENT_MISSING, monitor.deltaSinceLastCheckpoint.appeared.contains(appeared))
 		}
-		if (updated != null) {
+		if (updated !== null) {
 			assertTrue(ELEMENT_MISSING, monitor.deltaSinceLastCheckpoint.updated.contains(updated))
 		}
-		if (disappeared != null) {
+		if (disappeared !== null) {
 			assertTrue(ELEMENT_MISSING, monitor.deltaSinceLastCheckpoint.disappeared.contains(disappeared))
 		}
 		if (appearedCount >= 0) {
