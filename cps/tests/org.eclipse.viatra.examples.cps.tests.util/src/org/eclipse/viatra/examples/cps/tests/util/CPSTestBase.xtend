@@ -28,7 +28,7 @@ class CPSTestBase {
 		
 		Logger.getLogger("cps.xform").level = PropertiesUtil.getCPSXformLogLevel
 		Logger.getLogger("cps.generator").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
-		Logger.getLogger("cps.performance.generator.Tests").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
+		Logger.getLogger("cps.performance").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("org.eclipse.viatra.query").level = PropertiesUtil.getIncQueryLogLevel
 		Logger.getLogger("cps.mondosam").initLoggerForLevel(PropertiesUtil.getBenchmarkLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("cps.stats").initLoggerForLevel(PropertiesUtil.getStatsLogLevel, STATS_LAYOUT)
