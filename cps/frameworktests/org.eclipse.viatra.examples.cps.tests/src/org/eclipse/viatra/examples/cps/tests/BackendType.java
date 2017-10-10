@@ -13,6 +13,7 @@ package org.eclipse.viatra.examples.cps.tests;
 import java.util.Collections;
 
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchBackendFactory;
+import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchGenericBackendFactory;
 import org.eclipse.viatra.query.runtime.localsearch.matcher.integration.LocalSearchHints;
 import org.eclipse.viatra.query.runtime.matchers.backend.IQueryBackendFactory;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
@@ -21,7 +22,7 @@ import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 public enum BackendType {
     Rete, LocalSearch,
-    
+    LocalSearch_Generic,
     LocalSearch_Flat,
     LocalSearch_NoBase;
     
@@ -32,6 +33,8 @@ public enum BackendType {
             case LocalSearch_NoBase:
             case LocalSearch: 
                 return LocalSearchBackendFactory.INSTANCE;
+            case LocalSearch_Generic:
+                return LocalSearchGenericBackendFactory.INSTANCE;
             default: return null;
         }
     }
@@ -45,6 +48,8 @@ public enum BackendType {
             return LocalSearchHints.getDefaultFlatten().build();
         case LocalSearch_NoBase:
             return LocalSearchHints.getDefaultNoBase().build();
+        case LocalSearch_Generic:
+            return LocalSearchHints.getDefaultGeneric().build();
         default:
             return new QueryEvaluationHint(Collections.<QueryHintOption, Object>emptyMap(), getNewBackendInstance());
         }

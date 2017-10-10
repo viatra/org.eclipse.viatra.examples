@@ -10,12 +10,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.tests
 
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.HostInstance
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.junit.Test
-import org.eclipse.viatra.examples.cps.tests.queries.util.TrickyJoin1QuerySpecification
-import org.eclipse.viatra.examples.cps.tests.queries.util.TrickyJoin2QuerySpecification
 import org.junit.runners.Parameterized.Parameters
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized

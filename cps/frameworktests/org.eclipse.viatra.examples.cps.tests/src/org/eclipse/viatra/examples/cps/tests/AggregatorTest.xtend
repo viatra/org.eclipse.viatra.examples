@@ -17,15 +17,14 @@ import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.junit.Test
 import org.eclipse.viatra.examples.cps.tests.queries.util.SumCPUQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.AvgCPUQuerySpecification
-import org.junit.Ignore
 import org.eclipse.viatra.examples.cps.tests.queries.util.HasOddApplicationsQuerySpecification
 import org.junit.runners.Parameterized.Parameters
 import java.util.Collection
-import org.junit.runners.Parameterized.Parameter
-import org.eclipse.viatra.query.testing.core.XmiModelUtil
-import org.eclipse.viatra.query.testing.core.XmiModelUtil.XmiModelUtilRunningOptionEnum
 import org.junit.runners.Parameterized
 import org.junit.runner.RunWith
+import org.eclipse.viatra.query.runtime.emf.EMFScope
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.common.util.URI
 
 @RunWith(Parameterized)
 class AggregatorTest {
@@ -42,14 +41,22 @@ class AggregatorTest {
         )
     }
     
-    @Parameter(0)
-    public String modelPath
+    val String modelPath
+    val EMFScope scope
     
+    new(String modelPath) {
+        this.modelPath = modelPath
+        val rs = new ResourceSetImpl
+        
+        rs.getResource(URI.createPlatformPluginURI(modelPath, true), true)
+        
+        scope = new EMFScope(rs)
+    }
     
     @Test
     def void testMinCPU1() {
         ViatraQueryTest.test(MinCPUQuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }
@@ -57,7 +64,7 @@ class AggregatorTest {
     @Test
     def void testMinCPU2() {
         ViatraQueryTest.test(HostInstanceWithMinCPU1QuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }
@@ -65,7 +72,7 @@ class AggregatorTest {
     @Test
     def void testMinCPU3() {
         ViatraQueryTest.test(HostInstanceWithMinCPU2QuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }
@@ -73,7 +80,7 @@ class AggregatorTest {
     @Test
     def void testSumCPU() {
         ViatraQueryTest.test(SumCPUQuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }
@@ -81,7 +88,7 @@ class AggregatorTest {
     @Test
     def void testHasOddApplications() {
         ViatraQueryTest.test(HasOddApplicationsQuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }
@@ -89,7 +96,7 @@ class AggregatorTest {
     @Test
     def void testAvgCPU() {
         ViatraQueryTest.test(AvgCPUQuerySpecification::instance)
-                        .on(XmiModelUtil::resolvePlatformURI(XmiModelUtilRunningOptionEnum.BOTH, modelPath))
+                        .on(scope)
                         .withAll
                         .assertEquals 
     }

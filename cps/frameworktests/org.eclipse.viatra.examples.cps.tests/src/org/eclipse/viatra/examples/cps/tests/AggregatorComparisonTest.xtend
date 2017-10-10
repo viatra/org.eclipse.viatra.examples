@@ -29,7 +29,7 @@ class AggregatorComparisonTest {
         newArrayList(Sets.cartesianProduct(
             newHashSet(BackendType.values),
             #{"org.eclipse.viatra.examples.cps.tests/models/instances/demo.cyberphysicalsystem"},
-            <List<IQuerySpecification>>newHashSet(
+            <List<IQuerySpecification<?>>>newHashSet(
                 #[HostInstanceWithMinCPU1QuerySpecification.instance, HostInstanceWithMinCPU2QuerySpecification.instance]
             )
         ).map[it.toArray])

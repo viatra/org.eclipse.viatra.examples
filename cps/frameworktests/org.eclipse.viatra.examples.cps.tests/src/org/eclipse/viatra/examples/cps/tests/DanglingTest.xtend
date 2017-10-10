@@ -7,7 +7,6 @@ import org.eclipse.viatra.examples.cps.tests.queries.util.StateToState2QuerySpec
 import org.eclipse.viatra.examples.cps.tests.queries.util.StateToState3QuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.TransitionToTransition1QuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.TransitionToTransition2QuerySpecification
-import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory
 import org.eclipse.viatra.query.testing.core.XmiModelUtil.XmiModelUtilRunningOptionEnum
 import org.eclipse.viatra.query.testing.core.XmiModelUtil
 import org.eclipse.viatra.query.runtime.emf.EMFScope

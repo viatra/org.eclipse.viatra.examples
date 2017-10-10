@@ -23,7 +23,7 @@ import org.junit.Ignore
 import org.junit.Test
 
 class FunctionalDependencyAnalysisTest {
-	val QueryAnalyzer analyzer = new QueryAnalyzer(EMFQueryMetaContext::INSTANCE)
+	val QueryAnalyzer analyzer = new QueryAnalyzer(EMFQueryMetaContext::DEFAULT)
 	val extension FunctionalDependencies functionalDependenciesGroup = FunctionalDependencies::instance
 	
 	@Test
@@ -141,11 +141,11 @@ class FunctionalDependencyAnalysisTest {
 	
 	
 	
-	def toNames(Set<Integer> paramIndices, IQuerySpecification query) {
+	def toNames(Set<Integer> paramIndices, IQuerySpecification<?> query) {
 		Sets.newHashSet(paramIndices.map[query.parameterNames.get(it) as String])
 	}
 	def assertDependencies(
-		IQuerySpecification query,
+		IQuerySpecification<?> query,
 		boolean strict, 
 		Map<Set<String>, Set<String>> expectedDeps) 
 	{
@@ -166,7 +166,7 @@ class FunctionalDependencyAnalysisTest {
 	}
 	
 	
-	def prettyPrintDependencies(IQuerySpecification query) {
+	def prettyPrintDependencies(IQuerySpecification<?> query) {
 		val pQuery = query.internalQueryRepresentation
 		
 		val strictDeps = analyzer.getProjectedFunctionalDependencies(pQuery, true)
@@ -178,10 +178,10 @@ class FunctionalDependencyAnalysisTest {
 				«IF !strictDeps.equals(softDeps)»soft: «softDeps.prettyPrintDependencies(query)»«ENDIF»
 		'''
 	}
-	def prettyPrintParamlist(Set<Integer> paramIndices, IQuerySpecification query) {
+	def prettyPrintParamlist(Set<Integer> paramIndices, IQuerySpecification<?> query) {
 		paramIndices.toNames(query).sort.join(', ')
 	}
-	def prettyPrintDependencies(Map<Set<Integer>, Set<Integer>> deps, IQuerySpecification query) 
+	def prettyPrintDependencies(Map<Set<Integer>, Set<Integer>> deps, IQuerySpecification<?> query) 
 		'''[[
 			«FOR dep : deps.entrySet»
 					{«dep.key.prettyPrintParamlist(query)»} -> {«dep.value.prettyPrintParamlist(query)»}

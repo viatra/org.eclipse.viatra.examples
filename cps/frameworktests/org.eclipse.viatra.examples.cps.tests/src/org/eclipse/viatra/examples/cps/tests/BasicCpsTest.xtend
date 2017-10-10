@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.tests
 
+import java.io.File
 import org.eclipse.viatra.examples.cps.tests.queries.SimpleCpsQueries
 import org.eclipse.viatra.examples.cps.tests.queries.util.ApplicationInstancesOfApplicationTypeIdentifiersQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.ApplicationInstancesOfApplicationTypeQuerySpecification
@@ -42,34 +43,40 @@ import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.eclipse.viatra.query.testing.core.coverage.CoverageAnalyzer
 import org.eclipse.viatra.query.testing.core.coverage.CoverageReporter
 import org.junit.AfterClass
+import org.junit.Assume
 import org.junit.BeforeClass
 import org.junit.Test
-import java.io.File
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
-class BasicCpsTest {
-    
-    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
-    
-    extension AllBackendTypes = new AllBackendTypes
+@RunWith(Parameterized)
+class BasicCpsTest extends AbstractQueryComparisonTest {
     
     static var CoverageAnalyzer coverage;
     
+    override getSnapshotUri() {
+         "org.eclipse.viatra.examples.cps.tests/models/snapshots/test.snapshot"
+    }
+    
     @BeforeClass
-    static def void before(){
+    static def void beforeClass(){
         coverage = new CoverageAnalyzer();
     }
     
+    
     @AfterClass
-    static def void after(){
+    static def void afterClass(){
         CoverageReporter.reportHtml(coverage, new File("BasicCpsTest_coverage.html"))
     }
     
     @Test
     def void testAllQueries() {
+        Assume.assumeTrue(type != BackendType.LocalSearch_NoBase) // This test takes 20+ seconds to run without base 
         SimpleCpsQueries.instance.specifications.forEach[
             ViatraQueryTest.test(it as IQuerySpecification<ViatraQueryMatcher<IPatternMatch>>).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals
         ]
     }
@@ -77,348 +84,401 @@ class BasicCpsTest {
     @Test
     def void testApplicationTypes() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationTypes")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationInstances() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationInstances")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationInstancesOfApplicationType() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationInstancesOfApplicationType")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationInstancesOfApplicationTypeIdentifiers() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationInstancesOfApplicationTypeIdentifiers")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationTypeWithHostedInstances() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationTypeWithHostedInstances")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationTypeWithHostedInstanceIdentifiers() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationTypeWithHostedInstanceIdentifiers")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationTypeWithoutHostedInstance() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationTypeWithoutHostedInstance")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testApplicationTypeWithoutHostedInstanceIdentifiers() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.applicationTypeWithoutHostedInstanceIdentifiers")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testTransitionsOfApplicationType() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.transitionsOfApplicationType")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testTransitionsOfApplicationTypeIdentifiers() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.transitionsOfApplicationTypeIdentifiers")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHostInstancesWithZeroTotalRam() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hostInstancesWithZeroTotalRam")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHostInstanceWithAtLeastAsMuchTotalRamAsTotalHdd() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hostInstanceWithAtLeastAsMuchTotalRamAsTotalHdd")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHostInstanceWithPrimeTotalRam() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hostInstanceWithPrimeTotalRam")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     // This is necessary because of 490761 bug
     @Test
     def void testHasMoreHostedApplicationInstances() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasMoreHostedApplicationInstances")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     // This is necessary because of 490761 bug
     @Test
     def void testHasTheMostHostedApplicationInstances() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasTheMostHostedApplicationInstances")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testCommunicateWith() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.communicateWith")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testInTheCommunicationChains() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.inTheCommunicationChains")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHasMoreCommunicationPartner() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasMoreCommunicationPartner")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHasTheMostCommunicationPartner() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasTheMostCommunicationPartner")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHostedApplications() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hostedApplications")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHasMoreHostedApplications() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasMoreHostedApplications")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testHasTheMostHostedApplications() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.hasTheMostHostedApplications")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testFinalPattern() {
+        Assume.assumeTrue(type != BackendType.LocalSearch_NoBase) // This test takes 20+ seconds to run without base
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.finalPattern")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void testInstances() {
         ViatraQueryTest.test("org.eclipse.viatra.examples.cps.tests.queries.instances")
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     
     @Test
     def void mfTestApplicationTypes() {
         ViatraQueryTest.test(ApplicationTypesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstances() {
         ViatraQueryTest.test(ApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstancesOfApplicationType() {
         ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationInstancesOfApplicationTypeIdentifiers() {
         ViatraQueryTest.test(ApplicationInstancesOfApplicationTypeIdentifiersQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithHostedInstances() {
         ViatraQueryTest.test(ApplicationTypeWithHostedInstancesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithHostedInstanceIdentifiers() {
         ViatraQueryTest.test(ApplicationTypeWithHostedInstanceIdentifiersQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithoutHostedInstance() {
         ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestApplicationTypeWithoutHostedInstanceIdentifiers() {
         ViatraQueryTest.test(ApplicationTypeWithoutHostedInstanceIdentifiersQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestTransitionsOfApplicationType() {
         ViatraQueryTest.test(TransitionsOfApplicationTypeQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestTransitionsOfApplicationTypeIdentifiers() {
         ViatraQueryTest.test(TransitionsOfApplicationTypeIdentifiersQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstancesWithZeroTotalRam() {
         ViatraQueryTest.test(HostInstancesWithZeroTotalRamQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstanceWithAtLeastAsMuchTotalRamAsTotalHdd() {
         ViatraQueryTest.test(HostInstanceWithAtLeastAsMuchTotalRamAsTotalHddQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHostInstanceWithPrimeTotalRam() {
         ViatraQueryTest.test(HostInstanceWithPrimeTotalRamQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreHostedApplicationInstances() {
         ViatraQueryTest.test(HasMoreHostedApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostHostedApplicationInstances() {
         ViatraQueryTest.test(HasTheMostHostedApplicationInstancesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestCommunicateWith() {
         ViatraQueryTest.test(CommunicateWithQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestInTheCommunicationChains() {
         ViatraQueryTest.test(InTheCommunicationChainsQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreCommunicationPartner() {
         ViatraQueryTest.test(HasMoreCommunicationPartnerQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostCommunicationPartner() {
         ViatraQueryTest.test(HasTheMostCommunicationPartnerQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHostedApplications() {
         ViatraQueryTest.test(HostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasMoreHostedApplications() {
         ViatraQueryTest.test(HasMoreHostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestHasTheMostHostedApplications() {
+        Assume.assumeTrue(type != BackendType.LocalSearch_NoBase) // This test takes 20+ seconds to run without base
         ViatraQueryTest.test(HasTheMostHostedApplicationsQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestFinalPattern() {
+        Assume.assumeTrue(type != BackendType.LocalSearch_NoBase) // This test takes 20+ seconds to run without base
         ViatraQueryTest.test(FinalPatternQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     @Test
     def void mfTestInstances() {
         ViatraQueryTest.test(InstancesQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals 
     }
     
     @Test
     def void wildCardTestFinalPattern() {
+        Assume.assumeTrue(type != BackendType.LocalSearch_NoBase) // This test takes 20+ seconds to run without base
         ViatraQueryTest.test(FinalPatternQuerySpecification.instance).analyzeWith(coverage)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals
     }
 }

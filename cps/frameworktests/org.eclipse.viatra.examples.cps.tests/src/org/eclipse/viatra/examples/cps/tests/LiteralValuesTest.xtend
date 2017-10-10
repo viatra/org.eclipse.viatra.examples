@@ -12,35 +12,41 @@ package org.eclipse.viatra.examples.cps.tests
 
 import org.eclipse.viatra.examples.cps.tests.queries.util.MandatoryRequirementsQuerySpecification
 import org.eclipse.viatra.examples.cps.tests.queries.util.OptionalRequirementsQuerySpecification
+import org.eclipse.viatra.examples.cps.tests.queries.util.RunningAppInstancesQuerySpecification
 import org.eclipse.viatra.query.testing.core.api.ViatraQueryTest
 import org.junit.Test
-import org.eclipse.viatra.examples.cps.tests.queries.util.RunningAppInstancesQuerySpecification
+import org.junit.runner.RunWith
+import org.junit.runners.Parameterized
 
-class LiteralValuesTest {
+@RunWith(Parameterized)
+class LiteralValuesTest extends AbstractQueryComparisonTest {
     
-    val snapshot = "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_literalUsage.snapshot"
-    
-    extension AllBackendTypes = new AllBackendTypes
+    override getSnapshotUri() {
+        "org.eclipse.viatra.examples.cps.tests/models/snapshots/test_literalUsage.snapshot"
+    }
     
     @Test
     def void booleanFalseTest() {
         ViatraQueryTest.test(OptionalRequirementsQuerySpecification.instance)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals
     }
     @Test
     def void booleanTrueTest() {
         ViatraQueryTest.test(MandatoryRequirementsQuerySpecification.instance)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals
     }
     @Test
     def void enumLiteralTest() {
         ViatraQueryTest.test(RunningAppInstancesQuerySpecification.instance)
+                        .on(scope)
                         .with(snapshot)
-                        .withAll
+                        .with(type.hints)
                         .assertEquals
     }
 }
