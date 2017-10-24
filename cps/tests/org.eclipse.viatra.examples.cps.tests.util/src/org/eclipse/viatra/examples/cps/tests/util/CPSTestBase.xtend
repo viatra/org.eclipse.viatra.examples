@@ -26,10 +26,10 @@ class CPSTestBase {
 	def static setupRootLogger() {
 		doStandaloneEMFSetup()
 		
-		Logger.getLogger("cps.xform").level = PropertiesUtil.getCPSXformLogLevel
+		Logger.getLogger("cps.xform").initLoggerForLevel(PropertiesUtil.getCPSXformLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("cps.generator").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("cps.performance").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
-		Logger.getLogger("org.eclipse.viatra.query").level = PropertiesUtil.getIncQueryLogLevel
+		Logger.getLogger("org.eclipse.viatra.query").initLoggerForLevel(PropertiesUtil.getIncQueryLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("cps.mondosam").initLoggerForLevel(PropertiesUtil.getBenchmarkLogLevel, COMMON_LAYOUT)
 		Logger.getLogger("cps.stats").initLoggerForLevel(PropertiesUtil.getStatsLogLevel, STATS_LAYOUT)
 		Logger.getLogger("cps.proto").initLoggerForLevel(PropertiesUtil.getCPSGeneratorLogLevel, COMMON_LAYOUT)
@@ -44,16 +44,17 @@ class CPSTestBase {
 	}
 	
 	def static initLoggerForLevel(Logger logger, Level level, String patternLayout) {
-		var ConsoleAppender ca = new ConsoleAppender();
-		val logFilePath = "./results/log/log.log";
-		val fileAppender = new FileAppender(new PatternLayout(patternLayout+FILE_LOG_LAYOUT_PREFIX),logFilePath,true);
-		fileAppender.threshold = Level.DEBUG;
-		ca.setWriter(new OutputStreamWriter(System.out));
-		ca.setLayout(new PatternLayout(patternLayout));
-		logger.setAdditivity(false);
-		logger.removeAllAppenders();
-		logger.addAppender(ca);
-		logger.addAppender(fileAppender);
-		logger.setLevel(level);
+		var ConsoleAppender ca = new ConsoleAppender()
+		val logFilePath = "./results/log/log.log"
+		val fileAppender = new FileAppender(new PatternLayout(patternLayout+FILE_LOG_LAYOUT_PREFIX),logFilePath,true)
+		fileAppender.threshold = Level.INFO
+		ca.setWriter(new OutputStreamWriter(System.out))
+		ca.setLayout(new PatternLayout(patternLayout))
+		ca.threshold = Level.WARN
+		logger.setAdditivity(false)
+		logger.removeAllAppenders()
+		logger.addAppender(ca)
+		logger.addAppender(fileAppender)
+		logger.setLevel(level)
 	}
 }

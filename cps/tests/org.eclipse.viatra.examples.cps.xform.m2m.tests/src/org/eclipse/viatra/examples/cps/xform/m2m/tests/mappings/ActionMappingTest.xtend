@@ -14,15 +14,14 @@ package org.eclipse.viatra.examples.cps.xform.m2m.tests.mappings
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition
 import org.eclipse.viatra.examples.cps.deployment.BehaviorTransition
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.examples.cps.xform.m2m.tests.CPS2DepTest
 import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
+import org.eclipse.viatra.examples.cps.xform.m2m.tests.CPS2DepTest
 import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 
 import static org.junit.Assert.*
-import org.eclipse.emf.ecore.util.EcoreUtil
 
 @RunWith(Parameterized)
 class ActionMappingTest extends CPS2DepTest {
@@ -813,7 +812,9 @@ class ActionMappingTest extends CPS2DepTest {
 		cps2dep.assertActionMapping(transition, transition2)
 		
 		info("Removing host instance for wait")
-		EcoreUtil.delete(hostInstance2);
+		appInstance2.allocatedTo = null
+		hostInstance.communicateWith -= hostInstance2
+		host2.instances -= hostInstance2
 		executeTransformation
 		
 		cps2dep.assertNoTrigger(transition)
