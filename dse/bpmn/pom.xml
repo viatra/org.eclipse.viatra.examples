@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.examples.dse.bpmn</groupId>
 	<artifactId>bpmn</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.20.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>org.eclipse.viatra.dse.examples.bpmn.dse</module>
@@ -46,6 +46,11 @@
 			<url>${viatra.repository.url}</url>
 		</repository>
 		<repository>
+			<id>xtext.update</id>
+			<layout>p2</layout>
+			<url>${xtext.repository.url}</url>
+		</repository>
+		<repository>
 			<id>eclipse.update</id>
 			<layout>p2</layout>
 			<url>${eclipse.repository.url}</url>
@@ -62,13 +67,14 @@
 		</repository>
 	</repositories>
 	<properties>
-		<tycho.version>0.24.0</tycho.version>
-		<xtend.compiler.version>2.10.0</xtend.compiler.version>
+		<tycho.version>1.0.0</tycho.version>
+		<xtend.compiler.version>2.13.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
+		<xtext.repository.url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0</xtext.repository.url>
 		<eclipse.repository.release.url>http://download.eclipse.org/releases/neon</eclipse.repository.release.url>
 		<eclipse.repository.url>http://download.eclipse.org/eclipse/updates/4.6</eclipse.repository.url>
 		<orbit.repository.url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</orbit.repository.url>
-		<viatra.compiler.version>1.4.0-SNAPSHOT</viatra.compiler.version>
+		<viatra.compiler.version>2.0.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jacoco.version>0.7.6.201602180812</jacoco.version>
 		<jacoco.targetdir>${project.basedir}/..</jacoco.targetdir>

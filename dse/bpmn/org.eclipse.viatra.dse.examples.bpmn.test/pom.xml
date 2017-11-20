@@ -6,10 +6,9 @@
 	<parent>
 		<groupId>org.eclipse.viatra.examples.dse.bpmn</groupId>
 		<artifactId>bpmn</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.20.0-SNAPSHOT</version>
 	</parent>
 	<groupId>org.eclipse.viatra.examples.dse.bpmn</groupId>
 	<artifactId>org.eclipse.viatra.dse.examples.bpmn.test</artifactId>
-	<version>0.12.0-SNAPSHOT</version>
 	<packaging>eclipse-test-plugin</packaging>
 </project>
