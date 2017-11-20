@@ -1,8 +1,0 @@
-package org.eclipse.viatra.examples.cps.tests.queries.resolveordering
-
-import "http://org.eclipse.viatra/model/cps"
-
-pattern thirdPattern(AT : ApplicationType, HI: HostInstance, identifier: java String) {
-    find secondPattern(AT, AI, identifier);
-    ApplicationInstance.allocatedTo(AI, HI);
-}
