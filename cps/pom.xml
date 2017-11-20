@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.examples.cps</groupId>
 	<artifactId>org.eclipse.viatra.examples.cps.parent</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>2.0.0-SNAPSHOT</version>
 	<name>CPS Demonstrator</name>
 	<url></url>
 	<packaging>pom</packaging>
@@ -25,7 +25,6 @@
 
 		<!-- Addons -->
 		<module>addons/org.eclipse.viatra.examples.cps.queries.validation</module>
-		<module>addons/org.eclipse.viatra.examples.cps.mwe2integration.example</module>
 		
 
 		<!-- M2M Transformations -->
@@ -79,11 +78,11 @@
 	</profiles>
 	<properties>
 		<tycho.version>1.0.0</tycho.version>
-		<xtend.compiler.version>2.10.0</xtend.compiler.version>
+		<xtend.compiler.version>2.13.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
-		<viatra.compiler.version>1.7.0-SNAPSHOT</viatra.compiler.version>
+		<viatra.compiler.version>2.0.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.7</java.version>
+		<java.version>1.8</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
 	</properties>

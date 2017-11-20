@@ -13,10 +13,9 @@ package org.eclipse.viatra.examples.cps.generator.utils
 import org.eclipse.viatra.query.runtime.base.api.IEClassifierProcessor.IEClassProcessor
 import org.eclipse.emf.ecore.EClass
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.viatra.query.runtime.base.api.IEStructuralFeatureProcessor
-import org.eclipse.emf.ecore.EStructuralFeature
+import org.eclipse.viatra.query.runtime.base.api.IStructuralFeatureInstanceProcessor
 
-class SumProcessor implements IEClassProcessor,  IEStructuralFeatureProcessor {
+class SumProcessor implements IEClassProcessor, IStructuralFeatureInstanceProcessor {
 	
 	var sum = 0;
 		
@@ -24,7 +23,7 @@ class SumProcessor implements IEClassProcessor,  IEStructuralFeatureProcessor {
 		sum++
 	}
 	
-	override process(EStructuralFeature feature, EObject source, Object target) {
+	override process(EObject source, Object target) {
 		sum++
 	}
 	

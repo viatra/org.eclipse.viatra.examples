@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator serializer tests
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.serializer.test
-Bundle-Version: 0.1.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: IncQueryLabs Ltd.
-Require-Bundle: org.eclipse.viatra.examples.cps.xform.serializer;bundle-version="0.1.0",
+Require-Bundle: org.eclipse.viatra.examples.cps.xform.serializer,
  org.eclipse.viatra.examples.cps.xform.serializer,
  org.eclipse.emf.ecore,
  org.eclipse.core.resources,

@@ -17,10 +17,12 @@ class SignalUtil {
 	static val waitPattern = Pattern.compile("^waitForSignal\\((.*)\\)$")
 	static val sendPattern = Pattern.compile("^sendSignal\\((.*),(.*)\\)$")
 	
+	@Pure
 	static def isSend(String action) {
 		sendPattern.matcher(action).matches
 	}
 	
+	@Pure
 	static def isWait(String action) {
 		waitPattern.matcher(action).matches
 	}

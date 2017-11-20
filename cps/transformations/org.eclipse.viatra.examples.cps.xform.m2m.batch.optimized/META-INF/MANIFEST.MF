@@ -3,8 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Optimized
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized
 Bundle-Vendor: IncQueryLabs Ltd.
-Bundle-Version: 0.1.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Version: 2.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: com.google.guava,
  org.eclipse.xtend.lib,
  org.eclipse.xtext.xbase.lib,

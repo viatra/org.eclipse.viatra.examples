@@ -12,8 +12,6 @@ package org.eclipse.viatra.examples.cps.generator.dtos
 
 import java.util.LinkedHashSet
 import org.apache.log4j.Logger
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage
@@ -31,7 +29,6 @@ import org.eclipse.viatra.examples.cps.generator.queries.TransitionsMatcher
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
 import org.eclipse.viatra.examples.cps.generator.utils.SumProcessor
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
-import org.eclipse.viatra.query.runtime.base.api.IEStructuralFeatureProcessor
 import org.eclipse.viatra.query.runtime.base.api.ViatraBaseFactory
 
 class CPSStats extends ModelStats {
@@ -68,9 +65,8 @@ class CPSStats extends ModelStats {
 		
 		// EFeatures
 		val sp2 = new SumProcessor
-		baseIndex.processAllFeatureInstances(CyberPhysicalSystemPackage.Literals.TRANSITION__ACTION, new IEStructuralFeatureProcessor(){
-			override process(EStructuralFeature feature, EObject source, Object target) {
-				if(source instanceof Transition){
+		baseIndex.processAllFeatureInstances(CyberPhysicalSystemPackage.Literals.TRANSITION__ACTION, [source,target |
+				if (source instanceof Transition){
 					val Transition t = source as Transition
 					if(t.action.startsWith(CPSPhaseActionGeneration.SEND_METHOD_NAME)){
 						sendActions++
@@ -78,8 +74,7 @@ class CPSStats extends ModelStats {
 						waitActions++
 					}
 				}
-			}
-		})	
+		])	
 		sp2.resetSum
 		
 		val appInstanceIdentifiers = baseIndex.getAllInstances(CyberPhysicalSystemPackage.Literals.APPLICATION_INSTANCE).filter(ApplicationInstance).map[it.identifier].toList

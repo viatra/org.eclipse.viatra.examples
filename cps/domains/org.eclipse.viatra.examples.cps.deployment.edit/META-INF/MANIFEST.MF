@@ -2,12 +2,12 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.deployment.edit;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.viatra.examples.cps.deployment.provider.DeploymentEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.viatra.examples.cps.deployment.provider
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.viatra.examples.cps.deployment;visibility:=reexport,

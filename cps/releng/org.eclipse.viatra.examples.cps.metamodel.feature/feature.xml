@@ -2,7 +2,7 @@
 <feature
       id="org.eclipse.viatra.examples.cps.metamodel.feature"
       label="CPS metamodels"
-      version="0.1.0.qualifier"
+      version="2.0.0.qualifier"
       provider-name="IncQuery Labs Ltd."
       license-feature="org.eclipse.license">
 

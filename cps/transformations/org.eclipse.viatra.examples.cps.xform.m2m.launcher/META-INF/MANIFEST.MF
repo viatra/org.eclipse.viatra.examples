@@ -2,9 +2,9 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator M2M Transformation Launcher
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.launcher
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.launcher
 Import-Package: org.apache.log4j
 Require-Bundle: org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0",

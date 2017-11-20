@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator Live Validation
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.queries.validation;singleton:=true
-Bundle-Version: 0.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Require-Bundle: org.eclipse.viatra.examples.cps.queries,
   com.google.guava,
@@ -12,4 +12,4 @@ Require-Bundle: org.eclipse.viatra.examples.cps.queries,
   org.eclipse.viatra.query.runtime,
   org.eclipse.viatra.addon.validation.core,
   org.eclipse.viatra.addon.validation.runtime
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
