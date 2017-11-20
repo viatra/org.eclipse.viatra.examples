@@ -38,10 +38,6 @@
   </setupTask>
   <setupTask
       xsi:type="jdt:JRETask"
-      version="JavaSE-1.7"
-      location="${jre.location-1.7}"/>
-  <setupTask
-      xsi:type="jdt:JRETask"
       version="JavaSE-1.8"
       location="${jre.location-1.8}"/>
   <setupTask
@@ -99,15 +95,15 @@
       label="Demo">
     <requirement
         name="org.eclipse.viatra.query.sdk.feature.source.feature.group"
-        versionRange="[1.2.0,2.0.0)"/>
+        versionRange="[2.0.0,3.0.0)"/>
     <requirement
         name="org.eclipse.viatra.query.testing.sdk.feature.feature.group"/>
     <requirement
         name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-        versionRange="[0.14.0,0.18.0)"/>
+        versionRange="[0.20.0,0.21.0)"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
-        versionRange="[2.10.0,2.13.0)"/>
+        versionRange="[2.13.0,3.0.0)"/>
     <requirement
         name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
     <requirement
@@ -115,10 +111,7 @@
         versionRange="[3.0.0,4.0.0)"/>
     <requirement
         name="org.eclipse.viatra.transformation.runtime.emf.feature.feature.group"
-        versionRange="[1.2.0,2.0.0)"/>
-    <requirement
-        name="org.eclipse.viatra.integration.mwe2.feature.feature.group"
-        versionRange="[0.13.0,0.18.0)"/>
+        versionRange="[2.0.0,3.0.0)"/>
     <requirement
         name="org.eclipse.emf.sdk.feature.group"/>
     <requirement
@@ -134,7 +127,7 @@
     <repository
         url="${viatra.repository.url}"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
     <repository
         url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
   </setupTask>
@@ -148,7 +141,7 @@
           name="org.eclipse.sdk.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.10.0,2.13.0)"/>
+          versionRange="[2.13.0,3.0.0)"/>
       <requirement
           name="org.eclipse.emf.sdk.feature.group"
           versionRange="[2.9.0,3.0.0)"/>
@@ -157,20 +150,17 @@
           versionRange="[3.0.0,4.0.0)"/>
       <requirement
           name="org.eclipse.viatra.transformation.runtime.emf.feature.feature.group"
-          versionRange="[1.2.0,2.0.0)"/>
-      <requirement
-          name="org.eclipse.viatra.integration.mwe2.feature.feature.group"
-          versionRange="[0.13.0,0.18.0)"/>
+          versionRange="[2.0.0,3.0.0)"/>
       <requirement
           name="org.eclipse.viatra.query.sdk.feature.source.feature.group"
-          versionRange="[1.2.0,2.0.0)"/>
+          versionRange="[2.0.0,3.0.0)"/>
       <requirement
           name="org.eclipse.viatra.query.testing.sdk.feature.feature.group"/>
       <requirement
           name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
       <requirement
           name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-          versionRange="[0.14.0,0.18.0)"/>
+          versionRange="[0.20.0,0.21.0)"/>
       <requirement
           name="org.eclipse.fx.runtime.min.feature.feature.group"/>
       <requirement
@@ -193,7 +183,7 @@
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
         <repository
-            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.11.0"/>
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
         <repository
             url="${viatra.repository.url}"/>
         <repository
