@@ -24,6 +24,8 @@ import org.eclipse.viatra.query.runtime.localsearch.planner.cost.IConstraintEval
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.StatisticsBasedConstraintCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
+import org.eclipse.viatra.query.runtime.matchers.tuple.TupleMask;
+import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 import com.google.common.collect.Maps;
@@ -108,10 +110,10 @@ public enum TransformationType {
                 }
             }
             if (substitutions.containsKey(supplierKey)){
-                return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), null);
+                return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), TupleMask.empty(supplierKey.getArity()), Tuples.staticArityFlatTupleOf());
             }
             
-            return input.getRuntimeContext().countTuples(supplierKey, null);
+            return input.getRuntimeContext().countTuples(supplierKey, TupleMask.empty(supplierKey.getArity()), Tuples.staticArityFlatTupleOf());
         }
     }
 
