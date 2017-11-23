@@ -66,6 +66,12 @@
 			<url>${orbit.repository.url}</url>
 		</repository>
 	</repositories>
+	<pluginRepositories>
+	   <pluginRepository>
+		  <id>viatra</id>
+		  <url>https://repo.eclipse.org/content/groups/viatra2/</url>
+	   </pluginRepository>
+    </pluginRepositories>
 	<properties>
 		<tycho.version>1.0.0</tycho.version>
 		<xtend.compiler.version>2.13.0</xtend.compiler.version>
