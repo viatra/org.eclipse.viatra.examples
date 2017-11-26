@@ -26,19 +26,19 @@ public class BpmnProblemSaver {
         SimplifiedBPMN root;
 
         root = BpmnProblems.createOneTaskProblem(false);
-        EMFHelper.serializeModel(root, "onetask", "sbpmn");
+        EMFHelper.saveModel(root, "onetask.sbpmn");
 
         root = BpmnProblems.create3TaskProblem(false);
-        EMFHelper.serializeModel(root, "threetask", "sbpmn");
+        EMFHelper.saveModel(root, "threetask.sbpmn");
 
         root = BpmnProblems.createWebShopProblem();
-        EMFHelper.serializeModel(root, "webshop", "sbpmn");
+        EMFHelper.saveModel(root, "webshop.sbpmn");
 
         root = BpmnProblems.createInvoiceProblem(false);
-        EMFHelper.serializeModel(root, "invoice", "sbpmn");
+        EMFHelper.saveModel(root, "invoice.sbpmn");
 
         root = BpmnProblems.createBookProblem(false);
-        EMFHelper.serializeModel(root, "book", "sbpmn");
+        EMFHelper.saveModel(root, "book.sbpmn");
 
     }
 
