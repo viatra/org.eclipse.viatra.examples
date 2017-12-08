@@ -33,7 +33,6 @@ import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
 import org.eclipse.viatra.dse.solutionstore.SolutionStore;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.transformation.evm.specific.ConflictResolvers;
 import org.eclipse.viatra.transformation.evm.specific.resolver.FixedPriorityConflictResolver;
 import org.junit.Assert;
@@ -68,7 +67,7 @@ public class BpmnExamplesTest {
      * Configuration of the VIATRA-DSE framework
      */
     @Before
-    public void setUp() throws ViatraQueryException {
+    public void setUp() {
 
         dse = new DesignSpaceExplorer();
 
@@ -126,7 +125,7 @@ public class BpmnExamplesTest {
     }
 
     @Test
-    public void fixedPrioritySearch() throws ViatraQueryException {
+    public void fixedPrioritySearch() {
         fixedPriorityStrategy = new FixedPriorityStrategy()
             .withDepthLimit(10)
             .withRulePriority(ruleProvider.allocateRule, 10)
@@ -139,7 +138,7 @@ public class BpmnExamplesTest {
     }
 
     @Test
-    public void DfsWithFixedPriorityConflictResolver() throws ViatraQueryException {
+    public void DfsWithFixedPriorityConflictResolver() {
         FixedPriorityConflictResolver conflictResolver = ConflictResolvers.createFixedPriorityResolver();
         conflictResolver.setPriority(ruleProvider.allocateRule.getRuleSpecification(), 1);
         conflictResolver.setPriority(ruleProvider.createResourceRule.getRuleSpecification(), 5);
@@ -151,18 +150,18 @@ public class BpmnExamplesTest {
     }
 
     @Test
-    public void DFS() throws ViatraQueryException {
+    public void DFS() {
         dse.startExploration(Strategies.createDfsStrategy(12).continueIfHardObjectivesFulfilled());
         assertFoundAnySolution();
     }
 
     @Test
-    public void BFS() throws ViatraQueryException {
+    public void BFS() {
         dse.startExploration(Strategies.createBfsStrategy(7));
     }
 
     @Test
-    public void hillClimbing() throws ViatraQueryException {
+    public void hillClimbing() {
         dse.startExploration(Strategies.creatHillClimbingStrategy());
         assertFoundAnySolution();
     }

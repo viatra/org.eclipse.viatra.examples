@@ -16,15 +16,13 @@ import org.eclipse.viatra.examples.cps.model.viewer.util.AllHostInstancesQuerySp
 import org.eclipse.viatra.examples.cps.model.viewer.util.ConnectTypesAndInstancesHostQuerySpecification;
 import org.eclipse.viatra.examples.cps.model.viewer.util.HostTypesQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 import com.google.common.collect.ImmutableSet;
 
 public class CpsHardwareViewPart extends AbstractCpsViewPart {
 
 	@Override
-	protected Collection<IQuerySpecification<?>> getSpecifications()
-			throws ViatraQueryException {
+	protected Collection<IQuerySpecification<?>> getSpecifications() {
 		return ImmutableSet.<IQuerySpecification<?>>of(
 				//CommunicationsQuerySpecification.instance(),
 				ConnectTypesAndInstancesHostQuerySpecification.instance(),

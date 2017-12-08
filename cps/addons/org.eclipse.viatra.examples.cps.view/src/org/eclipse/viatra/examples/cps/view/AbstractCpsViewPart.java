@@ -33,7 +33,7 @@ import org.eclipse.viatra.integration.zest.viewer.ModifiableZestContentViewer;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.ViatraQueryRuntimeException;
 
 import com.google.common.collect.ImmutableSet;
 
@@ -53,7 +53,7 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 			return engine;
 		}
 		
-		protected abstract Collection<IQuerySpecification<?>> getSpecifications() throws ViatraQueryException;
+		protected abstract Collection<IQuerySpecification<?>> getSpecifications();
 		
 		@Override
 		public void createPartControl(Composite parent) {
@@ -72,7 +72,7 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 						ImmutableSet.of(ViewerStateFeature.EDGE, ViewerStateFeature.CONTAINMENT));
 				ViatraGraphViewers.bind(viewer, state, true);
 				viewer.setLayoutAlgorithm(getLayout());
-			} catch (ViatraQueryException e) {
+			} catch (ViatraQueryRuntimeException e) {
 				e.printStackTrace();
 			}
 		}
@@ -93,7 +93,7 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 				
 	            try {
 					engine = ViatraQueryEngine.on(new EMFScope(resourceSet));
-				} catch (ViatraQueryException e) {
+				} catch (ViatraQueryRuntimeException e) {
 					e.printStackTrace();
 				} 
 	            

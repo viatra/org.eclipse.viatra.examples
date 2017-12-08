@@ -23,7 +23,6 @@ import org.eclipse.viatra.addon.validation.core.api.IConstraintSpecification;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 import org.eclipse.viatra.examples.cps.model.validation.util.MultipleApplicationInstanceInCommunicationGroupQuerySpecification;
 
@@ -31,7 +30,7 @@ public class MultipleApplicationInstanceInCommunicationGroupConstraint0 implemen
 
     private MultipleApplicationInstanceInCommunicationGroupQuerySpecification querySpecification;
 
-    public MultipleApplicationInstanceInCommunicationGroupConstraint0() throws ViatraQueryException {
+    public MultipleApplicationInstanceInCommunicationGroupConstraint0() {
         querySpecification = MultipleApplicationInstanceInCommunicationGroupQuerySpecification.instance();
     }
 

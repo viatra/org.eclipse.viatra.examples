@@ -23,7 +23,6 @@ import org.eclipse.viatra.addon.validation.core.api.IConstraintSpecification;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 import org.eclipse.viatra.examples.cps.model.validation.util.IdContainsWhitespaceQuerySpecification;
 
@@ -31,7 +30,7 @@ public class IdContainsWhitespaceConstraint0 implements IConstraintSpecification
 
     private IdContainsWhitespaceQuerySpecification querySpecification;
 
-    public IdContainsWhitespaceConstraint0() throws ViatraQueryException {
+    public IdContainsWhitespaceConstraint0() {
         querySpecification = IdContainsWhitespaceQuerySpecification.instance();
     }
 

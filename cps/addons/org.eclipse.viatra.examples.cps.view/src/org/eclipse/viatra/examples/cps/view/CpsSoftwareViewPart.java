@@ -17,15 +17,13 @@ import org.eclipse.viatra.examples.cps.model.viewer.util.AppInstancesWithAllocat
 import org.eclipse.viatra.examples.cps.model.viewer.util.ApplicationTypesQuerySpecification;
 import org.eclipse.viatra.examples.cps.model.viewer.util.ConnectTypesAndInstancesAppQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 import com.google.common.collect.ImmutableSet;
 
 public class CpsSoftwareViewPart extends AbstractCpsViewPart {
 
 	@Override
-	protected Collection<IQuerySpecification<?>> getSpecifications()
-			throws ViatraQueryException {
+	protected Collection<IQuerySpecification<?>> getSpecifications() {
 		return ImmutableSet.<IQuerySpecification<?>>of(
 				AppInstancesNoAllocationQuerySpecification.instance(),
 				AppInstancesWithAllocationQuerySpecification.instance(),

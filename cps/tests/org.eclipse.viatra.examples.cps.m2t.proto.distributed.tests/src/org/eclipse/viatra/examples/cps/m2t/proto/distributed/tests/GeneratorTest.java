@@ -35,7 +35,6 @@ import org.eclipse.viatra.examples.cps.xform.m2t.exceptions.CPSGeneratorExceptio
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -47,7 +46,7 @@ public class GeneratorTest extends CPSTestBase {
 	
 //	@Ignore
 	@Test
-	public void testSmall() throws ViatraQueryException{
+	public void testSmall() {
 		logger.info("Start Generating...");
 		
 		Deployment model = loadModel("C:\\Eclipses\\CPSDemonstrator\\git\\incquery-examples-cps\\models\\org.eclipse.viatra.examples.cps.instances\\example.deployment");
@@ -59,7 +58,7 @@ public class GeneratorTest extends CPSTestBase {
 	
 	@Ignore
 	@Test
-	public void test64ClientServer() throws ViatraQueryException{
+	public void test64ClientServer() {
 		logger.info("Start Generating...");
 		
 		Logger.getLogger("cps.proto.generator").setLevel(Level.OFF);
@@ -75,7 +74,7 @@ public class GeneratorTest extends CPSTestBase {
 		assertTrue(true);
 	}
 
-	private void generateCode(Deployment model) throws ViatraQueryException {
+	private void generateCode(Deployment model) {
 		ViatraQueryEngine engine = AdvancedViatraQueryEngine.on(new EMFScope(model));
 		DeploymentQueries.instance().prepare(engine);
 		

@@ -31,13 +31,12 @@ import org.eclipse.viatra.dse.objectives.Comparators;
 import org.eclipse.viatra.dse.objectives.impl.ConstraintsObjective;
 import org.eclipse.viatra.dse.objectives.impl.ModelQueriesGlobalConstraint;
 import org.eclipse.viatra.dse.objectives.impl.TrajectoryCostSoftObjective;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.junit.Test;
 
 public class BpmnEvolutionaryExample {
 
     @Test
-    public void test() throws ViatraQueryException {
+    public void test() {
 
         Logger.getRootLogger().setLevel(Level.WARN);
 

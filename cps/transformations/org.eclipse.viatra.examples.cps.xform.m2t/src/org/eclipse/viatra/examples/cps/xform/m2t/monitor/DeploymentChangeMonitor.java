@@ -35,7 +35,6 @@ import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 import org.eclipse.viatra.transformation.evm.api.ExecutionSchema;
 import org.eclipse.viatra.transformation.evm.api.Job;
 import org.eclipse.viatra.transformation.evm.api.RuleSpecification;
@@ -145,7 +144,7 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 	}
 
 	@Override
-	public void startMonitoring() throws ViatraQueryException {
+	public void startMonitoring() {
 	    ModelChangeListenerQueries.instance().prepare(engine);
 		Set<Job<?>> allJobs = Sets.newHashSet();
 
@@ -221,8 +220,7 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 		executionSchema.addRule(applicationRules);
 	}
 
-	private Map<IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, Set<Job<IPatternMatch>>> getDeploymentElementChangeQuerySpecifications()
-			throws ViatraQueryException {
+	private Map<IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, Set<Job<IPatternMatch>>> getDeploymentElementChangeQuerySpecifications() {
 		Map<IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, Set<Job<IPatternMatch>>> querySpecifications = Maps
 				.newHashMap();
 		querySpecifications

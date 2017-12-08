@@ -12,7 +12,7 @@ package org.eclipse.viatra.examples.cps.xform.m2t.monitor;
 
 import org.eclipse.viatra.examples.cps.deployment.Deployment;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
+import org.eclipse.viatra.query.runtime.matchers.ViatraQueryRuntimeException;
 
 public abstract class AbstractDeploymentChangeMonitor {
 
@@ -29,9 +29,9 @@ public abstract class AbstractDeploymentChangeMonitor {
 	 * Sets the model whose changes are observed. Also creates an initial checkpoint with no changes registered.
 	 * @param deployment the deployment model
 	 * @param engine engine associated with the 
-	 * @throws IncQueryException 
+	 * @throws ViatraQueryRuntimeException 
 	 */
-	public abstract void startMonitoring() throws ViatraQueryException;
+	public abstract void startMonitoring();
 	
 	/**
 	 * Creates a checkpoint which means:
