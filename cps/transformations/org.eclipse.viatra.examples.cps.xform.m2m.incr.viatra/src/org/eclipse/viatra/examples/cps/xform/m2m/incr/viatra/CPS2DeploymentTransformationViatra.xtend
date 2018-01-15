@@ -16,13 +16,13 @@ import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.patterns.CpsXformM2M
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.rules.RuleProvider
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra.util.PerJobFixedPriorityConflictResolver
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.api.Scheduler.ISchedulerFactory
 import org.eclipse.viatra.transformation.runtime.emf.transformation.eventdriven.EventDrivenTransformation
 
 import static com.google.common.base.Preconditions.*
 import org.eclipse.viatra.transformation.debug.configuration.TransformationDebuggerConfiguration
+import org.eclipse.viatra.transformation.evm.specific.resolver.InvertedDisappearancePriorityConflictResolver
 
 class CPS2DeploymentTransformationViatra {
 
@@ -78,7 +78,7 @@ class CPS2DeploymentTransformationViatra {
     
 
     private def createTransformation(boolean isDebuggable, String debugName) {
-        val fixedPriorityResolver = new PerJobFixedPriorityConflictResolver
+        val fixedPriorityResolver = new InvertedDisappearancePriorityConflictResolver
         fixedPriorityResolver.setPriority(hostRule.ruleSpecification, 1)
         fixedPriorityResolver.setPriority(applicationRule.ruleSpecification, 2)
         fixedPriorityResolver.setPriority(stateMachineRule.ruleSpecification, 3)

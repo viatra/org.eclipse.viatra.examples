@@ -11,10 +11,8 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr
 
 import com.google.common.base.Stopwatch
-import com.google.common.collect.ArrayListMultimap
 import com.google.common.collect.HashBasedTable
 import com.google.common.collect.Maps
-import com.google.common.collect.Multimap
 import com.google.common.collect.Table
 import java.util.HashMap
 import java.util.List
@@ -46,10 +44,7 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.StateMac
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.StatesQuerySpecification
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.TransitionsQuerySpecification
 import org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
-import org.eclipse.viatra.query.runtime.api.IPatternMatch
-import org.eclipse.viatra.query.runtime.api.IQuerySpecification
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
-import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher
 
 import static com.google.common.base.Preconditions.*
 
@@ -63,6 +58,7 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.StateMachines
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppInstancesMatch
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppTypesMatch
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.HostInstancesMatch
+import java.util.stream.Stream
 
 class CPS2DeploymentPartialBatchTransformation {
 
@@ -140,8 +136,8 @@ class CPS2DeploymentPartialBatchTransformation {
 		initPerformanceTimers()
 		val delta = monitor.createCheckpoint
 		
-		delta.appeared.keySet.forEach [ spec |
-			delta.appeared.get(spec).forEach [ b |
+		delta.changedQuerySpecifications.forEach [ spec |
+			delta.getAppeared(spec).forEach [ b |
 				if (b instanceof TransitionsMatch) {
 					val transition = b.transition
 					transitionMap.put(transition, transition.action)
@@ -534,50 +530,44 @@ class CPS2DeploymentPartialBatchTransformation {
 	private def clearModel(ChangeDelta delta) {
 
 		trace('''Executing: clearModel(ChangeDelta delta)''')
-		val Multimap<IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, IPatternMatch> queue = ArrayListMultimap.
-			create();
-		queue.putAll(delta.disappeared)
-		queue.putAll(delta.updated)
 
-		queue.keySet.forEach [ spec |
-			queue.get(spec).forEach [ b |
-				if (b instanceof HostInstancesMatch) {
-					removeHostInstance(b.hostInstance)
-				}
-				if (b instanceof AppTypesMatch) {
-					removeAppType(b.appType)
-				}
-				if (b instanceof AppInstancesMatch) {
-					removeAppInstance(b.appInstance)
-				}
-				if (b instanceof StateMachinesMatch) {
-					removeStateMachine(b.stateMachine , true)
-				}
-				if (b instanceof StatesMatch) {
-					val state = b.state
-					state.removeState
-					engine.state2Statemachine.getAllMatches(state, null).forEach [ match |
-						match.sm.removeStateMachine(true)
-					]
-				}
-				if (b instanceof TransitionsMatch) {
-					val transition = b.transition
-					val action = transitionMap.get(transition)
-					if (action !== null && SignalUtil.isWait(action)) {
-						val id = SignalUtil.getSignalId(action)
-						engine.sendTransitionAppSignal.getAllMatches(null, null, id).forEach [ match |
-							match.transition.removeTransition
-							engine.transition2StateMachine.getAllMatches(match.transition, null).forEach [ m |
-								m.sm.removeStateMachine(true)
-							]
+        Stream.concat(delta.allDisappeared.stream, delta.allUpdated.stream).forEach[ b |
+			if (b instanceof HostInstancesMatch) {
+				removeHostInstance(b.hostInstance)
+			}
+			if (b instanceof AppTypesMatch) {
+				removeAppType(b.appType)
+			}
+			if (b instanceof AppInstancesMatch) {
+				removeAppInstance(b.appInstance)
+			}
+			if (b instanceof StateMachinesMatch) {
+				removeStateMachine(b.stateMachine , true)
+			}
+			if (b instanceof StatesMatch) {
+				val state = b.state
+				state.removeState
+				engine.state2Statemachine.getAllMatches(state, null).forEach [ match |
+					match.sm.removeStateMachine(true)
+				]
+			}
+			if (b instanceof TransitionsMatch) {
+				val transition = b.transition
+				val action = transitionMap.get(transition)
+				if (action !== null && SignalUtil.isWait(action)) {
+					val id = SignalUtil.getSignalId(action)
+					engine.sendTransitionAppSignal.getAllMatches(null, null, id).forEach [ match |
+						match.transition.removeTransition
+						engine.transition2StateMachine.getAllMatches(match.transition, null).forEach [ m |
+							m.sm.removeStateMachine(true)
 						]
-					}
-					transition.removeTransition
-					engine.transition2StateMachine.getAllMatches(transition, null).forEach [ match |
-						match.sm.removeStateMachine(true)
 					]
 				}
-			]
+				transition.removeTransition
+				engine.transition2StateMachine.getAllMatches(transition, null).forEach [ match |
+					match.sm.removeStateMachine(true)
+				]
+			}
 		]
 		trace('''Execution ended: clearModel''')
 	}

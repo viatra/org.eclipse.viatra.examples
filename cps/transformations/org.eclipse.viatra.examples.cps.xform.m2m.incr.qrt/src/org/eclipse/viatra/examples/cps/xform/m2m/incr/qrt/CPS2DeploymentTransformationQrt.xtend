@@ -18,7 +18,6 @@ import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.CpsXformM2M
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.ApplicationRules
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.HostRules
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.util.PerJobFixedPriorityConflictResolver
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.api.ExecutionSchema
 import org.eclipse.viatra.transformation.evm.specific.ExecutionSchemas
@@ -29,6 +28,7 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.StateMachineRule
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.StateRules
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.TransitionRules
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.TriggerRules
+import org.eclipse.viatra.transformation.evm.specific.resolver.InvertedDisappearancePriorityConflictResolver
 
 class CPS2DeploymentTransformationQrt {
 
@@ -77,7 +77,7 @@ class CPS2DeploymentTransformationQrt {
 			val schedulerFactory = Schedulers.getQueryEngineSchedulerFactory(engine)
 			schema = ExecutionSchemas.createViatraQueryExecutionSchema(engine, schedulerFactory)
 
-			val fpr = new PerJobFixedPriorityConflictResolver
+			val fpr = new InvertedDisappearancePriorityConflictResolver
 
 			rules.forEach [
 				fpr.setPriority(ruleSpecification, priority)
