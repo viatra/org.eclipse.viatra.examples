@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.viatra.examples.cps.traceability,
   org.eclipse.viatra.transformation.evm;bundle-version="[2.0.0,2.1.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2m.incr.expl

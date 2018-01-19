@@ -22,3 +22,4 @@ Require-Bundle: com.google.guava,
  org.eclipse.viatra.examples.cps.xform.m2m.launcher;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.log4j;version="1.2.15"
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2m.tests

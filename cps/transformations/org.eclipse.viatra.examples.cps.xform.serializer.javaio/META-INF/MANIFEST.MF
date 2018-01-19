@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.viatra.examples.cps.xform.serializer,
  org.eclipse.xtend.lib;bundle-version="2.13.0",
  org.eclipse.xtend.lib.macro;bundle-version="2.13.0"
 Export-Package: org.eclipse.viatra.examples.cps.xform.serializer.javaio
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.serializer.javaio

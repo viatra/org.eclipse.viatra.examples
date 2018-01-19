@@ -17,3 +17,4 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.viatra.examples.cps.model;visibility:=reexport,
  org.eclipse.viatra.examples.cps.model.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.traceability.edit

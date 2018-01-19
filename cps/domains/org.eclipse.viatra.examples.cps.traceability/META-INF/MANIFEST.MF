@@ -15,3 +15,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.viatra.examples.cps.traceability,
  org.eclipse.viatra.examples.cps.traceability.impl,
  org.eclipse.viatra.examples.cps.traceability.util
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.traceability

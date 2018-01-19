@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.emf.ecore,
   org.eclipse.viatra.transformation.runtime.debug;bundle-version="[0.20.0,0.21.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra

@@ -18,3 +18,4 @@ Require-Bundle: org.eclipse.viatra.examples.cps.xform.serializer,
  org.apache.log4j,
  org.eclipse.viatra.examples.cps.xform.serializer.eclipse,
  org.eclipse.viatra.examples.cps.xform.serializer.javaio;bundle-version="0.1.0"
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.serializer.test

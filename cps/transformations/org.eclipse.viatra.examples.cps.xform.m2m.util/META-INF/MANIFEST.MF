@@ -12,3 +12,4 @@ Require-Bundle: com.google.guava,
  org.eclipse.viatra.examples.cps.deployment;bundle-version="0.1.0",
  org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0"
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.util
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2m.util

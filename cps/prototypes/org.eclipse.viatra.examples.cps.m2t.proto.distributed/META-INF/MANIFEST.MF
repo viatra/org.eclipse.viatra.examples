@@ -16,3 +16,4 @@ Export-Package: org.eclipse.viatra.examples.cps.m2t.proto.distributed.general,
  org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.applications,
  org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.hosts,
  org.eclipse.viatra.examples.cps.m2t.proto.distributed.generated.hosts.statemachines
+Automatic-Module-Name: org.eclipse.viatra.examples.cps.m2t.proto.distributed
