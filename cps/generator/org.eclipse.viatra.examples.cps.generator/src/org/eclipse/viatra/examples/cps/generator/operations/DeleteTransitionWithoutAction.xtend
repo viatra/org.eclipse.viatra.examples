@@ -12,7 +12,7 @@ package org.eclipse.viatra.examples.cps.generator.operations
 
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.planexecutor.api.IOperation
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutActionMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutAction
 import org.eclipse.emf.ecore.util.EcoreUtil
 
 class DeleteTransitionWithoutAction implements IOperation<CPSFragment> {
@@ -25,7 +25,7 @@ class DeleteTransitionWithoutAction implements IOperation<CPSFragment> {
 	
 	override execute(CPSFragment fragment) {
 		
-		val matcher = TransitionWithoutActionMatcher.on(fragment.engine)
+		val matcher = TransitionWithoutAction.Matcher.on(fragment.engine)
 		
 		matcher.allMatches.forEach[
 			EcoreUtil.delete(it.t)

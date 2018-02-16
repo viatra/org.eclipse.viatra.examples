@@ -4,8 +4,7 @@ Bundle-Name: org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra;singleton:=true
 Bundle-Version: 2.0.0.qualifier
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra,
-  org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns,
-  org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.util
+  org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns
 Require-Bundle: org.eclipse.emf.ecore,
   org.eclipse.viatra.examples.cps.deployment;bundle-version="0.1.0",
   org.eclipse.viatra.examples.cps.model;bundle-version="0.1.0",

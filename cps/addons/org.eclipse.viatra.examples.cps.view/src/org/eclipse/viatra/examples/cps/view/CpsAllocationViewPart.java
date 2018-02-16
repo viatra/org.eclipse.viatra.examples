@@ -12,10 +12,10 @@ package org.eclipse.viatra.examples.cps.view;
 
 import java.util.Collection;
 
-import org.eclipse.viatra.examples.cps.model.viewer.util.AllHostInstancesQuerySpecification;
-import org.eclipse.viatra.examples.cps.model.viewer.util.AppInstancesNoAllocationQuerySpecification;
-import org.eclipse.viatra.examples.cps.model.viewer.util.AppInstancesWithAllocationQuerySpecification;
-import org.eclipse.viatra.examples.cps.model.viewer.util.ConnectAppAndHostQuerySpecification;
+import org.eclipse.viatra.examples.cps.model.viewer.AllHostInstances;
+import org.eclipse.viatra.examples.cps.model.viewer.AppInstancesNoAllocation;
+import org.eclipse.viatra.examples.cps.model.viewer.AppInstancesWithAllocation;
+import org.eclipse.viatra.examples.cps.model.viewer.ConnectAppAndHost;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 
 import com.google.common.collect.ImmutableSet;
@@ -25,9 +25,9 @@ public class CpsAllocationViewPart extends AbstractCpsViewPart {
 	@Override
 	protected Collection<IQuerySpecification<?>> getSpecifications() {
 		return ImmutableSet.<IQuerySpecification<?>>of(
-				AppInstancesNoAllocationQuerySpecification.instance(),
-				AppInstancesWithAllocationQuerySpecification.instance(),
-				ConnectAppAndHostQuerySpecification.instance(),
-				AllHostInstancesQuerySpecification.instance());
+				AppInstancesNoAllocation.instance(),
+				AppInstancesWithAllocation.instance(),
+				ConnectAppAndHost.instance(),
+				AllHostInstances.instance());
 	}	
 }

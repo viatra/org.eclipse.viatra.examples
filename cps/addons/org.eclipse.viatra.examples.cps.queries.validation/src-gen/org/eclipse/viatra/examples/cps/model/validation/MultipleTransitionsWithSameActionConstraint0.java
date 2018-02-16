@@ -1,22 +1,14 @@
 /**
-
-  Copyright (c) 2014-2016 IncQuery Labs Ltd.
-  All rights reserved. This program and the accompanying materials
-  are made available under the terms of the Eclipse Public License v1.0
-  which accompanies this distribution, and is available at
-  http://www.eclipse.org/legal/epl-v10.html
- 
-  Contributors:
-      Akos Horvath, Abel Hegedus, Akos Menyhert, Zoltan Ujhelyi - initial API and implementation
+Generated from platform:/resource/org.eclipse.viatra.examples.cps.queries/src/org/eclipse/viatra/examples/cps/model/validation/rules.vql
 */
 package org.eclipse.viatra.examples.cps.model.validation;
 
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
+import java.util.Arrays;
 
 import org.eclipse.viatra.addon.validation.core.api.Severity;
 import org.eclipse.viatra.addon.validation.core.api.IConstraintSpecification;
@@ -24,14 +16,14 @@ import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher;
 
-import org.eclipse.viatra.examples.cps.model.validation.util.MultipleTransitionsWithSameActionQuerySpecification;
+import org.eclipse.viatra.examples.cps.model.validation.MultipleTransitionsWithSameAction;
 
 public class MultipleTransitionsWithSameActionConstraint0 implements IConstraintSpecification {
 
-    private MultipleTransitionsWithSameActionQuerySpecification querySpecification;
+    private MultipleTransitionsWithSameAction querySpecification;
 
     public MultipleTransitionsWithSameActionConstraint0() {
-        querySpecification = MultipleTransitionsWithSameActionQuerySpecification.instance();
+        querySpecification = MultipleTransitionsWithSameAction.instance();
     }
 
     @Override
@@ -42,15 +34,14 @@ public class MultipleTransitionsWithSameActionConstraint0 implements IConstraint
 
     @Override
     public Map<String,Object> getKeyObjects(IPatternMatch signature) {
-        Map<String,Object> map = ImmutableMap.of(
-            "state",signature.get("state")
-        );
+        Map<String,Object> map = new HashMap<>();
+        map.put("state",signature.get("state"));
         return map;
     }
 
     @Override
     public List<String> getKeyNames() {
-        List<String> keyNames = ImmutableList.of(
+        List<String> keyNames = Arrays.asList(
             "state"
         );
         return keyNames;
@@ -58,7 +49,7 @@ public class MultipleTransitionsWithSameActionConstraint0 implements IConstraint
 
     @Override
     public List<String> getPropertyNames() {
-        List<String> propertyNames = ImmutableList.of(
+        List<String> propertyNames = Arrays.asList(
             "action"
         );
         return propertyNames;
@@ -66,14 +57,14 @@ public class MultipleTransitionsWithSameActionConstraint0 implements IConstraint
 
     @Override
     public Set<List<String>> getSymmetricPropertyNames() {
-        Set<List<String>> symmetricPropertyNamesSet = ImmutableSet.<List<String>>of(
+        Set<List<String>> symmetricPropertyNamesSet = new HashSet<>(
         );
         return symmetricPropertyNamesSet;
     }
 
     @Override
     public Set<List<String>> getSymmetricKeyNames() {
-        Set<List<String>> symmetricKeyNamesSet = ImmutableSet.<List<String>>of(
+        Set<List<String>> symmetricKeyNamesSet = new HashSet<>(
         );
         return symmetricKeyNamesSet;
     }

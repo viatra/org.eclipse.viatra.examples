@@ -18,13 +18,13 @@ import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
 import org.eclipse.viatra.examples.cps.traceability.CPS2DeploymentTrace
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.ActionPairMatcher
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.AppInstanceWithStateMachineMatcher
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.ApplicationInstanceMatcher
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.ActionPair
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.AppInstanceWithStateMachine
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.ApplicationInstance
 import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.CpsXformM2M
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.HostInstanceMatcher
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.StateMatcher
-import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.TransitionMatcher
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.HostInstance
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.State
+import org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra.patterns.Transition
 import org.eclipse.viatra.query.runtime.api.IPatternMatch
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.query.runtime.api.ViatraQueryMatcher
@@ -60,7 +60,7 @@ class RuleProvider {
 	
 	public def getHostRule() {
 		if (hostRule === null) {
-			hostRule = createRule.name("HostRule").precondition(HostInstanceMatcher.querySpecification).action[
+			hostRule = createRule.name("HostRule").precondition(HostInstance.Matcher.querySpecification).action[
 				val cpsHostInstance = it.hostInstance
 				val nodeIp = it.hostInstance.nodeIp
 				debug('''Mapping host with IP: «nodeIp»''')
@@ -79,7 +79,7 @@ class RuleProvider {
 	
 	public def getApplicationRule() {
 		if (applicationRule === null) {
-			applicationRule = createRule.name("ApplicationRule").precondition(ApplicationInstanceMatcher.querySpecification).action[
+			applicationRule = createRule.name("ApplicationRule").precondition(ApplicationInstance.Matcher.querySpecification).action[
 				val cpsApplicationInstance = it.appInstance
 				val appId = it.appInstance.identifier
 				
@@ -105,7 +105,7 @@ class RuleProvider {
 	
 	public def getStateMachineRule() {
 		if (stateMachineRule === null) {
-			stateMachineRule = createRule.name("StateMachineRule").precondition(AppInstanceWithStateMachineMatcher.querySpecification).action[
+			stateMachineRule = createRule.name("StateMachineRule").precondition(AppInstanceWithStateMachine.Matcher.querySpecification).action[
 				val cpsApplicationInstance = it.appInstance
 				val cpsStateMachine = it.stateMachine
 				
@@ -133,7 +133,7 @@ class RuleProvider {
 	
 	public def getStateRule() {
 		if (stateRule === null) {
-			stateRule = createRule.name("StateRule").precondition(StateMatcher.querySpecification).action[
+			stateRule = createRule.name("StateRule").precondition(State.Matcher.querySpecification).action[
 				val cpsStateMachine = it.stateMachine
 				val cpsAppInstance = it.appInstance
 				val cpsState = it.state
@@ -168,7 +168,7 @@ class RuleProvider {
 	
 	public def getTransitionRule() {
 		if (transitionRule === null) {
-			transitionRule = createRule.name("TransitionRule").precondition(TransitionMatcher.querySpecification).action[
+			transitionRule = createRule.name("TransitionRule").precondition(Transition.Matcher.querySpecification).action[
 				val cpsAppInstance = it.appInstance
 				val cpsState = it.sourceState
 				val cpsTargetState = it.targetState
@@ -206,7 +206,7 @@ class RuleProvider {
 	
 	public def getActionRule() {
 		if (actionRule === null) {
-			actionRule = createRule.name("ActionRule").precondition(ActionPairMatcher.querySpecification).action[
+			actionRule = createRule.name("ActionRule").precondition(ActionPair.Matcher.querySpecification).action[
 				val cpsSendTransition = sendTransition
 				val cpsSendAppInstance = sendAppInstance
 				val cpsWaitTransition = waitTransition

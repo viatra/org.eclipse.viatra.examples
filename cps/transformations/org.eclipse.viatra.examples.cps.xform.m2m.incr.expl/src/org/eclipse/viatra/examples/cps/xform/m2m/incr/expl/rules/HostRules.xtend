@@ -10,9 +10,9 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedDeploymentHostMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredHostInstanceMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedHostInstanceMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedDeploymentHost
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredHostInstance
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedHostInstance
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -22,14 +22,14 @@ import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEn
 class HostRules {
 	static def getRules(ViatraQueryEngine engine) {
 		#{
-			new HostMapping(engine).specification
-			,new HostUpdate(engine).specification
-			,new HostRemoval(engine).specification
+			new HostMapping(engine).specification,
+			new HostUpdate(engine).specification,
+			new HostRemoval(engine).specification
 		}
 	}
 }
 
-class HostMapping extends AbstractRule<UnmappedHostInstanceMatch> {
+class HostMapping extends AbstractRule<UnmappedHostInstance.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -44,7 +44,7 @@ class HostMapping extends AbstractRule<UnmappedHostInstanceMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedHostInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedHostInstance.Match match |
 			val nodeIp = match.hostInstance.nodeIp
 			debug('''Mapping host with IP: «nodeIp»''')
 			val host = createDeploymentHost => [
@@ -61,7 +61,7 @@ class HostMapping extends AbstractRule<UnmappedHostInstanceMatch> {
 	
 }
 
-class HostUpdate extends AbstractRule<MonitoredHostInstanceMatch> {
+class HostUpdate extends AbstractRule<MonitoredHostInstance.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -76,21 +76,21 @@ class HostUpdate extends AbstractRule<MonitoredHostInstanceMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredHostInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredHostInstance.Match match |
 			val hostIp = match.hostInstance.nodeIp
 			debug('''Starting monitoring mapped host with IP: «hostIp»''')
 		])
 	}
 	
 	private def getDisappearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredHostInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredHostInstance.Match match |
 			val hostIp = match.hostInstance.nodeIp
 			debug('''Stopped monitoring mapped host with IP: «hostIp»''')
 		])
 	}
 	
 	private def getUpdatedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredHostInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredHostInstance.Match match |
 			val hostIp = match.hostInstance.nodeIp
 			debug('''Updating mapped host with IP: «hostIp»''')
 			val depHosts = getMappedHostInstance(engine).getAllValuesOfdepHost(match.hostInstance)
@@ -106,7 +106,7 @@ class HostUpdate extends AbstractRule<MonitoredHostInstanceMatch> {
 	}
 }
 
-class HostRemoval extends AbstractRule<DeletedDeploymentHostMatch> {
+class HostRemoval extends AbstractRule<DeletedDeploymentHost.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -121,7 +121,7 @@ class HostRemoval extends AbstractRule<DeletedDeploymentHostMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedDeploymentHostMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedDeploymentHost.Match match |
 			val depHost = match.depHost
 			val hostIp = depHost.ip
 			logger.debug('''Removing host with IP: «hostIp»''')

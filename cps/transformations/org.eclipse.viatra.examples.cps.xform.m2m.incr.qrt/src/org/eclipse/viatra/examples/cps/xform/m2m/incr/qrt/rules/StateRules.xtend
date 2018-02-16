@@ -12,7 +12,7 @@ package org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 
 import org.eclipse.viatra.examples.cps.deployment.BehaviorState
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.StateMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.State
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -27,7 +27,7 @@ class StateRules {
 	}
 }
 
-class StateMapping extends AbstractRule<StateMatch> {
+class StateMapping extends AbstractRule<State.Match> {
 	new(ViatraQueryEngine engine) {
 		super(engine)
 	}
@@ -42,7 +42,7 @@ class StateMapping extends AbstractRule<StateMatch> {
 
 	private def getAppearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED,
-			[ StateMatch match |
+			[ State.Match match |
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).head as DeploymentApplication
 				val depBehavior = depApp.behavior
 				val state = match.state
@@ -72,7 +72,7 @@ class StateMapping extends AbstractRule<StateMatch> {
 
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
-			[ StateMatch match |
+			[ State.Match match |
 				val state = match.state
 				val stateId = state.identifier
 				debug('''Updating mapped state with ID: «stateId»''')
@@ -100,7 +100,7 @@ class StateMapping extends AbstractRule<StateMatch> {
 
 	private def getDisappearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
-			[ StateMatch match |
+			[ State.Match match |
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).head as DeploymentApplication
 				val depBehavior = depApp.behavior
 				val depState = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.state).filter(

@@ -11,9 +11,9 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedTriggerMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedTrigger
 import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEnum
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedTriggerMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedTrigger
 import org.eclipse.viatra.transformation.evm.specific.Rules
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
 import org.eclipse.viatra.transformation.evm.specific.Jobs
@@ -21,13 +21,13 @@ import org.eclipse.viatra.transformation.evm.specific.Jobs
 class TriggerRules {
 	static def getRules(ViatraQueryEngine engine) {
 		#{
-			new TriggerMapping(engine).specification
-			,new TriggerRemoval(engine).specification
+			new TriggerMapping(engine).specification,
+			new TriggerRemoval(engine).specification
 		}
 	}
 }
 
-class TriggerMapping extends AbstractRule<UnmappedTriggerMatch> {
+class TriggerMapping extends AbstractRule<UnmappedTrigger.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -42,7 +42,7 @@ class TriggerMapping extends AbstractRule<UnmappedTriggerMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedTriggerMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedTrigger.Match match |
 			val sendTr = match.depSendTransition
 			val waitTr = match.depWaitTransition
 			debug('''Mapping trigger between «sendTr.description» and «waitTr.description»''')
@@ -57,7 +57,7 @@ class TriggerMapping extends AbstractRule<UnmappedTriggerMatch> {
 	}
 }
 
-class TriggerRemoval extends AbstractRule<DeletedTriggerMatch> {
+class TriggerRemoval extends AbstractRule<DeletedTrigger.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -72,7 +72,7 @@ class TriggerRemoval extends AbstractRule<DeletedTriggerMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedTriggerMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedTrigger.Match match |
 			val sendTr = match.depSendTransition
 			val waitTr = match.depWaitTransition
 			debug('''Removing trigger between «sendTr.description» and «waitTr.description»''')

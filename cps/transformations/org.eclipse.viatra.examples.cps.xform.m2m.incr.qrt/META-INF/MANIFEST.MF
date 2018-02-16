@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt;singleto
 Bundle-Version: 2.0.0.qualifier
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt,
   org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries,
-  org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.util,
   org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 Require-Bundle: org.eclipse.emf.ecore,
   org.eclipse.viatra.examples.cps.model,

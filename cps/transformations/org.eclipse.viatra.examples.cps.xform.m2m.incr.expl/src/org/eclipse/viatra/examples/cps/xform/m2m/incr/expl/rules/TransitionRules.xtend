@@ -11,9 +11,9 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
 import org.eclipse.viatra.examples.cps.deployment.BehaviorTransition
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedTransitionMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredTransitionMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedTransitionMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedTransition
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredTransition
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedTransition
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -23,14 +23,14 @@ import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEn
 class TransitionRules {
 	static def getRules(ViatraQueryEngine engine) {
 		#{
-			new TransitionMapping(engine).specification
-			,new TransitionUpdate(engine).specification
-			,new TransitionRemoval(engine).specification
+			new TransitionMapping(engine).specification,
+			new TransitionUpdate(engine).specification,
+			new TransitionRemoval(engine).specification
 		}
 	}
 }
 
-class TransitionMapping extends AbstractRule<UnmappedTransitionMatch> {
+class TransitionMapping extends AbstractRule<UnmappedTransition.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -45,7 +45,7 @@ class TransitionMapping extends AbstractRule<UnmappedTransitionMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedTransitionMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedTransition.Match match |
 			val transition = match.transition
 			val transitionId = transition.identifier
 			debug('''Mapping transition with ID: «transitionId»''')
@@ -78,7 +78,7 @@ class TransitionMapping extends AbstractRule<UnmappedTransitionMatch> {
 	}
 }
 
-class TransitionUpdate extends AbstractRule<MonitoredTransitionMatch> {
+class TransitionUpdate extends AbstractRule<MonitoredTransition.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -93,21 +93,21 @@ class TransitionUpdate extends AbstractRule<MonitoredTransitionMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredTransitionMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredTransition.Match match |
 			val trId = match.transition.identifier
 			debug('''Starting monitoring mapped transition with ID: «trId»''')
 		])
 	}
 	
 	private def getDisappearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredTransitionMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredTransition.Match match |
 			val trId = match.transition.identifier
 			debug('''Stopped monitoring mapped transition with ID: «trId»''')
 		])
 	}
 	
 	private def getUpdatedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredTransitionMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredTransition.Match match |
 			val transition = match.transition
 			val trId = transition.identifier
 			debug('''Updating mapped transition with ID: «trId»''')
@@ -141,7 +141,7 @@ class TransitionUpdate extends AbstractRule<MonitoredTransitionMatch> {
 	}
 }
 
-class TransitionRemoval extends AbstractRule<DeletedTransitionMatch> {
+class TransitionRemoval extends AbstractRule<DeletedTransition.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -156,7 +156,7 @@ class TransitionRemoval extends AbstractRule<DeletedTransitionMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedTransitionMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedTransition.Match match |
 			val depTransition = match.depTransition as BehaviorTransition
 			val trId = depTransition.description
 			logger.debug('''Removing transition with ID: «trId»''')

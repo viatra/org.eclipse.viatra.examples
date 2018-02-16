@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.TriggerPairMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.TriggerPair
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -27,7 +27,7 @@ class TriggerRules {
 	}
 }
 
-class TriggerMapping extends AbstractRule<TriggerPairMatch> {
+class TriggerMapping extends AbstractRule<TriggerPair.Match> {
 	new(ViatraQueryEngine engine) {
 		super(engine)
 	}
@@ -42,7 +42,7 @@ class TriggerMapping extends AbstractRule<TriggerPairMatch> {
 
 	private def getAppearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED,
-			[ TriggerPairMatch match |
+			[ TriggerPair.Match match |
 				val depAppTrigger = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstanceTrigger).
 					filter(DeploymentApplication).head
 				val depAppTarget = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstanceTarget).
@@ -62,7 +62,7 @@ class TriggerMapping extends AbstractRule<TriggerPairMatch> {
 
 	private def getDisappearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
-			[ TriggerPairMatch match |
+			[ TriggerPair.Match match |
 				val depAppTrigger = engine.cps2depTrace.getAllValuesOfdepElement(null, null,
 					match.appInstanceTrigger).filter(DeploymentApplication).head
 				val depAppTarget = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstanceTarget).

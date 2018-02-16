@@ -7,7 +7,6 @@ Bundle-Vendor: IncQueryLabs Ltd.
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2t.api,
   org.eclipse.viatra.examples.cps.xform.m2t.exceptions,
   org.eclipse.viatra.examples.cps.xform.m2t.monitor,
-  org.eclipse.viatra.examples.cps.xform.m2t.monitor.util,
   org.eclipse.viatra.examples.cps.xform.m2t.util
 Require-Bundle: org.eclipse.xtend;bundle-version="2.0.0",
   org.eclipse.xtext.xbase.lib;bundle-version="2.9.0",
@@ -20,5 +19,5 @@ Require-Bundle: org.eclipse.xtend;bundle-version="2.0.0",
   org.eclipse.viatra.query.runtime;bundle-version="[2.0.0,2.1.0)",
   org.eclipse.viatra.transformation.evm
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: org.apache.log4j
 Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2t
+Import-Package: org.apache.log4j

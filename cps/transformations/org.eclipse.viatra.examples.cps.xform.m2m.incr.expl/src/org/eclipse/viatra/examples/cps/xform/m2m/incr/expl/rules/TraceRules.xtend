@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.IllegalTraceMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.IllegalTrace
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -25,7 +25,7 @@ class TraceRules {
 	}
 }
 
-class IllegalTraceRemoval extends AbstractRule<IllegalTraceMatch> {
+class IllegalTraceRemoval extends AbstractRule<IllegalTrace.Match> {
 	new(ViatraQueryEngine engine) {
 		super(engine)
 	}
@@ -39,7 +39,7 @@ class IllegalTraceRemoval extends AbstractRule<IllegalTraceMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [IllegalTraceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [IllegalTrace.Match match |
 			val cpsElements = match.trace.cpsElements
 			debug('''Removing illegal trace for CPS elements: «FOR e : cpsElements SEPARATOR ", "»«e.identifier»«ENDFOR»''')
 			rootMapping.traces -= match.trace

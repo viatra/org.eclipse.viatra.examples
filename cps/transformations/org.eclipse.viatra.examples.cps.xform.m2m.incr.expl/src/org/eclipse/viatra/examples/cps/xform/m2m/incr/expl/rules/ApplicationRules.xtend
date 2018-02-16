@@ -11,9 +11,9 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedApplicationInstanceMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredApplicationInstanceMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedApplicationInstanceMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedApplicationInstance
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredApplicationInstance
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedApplicationInstance
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -23,14 +23,14 @@ import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEn
 class ApplicationRules {
 	static def getRules(ViatraQueryEngine engine) {
 		#{
-			new ApplicationMapping(engine).specification
-			,new ApplicationUpdate(engine).specification
-			,new ApplicationRemoval(engine).specification
+			new ApplicationMapping(engine).specification,
+			new ApplicationUpdate(engine).specification,
+			new ApplicationRemoval(engine).specification
 		}
 	}
 }
 
-class ApplicationMapping extends AbstractRule<UnmappedApplicationInstanceMatch> {
+class ApplicationMapping extends AbstractRule<UnmappedApplicationInstance.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -45,7 +45,7 @@ class ApplicationMapping extends AbstractRule<UnmappedApplicationInstanceMatch> 
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedApplicationInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedApplicationInstance.Match match |
 			val appId = match.appInstance.identifier
 			debug('''Mapping application with ID: «appId»''')
 			val app = createDeploymentApplication => [
@@ -61,7 +61,7 @@ class ApplicationMapping extends AbstractRule<UnmappedApplicationInstanceMatch> 
 	}
 }
 
-class ApplicationUpdate extends AbstractRule<MonitoredApplicationInstanceMatch> {
+class ApplicationUpdate extends AbstractRule<MonitoredApplicationInstance.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -76,21 +76,21 @@ class ApplicationUpdate extends AbstractRule<MonitoredApplicationInstanceMatch> 
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredApplicationInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredApplicationInstance.Match match |
 			val appId = match.appInstance.identifier
 			debug('''Starting monitoring mapped application with ID: «appId»''')
 		])
 	}
 	
 	private def getDisappearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredApplicationInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredApplicationInstance.Match match |
 			val appId = match.appInstance.identifier
 			debug('''Stopped monitoring mapped application with ID: «appId»''')
 		])
 	}
 	
 	private def getUpdatedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredApplicationInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredApplicationInstance.Match match |
 			val app = match.appInstance
 			val appId = app.identifier
 			debug('''Updating application with ID: «appId»''')
@@ -111,7 +111,7 @@ class ApplicationUpdate extends AbstractRule<MonitoredApplicationInstanceMatch> 
 	}
 }
 
-class ApplicationRemoval extends AbstractRule<DeletedApplicationInstanceMatch> {
+class ApplicationRemoval extends AbstractRule<DeletedApplicationInstance.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -126,7 +126,7 @@ class ApplicationRemoval extends AbstractRule<DeletedApplicationInstanceMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedApplicationInstanceMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedApplicationInstance.Match match |
 			val depApp = match.depApp as DeploymentApplication
 			val depAppId = depApp.id
 			debug('''Removing application with ID: «depAppId»''')

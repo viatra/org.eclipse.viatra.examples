@@ -11,9 +11,9 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
 import org.eclipse.viatra.examples.cps.deployment.DeploymentBehavior
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedStateMachineMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredStateMachineMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedStateMachineMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedStateMachine
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredStateMachine
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedStateMachine
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -30,7 +30,7 @@ class StateMachineRules {
 	}
 }
 
-class StateMachineMapping extends AbstractRule<UnmappedStateMachineMatch> {
+class StateMachineMapping extends AbstractRule<UnmappedStateMachine.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -45,7 +45,7 @@ class StateMachineMapping extends AbstractRule<UnmappedStateMachineMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedStateMachineMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedStateMachine.Match match |
 			val smId = match.stateMachine.identifier
 			debug('''Mapping state machine with ID: «smId»''')
 			val behavior = createDeploymentBehavior => [
@@ -69,7 +69,7 @@ class StateMachineMapping extends AbstractRule<UnmappedStateMachineMatch> {
 	
 }
 
-class StateMachineUpdate extends AbstractRule<MonitoredStateMachineMatch> {
+class StateMachineUpdate extends AbstractRule<MonitoredStateMachine.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -84,21 +84,21 @@ class StateMachineUpdate extends AbstractRule<MonitoredStateMachineMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredStateMachineMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredStateMachine.Match match |
 			val smId = match.stateMachine.identifier
 			debug('''Starting monitoring mapped state machine with ID: «smId»''')
 		])
 	}
 	
 	private def getDisappearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredStateMachineMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredStateMachine.Match match |
 			val smId = match.stateMachine.identifier
 			debug('''Stopped monitoring mapped state machine with ID: «smId»''')
 		])
 	}
 	
 	private def getUpdatedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredStateMachineMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredStateMachine.Match match |
 			val smId = match.stateMachine.identifier
 			debug('''Updating mapped state machine with ID: «smId»''')
 			val depSMs = getMappedStateMachine(engine).getAllValuesOfdepBehavior(match.stateMachine, null, null)
@@ -113,7 +113,7 @@ class StateMachineUpdate extends AbstractRule<MonitoredStateMachineMatch> {
 	}
 }
 
-class StateMachineRemoval extends AbstractRule<DeletedStateMachineMatch> {
+class StateMachineRemoval extends AbstractRule<DeletedStateMachine.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -128,7 +128,7 @@ class StateMachineRemoval extends AbstractRule<DeletedStateMachineMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedStateMachineMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedStateMachine.Match match |
 			val depBehavior = match.depBehavior as DeploymentBehavior
 			val smId = depBehavior.description
 			logger.debug('''Removing state machine with ID: «smId»''')

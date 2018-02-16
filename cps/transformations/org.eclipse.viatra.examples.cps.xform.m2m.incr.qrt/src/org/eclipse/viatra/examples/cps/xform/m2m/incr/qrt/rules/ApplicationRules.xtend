@@ -13,7 +13,7 @@ package org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
 import org.eclipse.viatra.examples.cps.traceability.CPS2DeploymentTrace
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.ApplicationInstanceMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.ApplicationInstance
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -28,7 +28,7 @@ class ApplicationRules {
 	}
 }
 
-class ApplicationMapping extends AbstractRule<ApplicationInstanceMatch> {
+class ApplicationMapping extends AbstractRule<ApplicationInstance.Match> {
 
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -44,7 +44,7 @@ class ApplicationMapping extends AbstractRule<ApplicationInstanceMatch> {
 
 	private def getAppearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED,
-			[ ApplicationInstanceMatch match |
+			[ ApplicationInstance.Match match |
 				val depHost = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance.allocatedTo).filter(DeploymentHost).head
 				val appId = match.appInstance.identifier
 				debug('''Mapping application with ID: «appId»''')
@@ -62,7 +62,7 @@ class ApplicationMapping extends AbstractRule<ApplicationInstanceMatch> {
 
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
-			[ ApplicationInstanceMatch match |
+			[ ApplicationInstance.Match match |
 				val depApp = engine.cps2depTrace.getOneArbitraryMatch(rootMapping, null, match.appInstance, null).
 					depElement as DeploymentApplication
 				if (depApp.id != match.appInstance.identifier)
@@ -72,7 +72,7 @@ class ApplicationMapping extends AbstractRule<ApplicationInstanceMatch> {
 
 	private def getDisappearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
-			[ ApplicationInstanceMatch match |
+			[ ApplicationInstance.Match match |
 				val trace = engine.cps2depTrace.getAllValuesOftrace(null, match.appInstance, null).filter(CPS2DeploymentTrace).head
 				val depApp = trace.deploymentElements.head as DeploymentApplication
 				engine.allocatedDeploymentApplication.getAllValuesOfdepHost(depApp).head.applications -= depApp

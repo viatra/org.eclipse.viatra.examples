@@ -19,7 +19,7 @@ import org.eclipse.viatra.examples.cps.deployment.Deployment
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
 import org.eclipse.viatra.examples.cps.deployment.DeploymentBehavior
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
-import org.eclipse.viatra.examples.cps.deployment.common.WaitTransitionMatcher
+import org.eclipse.viatra.examples.cps.deployment.common.WaitTransition
 import org.eclipse.viatra.examples.cps.xform.m2t.exceptions.CPSGeneratorException
 import org.eclipse.viatra.examples.cps.xform.m2t.util.FormatterUtil
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
@@ -280,7 +280,7 @@ class Generator {
 	}
 	
 	def boolean hasIncomingTrigger(BehaviorTransition transition){
-		WaitTransitionMatcher.on(engine).hasMatch(transition, null);
+		WaitTransition.Matcher.on(engine).hasMatch(transition, null);
 	}
 	
 	def CharSequence generateDeploymentCode(Deployment deployment) {

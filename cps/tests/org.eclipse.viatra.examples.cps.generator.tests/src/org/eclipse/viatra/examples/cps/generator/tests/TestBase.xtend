@@ -16,8 +16,8 @@ import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.generator.CPSPlans
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.dtos.constraints.ICPSConstraints
-import org.eclipse.viatra.examples.cps.generator.queries.AppTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.HostTypesMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.AppTypes
+import org.eclipse.viatra.examples.cps.generator.queries.HostTypes
 import org.eclipse.viatra.examples.cps.generator.utils.CPSGeneratorBuilder
 import org.eclipse.viatra.examples.cps.generator.utils.PersistenceUtil
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
@@ -31,7 +31,7 @@ abstract class TestBase extends CPSTestBase{
 	protected extension Logger logger = Logger.getLogger("cps.generator.Tests")
 	
 	def assertInRangeAppTypes(ICPSConstraints constraints, ViatraQueryEngine engine) {
-		val appTypesMatcher = AppTypesMatcher.on(engine);
+		val appTypesMatcher = AppTypes.Matcher.on(engine);
 		var int minApp = 0;
 		var int maxApp = 0;
 		for(appClass : constraints.applicationClasses){
@@ -43,7 +43,7 @@ abstract class TestBase extends CPSTestBase{
 	}
 	
 	protected def assertInRangeHostTypes(ICPSConstraints constraints, ViatraQueryEngine engine) {
-		val hostTypesMatcher = HostTypesMatcher.on(engine);
+		val hostTypesMatcher = HostTypes.Matcher.on(engine);
 		var int minHost = 0;
 		var int maxHost = 0;
 		for(appClass : constraints.hostClasses){

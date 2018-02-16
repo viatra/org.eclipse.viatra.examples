@@ -11,9 +11,9 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.rules
 
 import org.eclipse.viatra.examples.cps.deployment.BehaviorState
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedStateMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredStateMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedStateMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.DeletedState
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.MonitoredState
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedState
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -30,7 +30,7 @@ class StateRules {
 	}
 }
 
-class StateMapping extends AbstractRule<UnmappedStateMatch> {
+class StateMapping extends AbstractRule<UnmappedState.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -45,7 +45,7 @@ class StateMapping extends AbstractRule<UnmappedStateMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedStateMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [UnmappedState.Match match |
 			val state = match.state
 			val stateId = state.identifier
 			debug('''Mapping state with ID: «stateId»''')
@@ -72,7 +72,7 @@ class StateMapping extends AbstractRule<UnmappedStateMatch> {
 	}
 }
 
-class StateUpdate extends AbstractRule<MonitoredStateMatch> {
+class StateUpdate extends AbstractRule<MonitoredState.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -87,21 +87,21 @@ class StateUpdate extends AbstractRule<MonitoredStateMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredStateMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [MonitoredState.Match match |
 			val stateId = match.state.identifier
 			debug('''Starting monitoring mapped state with ID: «stateId»''')
 		])
 	}
 	
 	private def getDisappearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredStateMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED, [MonitoredState.Match match |
 			val stateId = match.state.identifier
 			debug('''Stopped monitoring mapped state with ID: «stateId»''')
 		])
 	}
 	
 	private def getUpdatedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredStateMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED, [MonitoredState.Match match |
 			val state = match.state
 			val stateId = state.identifier
 			debug('''Updating mapped state with ID: «stateId»''')
@@ -126,7 +126,7 @@ class StateUpdate extends AbstractRule<MonitoredStateMatch> {
 	}
 }
 
-class StateRemoval extends AbstractRule<DeletedStateMatch> {
+class StateRemoval extends AbstractRule<DeletedState.Match> {
 	
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -141,7 +141,7 @@ class StateRemoval extends AbstractRule<DeletedStateMatch> {
 	}
 	
 	private def getAppearedJob() {
-		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedStateMatch match |
+		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED, [DeletedState.Match match |
 			val depState = match.depState as BehaviorState
 			val stateId = depState.description
 			logger.debug('''Removing state with ID: «stateId»''')

@@ -21,15 +21,14 @@ import org.eclipse.viatra.examples.cps.deployment.Deployment;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentElement;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.ApplicationBehaviorCurrentStateChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.ApplicationIdChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.BehaviorChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.DeploymentHostIpChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.DeploymentHostsChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.HostApplicationsChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.HostIpChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.TransitionChangeQuerySpecification;
-import org.eclipse.viatra.examples.cps.xform.m2t.monitor.util.TriggerChangeQuerySpecification;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.ApplicationBehaviorCurrentStateChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.BehaviorChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.DeploymentHostIpChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.DeploymentHostsChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.HostApplicationsChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.HostIpChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.TransitionChange;
+import org.eclipse.viatra.examples.cps.xform.m2t.monitor.TriggerChange;
 import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
@@ -151,9 +150,9 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 		Set<Job<IPatternMatch>> deploymentJobs = createDeploymentJobs();
 		allJobs.addAll(deploymentJobs);
 
-		IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>> deploymentHostChangeQuerySpec = (IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) DeploymentHostsChangeQuerySpecification
+		IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>> deploymentHostChangeQuerySpec = (IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) DeploymentHostsChange
 				.instance();
-		IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>> deploymentHostIpChangeQuerySpec = (IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) DeploymentHostIpChangeQuerySpecification
+		IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>> deploymentHostIpChangeQuerySpec = (IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) DeploymentHostIpChange
 				.instance();
 
 		registerJobsForPattern(executionSchema, deploymentJobs,
@@ -224,25 +223,25 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 		Map<IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>, Set<Job<IPatternMatch>>> querySpecifications = Maps
 				.newHashMap();
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) HostApplicationsChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) HostApplicationsChange
 						.instance(), hostChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) HostIpChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) HostIpChange
 						.instance(), hostChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) ApplicationIdChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) ApplicationIdChange
 						.instance(), applicationChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) ApplicationBehaviorCurrentStateChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) ApplicationBehaviorCurrentStateChange
 						.instance(), applicationChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) BehaviorChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) BehaviorChange
 						.instance(), behaviorChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) TransitionChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) TransitionChange
 						.instance(), behaviorChangeJobs());
 		querySpecifications
-				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) TriggerChangeQuerySpecification
+				.put((IQuerySpecification<? extends ViatraQueryMatcher<IPatternMatch>>) TriggerChange
 						.instance(), behaviorChangeJobs());
 		return querySpecifications;
 	}

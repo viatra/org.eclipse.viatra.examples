@@ -15,8 +15,8 @@ import org.apache.log4j.Logger
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationType
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.operations.ActionGenerationOperation
-import org.eclipse.viatra.examples.cps.generator.queries.ReachableAppTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionsMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.ReachableAppTypes
+import org.eclipse.viatra.examples.cps.generator.queries.Transitions
 import org.eclipse.viatra.examples.cps.generator.utils.RandomUtils
 import org.eclipse.viatra.examples.cps.planexecutor.api.IPhase
 
@@ -72,11 +72,11 @@ class CPSPhaseActionGeneration implements IPhase<CPSFragment>{
 	}
 	
 	def getTransitionsOf(ApplicationType type, CPSFragment fragment) {
-		TransitionsMatcher.on(fragment.engine).getAllValuesOft(type.behavior);
+		Transitions.Matcher.on(fragment.engine).getAllValuesOft(type.behavior);
 	}
 	
 	def getPossibleAppTypesOf(ApplicationType type, CPSFragment fragment) {
-		ReachableAppTypesMatcher.on(fragment.engine).getAllValuesOfTo(type);
+		ReachableAppTypes.Matcher.on(fragment.engine).getAllValuesOfTo(type);
 	}
 	
 }

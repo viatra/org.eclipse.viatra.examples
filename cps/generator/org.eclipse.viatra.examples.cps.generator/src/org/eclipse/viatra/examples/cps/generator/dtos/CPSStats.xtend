@@ -17,15 +17,15 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystem
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition
 import org.eclipse.viatra.examples.cps.generator.phases.CPSPhaseActionGeneration
-import org.eclipse.viatra.examples.cps.generator.queries.AllocatedAppInstancesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.AppInstancesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.AppTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.ConnectedHostsMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.HostInstancesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.HostTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.StatesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutActionMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionsMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.AllocatedAppInstances
+import org.eclipse.viatra.examples.cps.generator.queries.AppInstances
+import org.eclipse.viatra.examples.cps.generator.queries.AppTypes
+import org.eclipse.viatra.examples.cps.generator.queries.ConnectedHosts
+import org.eclipse.viatra.examples.cps.generator.queries.HostInstances
+import org.eclipse.viatra.examples.cps.generator.queries.HostTypes
+import org.eclipse.viatra.examples.cps.generator.queries.States
+import org.eclipse.viatra.examples.cps.generator.queries.TransitionWithoutAction
+import org.eclipse.viatra.examples.cps.generator.queries.Transitions
 import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
 import org.eclipse.viatra.examples.cps.generator.utils.SumProcessor
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
@@ -49,17 +49,17 @@ class CPSStats extends ModelStats {
 	public int duplicateIds = 0;
 
 	new(ViatraQueryEngine engine, CyberPhysicalSystem model){
-		this.appTypeCount = AppTypesMatcher.on(engine).countMatches;
-		this.appInstanceCount = AppInstancesMatcher.on(engine).countMatches;
-		this.hostTypeCount = HostTypesMatcher.on(engine).countMatches;
-		this.hostInstanceCount = HostInstancesMatcher.on(engine).countMatches;
-		this.stateCount = StatesMatcher.on(engine).countMatches;
-		this.transitionCount = TransitionsMatcher.on(engine).countMatches;
-		this.allocatedAppCount = AllocatedAppInstancesMatcher.on(engine).countMatches;
-		this.connectedHostCount = ConnectedHostsMatcher.on(engine).countMatches;
+		this.appTypeCount = AppTypes.Matcher.on(engine).countMatches;
+		this.appInstanceCount = AppInstances.Matcher.on(engine).countMatches;
+		this.hostTypeCount = HostTypes.Matcher.on(engine).countMatches;
+		this.hostInstanceCount = HostInstances.Matcher.on(engine).countMatches;
+		this.stateCount = States.Matcher.on(engine).countMatches;
+		this.transitionCount = Transitions.Matcher.on(engine).countMatches;
+		this.allocatedAppCount = AllocatedAppInstances.Matcher.on(engine).countMatches;
+		this.connectedHostCount = ConnectedHosts.Matcher.on(engine).countMatches;
 		this.eObjects = model.eAllContents.size;
 		this.eReferences = StatsUtil.countEdges(model)
-		this.emptyTransition = TransitionWithoutActionMatcher.on(engine).countMatches;
+		this.emptyTransition = TransitionWithoutAction.Matcher.on(engine).countMatches;
 		
 		val baseIndex = ViatraBaseFactory.getInstance.createNavigationHelper(model.eResource.resourceSet, true, logger)
 		

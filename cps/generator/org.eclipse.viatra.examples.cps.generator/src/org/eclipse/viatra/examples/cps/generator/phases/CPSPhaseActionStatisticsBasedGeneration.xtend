@@ -18,10 +18,10 @@ import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.StateMachine
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.Transition
 import org.eclipse.viatra.examples.cps.generator.dtos.CPSFragment
 import org.eclipse.viatra.examples.cps.generator.operations.ActionGenerationOperation
-import org.eclipse.viatra.examples.cps.generator.queries.PossibleReceiverTypeMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.ReachableAppTypesMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.ReceiverTransitionMatcher
-import org.eclipse.viatra.examples.cps.generator.queries.TransitionsMatcher
+import org.eclipse.viatra.examples.cps.generator.queries.PossibleReceiverType
+import org.eclipse.viatra.examples.cps.generator.queries.ReachableAppTypes
+import org.eclipse.viatra.examples.cps.generator.queries.ReceiverTransition
+import org.eclipse.viatra.examples.cps.generator.queries.Transitions
 import org.eclipse.viatra.examples.cps.planexecutor.api.IPhase
 import org.eclipse.viatra.examples.cps.generator.operations.DeleteTransitionWithoutAction
 
@@ -35,8 +35,8 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 	override getOperations(CPSFragment fragment) {
 		val operations = Lists.newArrayList();
 		
-		val matcher = PossibleReceiverTypeMatcher.on(fragment.engine)
-		val receiverTransitionMatcher = ReceiverTransitionMatcher.on(fragment.engine)
+		val matcher = PossibleReceiverType.Matcher.on(fragment.engine)
+		val receiverTransitionMatcher = ReceiverTransition.Matcher.on(fragment.engine)
 
 		val suppliedWithAction = Sets.<Transition>newHashSet
 		
@@ -104,11 +104,11 @@ class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 	}
 	
 	def getTransitionsOf(ApplicationType type, CPSFragment fragment) {
-		TransitionsMatcher.on(fragment.engine).getAllValuesOft(type.behavior);
+		Transitions.Matcher.on(fragment.engine).getAllValuesOft(type.behavior);
 	}
 	
 	def getPossibleAppTypesOf(ApplicationType type, CPSFragment fragment) {
-		ReachableAppTypesMatcher.on(fragment.engine).getAllValuesOfTo(type);
+		ReachableAppTypes.Matcher.on(fragment.engine).getAllValuesOfTo(type);
 	}
 	
 }

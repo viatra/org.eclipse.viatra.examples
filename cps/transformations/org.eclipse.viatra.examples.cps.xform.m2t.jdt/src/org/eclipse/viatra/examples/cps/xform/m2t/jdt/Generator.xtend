@@ -18,7 +18,7 @@ import org.eclipse.viatra.examples.cps.deployment.BehaviorTransition
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication
 import org.eclipse.viatra.examples.cps.deployment.DeploymentBehavior
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost
-import org.eclipse.viatra.examples.cps.deployment.common.WaitTransitionMatcher
+import org.eclipse.viatra.examples.cps.deployment.common.WaitTransition
 import org.eclipse.viatra.examples.cps.xform.m2t.exceptions.CPSGeneratorException
 import org.eclipse.viatra.examples.cps.xform.m2t.util.FormatterUtil
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
@@ -518,7 +518,7 @@ class Generator {
 	}
 
 	def getHasIncomingTrigger(BehaviorTransition transition) {
-		WaitTransitionMatcher.on(engine).hasMatch(transition, null);
+		WaitTransition.Matcher.on(engine).hasMatch(transition, null);
 	}
 
 	def setPackage(AST ast, CompilationUnit cu, String packageName) {

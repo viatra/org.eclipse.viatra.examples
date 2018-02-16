@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.TransitionMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.Transition
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -27,7 +27,7 @@ class TransitionRules {
 	}
 }
 
-class TransitionMapping extends AbstractRule<TransitionMatch> {
+class TransitionMapping extends AbstractRule<Transition.Match> {
 
 	new(ViatraQueryEngine engine) {
 		super(engine)
@@ -43,12 +43,12 @@ class TransitionMapping extends AbstractRule<TransitionMatch> {
 
 	private def getAppearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED,
-			[ TransitionMatch match |
+			[ Transition.Match match |
 				addTransition(match)
 			])
 	}
 
-	private def addTransition(TransitionMatch match) {
+	private def addTransition(Transition.Match match) {
 			val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).filter(
 				DeploymentApplication).head
 			val transition = match.transition
@@ -83,7 +83,7 @@ class TransitionMapping extends AbstractRule<TransitionMatch> {
 
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
-			[ TransitionMatch match |
+			[ Transition.Match match |
 				val transition = match.transition
 				val trId = transition.identifier
 				debug('''Updating mapped transition with ID: «trId»''')
@@ -116,12 +116,12 @@ class TransitionMapping extends AbstractRule<TransitionMatch> {
 
 	private def getDisappearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
-			[ TransitionMatch match |
+			[ Transition.Match match |
 				deleteTransition(match)
 			])
 	}
 
-	private def deleteTransition(TransitionMatch match) {
+	private def deleteTransition(Transition.Match match) {
 		val transition = match.transition
 		val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).filter(
 			DeploymentApplication).head

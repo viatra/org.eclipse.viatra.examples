@@ -38,26 +38,20 @@ import org.eclipse.viatra.examples.cps.traceability.CPS2DeploymentTrace
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.traceability.TraceabilityFactory
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.CpsXformM2M
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.AppInstancesQuerySpecification
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.AppTypesQuerySpecification
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.StateMachinesQuerySpecification
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.StatesQuerySpecification
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.TransitionsQuerySpecification
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppInstances
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppTypes
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.StateMachines
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.States
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.Transitions
 import org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 
 import static com.google.common.base.Preconditions.*
 
 import static extension org.eclipse.viatra.examples.cps.xform.m2m.util.NamingUtil.*
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.util.HostInstancesQuerySpecification
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.HostInstances
 import org.eclipse.viatra.transformation.runtime.emf.changemonitor.ChangeMonitor
 import org.eclipse.viatra.transformation.runtime.emf.changemonitor.ChangeDelta
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.TransitionsMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.StatesMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.StateMachinesMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppInstancesMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.AppTypesMatch
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr.queries.HostInstancesMatch
 import java.util.stream.Stream
 
 class CPS2DeploymentPartialBatchTransformation {
@@ -117,12 +111,12 @@ class CPS2DeploymentPartialBatchTransformation {
 
 		monitor = new ChangeMonitor(engine);
 
-		monitor.addRule(HostInstancesQuerySpecification.instance)
-		monitor.addRule(AppTypesQuerySpecification.instance)
-		monitor.addRule(AppInstancesQuerySpecification.instance)
-		monitor.addRule(StateMachinesQuerySpecification.instance)
-		monitor.addRule(StatesQuerySpecification.instance)
-		monitor.addRule(TransitionsQuerySpecification.instance);
+		monitor.addRule(HostInstances.instance)
+		monitor.addRule(AppTypes.instance)
+		monitor.addRule(AppInstances.instance)
+		monitor.addRule(StateMachines.instance)
+		monitor.addRule(States.instance)
+		monitor.addRule(Transitions.instance);
 		monitor.startMonitoring
 
 		watch.stop
@@ -138,7 +132,7 @@ class CPS2DeploymentPartialBatchTransformation {
 		
 		delta.changedQuerySpecifications.forEach [ spec |
 			delta.getAppeared(spec).forEach [ b |
-				if (b instanceof TransitionsMatch) {
+				if (b instanceof Transitions.Match) {
 					val transition = b.transition
 					transitionMap.put(transition, transition.action)
 
@@ -532,26 +526,26 @@ class CPS2DeploymentPartialBatchTransformation {
 		trace('''Executing: clearModel(ChangeDelta delta)''')
 
         Stream.concat(delta.allDisappeared.stream, delta.allUpdated.stream).forEach[ b |
-			if (b instanceof HostInstancesMatch) {
+			if (b instanceof HostInstances.Match) {
 				removeHostInstance(b.hostInstance)
 			}
-			if (b instanceof AppTypesMatch) {
+			if (b instanceof AppTypes.Match) {
 				removeAppType(b.appType)
 			}
-			if (b instanceof AppInstancesMatch) {
+			if (b instanceof AppInstances.Match) {
 				removeAppInstance(b.appInstance)
 			}
-			if (b instanceof StateMachinesMatch) {
+			if (b instanceof StateMachines.Match) {
 				removeStateMachine(b.stateMachine , true)
 			}
-			if (b instanceof StatesMatch) {
+			if (b instanceof States.Match) {
 				val state = b.state
 				state.removeState
 				engine.state2Statemachine.getAllMatches(state, null).forEach [ match |
 					match.sm.removeStateMachine(true)
 				]
 			}
-			if (b instanceof TransitionsMatch) {
+			if (b instanceof Transitions.Match) {
 				val transition = b.transition
 				val action = transitionMap.get(transition)
 				if (action !== null && SignalUtil.isWait(action)) {

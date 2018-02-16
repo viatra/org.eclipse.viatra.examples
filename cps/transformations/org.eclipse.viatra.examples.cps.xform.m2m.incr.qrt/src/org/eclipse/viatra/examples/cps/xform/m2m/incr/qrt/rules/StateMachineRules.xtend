@@ -10,7 +10,7 @@
  *******************************************************************************/
 package org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules
 
-import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.StateMachineMatch
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.queries.StateMachine
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine
 import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
@@ -27,7 +27,7 @@ class StateMachineRules {
 	}
 }
 
-class StateMachineMapping extends AbstractRule<StateMachineMatch> {
+class StateMachineMapping extends AbstractRule<StateMachine.Match> {
 	new(ViatraQueryEngine engine) {
 		super(engine)
 	}
@@ -42,7 +42,7 @@ class StateMachineMapping extends AbstractRule<StateMachineMatch> {
 
 	private def getAppearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.CREATED,
-			[ StateMachineMatch match |
+			[ StateMachine.Match match |
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).filter(
 					DeploymentApplication).head
 				val smId = match.stateMachine.identifier
@@ -68,7 +68,7 @@ class StateMachineMapping extends AbstractRule<StateMachineMatch> {
 
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
-			[ StateMachineMatch match |
+			[ StateMachine.Match match |
 				val smId = match.stateMachine.identifier
 				debug('''Updating mapped state machine with ID: «smId»''')
 				val depSMs = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.stateMachine).filter(
@@ -85,7 +85,7 @@ class StateMachineMapping extends AbstractRule<StateMachineMatch> {
 
 	private def getDisappearedJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
-			[ StateMachineMatch match |
+			[ StateMachine.Match match |
 				val depApp = engine.cps2depTrace.getAllValuesOfdepElement(null, null, match.appInstance).head as DeploymentApplication;
 				val depBehavior = depApp.behavior
 				val smId = depBehavior.description
