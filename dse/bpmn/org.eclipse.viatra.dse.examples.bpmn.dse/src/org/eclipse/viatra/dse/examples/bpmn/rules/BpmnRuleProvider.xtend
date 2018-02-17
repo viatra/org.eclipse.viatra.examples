@@ -1,9 +1,9 @@
 package org.eclipse.viatra.dse.examples.bpmn.rules
 
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AllocateTaskToVariantQuerySpecification
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.CreateResourceQuerySpecification
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeParallelQuerySpecification
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.MakeSequentialQuerySpecification
+import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariant
+import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResource
+import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallel
+import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequential
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory
@@ -23,7 +23,7 @@ class BpmnRuleProvider {
     new() {
         allocateRule = createRule
             .name("AllocateTaskToVariantRule")
-            .precondition(AllocateTaskToVariantQuerySpecification.instance())
+            .precondition(AllocateTaskToVariant.instance())
             .action[
                 t.variant = RTV
             ]
@@ -31,7 +31,7 @@ class BpmnRuleProvider {
 
         allocateRuleFilteredExample = createRule
             .name("FilteredAllocateTaskToVariantRule")
-            .precondition(AllocateTaskToVariantQuerySpecification.instance())
+            .precondition(AllocateTaskToVariant.instance())
             .action[
                 t.variant = RTV
             ]
@@ -46,7 +46,7 @@ class BpmnRuleProvider {
 
         createResourceRule = createRule
             .name("CreateResourceRule")
-            .precondition(CreateResourceQuerySpecification.instance())
+            .precondition(CreateResource.instance())
             .action[
                 RTV.instances += SimplifiedbpmnFactory.eINSTANCE.createResourceInstance()
             ]
@@ -54,7 +54,7 @@ class BpmnRuleProvider {
 
         makeParallelRule = createRule
             .name("MakeParallelRule")
-            .precondition(MakeParallelQuerySpecification.instance())
+            .precondition(MakeParallel.instance())
             .action[
                 val builder = new SimplifiedBpmnBuilder(root)
 
@@ -86,7 +86,7 @@ class BpmnRuleProvider {
 
         makeSequentialRule = createRule
             .name("MakeSequentialRule")
-            .precondition(MakeSequentialQuerySpecification.instance())
+            .precondition(MakeSequential.instance())
             .action[
                 var flows = t1.inFlows
                 val divergingGateway = flows.get(0).getSource()

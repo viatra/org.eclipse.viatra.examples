@@ -1,6 +1,6 @@
 package org.eclipse.viatra.dse.examples.bpmn.objectives;
 
-import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResource;
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
 import org.eclipse.viatra.dse.objectives.ActivationFitnessProcessor;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
@@ -11,7 +11,7 @@ import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 public final class CostOfCreateResource implements ActivationFitnessProcessor {
     @Override
     public double process(IPatternMatch match) {
-        CreateResourceMatch m = (CreateResourceMatch) match;
+        CreateResource.Match m = (CreateResource.Match) match;
         String name = m.getRTV().getName();
         Double result;
         if (name.equals(BpmnProblems.NOSQL_FAST)) {

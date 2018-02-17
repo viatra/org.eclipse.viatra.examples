@@ -15,10 +15,10 @@ import java.util.Comparator;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.viatra.dse.api.DSEException;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariantMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResourceMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallelMatch;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequentialMatch;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariant;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResource;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeParallel;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.MakeSequential;
 import org.eclipse.viatra.dse.examples.bpmn.problems.SimplifiedBpmnBuilder;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ParallelGateway;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.ResourceType;
@@ -96,17 +96,17 @@ public class BpmnStateCoder implements IStateCoder {
     @Override
     public Object createActivationCode(IPatternMatch match) {
 
-        if (match instanceof CreateResourceMatch) {
-            CreateResourceMatch m = (CreateResourceMatch) match;
+        if (match instanceof CreateResource.Match) {
+            CreateResource.Match m = (CreateResource.Match) match;
             return m.getRTV().getName().intern();
-        } else if (match instanceof AllocateTaskToVariantMatch) {
-            AllocateTaskToVariantMatch m = (AllocateTaskToVariantMatch) match;
+        } else if (match instanceof AllocateTaskToVariant.Match) {
+            AllocateTaskToVariant.Match m = (AllocateTaskToVariant.Match) match;
             return (m.getT().getName() + "-" + m.getRTV().getName()).intern();
-        } else if (match instanceof MakeParallelMatch) {
-            MakeParallelMatch m = (MakeParallelMatch) match;
+        } else if (match instanceof MakeParallel.Match) {
+            MakeParallel.Match m = (MakeParallel.Match) match;
             return ("Parallel:" + SimplifiedBpmnBuilder.createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
-        } else if (match instanceof MakeSequentialMatch) {
-            MakeSequentialMatch m = (MakeSequentialMatch) match;
+        } else if (match instanceof MakeSequential.Match) {
+            MakeSequential.Match m = (MakeSequential.Match) match;
             return ("Sequential:" + SimplifiedBpmnBuilder.createOrderedString(m.getT1().getName(), m.getT2().getName())).intern();
         } else {
             throw new DSEException("Unsupported rule.");

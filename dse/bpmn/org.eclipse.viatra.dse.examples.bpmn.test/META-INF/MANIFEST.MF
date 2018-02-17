@@ -11,3 +11,4 @@ Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.dse;bundle-version="0.20.0"
  com.google.guava,
  org.junit
 Import-Package: org.apache.log4j
+Automatic-Module-Name: org.eclipse.viatra.dse.examples.bpmn.test

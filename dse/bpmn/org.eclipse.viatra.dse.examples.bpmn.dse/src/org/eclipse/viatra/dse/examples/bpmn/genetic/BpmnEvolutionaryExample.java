@@ -17,11 +17,11 @@ import org.eclipse.viatra.dse.evolutionary.EvolutionaryStrategyLogAdapter;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.AvgResponseTimeSoftObjective;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.CostOfCreateResource;
 import org.eclipse.viatra.dse.examples.bpmn.objectives.MinResourceUsageSoftObjective;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.AbsenceOfResourceInstancesQuerySpecification;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EnoughResourceInstancesQuerySpecification;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.EveryTaskHasVariantQuerySpecification;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnassignedTaskQuerySpecification;
-import org.eclipse.viatra.dse.examples.bpmn.patterns.util.UnrequiredResourceInstanceQuerySpecification;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.AbsenceOfResourceInstances;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.EnoughResourceInstances;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.EveryTaskHasVariant;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.UnassignedTask;
+import org.eclipse.viatra.dse.examples.bpmn.patterns.UnrequiredResourceInstance;
 import org.eclipse.viatra.dse.examples.bpmn.problems.BpmnProblems;
 import org.eclipse.viatra.dse.examples.bpmn.rules.BpmnRuleProvider;
 import org.eclipse.viatra.dse.examples.bpmn.statecoder.BpmnStateCoderFactory;
@@ -61,14 +61,14 @@ public class BpmnEvolutionaryExample {
         dse.addTransformationRule(ruleProvider.makeSequentialRule);
 
         dse.addGlobalConstraint(new ModelQueriesGlobalConstraint()
-                .withConstraint(UnrequiredResourceInstanceQuerySpecification.instance()));
+                .withConstraint(UnrequiredResourceInstance.instance()));
 
         dse.addObjective(new ConstraintsObjective()
-                .withHardConstraint(EnoughResourceInstancesQuerySpecification.instance())
-                .withHardConstraint(EveryTaskHasVariantQuerySpecification.instance())
-                .withSoftConstraint("LackOfResourceInstances", AbsenceOfResourceInstancesQuerySpecification.instance(), 1)
-                .withSoftConstraint("UnassignedTask", UnassignedTaskQuerySpecification.instance(), 10)
-                .withSoftConstraint("UnrequiredResources", UnrequiredResourceInstanceQuerySpecification.instance(), 100)
+                .withHardConstraint(EnoughResourceInstances.instance())
+                .withHardConstraint(EveryTaskHasVariant.instance())
+                .withSoftConstraint("LackOfResourceInstances", AbsenceOfResourceInstances.instance(), 1)
+                .withSoftConstraint("UnassignedTask", UnassignedTask.instance(), 10)
+                .withSoftConstraint("UnrequiredResources", UnrequiredResourceInstance.instance(), 100)
                 .withComparator(Comparators.LOWER_IS_BETTER)
                 .withLevel(0));
 

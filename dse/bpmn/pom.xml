@@ -46,6 +46,11 @@
 			<url>${viatra.repository.url}</url>
 		</repository>
 		<repository>
+			<id>eclipse.collections.update</id>
+			<layout>p2</layout>
+			<url>${ec.repository.url}</url>
+		</repository>
+		<repository>
 			<id>xtext.update</id>
 			<layout>p2</layout>
 			<url>${xtext.repository.url}</url>
@@ -76,6 +81,7 @@
 		<tycho.version>1.0.0</tycho.version>
 		<xtend.compiler.version>2.13.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
+		<ec.repository.url>http://download.eclipse.org/collections/9.2.0.M1/repository</ec.repository.url>
 		<xtext.repository.url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0</xtext.repository.url>
 		<eclipse.repository.release.url>http://download.eclipse.org/releases/neon</eclipse.repository.release.url>
 		<eclipse.repository.url>http://download.eclipse.org/eclipse/updates/4.6</eclipse.repository.url>
