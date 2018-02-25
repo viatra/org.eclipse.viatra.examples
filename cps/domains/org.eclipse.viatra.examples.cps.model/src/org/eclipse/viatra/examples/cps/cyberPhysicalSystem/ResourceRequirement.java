@@ -16,6 +16,10 @@ package org.eclipse.viatra.examples.cps.cyberPhysicalSystem;
  * A representation of the model object '<em><b>Resource Requirement</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * This class represents the requirements of a given application type.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -39,6 +43,9 @@ public interface ResourceRequirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * This field stores the number of CPUs required in a non-negative number.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Required Cpu</em>' attribute.
      * @see #setRequiredCpu(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getResourceRequirement_RequiredCpu()
@@ -65,6 +72,9 @@ public interface ResourceRequirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * This field stores the amount of RAM required in MB as a non-negative number.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Required Ram</em>' attribute.
      * @see #setRequiredRam(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getResourceRequirement_RequiredRam()
@@ -91,6 +101,9 @@ public interface ResourceRequirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * This field stores the amount of persistent storage required in MB as a non-negative number.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Required Hdd</em>' attribute.
      * @see #setRequiredHdd(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getResourceRequirement_RequiredHdd()
@@ -117,6 +130,9 @@ public interface ResourceRequirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * This field represents the required host type.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Type</em>' reference.
      * @see #setType(HostType)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getResourceRequirement_Type()

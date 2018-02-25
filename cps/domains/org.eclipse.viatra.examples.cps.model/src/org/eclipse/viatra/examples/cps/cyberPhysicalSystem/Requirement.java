@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Requirement</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Represents a requested requirement.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -42,6 +46,9 @@ public interface Requirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The number of instances required.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Count</em>' attribute.
      * @see #setCount(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement_Count()
@@ -96,6 +103,9 @@ public interface Requirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The type of required application.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Type</em>' reference.
      * @see #isSetType()
      * @see #unsetType()
@@ -150,6 +160,9 @@ public interface Requirement extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The concrete application instances fulfilling the original requirement.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Applications</em>' reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getRequirement_Applications()
      * @model

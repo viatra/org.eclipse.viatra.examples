@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Application Instance</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Represents an application instance.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -44,6 +48,9 @@ public interface ApplicationInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Represents whether the application is running.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>State</em>' attribute.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.AppState
      * @see #setState(AppState)
@@ -125,6 +132,9 @@ public interface ApplicationInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The host instances this application is running on.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Allocated To</em>' reference.
      * @see #setAllocatedTo(HostInstance)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationInstance_AllocatedTo()
@@ -153,6 +163,9 @@ public interface ApplicationInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Other application instances the current one depends on.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Depend On</em>' reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationInstance_DependOn()
      * @model
@@ -169,6 +182,9 @@ public interface ApplicationInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The type of the application.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Type</em>' container reference.
      * @see #setType(ApplicationType)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationInstance_Type()
@@ -196,6 +212,9 @@ public interface ApplicationInstance extends Identifiable {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The priority of the application; larger number means higher priority.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Priority</em>' attribute.
      * @see #setPriority(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationInstance_Priority()

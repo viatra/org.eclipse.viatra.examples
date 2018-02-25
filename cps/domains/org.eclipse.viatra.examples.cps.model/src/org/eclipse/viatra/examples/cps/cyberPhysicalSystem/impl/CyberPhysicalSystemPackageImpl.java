@@ -160,7 +160,7 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
 
 	/**
      * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-     * 
+     *
      * <p>This method is used to initialize {@link CyberPhysicalSystemPackage#eINSTANCE} when that field is accessed.
      * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
      * <!-- begin-user-doc -->
@@ -174,7 +174,8 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         if (isInited) return (CyberPhysicalSystemPackage)EPackage.Registry.INSTANCE.getEPackage(CyberPhysicalSystemPackage.eNS_URI);
 
         // Obtain or create and register package
-        CyberPhysicalSystemPackageImpl theCyberPhysicalSystemPackage = (CyberPhysicalSystemPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CyberPhysicalSystemPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CyberPhysicalSystemPackageImpl());
+        Object registeredCyberPhysicalSystemPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+        CyberPhysicalSystemPackageImpl theCyberPhysicalSystemPackage = registeredCyberPhysicalSystemPackage instanceof CyberPhysicalSystemPackageImpl ? (CyberPhysicalSystemPackageImpl)registeredCyberPhysicalSystemPackage : new CyberPhysicalSystemPackageImpl();
 
         isInited = true;
 
@@ -187,7 +188,6 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         // Mark meta-data to indicate it can't be changed
         theCyberPhysicalSystemPackage.freeze();
 
-  
         // Update the registry and return the package
         EPackage.Registry.INSTANCE.put(CyberPhysicalSystemPackage.eNS_URI, theCyberPhysicalSystemPackage);
         return theCyberPhysicalSystemPackage;
@@ -992,6 +992,8 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
         // Create annotations
         // http://www.eclipse.org/emf/2002/Ecore
         createEcoreAnnotations();
+        // http://www.eclipse.org/emf/2002/GenModel
+        createGenModelAnnotations();
     }
 
 	/**
@@ -1001,12 +1003,328 @@ public class CyberPhysicalSystemPackageImpl extends EPackageImpl implements Cybe
      * @generated
      */
 	protected void createEcoreAnnotations() {
-        String source = "http://www.eclipse.org/emf/2002/Ecore";	
+        String source = "http://www.eclipse.org/emf/2002/Ecore";
         addAnnotation
-          (this, 
-           source, 
+          (this,
+           source,
            new String[] {
-             "settingDelegates", "org.eclipse.viatra.query.querybasedfeature"
+               "settingDelegates", "org.eclipse.viatra.query.querybasedfeature"
+           });
+    }
+
+    /**
+     * Initializes the annotations for <b>http://www.eclipse.org/emf/2002/GenModel</b>.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    protected void createGenModelAnnotations() {
+        String source = "http://www.eclipse.org/emf/2002/GenModel";
+        addAnnotation
+          (identifiableEClass,
+           source,
+           new String[] {
+               "documentation", "An identifiable element of the CPS domain has a unique identifier."
+           });
+        addAnnotation
+          (getIdentifiable_Identifier(),
+           source,
+           new String[] {
+               "documentation", "An identifier is used as both a user-facing name and an identifier for serialization. Must be unique."
+           });
+        addAnnotation
+          (cyberPhysicalSystemEClass,
+           source,
+           new String[] {
+               "documentation", "The cyber-physical system instance acts as a container of a cps model."
+           });
+        addAnnotation
+          (applicationTypeEClass,
+           source,
+           new String[] {
+               "documentation", "A descriptor for a class of applications."
+           });
+        addAnnotation
+          (getApplicationType_ExeFileLocation(),
+           source,
+           new String[] {
+               "documentation", "Where to look for the executable file."
+           });
+        addAnnotation
+          (getApplicationType_ExeType(),
+           source,
+           new String[] {
+               "documentation", "The type of the executable file."
+           });
+        addAnnotation
+          (getApplicationType_Requirements(),
+           source,
+           new String[] {
+               "documentation", "The resource requirements of the application are stored in this reference."
+           });
+        addAnnotation
+          (getApplicationType_Cps(),
+           source,
+           new String[] {
+               "documentation", "A reference to the container instance."
+           });
+        addAnnotation
+          (getApplicationType_Instances(),
+           source,
+           new String[] {
+               "documentation", "All known instances of this type."
+           });
+        addAnnotation
+          (getApplicationType_Behavior(),
+           source,
+           new String[] {
+               "documentation", "An optional state machine describing the behavior of the application."
+           });
+        addAnnotation
+          (getApplicationType_ExeFileSize(),
+           source,
+           new String[] {
+               "documentation", "The size of the executable in bytes."
+           });
+        addAnnotation
+          (hostTypeEClass,
+           source,
+           new String[] {
+               "documentation", "A class describing common properties of a set of hosts."
+           });
+        addAnnotation
+          (getHostType_DefaultCpu(),
+           source,
+           new String[] {
+               "documentation", "If a host instance does not set the total CPU attribute, this default value should be used instead."
+           });
+        addAnnotation
+          (getHostType_DefaultRam(),
+           source,
+           new String[] {
+               "documentation", "If a host instance does not set the total RAM attribute, this default value should be used instead."
+           });
+        addAnnotation
+          (getHostType_DefaultHdd(),
+           source,
+           new String[] {
+               "documentation", "If a host instance does not set the total HDD attribute, this default value should be used instead."
+           });
+        addAnnotation
+          (getHostType_Cps(),
+           source,
+           new String[] {
+               "documentation", "A reference to the container model."
+           });
+        addAnnotation
+          (getHostType_Instances(),
+           source,
+           new String[] {
+               "documentation", "A list to the instances of the selected host type."
+           });
+        addAnnotation
+          (resourceRequirementEClass,
+           source,
+           new String[] {
+               "documentation", "This class represents the requirements of a given application type."
+           });
+        addAnnotation
+          (getResourceRequirement_RequiredCpu(),
+           source,
+           new String[] {
+               "documentation", "This field stores the number of CPUs required in a non-negative number."
+           });
+        addAnnotation
+          (getResourceRequirement_RequiredRam(),
+           source,
+           new String[] {
+               "documentation", "This field stores the amount of RAM required in MB as a non-negative number."
+           });
+        addAnnotation
+          (getResourceRequirement_RequiredHdd(),
+           source,
+           new String[] {
+               "documentation", "This field stores the amount of persistent storage required in MB as a non-negative number."
+           });
+        addAnnotation
+          (getResourceRequirement_Type(),
+           source,
+           new String[] {
+               "documentation", "This field represents the required host type."
+           });
+        addAnnotation
+          (hostInstanceEClass,
+           source,
+           new String[] {
+               "documentation", "Represents a single host in the system"
+           });
+        addAnnotation
+          (getHostInstance_NodeIp(),
+           source,
+           new String[] {
+               "documentation", "The IP address of the given host instance. Must be unique."
+           });
+        addAnnotation
+          (getHostInstance_AvailableCpu(),
+           source,
+           new String[] {
+               "documentation", "The number of CPUs that are not bound for any applications."
+           });
+        addAnnotation
+          (getHostInstance_AvailableRam(),
+           source,
+           new String[] {
+               "documentation", "The amount of RAM not bound for any applications."
+           });
+        addAnnotation
+          (getHostInstance_AvailableHdd(),
+           source,
+           new String[] {
+               "documentation", "The amount of persistent storage not bound for any applications."
+           });
+        addAnnotation
+          (getHostInstance_TotalCpu(),
+           source,
+           new String[] {
+               "documentation", "The total number of CPUs available. If unspecified, the default value from the corresponding host type should be used."
+           });
+        addAnnotation
+          (getHostInstance_TotalRam(),
+           source,
+           new String[] {
+               "documentation", "The total amount of RAM available. If unspecified, the default value from the corresponding host type should be used."
+           });
+        addAnnotation
+          (getHostInstance_TotalHdd(),
+           source,
+           new String[] {
+               "documentation", "The total amount of persistent storage available. If unspecified, the default value from the corresponding host type should be used."
+           });
+        addAnnotation
+          (getHostInstance_Applications(),
+           source,
+           new String[] {
+               "documentation", "All application instances running on this host."
+           });
+        addAnnotation
+          (getHostInstance_CommunicateWith(),
+           source,
+           new String[] {
+               "documentation", "This reference enumerates host instances the current instance needs to communicate with."
+           });
+        addAnnotation
+          (applicationInstanceEClass,
+           source,
+           new String[] {
+               "documentation", "Represents an application instance."
+           });
+        addAnnotation
+          (getApplicationInstance_State(),
+           source,
+           new String[] {
+               "documentation", "Represents whether the application is running."
+           });
+        addAnnotation
+          (getApplicationInstance_AllocatedTo(),
+           source,
+           new String[] {
+               "documentation", "The host instances this application is running on."
+           });
+        addAnnotation
+          (getApplicationInstance_DependOn(),
+           source,
+           new String[] {
+               "documentation", "Other application instances the current one depends on."
+           });
+        addAnnotation
+          (getApplicationInstance_Type(),
+           source,
+           new String[] {
+               "documentation", "The type of the application."
+           });
+        addAnnotation
+          (getApplicationInstance_Priority(),
+           source,
+           new String[] {
+               "documentation", "The priority of the application; larger number means higher priority."
+           });
+        addAnnotation
+          (appStateEEnum,
+           source,
+           new String[] {
+               "documentation", "Represents whether an application is running."
+           });
+        addAnnotation
+          (requirementEClass,
+           source,
+           new String[] {
+               "documentation", "Represents a requested requirement."
+           });
+        addAnnotation
+          (getRequirement_Count(),
+           source,
+           new String[] {
+               "documentation", "The number of instances required."
+           });
+        addAnnotation
+          (getRequirement_Type(),
+           source,
+           new String[] {
+               "documentation", "The type of required application."
+           });
+        addAnnotation
+          (getRequirement_Applications(),
+           source,
+           new String[] {
+               "documentation", "The concrete application instances fulfilling the original requirement."
+           });
+        addAnnotation
+          (stateMachineEClass,
+           source,
+           new String[] {
+               "documentation", "A state machine is used to define the behavior of a given application type."
+           });
+        addAnnotation
+          (getStateMachine_States(),
+           source,
+           new String[] {
+               "documentation", "All states the state machine uses."
+           });
+        addAnnotation
+          (getStateMachine_Initial(),
+           source,
+           new String[] {
+               "documentation", "The specific initial state of the state machine; should be a member of the states reference as well."
+           });
+        addAnnotation
+          (stateEClass,
+           source,
+           new String[] {
+               "documentation", "A state of a state machine."
+           });
+        addAnnotation
+          (getState_OutgoingTransitions(),
+           source,
+           new String[] {
+               "documentation", "A list of all transitions starting from the current state."
+           });
+        addAnnotation
+          (transitionEClass,
+           source,
+           new String[] {
+               "documentation", "A transition in a state machine."
+           });
+        addAnnotation
+          (getTransition_TargetState(),
+           source,
+           new String[] {
+               "documentation", "The state this transition ends in."
+           });
+        addAnnotation
+          (getTransition_Action(),
+           source,
+           new String[] {
+               "documentation", "The action may specify either waiting for a signal with a given ID or sending a signal with a given ID to another application with a given type ID.\r\n- Use waitForSignal(signal) to specify waiting for signal\r\n- Use sendSignal(app, signal) to specify sending a signal to an app\r\n\r\nRestrictions:\r\n- Only one action is allowed in a transition\r\n- There can be only a single application instance for the given application type ID on host instances that the host on which the sending application instance is allocated to can communicate with."
            });
     }
 

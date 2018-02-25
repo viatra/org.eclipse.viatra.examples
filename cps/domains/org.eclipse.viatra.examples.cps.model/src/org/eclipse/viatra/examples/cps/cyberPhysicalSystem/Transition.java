@@ -16,6 +16,10 @@ package org.eclipse.viatra.examples.cps.cyberPhysicalSystem;
  * A representation of the model object '<em><b>Transition</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A transition in a state machine.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -37,6 +41,9 @@ public interface Transition extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The state this transition ends in.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Target State</em>' reference.
      * @see #setTargetState(State)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getTransition_TargetState()

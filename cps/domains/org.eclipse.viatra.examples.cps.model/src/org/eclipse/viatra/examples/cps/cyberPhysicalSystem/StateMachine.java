@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>State Machine</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A state machine is used to define the behavior of a given application type.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -39,6 +43,9 @@ public interface StateMachine extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * All states the state machine uses.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>States</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getStateMachine_States()
      * @model containment="true" resolveProxies="true"
@@ -54,6 +61,9 @@ public interface StateMachine extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The specific initial state of the state machine; should be a member of the states reference as well.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Initial</em>' reference.
      * @see #setInitial(State)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getStateMachine_Initial()

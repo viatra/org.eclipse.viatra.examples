@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>State</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A state of a state machine.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -38,6 +42,9 @@ public interface State extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * A list of all transitions starting from the current state.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Outgoing Transitions</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getState_OutgoingTransitions()
      * @model containment="true" resolveProxies="true"

@@ -17,6 +17,10 @@ import org.eclipse.emf.ecore.EObject;
  * A representation of the model object '<em><b>Identifiable</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * An identifiable element of the CPS domain has a unique identifier.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -37,6 +41,9 @@ public interface Identifiable extends EObject {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * An identifier is used as both a user-facing name and an identifier for serialization. Must be unique.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Identifier</em>' attribute.
      * @see #setIdentifier(String)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getIdentifiable_Identifier()

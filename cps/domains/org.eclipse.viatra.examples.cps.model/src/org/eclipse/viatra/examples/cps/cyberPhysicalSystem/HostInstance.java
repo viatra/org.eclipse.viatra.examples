@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Host Instance</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * Represents a single host in the system
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -45,6 +49,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The IP address of the given host instance. Must be unique.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Node Ip</em>' attribute.
      * @see #setNodeIp(String)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_NodeIp()
@@ -71,6 +78,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The number of CPUs that are not bound for any applications.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Available Cpu</em>' attribute.
      * @see #setAvailableCpu(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_AvailableCpu()
@@ -97,6 +107,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The amount of RAM not bound for any applications.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Available Ram</em>' attribute.
      * @see #setAvailableRam(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_AvailableRam()
@@ -123,6 +136,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The amount of persistent storage not bound for any applications.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Available Hdd</em>' attribute.
      * @see #setAvailableHdd(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_AvailableHdd()
@@ -149,6 +165,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The total number of CPUs available. If unspecified, the default value from the corresponding host type should be used.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Total Cpu</em>' attribute.
      * @see #setTotalCpu(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_TotalCpu()
@@ -175,6 +194,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The total amount of RAM available. If unspecified, the default value from the corresponding host type should be used.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Total Ram</em>' attribute.
      * @see #setTotalRam(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_TotalRam()
@@ -201,6 +223,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The total amount of persistent storage available. If unspecified, the default value from the corresponding host type should be used.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Total Hdd</em>' attribute.
      * @see #setTotalHdd(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_TotalHdd()
@@ -229,6 +254,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * All application instances running on this host.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Applications</em>' reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_Applications()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance#getAllocatedTo
@@ -246,6 +274,9 @@ public interface HostInstance extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * This reference enumerates host instances the current instance needs to communicate with.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Communicate With</em>' reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostInstance_CommunicateWith()
      * @model

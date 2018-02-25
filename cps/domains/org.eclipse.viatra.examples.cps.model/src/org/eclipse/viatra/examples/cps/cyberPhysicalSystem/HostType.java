@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Host Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A class describing common properties of a set of hosts.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -41,6 +45,9 @@ public interface HostType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * If a host instance does not set the total CPU attribute, this default value should be used instead.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Default Cpu</em>' attribute.
      * @see #setDefaultCpu(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_DefaultCpu()
@@ -67,6 +74,9 @@ public interface HostType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * If a host instance does not set the total RAM attribute, this default value should be used instead.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Default Ram</em>' attribute.
      * @see #setDefaultRam(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_DefaultRam()
@@ -93,6 +103,9 @@ public interface HostType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * If a host instance does not set the total HDD attribute, this default value should be used instead.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Default Hdd</em>' attribute.
      * @see #setDefaultHdd(int)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_DefaultHdd()
@@ -120,6 +133,9 @@ public interface HostType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * A reference to the container model.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Cps</em>' container reference.
      * @see #setCps(CyberPhysicalSystem)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_Cps()
@@ -148,6 +164,9 @@ public interface HostType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * A list to the instances of the selected host type.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Instances</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getHostType_Instances()
      * @model containment="true" resolveProxies="true"

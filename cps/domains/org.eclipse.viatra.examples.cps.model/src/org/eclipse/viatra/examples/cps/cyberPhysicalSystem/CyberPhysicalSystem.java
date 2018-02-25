@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Cyber Physical System</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * The cyber-physical system instance acts as a container of a cps model.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>

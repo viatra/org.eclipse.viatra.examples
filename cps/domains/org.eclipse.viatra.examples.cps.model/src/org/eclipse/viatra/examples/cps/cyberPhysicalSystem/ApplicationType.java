@@ -17,6 +17,10 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Application Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * A descriptor for a class of applications.
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -44,6 +48,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * Where to look for the executable file.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Exe File Location</em>' attribute.
      * @see #setExeFileLocation(String)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_ExeFileLocation()
@@ -70,6 +77,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The type of the executable file.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Exe Type</em>' attribute.
      * @see #setExeType(String)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_ExeType()
@@ -123,6 +133,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The resource requirements of the application are stored in this reference.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Requirements</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Requirements()
      * @model containment="true" resolveProxies="true"
@@ -139,6 +152,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * A reference to the container instance.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Cps</em>' container reference.
      * @see #setCps(CyberPhysicalSystem)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Cps()
@@ -168,6 +184,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * All known instances of this type.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Instances</em>' containment reference list.
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Instances()
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.ApplicationInstance#getType
@@ -184,6 +203,9 @@ public interface ApplicationType extends Identifiable {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * An optional state machine describing the behavior of the application.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Behavior</em>' containment reference.
      * @see #setBehavior(StateMachine)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_Behavior()
@@ -210,6 +232,9 @@ public interface ApplicationType extends Identifiable {
      * there really should be more of a description here...
      * </p>
      * <!-- end-user-doc -->
+     * <!-- begin-model-doc -->
+     * The size of the executable in bytes.
+     * <!-- end-model-doc -->
      * @return the value of the '<em>Exe File Size</em>' attribute.
      * @see #setExeFileSize(long)
      * @see org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage#getApplicationType_ExeFileSize()
