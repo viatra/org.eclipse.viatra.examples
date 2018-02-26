@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 import org.eclipse.viatra.examples.cps.deployment.BehaviorState;
 import org.eclipse.viatra.examples.cps.deployment.BehaviorTransition;
@@ -29,7 +30,6 @@ import org.eclipse.viatra.examples.cps.xform.m2t.monitor.HostApplicationsChange;
 import org.eclipse.viatra.examples.cps.xform.m2t.monitor.HostIpChange;
 import org.eclipse.viatra.examples.cps.xform.m2t.monitor.TransitionChange;
 import org.eclipse.viatra.examples.cps.xform.m2t.monitor.TriggerChange;
-import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
@@ -187,12 +187,7 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 
 		Set<Job<IPatternMatch>> jobs = Sets.newHashSet();
 
-		IMatchProcessor<IPatternMatch> matchProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				deploymentChanged = true;
-			}
-		};
+		Consumer<IPatternMatch> matchProcessor = match -> deploymentChanged = true;
 
 		Job<IPatternMatch> appear = Jobs.newStatelessJob(
 				CRUDActivationStateEnum.CREATED, matchProcessor);
@@ -247,29 +242,16 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 	}
 
 	private Set<Job<IPatternMatch>> hostChangeJobs() {
-		IMatchProcessor<IPatternMatch> appearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerAppear(match);
-			}
-		};
-		IMatchProcessor<IPatternMatch> disappearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				DeploymentHost host = (DeploymentHost) match.get(0);
-				if (host.eContainer() != null) {
-					registerUpdate(match);
-				} else {
-					registerDisappear(match);
-				}
-			}
-		};
-		IMatchProcessor<IPatternMatch> updateProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerUpdate(match);
-			}
-		};
+		Consumer<IPatternMatch> appearProcessor = match -> registerAppear(match);
+		Consumer<IPatternMatch> disappearProcessor = match -> {
+            	DeploymentHost host = (DeploymentHost) match.get(0);
+            	if (host.eContainer() != null) {
+            		registerUpdate(match);
+            	} else {
+            		registerDisappear(match);
+            	}
+        };
+		Consumer<IPatternMatch> updateProcessor = match -> registerUpdate(match);
 
 		return createDeploymentElementJobs(appearProcessor, disappearProcessor,
 				updateProcessor);
@@ -279,61 +261,33 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 	 * @return specific jobs for applicationChanges
 	 */
 	private Set<Job<IPatternMatch>> applicationChangeJobs() {
-		IMatchProcessor<IPatternMatch> appearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerAppear(match);
-			}
-		};
-		IMatchProcessor<IPatternMatch> disappearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerDisappear(match);
-			}
-		};
-		IMatchProcessor<IPatternMatch> updateProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerUpdate(match);
-			}
-		};
+		Consumer<IPatternMatch> appearProcessor = match -> registerAppear(match);
+		Consumer<IPatternMatch> disappearProcessor = match -> registerDisappear(match);
+		Consumer<IPatternMatch> updateProcessor = match -> registerUpdate(match);
 
 		return createDeploymentElementJobs(appearProcessor, disappearProcessor,
 				updateProcessor);
 	}
 
 	private Set<Job<IPatternMatch>> behaviorChangeJobs() {
-		IMatchProcessor<IPatternMatch> appearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerAppear(match);
-			}
-		};
-		IMatchProcessor<IPatternMatch> disappearProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				if (match.get("state") != null) {
-					BehaviorState state = ((BehaviorState) match.get("state"));
-					if (state.eContainer() == null) {
-						registerUpdate(match);
-					}
-				} else if (match.get("transition") != null) {
-					BehaviorTransition transition = ((BehaviorTransition) match
-							.get("transition"));
-					if (transition.eContainer() == null) {
-						registerUpdate(match);
-					}
-				} else {
-					registerDisappear(match);
-				}
-			}
-		};
-		IMatchProcessor<IPatternMatch> updateProcessor = new IMatchProcessor<IPatternMatch>() {
-			@Override
-			public void process(IPatternMatch match) {
-				registerUpdate(match);
-			}
-		};
+		Consumer<IPatternMatch> appearProcessor = match -> registerAppear(match);
+		Consumer<IPatternMatch> disappearProcessor = match -> {
+            	if (match.get("state") != null) {
+            		BehaviorState state = ((BehaviorState) match.get("state"));
+            		if (state.eContainer() == null) {
+            			registerUpdate(match);
+            		}
+            	} else if (match.get("transition") != null) {
+            		BehaviorTransition transition = ((BehaviorTransition) match
+            				.get("transition"));
+            		if (transition.eContainer() == null) {
+            			registerUpdate(match);
+            		}
+            	} else {
+            		registerDisappear(match);
+            	}
+        };
+		Consumer<IPatternMatch> updateProcessor = match -> registerUpdate(match);
 
 		return createDeploymentElementJobs(appearProcessor, disappearProcessor,
 				updateProcessor);
@@ -365,9 +319,9 @@ public class DeploymentChangeMonitor extends AbstractDeploymentChangeMonitor {
 	}
 
 	private Set<Job<IPatternMatch>> createDeploymentElementJobs(
-			IMatchProcessor<IPatternMatch> appearProcessor,
-			IMatchProcessor<IPatternMatch> disappearProcessor,
-			IMatchProcessor<IPatternMatch> updateProcessor) {
+			Consumer<IPatternMatch> appearProcessor,
+			Consumer<IPatternMatch> disappearProcessor,
+			Consumer<IPatternMatch> updateProcessor) {
 		Set<Job<IPatternMatch>> jobs = Sets.newHashSet();
 
 		Job<IPatternMatch> appear = new ChangeMonitorJob<IPatternMatch>(

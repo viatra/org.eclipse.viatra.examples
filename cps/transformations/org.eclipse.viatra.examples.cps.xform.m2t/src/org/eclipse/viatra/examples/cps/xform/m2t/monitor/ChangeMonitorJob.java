@@ -11,11 +11,11 @@
 package org.eclipse.viatra.examples.cps.xform.m2t.monitor;
 
 import java.util.Map;
+import java.util.function.Consumer;
 
 import org.eclipse.viatra.examples.cps.deployment.DeploymentApplication;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentElement;
 import org.eclipse.viatra.examples.cps.deployment.DeploymentHost;
-import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.query.runtime.api.IPatternMatch;
 import org.eclipse.viatra.transformation.evm.api.Activation;
 import org.eclipse.viatra.transformation.evm.api.Context;
@@ -32,7 +32,7 @@ public class ChangeMonitorJob<Match extends IPatternMatch> extends StatelessJob<
 
 	public ChangeMonitorJob(
 			CRUDActivationStateEnum incQueryActivationStateEnum,
-			IMatchProcessor<Match> matchProcessor) {
+			Consumer<Match> matchProcessor) {
 		super(incQueryActivationStateEnum, matchProcessor);
 	}
 

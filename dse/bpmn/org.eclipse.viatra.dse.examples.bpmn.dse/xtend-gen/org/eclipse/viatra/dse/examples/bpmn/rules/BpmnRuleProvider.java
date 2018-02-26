@@ -1,5 +1,6 @@
 package org.eclipse.viatra.dse.examples.bpmn.rules;
 
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.AllocateTaskToVariant;
 import org.eclipse.viatra.dse.examples.bpmn.patterns.CreateResource;
@@ -14,7 +15,6 @@ import org.eclipse.viatra.dse.examples.simplifiedbpmn.SequenceFlow;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedBPMN;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.SimplifiedbpmnFactory;
 import org.eclipse.viatra.dse.examples.simplifiedbpmn.Task;
-import org.eclipse.viatra.query.runtime.api.IMatchProcessor;
 import org.eclipse.viatra.transformation.evm.api.event.EventFilter;
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRule;
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory;
@@ -36,12 +36,12 @@ public class BpmnRuleProvider {
   public BatchTransformationRule<?, ?> allocateRuleFilteredExample;
   
   public BpmnRuleProvider() {
-    final IMatchProcessor<AllocateTaskToVariant.Match> _function = (AllocateTaskToVariant.Match it) -> {
+    final Consumer<AllocateTaskToVariant.Match> _function = (AllocateTaskToVariant.Match it) -> {
       Task _t = it.getT();
       _t.setVariant(it.getRTV());
     };
     this.allocateRule = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule().name("AllocateTaskToVariantRule").precondition(AllocateTaskToVariant.instance()).action(_function).build();
-    final IMatchProcessor<AllocateTaskToVariant.Match> _function_1 = (AllocateTaskToVariant.Match it) -> {
+    final Consumer<AllocateTaskToVariant.Match> _function_1 = (AllocateTaskToVariant.Match it) -> {
       Task _t = it.getT();
       _t.setVariant(it.getRTV());
     };
@@ -53,13 +53,13 @@ public class BpmnRuleProvider {
       return true;
     };
     this.allocateRuleFilteredExample = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule().name("FilteredAllocateTaskToVariantRule").precondition(AllocateTaskToVariant.instance()).action(_function_1).filter(_function_2).build();
-    final IMatchProcessor<CreateResource.Match> _function_3 = (CreateResource.Match it) -> {
+    final Consumer<CreateResource.Match> _function_3 = (CreateResource.Match it) -> {
       EList<ResourceInstance> _instances = it.getRTV().getInstances();
       ResourceInstance _createResourceInstance = SimplifiedbpmnFactory.eINSTANCE.createResourceInstance();
       _instances.add(_createResourceInstance);
     };
     this.createResourceRule = this.factory.<CreateResource.Match, CreateResource.Matcher>createRule().name("CreateResourceRule").precondition(CreateResource.instance()).action(_function_3).build();
-    final IMatchProcessor<MakeParallel.Match> _function_4 = (MakeParallel.Match it) -> {
+    final Consumer<MakeParallel.Match> _function_4 = (MakeParallel.Match it) -> {
       SimplifiedBPMN _root = it.getRoot();
       final SimplifiedBpmnBuilder builder = new SimplifiedBpmnBuilder(_root);
       final ParallelGateway divergingGateway = builder.createParallelGateway(it.getT1(), it.getT2(), true);
@@ -89,7 +89,7 @@ public class BpmnRuleProvider {
       builder.createFlow(it.getT2(), convergingGateway);
     };
     this.makeParallelRule = this.factory.<MakeParallel.Match, MakeParallel.Matcher>createRule().name("MakeParallelRule").precondition(MakeParallel.instance()).action(_function_4).build();
-    final IMatchProcessor<MakeSequential.Match> _function_5 = (MakeSequential.Match it) -> {
+    final Consumer<MakeSequential.Match> _function_5 = (MakeSequential.Match it) -> {
       EList<SequenceFlow> flows = it.getT1().getInFlows();
       final BaseElement divergingGateway = flows.get(0).getSource();
       it.getRoot().getParallelGateways().remove(divergingGateway);
