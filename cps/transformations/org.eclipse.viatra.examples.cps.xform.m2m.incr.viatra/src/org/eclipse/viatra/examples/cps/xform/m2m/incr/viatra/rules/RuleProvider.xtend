@@ -75,16 +75,18 @@ public class RuleProvider {
 				hostTrace.addTo(CPS2DeploymentTrace_DeploymentElements, deploymentHost)
 				
 			].action(CRUDActivationStateEnum.UPDATED) [
-				val depHost = engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, hostInstance, null).depElement as DeploymentHost
+				// Optional.get should be always work here
+				val depHost = engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, hostInstance, null).get.depElement as DeploymentHost
 				debug('''Updating mapped host with IP: «depHost.ip»''')
 				depHost.set(deploymentHost_Ip, hostInstance.nodeIp)
 				debug('''Updated mapped host with IP: «depHost.ip»''')
 			].action(CRUDActivationStateEnum.DELETED) [
-				val traceMatch = engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, hostInstance, null)
-				logger.debug('''Removing host with IP: «hostInstance.nodeIp»''')
-				cps2dep.deployment.remove(deployment_Hosts, traceMatch.depElement)
-				cps2dep.remove(CPSToDeployment_Traces, traceMatch.trace)
-				logger.debug('''Removed host with IP: «hostInstance.nodeIp»''')
+				engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, hostInstance, null).ifPresent[traceMatch |
+        				logger.debug('''Removing host with IP: «hostInstance.nodeIp»''')
+        				cps2dep.deployment.remove(deployment_Hosts, traceMatch.depElement)
+        				cps2dep.remove(CPSToDeployment_Traces, traceMatch.trace)
+        				logger.debug('''Removed host with IP: «hostInstance.nodeIp»''')
+				]
 			].addLifeCycle(Lifecycles.getDefault(true, true)).build
 
 		}
@@ -107,7 +109,7 @@ public class RuleProvider {
 				hostTrace.addTo(CPS2DeploymentTrace_DeploymentElements, deploymentApplication)
 				debug('''Mapped application with ID: «appInstance.identifier»''')
 			].action(CRUDActivationStateEnum.UPDATED) [
-				val depApp = engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, appInstance, null).depElement as DeploymentApplication
+				val depApp = engine.cps2depTrace.getOneArbitraryMatch(cps2dep, null, appInstance, null).get.depElement as DeploymentApplication
 				if (depApp.id != appInstance.identifier)
 					depApp.set(deploymentApplication_Id, appInstance.identifier)
 			].action(CRUDActivationStateEnum.DELETED) [

@@ -63,8 +63,9 @@ class ApplicationMapping extends AbstractRule<ApplicationInstance.Match> {
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
 			[ ApplicationInstance.Match match |
+			    // Optional.get is correct as the update job can only run if the traceability exists
 				val depApp = engine.cps2depTrace.getOneArbitraryMatch(rootMapping, null, match.appInstance, null).
-					depElement as DeploymentApplication
+					get.depElement as DeploymentApplication
 				if (depApp.id != match.appInstance.identifier)
 					depApp.id = match.appInstance.identifier
 			])

@@ -60,8 +60,9 @@ class HostMapping extends AbstractRule<HostInstance.Match> {
 	private def getUpdateJob() {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.UPDATED,
 			[ HostInstance.Match match |
+				// TODO Optional.get might throw an exception depending on what was deleted from the model
 				val depHost = engine.cps2depTrace.getOneArbitraryMatch(rootMapping, null, match.hostInstance, null).
-					depElement as DeploymentHost
+					get.depElement as DeploymentHost
 				val hostIp = depHost.ip
 				debug('''Updating mapped host with IP: «hostIp»''')
 				val nodeIp = match.hostInstance.nodeIp
@@ -77,7 +78,7 @@ class HostMapping extends AbstractRule<HostInstance.Match> {
 		Jobs.newStatelessJob(CRUDActivationStateEnum.DELETED,
 			[ HostInstance.Match match |
 				val traceMatch = engine.cps2depTrace.getOneArbitraryMatch(rootMapping, null, match.hostInstance,
-					null)
+					null).get
 				val hostIp = match.hostInstance.nodeIp
 				logger.debug('''Removing host with IP: «hostIp»''')
 				rootMapping.deployment.hosts -= traceMatch.depElement as DeploymentHost
