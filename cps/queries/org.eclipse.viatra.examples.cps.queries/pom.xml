@@ -62,6 +62,13 @@
 						</metamodel>
 					</metamodels>
 				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.viatra</groupId>
+						<artifactId>viatra-query-language-extensions</artifactId>
+						<version>${viatra.compiler.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>
