@@ -39,7 +39,7 @@ public enum TransformationType {
     },
     BATCH_VIATRA_QUERY_RETE {
     	    public CPSTransformationWrapper getWrapper() {
-    		    QueryEvaluationHint hint = new QueryEvaluationHint(null, new ReteBackendFactory());
+    		    QueryEvaluationHint hint = new QueryEvaluationHint(null, ReteBackendFactory.INSTANCE);
     		    return new BatchQueryOnly(hint, hint);
 	    }
     },
