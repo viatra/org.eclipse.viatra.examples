@@ -5,16 +5,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.examples.petrinet</groupId>
 	<artifactId>org.eclipse.viatra.examples.petrinet</artifactId>
-	<version>0.12.0-SNAPSHOT</version>
+	<version>0.20.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<emf.version>2.10.1.v20140901-1043</emf.version>
-		<viatra.version>1.2.1</viatra.version>
-		<xtend.version>2.9.2</xtend.version>
-		<maven.compiler.source>1.7</maven.compiler.source>
-		<maven.compiler.target>1.7</maven.compiler.target>
+		<viatra.version>2.0.0.M4</viatra.version>
+		<xtend.version>2.13.0</xtend.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
 	<profiles>

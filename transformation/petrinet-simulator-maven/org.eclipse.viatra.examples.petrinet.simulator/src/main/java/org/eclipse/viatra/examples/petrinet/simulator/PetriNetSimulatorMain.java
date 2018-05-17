@@ -21,10 +21,9 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.viatra.examples.petrinet.model.PetriNetPackage;
 import org.eclipse.viatra.query.runtime.api.AdvancedViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 public class PetriNetSimulatorMain {
-	public static void main(String[] args) throws ViatraQueryException, IOException {
+	public static void main(String[] args) throws IOException {
 		// Initializing the EMF package
 		PetriNetPackage.eINSTANCE.getName();
 		Resource.Factory.Registry.INSTANCE.getExtensionToFactoryMap().put("petrinet", new XMIResourceFactoryImpl());
