@@ -23,6 +23,8 @@ import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchT
 import org.eclipse.viatra.transformation.runtime.emf.transformation.batch.BatchTransformation
 import org.eclipse.viatra.transformation.evm.specific.event.ViatraQueryEventRealm
 
+import static extension org.eclipse.viatra.transformation.runtime.emf.transformation.TransformationExtensions.*
+
 class PetriNetSimulator {
 	extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
 	extension BatchTransformation transformation
