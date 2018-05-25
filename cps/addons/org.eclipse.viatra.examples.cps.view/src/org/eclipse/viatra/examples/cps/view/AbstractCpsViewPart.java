@@ -11,6 +11,7 @@
 package org.eclipse.viatra.examples.cps.view;
 
 import java.util.Collection;
+import java.util.Objects;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.gef.layout.ILayoutAlgorithm;
@@ -49,7 +50,13 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 			workbenchPage.addPartListener(this);	
 		}
 
-		protected ViatraQueryEngine getEngine() {
+		@Override
+        public void dispose() {
+		    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().removePartListener(this);
+            super.dispose();
+        }
+
+        protected ViatraQueryEngine getEngine() {
 			return engine;
 		}
 		
@@ -83,7 +90,12 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 		
 		@Override
 		public void partActivated(IWorkbenchPartReference partRef) {
+		    IEditorPart oldActiveEditor = activeEditor;
 			activeEditor = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActiveEditor();
+			if (Objects.equals(oldActiveEditor, activeEditor)) {
+			    // No need to update listeners if active editor has not changed
+			    return;
+			}
 			if (activeEditor instanceof CyberPhysicalSystemEditor) {
 				CyberPhysicalSystemEditor edp = (CyberPhysicalSystemEditor) activeEditor;
 				ResourceSet resourceSet = edp.getEditingDomain().getResourceSet();
