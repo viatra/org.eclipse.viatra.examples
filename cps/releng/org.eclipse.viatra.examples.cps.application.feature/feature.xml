@@ -114,13 +114,6 @@
          unpack="false"/>
 
    <plugin
-         id="org.eclipse.viatra.examples.cps.view"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="org.eclipse.viatra.examples.cps.queries"
          download-size="0"
          install-size="0"
@@ -129,6 +122,13 @@
 
    <plugin
          id="org.eclipse.viatra.examples.cps.queries.validation"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.eclipse.collections"
          download-size="0"
          install-size="0"
          version="0.0.0"
