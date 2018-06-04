@@ -3,12 +3,11 @@ Bundle-ManifestVersion: 2
 Bundle-Name: VIATRA Headless Example
 Bundle-SymbolicName: org.eclipse.viatra.query.application.queries;singleton:=true
 Bundle-Version: 1.2.0.qualifier
-Export-Package: org.eclipse.viatra.query.application.queries,
- org.eclipse.viatra.query.application.queries.util
+Export-Package: org.eclipse.viatra.query.application.queries
 Require-Bundle: org.eclipse.pde.core,
- org.eclipse.emf.ecore,
- org.eclipse.emf.transaction,
- org.eclipse.xtext.xbase.lib,
- org.eclipse.viatra.query.runtime;bundle-version="[1.2.0,2.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+  org.eclipse.emf.ecore,
+  org.eclipse.emf.transaction,
+  org.eclipse.xtext.xbase.lib,
+  org.eclipse.viatra.query.runtime;bundle-version="[2.0.0,3.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: org.apache.log4j

@@ -32,6 +32,7 @@ import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngineManager;
 import org.eclipse.viatra.query.runtime.api.impl.RunOnceQueryEngine;
 import org.eclipse.viatra.query.runtime.base.api.BaseIndexOptions;
+import org.eclipse.viatra.query.runtime.base.api.IndexingLevel;
 import org.eclipse.viatra.query.runtime.base.comprehension.WellbehavingDerivedFeatureRegistry;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
 import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
@@ -70,8 +71,8 @@ public class RunOnceTest {
         try {
             //RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
         		ViatraQueryEngine engine = ViatraQueryEngineManager.getInstance().getQueryEngine(new EMFScope(rs));
-//            Collection<BooksWithMultipleAuthorsMatch> allMatches = engine.getAllMatches(BooksWithMultipleAuthorsMatcher.querySpecification());
-            Collection<BooksWithMultipleAuthorsMatch> allMatches = engine.getMatcher(BooksWithMultipleAuthorsMatcher.querySpecification()).getAllMatches();
+//            Collection<BooksWithMultipleAuthors.Match> all.Matches = engine.getAllMatches(BooksWithMultipleAuthorsMatcher.querySpecification());
+            Collection<BooksWithMultipleAuthors.Match> allMatches = engine.getMatcher(BooksWithMultipleAuthors.Matcher.querySpecification()).getAllMatches();
             assertTrue(allMatches.size() == 2);
         } catch (ViatraQueryException e) {
             e.printStackTrace();
@@ -85,9 +86,9 @@ public class RunOnceTest {
         
         try {
             RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
-            Collection<SumOfPagesInLibraryMatch> allMatches = engine.getAllMatches(SumOfPagesInLibraryMatcher.querySpecification());
+            Collection<SumOfPagesInLibrary.Match> allMatches = engine.getAllMatches(SumOfPagesInLibrary.Matcher.querySpecification());
             assertTrue(allMatches.size() == 1);
-            SumOfPagesInLibraryMatch match = allMatches.iterator().next();
+            SumOfPagesInLibrary.Match match = allMatches.iterator().next();
             assertTrue(match.getLibrary().equals(library));
             assertTrue(match.getSumOfPages() == 222);
         } catch (ViatraQueryException e) {
@@ -102,9 +103,9 @@ public class RunOnceTest {
         
         try {
             RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
-            Collection<SingleAuthoredFirstBooksMatch> allMatches = engine.getAllMatches(SingleAuthoredFirstBooksMatcher.querySpecification());
+            Collection<SingleAuthoredFirstBooks.Match> allMatches = engine.getAllMatches(SingleAuthoredFirstBooks.Matcher.querySpecification());
             assertTrue(allMatches.size() == 1);
-            SingleAuthoredFirstBooksMatch match = allMatches.iterator().next();
+            SingleAuthoredFirstBooks.Match match = allMatches.iterator().next();
             assertTrue(match.getLibrary().equals(library));
             assertTrue(match.getFirstBook().getTitle().equals("Other SciFi"));
         } catch (ViatraQueryException e) {
@@ -119,9 +120,9 @@ public class RunOnceTest {
         
         try {
             RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
-            Collection<LongSciFiBooksOfAuthorMatch> allMatches = engine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            Collection<LongSciFiBooksOfAuthor.Match> allMatches = engine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             assertTrue(allMatches.size() == 1);
-            LongSciFiBooksOfAuthorMatch match = allMatches.iterator().next();
+            LongSciFiBooksOfAuthor.Match match = allMatches.iterator().next();
             assertTrue(match.getAuthor().getName().equals("Third Author"));
             assertTrue(match.getBook().getTitle().equals("Other SciFi"));
         } catch (ViatraQueryException e) {
@@ -140,9 +141,9 @@ public class RunOnceTest {
         
         try {
             RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
-            Collection<RequestCountOfLibraryMatch> allMatches = engine.getAllMatches(RequestCountOfLibraryMatcher.querySpecification());
+            Collection<RequestCountOfLibrary.Match> allMatches = engine.getAllMatches(RequestCountOfLibrary.Matcher.querySpecification());
             assertTrue(allMatches.size() == 1);
-            RequestCountOfLibraryMatch match = allMatches.iterator().next();
+            RequestCountOfLibrary.Match match = allMatches.iterator().next();
             assertTrue(match.getLibrary().equals(library));
             assertTrue(match.getReqCount() == 2);
         } catch (ViatraQueryException e) {
@@ -160,13 +161,13 @@ public class RunOnceTest {
         
         try {
             RunOnceQueryEngine engine = new RunOnceQueryEngine(rs);
-            Collection<SomeBooksWithTwoAuthorsMatch> allMatches = engine.getAllMatches(SomeBooksWithTwoAuthorsMatcher.querySpecification());
+            Collection<SomeBooksWithTwoAuthors.Match> allMatches = engine.getAllMatches(SomeBooksWithTwoAuthors.Matcher.querySpecification());
             assertTrue(allMatches.size() == 1);
-            SomeBooksWithTwoAuthorsMatch match = allMatches.iterator().next();
+            SomeBooksWithTwoAuthors.Match match = allMatches.iterator().next();
             assertTrue(match.getLibrary().equals(library));
             assertTrue(match.getBook().getTitle().equals("Twin life"));
 
-            allMatches = engine.getAllMatches(SomeBooksWithTwoAuthorsMatcher.querySpecification());
+            allMatches = engine.getAllMatches(SomeBooksWithTwoAuthors.Matcher.querySpecification());
             assertTrue(allMatches.isEmpty());
             
         } catch (ViatraQueryException e) {
@@ -189,15 +190,15 @@ public class RunOnceTest {
             WellbehavingDerivedFeatureRegistry.registerWellbehavingDerivedPackage(LibraryPackage.eINSTANCE);
             AdvancedViatraQueryEngine engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(rs));
             // this is to allow the normal engine to traverse feature
-            LongSciFiBooksOfAuthorMatcher matcher = engine.getMatcher(LongSciFiBooksOfAuthorMatcher.querySpecification());
-            Collection<LongSciFiBooksOfAuthorMatch> allMatches = matcher.getAllMatches();
+            LongSciFiBooksOfAuthor.Matcher matcher = engine.getMatcher(LongSciFiBooksOfAuthor.Matcher.querySpecification());
+            Collection<LongSciFiBooksOfAuthor.Match> allMatches = matcher.getAllMatches();
             
             RunOnceQueryEngine roengine = new RunOnceQueryEngine(rs);
-            Collection<LongSciFiBooksOfAuthorMatch> allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            Collection<LongSciFiBooksOfAuthor.Match> allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             
             assertTrue(allMatches.size() == allROMatches.size());
-            LongSciFiBooksOfAuthorMatch match = allMatches.iterator().next();
-            LongSciFiBooksOfAuthorMatch romatch = allROMatches.iterator().next();
+            LongSciFiBooksOfAuthor.Match match = allMatches.iterator().next();
+            LongSciFiBooksOfAuthor.Match romatch = allROMatches.iterator().next();
             assertTrue(match.getAuthor() == romatch.getAuthor());
             Book longBook = romatch.getBook();
             assertTrue(match.getBook() == longBook);
@@ -209,13 +210,13 @@ public class RunOnceTest {
             b.getAuthors().add(library.getWriters().get(0));
             library.getBooks().add(b);
             
-            allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             allMatches = matcher.getAllMatches();
             assertTrue(allMatches.size() != allROMatches.size());
             assertTrue(allROMatches.size() == 2);
             
             Set<Book> longScifiBooks = new HashSet<Book>();
-            for (LongSciFiBooksOfAuthorMatch m : allROMatches) {
+            for (LongSciFiBooksOfAuthor.Match m : allROMatches) {
                 longScifiBooks.add(m.getBook());
             }
             assertTrue(longScifiBooks.contains(b));
@@ -253,7 +254,7 @@ public class RunOnceTest {
         try {
             RunOnceQueryEngine roengine = new RunOnceQueryEngine(rs);
             BaseIndexOptions baseIndexOptions = roengine.getBaseIndexOptions();
-            baseIndexOptions.withWildcardMode(true); // ensure all types are indexed
+            baseIndexOptions = baseIndexOptions.withWildcardLevel(IndexingLevel.FULL); // ensure all types are indexed
             AdvancedViatraQueryEngine engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(rs,baseIndexOptions));
             runModelModification(library, roengine, engine);
             
@@ -265,14 +266,14 @@ public class RunOnceTest {
 
     private void runModelModification(Library library, RunOnceQueryEngine roengine, AdvancedViatraQueryEngine engine)
             throws ViatraQueryException {
-        LongSciFiBooksOfAuthorMatcher matcher = engine.getMatcher(LongSciFiBooksOfAuthorMatcher.querySpecification());
-        Collection<LongSciFiBooksOfAuthorMatch> allMatches = matcher.getAllMatches();
+        LongSciFiBooksOfAuthor.Matcher matcher = engine.getMatcher(LongSciFiBooksOfAuthor.Matcher.querySpecification());
+        Collection<LongSciFiBooksOfAuthor.Match> allMatches = matcher.getAllMatches();
         
-        Collection<LongSciFiBooksOfAuthorMatch> allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+        Collection<LongSciFiBooksOfAuthor.Match> allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
         
         assertTrue(allMatches.size() == allROMatches.size());
-        LongSciFiBooksOfAuthorMatch match = allMatches.iterator().next();
-        LongSciFiBooksOfAuthorMatch romatch = allROMatches.iterator().next();
+        LongSciFiBooksOfAuthor.Match match = allMatches.iterator().next();
+        LongSciFiBooksOfAuthor.Match romatch = allROMatches.iterator().next();
         assertTrue(match.getAuthor() == romatch.getAuthor());
         Book longBook = romatch.getBook();
         assertTrue(match.getBook() == longBook);
@@ -284,7 +285,7 @@ public class RunOnceTest {
         b.getAuthors().add(library.getWriters().get(0));
         library.getBooks().add(b);
         
-        allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+        allROMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
         allMatches = matcher.getAllMatches();
         assertTrue(allMatches.size() != allROMatches.size());
 
@@ -296,7 +297,7 @@ public class RunOnceTest {
         assertTrue(allROMatches.size() == 2);
         
         Set<Book> longScifiBooks = new HashSet<Book>();
-        for (LongSciFiBooksOfAuthorMatch m : allROMatches) {
+        for (LongSciFiBooksOfAuthor.Match m : allROMatches) {
             longScifiBooks.add(m.getBook());
         }
         assertTrue(longScifiBooks.contains(b));
@@ -315,8 +316,8 @@ public class RunOnceTest {
             RunOnceQueryEngine roengine = new RunOnceQueryEngine(library);
             AdvancedViatraQueryEngine engine = AdvancedViatraQueryEngine.createUnmanagedEngine(new EMFScope(library,roengine.getBaseIndexOptions()));
 
-            LongSciFiBooksOfAuthorMatcher matcher = engine.getMatcher(LongSciFiBooksOfAuthorMatcher.querySpecification());
-            Collection<LongSciFiBooksOfAuthorMatch> allMatches = matcher.getAllMatches();
+            LongSciFiBooksOfAuthor.Matcher matcher = engine.getMatcher(LongSciFiBooksOfAuthor.Matcher.querySpecification());
+            Collection<LongSciFiBooksOfAuthor.Match> allMatches = matcher.getAllMatches();
             assertTrue(allMatches.isEmpty());
             
             Writer writer = createWriter(library, "test");
@@ -326,7 +327,7 @@ public class RunOnceTest {
             
             allMatches = matcher.getAllMatches();
             assertTrue(!allMatches.isEmpty());
-            LongSciFiBooksOfAuthorMatch match = allMatches.iterator().next();
+            LongSciFiBooksOfAuthor.Match match = allMatches.iterator().next();
             assertTrue(match.getAuthor().equals(writer));
             assertTrue(match.getBook().equals(book));
             
@@ -348,22 +349,22 @@ public class RunOnceTest {
         try {
             RunOnceQueryEngine roengine = new RunOnceQueryEngine(library);
             roengine.setAutomaticResampling(true);
-            Collection<LongSciFiBooksOfAuthorMatch> allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            Collection<LongSciFiBooksOfAuthor.Match> allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             assertTrue(allMatches.isEmpty());
             
             Writer writer = createWriter(library, "test");
             book.getAuthors().add(writer);
             
-            allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             assertTrue(!allMatches.isEmpty());
-            LongSciFiBooksOfAuthorMatch match = allMatches.iterator().next();
+            LongSciFiBooksOfAuthor.Match match = allMatches.iterator().next();
             assertTrue(match.getAuthor().equals(writer));
             assertTrue(match.getBook().equals(book));
             
             roengine.setAutomaticResampling(false);
             
             Writer writer2 = createWriter(library, "test2");
-            allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthorMatcher.querySpecification());
+            allMatches = roengine.getAllMatches(LongSciFiBooksOfAuthor.Matcher.querySpecification());
             assertTrue(!allMatches.isEmpty());
             
         } catch (ViatraQueryException e) {

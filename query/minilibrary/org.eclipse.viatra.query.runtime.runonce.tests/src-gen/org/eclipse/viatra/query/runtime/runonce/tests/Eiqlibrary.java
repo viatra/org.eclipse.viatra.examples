@@ -1,27 +1,22 @@
+/**
+ * Generated from platform:/resource/org.eclipse.viatra.query.runtime.runonce.tests/src/org/eclipse/viatra/query/runtime/runonce/tests/eiqlibrary.vql
+ */
 package org.eclipse.viatra.query.runtime.runonce.tests;
 
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
-import org.eclipse.viatra.query.runtime.runonce.tests.BookAuthorsMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.BooksWithMultipleAuthorsMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.LongSciFiBooksOfAuthorMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.RequestCountOfLibraryMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.SingleAuthoredFirstBooksMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.SomeBooksWithTwoAuthorsMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.SumOfPagesInLibraryMatcher;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.BookAuthorsQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.BooksWithMultipleAuthorsQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.LongSciFiBooksOfAuthorQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.RequestCountOfLibraryQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.SingleAuthoredFirstBooksQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.SomeBooksWithTwoAuthorsQuerySpecification;
-import org.eclipse.viatra.query.runtime.runonce.tests.util.SumOfPagesInLibraryQuerySpecification;
+import org.eclipse.viatra.query.runtime.runonce.tests.BookAuthors;
+import org.eclipse.viatra.query.runtime.runonce.tests.BooksWithMultipleAuthors;
+import org.eclipse.viatra.query.runtime.runonce.tests.LongSciFiBooksOfAuthor;
+import org.eclipse.viatra.query.runtime.runonce.tests.RequestCountOfLibrary;
+import org.eclipse.viatra.query.runtime.runonce.tests.SingleAuthoredFirstBooks;
+import org.eclipse.viatra.query.runtime.runonce.tests.SomeBooksWithTwoAuthors;
+import org.eclipse.viatra.query.runtime.runonce.tests.SumOfPagesInLibrary;
 
 /**
- * A pattern group formed of all patterns defined in eiqlibrary.vql.
+ * A pattern group formed of all public patterns defined in eiqlibrary.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file eiqlibrary.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -35,7 +30,7 @@ import org.eclipse.viatra.query.runtime.runonce.tests.util.SumOfPagesInLibraryQu
  * <li>someBooksWithTwoAuthors</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -44,81 +39,81 @@ public final class Eiqlibrary extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static Eiqlibrary instance() throws ViatraQueryException {
+  public static Eiqlibrary instance() {
     if (INSTANCE == null) {
-    	INSTANCE = new Eiqlibrary();
+        INSTANCE = new Eiqlibrary();
     }
     return INSTANCE;
   }
   
   private static Eiqlibrary INSTANCE;
   
-  private Eiqlibrary() throws ViatraQueryException {
-    querySpecifications.add(BookAuthorsQuerySpecification.instance());
-    querySpecifications.add(BooksWithMultipleAuthorsQuerySpecification.instance());
-    querySpecifications.add(SumOfPagesInLibraryQuerySpecification.instance());
-    querySpecifications.add(SingleAuthoredFirstBooksQuerySpecification.instance());
-    querySpecifications.add(LongSciFiBooksOfAuthorQuerySpecification.instance());
-    querySpecifications.add(RequestCountOfLibraryQuerySpecification.instance());
-    querySpecifications.add(SomeBooksWithTwoAuthorsQuerySpecification.instance());
+  private Eiqlibrary() {
+    querySpecifications.add(BookAuthors.instance());
+    querySpecifications.add(BooksWithMultipleAuthors.instance());
+    querySpecifications.add(SumOfPagesInLibrary.instance());
+    querySpecifications.add(SingleAuthoredFirstBooks.instance());
+    querySpecifications.add(LongSciFiBooksOfAuthor.instance());
+    querySpecifications.add(RequestCountOfLibrary.instance());
+    querySpecifications.add(SomeBooksWithTwoAuthors.instance());
   }
   
-  public BookAuthorsQuerySpecification getBookAuthors() throws ViatraQueryException {
-    return BookAuthorsQuerySpecification.instance();
+  public BookAuthors getBookAuthors() {
+    return BookAuthors.instance();
   }
   
-  public BookAuthorsMatcher getBookAuthors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BookAuthorsMatcher.on(engine);
+  public BookAuthors.Matcher getBookAuthors(final ViatraQueryEngine engine) {
+    return BookAuthors.Matcher.on(engine);
   }
   
-  public BooksWithMultipleAuthorsQuerySpecification getBooksWithMultipleAuthors() throws ViatraQueryException {
-    return BooksWithMultipleAuthorsQuerySpecification.instance();
+  public BooksWithMultipleAuthors getBooksWithMultipleAuthors() {
+    return BooksWithMultipleAuthors.instance();
   }
   
-  public BooksWithMultipleAuthorsMatcher getBooksWithMultipleAuthors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return BooksWithMultipleAuthorsMatcher.on(engine);
+  public BooksWithMultipleAuthors.Matcher getBooksWithMultipleAuthors(final ViatraQueryEngine engine) {
+    return BooksWithMultipleAuthors.Matcher.on(engine);
   }
   
-  public SumOfPagesInLibraryQuerySpecification getSumOfPagesInLibrary() throws ViatraQueryException {
-    return SumOfPagesInLibraryQuerySpecification.instance();
+  public SumOfPagesInLibrary getSumOfPagesInLibrary() {
+    return SumOfPagesInLibrary.instance();
   }
   
-  public SumOfPagesInLibraryMatcher getSumOfPagesInLibrary(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SumOfPagesInLibraryMatcher.on(engine);
+  public SumOfPagesInLibrary.Matcher getSumOfPagesInLibrary(final ViatraQueryEngine engine) {
+    return SumOfPagesInLibrary.Matcher.on(engine);
   }
   
-  public SingleAuthoredFirstBooksQuerySpecification getSingleAuthoredFirstBooks() throws ViatraQueryException {
-    return SingleAuthoredFirstBooksQuerySpecification.instance();
+  public SingleAuthoredFirstBooks getSingleAuthoredFirstBooks() {
+    return SingleAuthoredFirstBooks.instance();
   }
   
-  public SingleAuthoredFirstBooksMatcher getSingleAuthoredFirstBooks(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SingleAuthoredFirstBooksMatcher.on(engine);
+  public SingleAuthoredFirstBooks.Matcher getSingleAuthoredFirstBooks(final ViatraQueryEngine engine) {
+    return SingleAuthoredFirstBooks.Matcher.on(engine);
   }
   
-  public LongSciFiBooksOfAuthorQuerySpecification getLongSciFiBooksOfAuthor() throws ViatraQueryException {
-    return LongSciFiBooksOfAuthorQuerySpecification.instance();
+  public LongSciFiBooksOfAuthor getLongSciFiBooksOfAuthor() {
+    return LongSciFiBooksOfAuthor.instance();
   }
   
-  public LongSciFiBooksOfAuthorMatcher getLongSciFiBooksOfAuthor(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return LongSciFiBooksOfAuthorMatcher.on(engine);
+  public LongSciFiBooksOfAuthor.Matcher getLongSciFiBooksOfAuthor(final ViatraQueryEngine engine) {
+    return LongSciFiBooksOfAuthor.Matcher.on(engine);
   }
   
-  public RequestCountOfLibraryQuerySpecification getRequestCountOfLibrary() throws ViatraQueryException {
-    return RequestCountOfLibraryQuerySpecification.instance();
+  public RequestCountOfLibrary getRequestCountOfLibrary() {
+    return RequestCountOfLibrary.instance();
   }
   
-  public RequestCountOfLibraryMatcher getRequestCountOfLibrary(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return RequestCountOfLibraryMatcher.on(engine);
+  public RequestCountOfLibrary.Matcher getRequestCountOfLibrary(final ViatraQueryEngine engine) {
+    return RequestCountOfLibrary.Matcher.on(engine);
   }
   
-  public SomeBooksWithTwoAuthorsQuerySpecification getSomeBooksWithTwoAuthors() throws ViatraQueryException {
-    return SomeBooksWithTwoAuthorsQuerySpecification.instance();
+  public SomeBooksWithTwoAuthors getSomeBooksWithTwoAuthors() {
+    return SomeBooksWithTwoAuthors.instance();
   }
   
-  public SomeBooksWithTwoAuthorsMatcher getSomeBooksWithTwoAuthors(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SomeBooksWithTwoAuthorsMatcher.on(engine);
+  public SomeBooksWithTwoAuthors.Matcher getSomeBooksWithTwoAuthors(final ViatraQueryEngine engine) {
+    return SomeBooksWithTwoAuthors.Matcher.on(engine);
   }
 }

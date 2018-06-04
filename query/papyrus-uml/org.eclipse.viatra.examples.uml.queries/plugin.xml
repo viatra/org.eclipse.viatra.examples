@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
-  <extension id="org.eclipse.viatra.examples.uml.queries.EmptyClass" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.uml.queries.EmptyClass" id="org.eclipse.viatra.examples.uml.queries.EmptyClass"/>
+  <extension id="org.eclipse.viatra.examples.uml.queries.EmptyClassQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.uml.queries.EmptyClassQueries" id="org.eclipse.viatra.examples.uml.queries.EmptyClassQueries">
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.superClass"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.transitiveSuperClass"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.superOrEqualClass"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.ownsOperation"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.ownsProperty"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.hasOperation"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.hasProperty"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.emptyClass"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.nonEmptyClass"/>
+      <query-specification fqn="org.eclipse.viatra.examples.uml.queries.hasPropertyOrOperation"/>
+    </group>
   </extension>
 </plugin>

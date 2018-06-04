@@ -1,29 +1,23 @@
+/**
+ * Generated from platform:/resource/org.eclipse.viatra.query.application.queries/src/org/eclipse/viatra/query/application/queries/headlessQueries.vql
+ */
 package org.eclipse.viatra.query.application.queries;
 
-import org.eclipse.viatra.query.application.queries.ClassesInPackageHierarchyMatcher;
-import org.eclipse.viatra.query.application.queries.ClassesInPackageMatcher;
-import org.eclipse.viatra.query.application.queries.EClassMatcher;
-import org.eclipse.viatra.query.application.queries.EClassNamesKeywordMatcher;
-import org.eclipse.viatra.query.application.queries.EClassNamesMatcher;
-import org.eclipse.viatra.query.application.queries.EObjectMatcher;
-import org.eclipse.viatra.query.application.queries.EPackageMatcher;
-import org.eclipse.viatra.query.application.queries.SubPackageMatcher;
-import org.eclipse.viatra.query.application.queries.util.ClassesInPackageHierarchyQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.ClassesInPackageQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.EClassNamesKeywordQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.EClassNamesQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.EClassQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.EObjectQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.EPackageQuerySpecification;
-import org.eclipse.viatra.query.application.queries.util.SubPackageQuerySpecification;
+import org.eclipse.viatra.query.application.queries.ClassesInPackage;
+import org.eclipse.viatra.query.application.queries.ClassesInPackageHierarchy;
+import org.eclipse.viatra.query.application.queries.EClass;
+import org.eclipse.viatra.query.application.queries.EClassNames;
+import org.eclipse.viatra.query.application.queries.EClassNamesKeyword;
+import org.eclipse.viatra.query.application.queries.EObject;
+import org.eclipse.viatra.query.application.queries.EPackage;
+import org.eclipse.viatra.query.application.queries.SubPackage;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.api.impl.BaseGeneratedPatternGroup;
-import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
 
 /**
- * A pattern group formed of all patterns defined in headlessQueries.vql.
+ * A pattern group formed of all public patterns defined in headlessQueries.vql.
  * 
- * <p>Use the static instance as any {@link org.eclipse.viatra.query.runtime.api.IPatternGroup}, to conveniently prepare
+ * <p>Use the static instance as any {@link interface org.eclipse.viatra.query.runtime.api.IQueryGroup}, to conveniently prepare
  * a VIATRA Query engine for matching all patterns originally defined in file headlessQueries.vql,
  * in order to achieve better performance than one-by-one on-demand matcher initialization.
  * 
@@ -38,7 +32,7 @@ import org.eclipse.viatra.query.runtime.exception.ViatraQueryException;
  * <li>eClass</li>
  * </ul>
  * 
- * @see IPatternGroup
+ * @see IQueryGroup
  * 
  */
 @SuppressWarnings("all")
@@ -47,90 +41,90 @@ public final class HeadlessQueries extends BaseGeneratedPatternGroup {
    * Access the pattern group.
    * 
    * @return the singleton instance of the group
-   * @throws ViatraQueryException if there was an error loading the generated code of pattern specifications
+   * @throws ViatraQueryRuntimeException if there was an error loading the generated code of pattern specifications
    * 
    */
-  public static HeadlessQueries instance() throws ViatraQueryException {
+  public static HeadlessQueries instance() {
     if (INSTANCE == null) {
-    	INSTANCE = new HeadlessQueries();
+        INSTANCE = new HeadlessQueries();
     }
     return INSTANCE;
   }
   
   private static HeadlessQueries INSTANCE;
   
-  private HeadlessQueries() throws ViatraQueryException {
-    querySpecifications.add(EClassNamesQuerySpecification.instance());
-    querySpecifications.add(EClassNamesKeywordQuerySpecification.instance());
-    querySpecifications.add(EObjectQuerySpecification.instance());
-    querySpecifications.add(ClassesInPackageQuerySpecification.instance());
-    querySpecifications.add(SubPackageQuerySpecification.instance());
-    querySpecifications.add(ClassesInPackageHierarchyQuerySpecification.instance());
-    querySpecifications.add(EPackageQuerySpecification.instance());
-    querySpecifications.add(EClassQuerySpecification.instance());
+  private HeadlessQueries() {
+    querySpecifications.add(EClassNames.instance());
+    querySpecifications.add(EClassNamesKeyword.instance());
+    querySpecifications.add(EObject.instance());
+    querySpecifications.add(ClassesInPackage.instance());
+    querySpecifications.add(SubPackage.instance());
+    querySpecifications.add(ClassesInPackageHierarchy.instance());
+    querySpecifications.add(EPackage.instance());
+    querySpecifications.add(EClass.instance());
   }
   
-  public EClassNamesQuerySpecification getEClassNames() throws ViatraQueryException {
-    return EClassNamesQuerySpecification.instance();
+  public EClassNames getEClassNames() {
+    return EClassNames.instance();
   }
   
-  public EClassNamesMatcher getEClassNames(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EClassNamesMatcher.on(engine);
+  public EClassNames.Matcher getEClassNames(final ViatraQueryEngine engine) {
+    return EClassNames.Matcher.on(engine);
   }
   
-  public EClassNamesKeywordQuerySpecification getEClassNamesKeyword() throws ViatraQueryException {
-    return EClassNamesKeywordQuerySpecification.instance();
+  public EClassNamesKeyword getEClassNamesKeyword() {
+    return EClassNamesKeyword.instance();
   }
   
-  public EClassNamesKeywordMatcher getEClassNamesKeyword(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EClassNamesKeywordMatcher.on(engine);
+  public EClassNamesKeyword.Matcher getEClassNamesKeyword(final ViatraQueryEngine engine) {
+    return EClassNamesKeyword.Matcher.on(engine);
   }
   
-  public EObjectQuerySpecification getEObject() throws ViatraQueryException {
-    return EObjectQuerySpecification.instance();
+  public EObject getEObject() {
+    return EObject.instance();
   }
   
-  public EObjectMatcher getEObject(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EObjectMatcher.on(engine);
+  public EObject.Matcher getEObject(final ViatraQueryEngine engine) {
+    return EObject.Matcher.on(engine);
   }
   
-  public ClassesInPackageQuerySpecification getClassesInPackage() throws ViatraQueryException {
-    return ClassesInPackageQuerySpecification.instance();
+  public ClassesInPackage getClassesInPackage() {
+    return ClassesInPackage.instance();
   }
   
-  public ClassesInPackageMatcher getClassesInPackage(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ClassesInPackageMatcher.on(engine);
+  public ClassesInPackage.Matcher getClassesInPackage(final ViatraQueryEngine engine) {
+    return ClassesInPackage.Matcher.on(engine);
   }
   
-  public SubPackageQuerySpecification getSubPackage() throws ViatraQueryException {
-    return SubPackageQuerySpecification.instance();
+  public SubPackage getSubPackage() {
+    return SubPackage.instance();
   }
   
-  public SubPackageMatcher getSubPackage(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return SubPackageMatcher.on(engine);
+  public SubPackage.Matcher getSubPackage(final ViatraQueryEngine engine) {
+    return SubPackage.Matcher.on(engine);
   }
   
-  public ClassesInPackageHierarchyQuerySpecification getClassesInPackageHierarchy() throws ViatraQueryException {
-    return ClassesInPackageHierarchyQuerySpecification.instance();
+  public ClassesInPackageHierarchy getClassesInPackageHierarchy() {
+    return ClassesInPackageHierarchy.instance();
   }
   
-  public ClassesInPackageHierarchyMatcher getClassesInPackageHierarchy(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return ClassesInPackageHierarchyMatcher.on(engine);
+  public ClassesInPackageHierarchy.Matcher getClassesInPackageHierarchy(final ViatraQueryEngine engine) {
+    return ClassesInPackageHierarchy.Matcher.on(engine);
   }
   
-  public EPackageQuerySpecification getEPackage() throws ViatraQueryException {
-    return EPackageQuerySpecification.instance();
+  public EPackage getEPackage() {
+    return EPackage.instance();
   }
   
-  public EPackageMatcher getEPackage(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EPackageMatcher.on(engine);
+  public EPackage.Matcher getEPackage(final ViatraQueryEngine engine) {
+    return EPackage.Matcher.on(engine);
   }
   
-  public EClassQuerySpecification getEClass() throws ViatraQueryException {
-    return EClassQuerySpecification.instance();
+  public EClass getEClass() {
+    return EClass.instance();
   }
   
-  public EClassMatcher getEClass(final ViatraQueryEngine engine) throws ViatraQueryException {
-    return EClassMatcher.on(engine);
+  public EClass.Matcher getEClass(final ViatraQueryEngine engine) {
+    return EClass.Matcher.on(engine);
   }
 }

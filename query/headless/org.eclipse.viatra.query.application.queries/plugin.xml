@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
   <extension id="org.eclipse.viatra.query.application.queries.HeadlessQueries" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.query.application.queries.HeadlessQueries" id="org.eclipse.viatra.query.application.queries.HeadlessQueries"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.query.application.queries.HeadlessQueries" id="org.eclipse.viatra.query.application.queries.HeadlessQueries">
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.eClassNames"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.eClassNamesKeyword"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.eObject"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.classesInPackage"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.subPackage"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.classesInPackageHierarchy"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.ePackage"/>
+      <query-specification fqn="org.eclipse.viatra.query.application.queries.eClass"/>
+    </group>
   </extension>
 </plugin>

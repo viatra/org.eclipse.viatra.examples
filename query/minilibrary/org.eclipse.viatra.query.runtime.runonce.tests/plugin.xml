@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><plugin>
   <extension id="org.eclipse.viatra.query.runtime.runonce.tests.Eiqlibrary" point="org.eclipse.viatra.query.runtime.queryspecification">
-    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.query.runtime.runonce.tests.Eiqlibrary" id="org.eclipse.viatra.query.runtime.runonce.tests.Eiqlibrary"/>
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.query.runtime.runonce.tests.Eiqlibrary" id="org.eclipse.viatra.query.runtime.runonce.tests.Eiqlibrary">
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.bookAuthors"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.booksWithMultipleAuthors"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.sumOfPagesInLibrary"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.singleAuthoredFirstBooks"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.longSciFiBooksOfAuthor"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.requestCountOfLibrary"/>
+      <query-specification fqn="org.eclipse.viatra.query.runtime.runonce.tests.someBooksWithTwoAuthors"/>
+    </group>
   </extension>
 </plugin>

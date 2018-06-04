@@ -1,0 +1,12 @@
+/AvailableGreaterThanTotalCpuConstraint0.java
+/AvailableGreaterThanTotalHddConstraint0.java
+/AvailableGreaterThanTotalRamConstraint0.java
+/IdContainsWhitespaceConstraint0.java
+/IdIsNotUniqueConstraint0.java
+/InitialStateNotContainedByStateMachineConstraint0.java
+/MultipleApplicationInstanceInCommunicationGroupConstraint0.java
+/MultipleTransitionsWithSameActionConstraint0.java
+/NodeIpIsNotUniqueConstraint0.java
+/NotAllocatedButRunningConstraint0.java
+/TargetStateNotContainedBySameStateMachineConstraint0.java
+/TransitionWithoutTargetStateConstraint0.java
