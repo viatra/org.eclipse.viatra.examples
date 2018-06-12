@@ -162,7 +162,7 @@
           name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
       <requirement
           name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-          versionRange="[0.20.0,0.21.0)"/>
+          versionRange="[0.20.0,0.22.0)"/>
       <requirement
           name="org.eclipse.fx.runtime.min.feature.feature.group"/>
       <requirement
@@ -173,7 +173,7 @@
           name="org.eclipse.gef.layout.sdk.feature.group"/>
       <requirement
           name="org.eclipse.viatra.transformation.debug.feature.feature.group"
-          versionRange="[0.13.0,0.18.0)"/>
+          versionRange="[0.20.0,0.22.0)"/>
       <requirement
           name="org.eclipse.draw2d.feature.group"/>
       <requirement
@@ -192,6 +192,8 @@
             url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
         <repository
             url="http://download.eclipse.org/efxclipse/updates-released/3.1.0/site"/>
+        <repository
+            url="http://download.eclipse.org/collections/9.2.0/repository"/>
       </repositoryList>
     </targlet>
   </setupTask>

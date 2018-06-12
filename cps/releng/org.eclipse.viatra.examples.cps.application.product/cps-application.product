@@ -123,22 +123,22 @@
       <feature id="org.eclipse.pde"/>
       <feature id="org.eclipse.platform"/>
       <feature id="org.eclipse.rcp"/>
-      <feature id="org.eclipse.viatra.addon.databinding.runtime.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.addon.querybasedfeatures.runtime.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.addon.validation.runtime.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.addon.viewers.runtime.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.addon.viewers.runtime.zest.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.addon.viewers.tooling.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.examples.cps.application.dependencies.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.examples.cps.application.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.examples.cps.metamodel.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.query.language.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.query.runtime.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.query.sdk.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.query.sdk.extensions.feature" version="0.20.0.qualifier"/>
-      <feature id="org.eclipse.viatra.transformation.debug.feature" version="0.20.0.qualifier"/>
-      <feature id="org.eclipse.viatra.transformation.evm.transactions.feature" version="2.0.0.qualifier"/>
-      <feature id="org.eclipse.viatra.transformation.runtime.emf.feature" version="2.0.0.qualifier"/>
+      <feature id="org.eclipse.viatra.addon.databinding.runtime.feature"/>
+      <feature id="org.eclipse.viatra.addon.querybasedfeatures.runtime.feature"/>
+      <feature id="org.eclipse.viatra.addon.validation.runtime.feature"/>
+      <feature id="org.eclipse.viatra.addon.viewers.runtime.feature"/>
+      <feature id="org.eclipse.viatra.addon.viewers.runtime.zest.feature"/>
+      <feature id="org.eclipse.viatra.addon.viewers.tooling.feature"/>
+      <feature id="org.eclipse.viatra.examples.cps.application.dependencies.feature" version="2.1.0.qualifier"/>
+      <feature id="org.eclipse.viatra.examples.cps.application.feature" version="2.1.0.qualifier"/>
+      <feature id="org.eclipse.viatra.examples.cps.metamodel.feature" version="2.1.0.qualifier"/>
+      <feature id="org.eclipse.viatra.query.language.feature"/>
+      <feature id="org.eclipse.viatra.query.runtime.feature"/>
+      <feature id="org.eclipse.viatra.query.sdk.feature"/>
+      <feature id="org.eclipse.viatra.query.sdk.extensions.feature"/>
+      <feature id="org.eclipse.viatra.transformation.debug.feature"/>
+      <feature id="org.eclipse.viatra.transformation.evm.transactions.feature"/>
+      <feature id="org.eclipse.viatra.transformation.runtime.emf.feature"/>
       <feature id="org.eclipse.xtend.sdk"/>
       <feature id="org.eclipse.xtext.docs"/>
       <feature id="org.eclipse.xtext.examples"/>
@@ -149,6 +149,9 @@
       <feature id="org.eclipse.xtext.xbase"/>
       <feature id="org.eclipse.xtext.xbase.lib"/>
       <feature id="org.eclipse.xtext.xtext.ui"/>
+      <feature id="org.eclipse.viatra.transformation.runtime.debug.feature"/>
+      <feature id="org.eclipse.viatra.query.testing.sdk.feature"/>
+      <feature id="org.eclipse.viatra.query.ide.feature"/>
    </features>
 
    <configurations>

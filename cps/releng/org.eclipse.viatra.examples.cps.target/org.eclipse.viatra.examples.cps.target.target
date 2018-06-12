@@ -29,8 +29,8 @@
             <repository location="http://download.eclipse.org/tools/gef/updates/releases/5.0.1_gef-maintenance_73"/>
         </location>
         <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-            <unit id="org.eclipse.collections" version="9.0.0.v20170920-0536"/>
-            <repository location="http://download.eclipse.org/collections/9.0.0/repository/"/>
+            <unit id="org.eclipse.collections" version="9.2.0.v20180518-1448"/>
+            <repository location="http://download.eclipse.org/collections/9.2.0/repository/"/>
         </location>
         <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
           <unit id="org.eclipse.license.feature.group" version="1.0.1.v20140414-1359"/>
