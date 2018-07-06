@@ -109,12 +109,9 @@ private pattern identifiableId(identifiable : Identifiable, id : java String) {
 )
 pattern initialStateNotContainedByStateMachine(statemachine : StateMachine, state : State) {
 	StateMachine.initial(statemachine, state);
-	neg find statemachineState(statemachine, state);
+	neg StateMachine.states(statemachine, state);
 }
 
-private pattern statemachineState(statemachine : StateMachine, state : State) {
-	StateMachine.states(statemachine, state);
-}
 
 @Constraint(
 	key = {transition},
@@ -138,8 +135,8 @@ private pattern stateTransition(source : State, transition : Transition, target 
 )
 pattern targetStateNotContainedBySameStateMachine(transition : Transition, target : State) {
 	find stateTransition(source, transition, target);
-	find statemachineState(statemachine, source);
-	neg find statemachineState(statemachine, target);
+	StateMachine.states(statemachine, source);
+	neg StateMachine.states(statemachine, target);
 }
 
 @Constraint(
