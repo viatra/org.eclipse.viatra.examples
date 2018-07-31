@@ -129,7 +129,7 @@
     <repository
         url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
     <repository
-        url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
+        url="http://download.eclipse.org/tools/gef/updates/releases/5.0.0_gef-master_4403"/>
     <repository
         url="http://download.eclipse.org/efxclipse/updates-released/3.1.0/site"/>
   </setupTask>
@@ -189,7 +189,7 @@
         <repository
             url="${viatra.repository.url}"/>
         <repository
-            url="http://download.eclipse.org/tools/gef/updates/milestones/5.0.0RC3_gef-master_4393"/>
+            url="http://download.eclipse.org/tools/gef/updates/releases/5.0.0_gef-master_4403"/>
         <repository
             url="http://download.eclipse.org/efxclipse/updates-released/3.1.0/site"/>
         <repository
