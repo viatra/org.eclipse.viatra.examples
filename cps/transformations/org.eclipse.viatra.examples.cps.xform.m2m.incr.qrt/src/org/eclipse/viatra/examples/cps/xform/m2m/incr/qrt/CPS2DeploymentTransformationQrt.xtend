@@ -29,6 +29,7 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.StateRules
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.TransitionRules
 import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.rules.TriggerRules
 import org.eclipse.viatra.transformation.evm.specific.resolver.InvertedDisappearancePriorityConflictResolver
+import org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt.util.PriorityRuleSpecification
 
 class CPS2DeploymentTransformationQrt {
 
@@ -65,7 +66,7 @@ class CPS2DeploymentTransformationQrt {
 			debug("Preparing transformation rules.")
 			val watch = Stopwatch.createStarted
 
-			val rulesBuilder = ImmutableSet.builder
+			val rulesBuilder = ImmutableSet.<PriorityRuleSpecification<?>>builder()
 			rulesBuilder.addAll(HostRules.getRules(engine))
 			rulesBuilder.addAll(ApplicationRules.getRules(engine))
 			rulesBuilder.addAll(StateMachineRules.getRules(engine));

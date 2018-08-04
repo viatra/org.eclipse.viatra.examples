@@ -28,6 +28,7 @@ import org.eclipse.viatra.transformation.evm.specific.ExecutionSchemas
 import org.eclipse.viatra.transformation.evm.specific.Schedulers
 
 import static com.google.common.base.Preconditions.*
+import org.eclipse.viatra.transformation.evm.api.RuleSpecification
 
 class CPS2DeploymentTransformation {
 	
@@ -65,7 +66,7 @@ class CPS2DeploymentTransformation {
 			debug("Preparing transformation rules.")
 			val watch = Stopwatch.createStarted
 			
-			val rulesBuilder = ImmutableSet.builder
+			val rulesBuilder = ImmutableSet.<RuleSpecification<?>>builder()
 			rulesBuilder.addAll(HostRules.getRules(engine))
 			rulesBuilder.addAll(ApplicationRules.getRules(engine))
 			rulesBuilder.addAll(StateMachineRules.getRules(engine))

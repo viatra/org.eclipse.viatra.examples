@@ -17,9 +17,11 @@ import org.eclipse.viatra.examples.cps.xform.m2m.incr.expl.queries.UnmappedTrigg
 import org.eclipse.viatra.transformation.evm.specific.Rules
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
 import org.eclipse.viatra.transformation.evm.specific.Jobs
+import org.eclipse.viatra.transformation.evm.api.RuleSpecification
+import java.util.Set
 
 class TriggerRules {
-	static def getRules(ViatraQueryEngine engine) {
+	static def Set<RuleSpecification<?>> getRules(ViatraQueryEngine engine) {
 		#{
 			new TriggerMapping(engine).specification,
 			new TriggerRemoval(engine).specification

@@ -19,9 +19,11 @@ import org.eclipse.viatra.transformation.evm.specific.Jobs
 import org.eclipse.viatra.transformation.evm.specific.Lifecycles
 import org.eclipse.viatra.transformation.evm.specific.Rules
 import org.eclipse.viatra.transformation.evm.specific.crud.CRUDActivationStateEnum
+import java.util.Set
+import org.eclipse.viatra.transformation.evm.api.RuleSpecification
 
 class ApplicationRules {
-	static def getRules(ViatraQueryEngine engine) {
+	static def Set<RuleSpecification<?>> getRules(ViatraQueryEngine engine) {
 		#{
 			new ApplicationMapping(engine).specification,
 			new ApplicationUpdate(engine).specification,

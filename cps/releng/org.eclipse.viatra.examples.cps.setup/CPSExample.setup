@@ -100,12 +100,10 @@
         name="org.eclipse.viatra.query.testing.sdk.feature.feature.group"/>
     <requirement
         name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-        versionRange="[0.20.0,0.21.0)"/>
+        versionRange="[2.0.0,3.0.0)"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
         versionRange="[2.13.0,3.0.0)"/>
-    <requirement
-        name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
     <requirement
         name="com.google.inject.multibindings"
         versionRange="[3.0.0,4.0.0)"/>
@@ -159,10 +157,8 @@
       <requirement
           name="org.eclipse.viatra.query.testing.sdk.feature.feature.group"/>
       <requirement
-          name="org.eclipse.viatra.query.tooling.ui.visualization.feature.feature.group"/>
-      <requirement
           name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-          versionRange="[0.20.0,0.22.0)"/>
+          versionRange="[2.0.0,3.0.0)"/>
       <requirement
           name="org.eclipse.fx.runtime.min.feature.feature.group"/>
       <requirement
