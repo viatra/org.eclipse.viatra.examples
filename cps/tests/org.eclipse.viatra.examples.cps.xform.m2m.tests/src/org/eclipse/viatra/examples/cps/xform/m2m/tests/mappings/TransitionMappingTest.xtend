@@ -259,6 +259,7 @@ class TransitionMappingTest extends CPS2DepTest {
 
 		info("Removing target state from model")
 		sm.states -= target
+		transition.targetState = null
 		executeTransformation
 		
 		val behavior = cps2dep.deployment.hosts.head.applications.head.behavior
@@ -425,6 +426,7 @@ class TransitionMappingTest extends CPS2DepTest {
 
 		info("Deleting host instance")
 		cps2dep.cps.hostTypes.head.instances -= hostInstance
+		hostInstance.applications.clear
 		executeTransformation
 		
 		val traces = cps2dep.traces.filter[cpsElements.contains(transition)]

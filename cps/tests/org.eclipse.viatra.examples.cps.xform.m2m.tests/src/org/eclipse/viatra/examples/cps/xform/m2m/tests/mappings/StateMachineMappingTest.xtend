@@ -253,6 +253,7 @@ class StateMachineMappingTest extends CPS2DepTest {
 		
 		info("Deleting host instance")
 		cps2dep.cps.hostTypes.head.instances -= hostInstance
+		hostInstance.applications.clear
 		executeTransformation
 		
 		val traces = cps2dep.traces.filter[cpsElements.contains(sm)]

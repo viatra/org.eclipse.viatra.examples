@@ -49,10 +49,12 @@ class ApplicationMappingTest extends CPS2DepTest {
 		assertFalse("Application not transformed", applications.empty)
 		val traces = cps2dep.traces
 		assertEquals("Trace not created", 2, traces.size)
-		val lastTrace = traces.last
-		assertEquals("Trace is not complete (cpsElements)", #[instance], lastTrace.cpsElements)
-		assertEquals("Trace is not complete (depElements)", applications, lastTrace.deploymentElements)
-		assertEquals("ID not copied", instance.identifier, applications.head.id)
+		val trace = traces.findFirst[ trace |
+            trace.cpsElements.contains(instance)
+        ]
+        assertEquals("Trace is not complete (cpsElements)", #[instance], trace.cpsElements)
+        assertEquals("Trace is not complete (depElements)", applications, trace.deploymentElements)
+        assertEquals("ID not copied", instance.identifier, applications.head.id)
 	}
 	
 	@Test
@@ -197,6 +199,7 @@ class ApplicationMappingTest extends CPS2DepTest {
 	
 		info("Deleting host instance")
 		cps2dep.cps.hostTypes.head.instances -= hostInstance
+		hostInstance.applications.clear
 		executeTransformation
 		
 		val traces = cps2dep.traces.filter[cpsElements.contains(instance)]

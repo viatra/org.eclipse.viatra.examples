@@ -588,6 +588,7 @@ class ActionMappingTest extends CPS2DepTest {
 		
 		info("Removing application instance for wait")
 		app2.instances -= appInstance2
+		appInstance2.allocatedTo = null
 		executeTransformation
 		
 		cps2dep.assertNoTrigger(transition)
@@ -953,6 +954,7 @@ class ActionMappingTest extends CPS2DepTest {
 		
 		info("Removing host instance for send")
 		host.instances -= hostInstance
+		hostInstance.applications.clear
 		executeTransformation
 		
 		val sendTrace = cps2dep.traces.findFirst[cpsElements.contains(transition)]
