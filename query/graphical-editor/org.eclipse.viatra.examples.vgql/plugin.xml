@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="test.Queries" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:test.Queries" id="test.Queries">
+      <query-specification fqn="test.hostIpAddress"/>
+      <query-specification fqn="test.emptyIpAddress"/>
+      <query-specification fqn="test.sameIpAddress"/>
+      <query-specification fqn="test.ipFormatInvalid"/>
+      <query-specification fqn="test.goodHost"/>
+      <query-specification fqn="test.connectedTo"/>
+      <query-specification fqn="test.badHost"/>
+      <query-specification fqn="test.countApplications"/>
+      <query-specification fqn="test.reachableState"/>
+      <query-specification fqn="test.sumNumberOfInstances"/>
+      <query-specification fqn="test.instanceOfApplication"/>
+    </group>
+  </extension>
+</plugin>

@@ -1,0 +1,134 @@
+package test
+
+import "http://org.eclipse.viatra/model/cps"
+
+pattern hostIpAddress(
+    host: HostInstance,
+    ip2: java String
+) {
+    HostInstance(host);
+    java String(ip2);
+    HostInstance.nodeIp(host, ip2);
+}
+
+pattern emptyIpAddress(
+    host: HostInstance
+) {
+    HostInstance(host);
+    HostInstance.nodeIp(host, "");
+}
+
+pattern sameIpAddress(
+    host1: HostInstance,
+    host2: HostInstance,
+    commonIp: java String
+) {
+    HostInstance(host1);
+    HostInstance(host2);
+    java String(commonIp);
+    HostInstance.nodeIp(host1, commonIp);
+    HostInstance.nodeIp(host2, commonIp);
+    host1 != host2;
+}
+
+pattern ipFormatInvalid(
+    host: HostInstance,
+    ip: java ^java.lang.String
+) {
+    HostInstance(host);
+    java String(ip);
+    HostInstance.nodeIp(host, ip);
+    check(!ip.matches("^[\\d\\.]+"));
+}
+
+pattern goodHost(
+    host: HostInstance,
+    ip: java String
+) {
+    HostInstance(host);
+    java String(ip);
+    HostInstance.nodeIp(host, ip);
+    neg find badHost(host, ip);
+}
+
+pattern connectedTo(
+    state: State,
+    other: State
+) {
+    State(state);
+    State(other);
+    State.outgoingTransitions(state, transition);
+    Transition.targetState(transition, other);
+}
+
+pattern badHost(
+    host: HostInstance,
+    ip: java String
+) {
+    HostInstance(host);
+    java String(ip);
+    find sameIpAddress(host, _other, ip);
+} or {
+    HostInstance(host);
+    java String(ip);
+    HostInstance.nodeIp(host, ip);
+    find emptyIpAddress(host);
+} or {
+    HostInstance(host);
+    java String(ip);
+    find ipFormatInvalid(host, ip);
+}
+
+private pattern allocatedApplications(
+    host: HostInstance,
+    app: ApplicationInstance
+) {
+    HostInstance(host);
+    ApplicationInstance(app);
+    HostInstance.applications(host, app);
+}
+
+pattern countApplications(
+    host: HostInstance,
+    m: java Integer
+) {
+    HostInstance(host);
+    java Integer(m);
+    expression2 == m;
+    expression2 == count find allocatedApplications(host, _);
+}
+
+pattern reachableState(
+    sm: StateMachine,
+    state: State
+) {
+    StateMachine(sm);
+    State(state);
+    StateMachine.initial(sm, state);
+} or {
+    StateMachine(sm);
+    State(state);
+    StateMachine.initial(sm, initial);
+    StateMachine.states(sm, state);
+    find connectedTo+(initial, state);
+}
+
+pattern sumNumberOfInstances(
+    at: ApplicationType,
+    n: java Integer
+) {
+    ApplicationType(at);
+    java Integer(n);
+    expression2 == n;
+    expression2 == count find instanceOfApplication(at, _);
+}
+
+pattern instanceOfApplication(
+    at: ApplicationType,
+    instance: ApplicationInstance
+) {
+    ApplicationType(at);
+    ApplicationInstance(instance);
+    ApplicationType.instances(at, instance);
+}
+

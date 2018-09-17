@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="ASCII"?>
+<GraphPatternLanguage:PatternPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GraphPatternLanguage="http://www.eclipse.org/viatra/query/patternlanguage/emf/GraphPatternLanguage" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" packageName="test">
+  <patterns name="hostIpAddress">
+    <parameters name="host" parameterReferences="//@patterns.0/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="ip2" parameterReferences="//@patterns.0/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="String"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.0/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.0/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.0/@bodies.0/@constraints.0/@src" name="host" referredParam="//@patterns.0/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.0/@bodies.0/@constraints.0/@dst" name="ip2" referredParam="//@patterns.0/@parameters.1"/>
+    </bodies>
+  </patterns>
+  <patterns name="emptyIpAddress">
+    <parameters name="host" parameterReferences="//@patterns.1/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.1/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.1/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.1/@bodies.0/@constraints.0/@src" name="host" referredParam="//@patterns.1/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:StringLiteral" references="//@patterns.1/@bodies.0/@constraints.0/@dst" value=""/>
+    </bodies>
+  </patterns>
+  <patterns name="sameIpAddress">
+    <parameters name="host1" parameterReferences="//@patterns.2/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="host2" parameterReferences="//@patterns.2/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="commonIp" parameterReferences="//@patterns.2/@bodies.0/@nodes.2">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="String"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.2/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.2/@bodies.0/@nodes.2"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.2/@bodies.0/@nodes.1"/>
+        <dst expression="//@patterns.2/@bodies.0/@nodes.2"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:CompareConstraint" feature="!=">
+        <leftOperand expression="//@patterns.2/@bodies.0/@nodes.0"/>
+        <rightOperand expression="//@patterns.2/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.2/@bodies.0/@constraints.0/@src //@patterns.2/@bodies.0/@constraints.2/@leftOperand" name="host1" referredParam="//@patterns.2/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.2/@bodies.0/@constraints.1/@src //@patterns.2/@bodies.0/@constraints.2/@rightOperand" name="host2" referredParam="//@patterns.2/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.2/@bodies.0/@constraints.0/@dst //@patterns.2/@bodies.0/@constraints.1/@dst" name="commonIp" referredParam="//@patterns.2/@parameters.2"/>
+    </bodies>
+  </patterns>
+  <patterns name="ipFormatInvalid">
+    <parameters name="host" parameterReferences="//@patterns.3/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="ip" parameterReferences="//@patterns.3/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="java.lang.String"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.3/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.3/@bodies.0/@nodes.1"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:CheckConstraint" expression="!ip.matches(&quot;^[\\d\\.]+&quot;)">
+        <variables expression="//@patterns.3/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.3/@bodies.0/@constraints.0/@src" name="host" referredParam="//@patterns.3/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.3/@bodies.0/@constraints.0/@dst //@patterns.3/@bodies.0/@constraints.1/@variables.0" name="ip" referredParam="//@patterns.3/@parameters.1">
+        <types xsi:type="GraphPatternLanguage:JavaClassReference" className="String"/>
+      </nodes>
+    </bodies>
+  </patterns>
+  <patterns name="goodHost">
+    <parameters name="host" parameterReferences="//@patterns.4/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="ip" parameterReferences="//@patterns.4/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="String"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.4/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.4/@bodies.0/@nodes.1"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PatternCompositionConstraint" negative="true">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.6">
+          <parameters expression="//@patterns.4/@bodies.0/@nodes.0" calledParameter="//@patterns.6/@parameters.0"/>
+          <parameters expression="//@patterns.4/@bodies.0/@nodes.1" calledParameter="//@patterns.6/@parameters.1"/>
+        </call>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.4/@bodies.0/@constraints.0/@src //@patterns.4/@bodies.0/@constraints.1/@call/@parameters.0" name="host" referredParam="//@patterns.4/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.4/@bodies.0/@constraints.0/@dst //@patterns.4/@bodies.0/@constraints.1/@call/@parameters.1" name="ip" referredParam="//@patterns.4/@parameters.1"/>
+    </bodies>
+  </patterns>
+  <patterns name="connectedTo">
+    <parameters name="state" parameterReferences="//@patterns.5/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//State"/>
+      </types>
+    </parameters>
+    <parameters name="other" parameterReferences="//@patterns.5/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//State"/>
+      </types>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//State/outgoingTransitions"/>
+        </edgeType>
+        <src expression="//@patterns.5/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.5/@bodies.0/@nodes.2"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//Transition/targetState"/>
+        </edgeType>
+        <src expression="//@patterns.5/@bodies.0/@nodes.2"/>
+        <dst expression="//@patterns.5/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.5/@bodies.0/@constraints.0/@src" name="state" referredParam="//@patterns.5/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.5/@bodies.0/@constraints.1/@dst" name="other" referredParam="//@patterns.5/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:LocalVariable" references="//@patterns.5/@bodies.0/@constraints.0/@dst //@patterns.5/@bodies.0/@constraints.1/@src" name="transition"/>
+    </bodies>
+  </patterns>
+  <patterns name="badHost">
+    <parameters name="host2" parameterReferences="//@patterns.6/@bodies.0/@nodes.0 //@patterns.6/@bodies.1/@nodes.0 //@patterns.6/@bodies.2/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="ip" parameterReferences="//@patterns.6/@bodies.0/@nodes.1 //@patterns.6/@bodies.1/@nodes.1 //@patterns.6/@bodies.2/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="String"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PatternCompositionConstraint">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.2">
+          <parameters expression="//@patterns.6/@bodies.0/@nodes.0" calledParameter="//@patterns.2/@parameters.0"/>
+          <parameters expression="//@patterns.6/@bodies.0/@nodes.2" calledParameter="//@patterns.2/@parameters.1"/>
+          <parameters expression="//@patterns.6/@bodies.0/@nodes.1" calledParameter="//@patterns.2/@parameters.2"/>
+        </call>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.0/@constraints.0/@call/@parameters.0" name="host2" referredParam="//@patterns.6/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.0/@constraints.0/@call/@parameters.2" name="ip" referredParam="//@patterns.6/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:LocalVariable" references="//@patterns.6/@bodies.0/@constraints.0/@call/@parameters.1" name="_other"/>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EAttribute" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/nodeIp"/>
+        </edgeType>
+        <src expression="//@patterns.6/@bodies.1/@nodes.0"/>
+        <dst expression="//@patterns.6/@bodies.1/@nodes.1"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PatternCompositionConstraint">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.1">
+          <parameters expression="//@patterns.6/@bodies.1/@nodes.0" calledParameter="//@patterns.1/@parameters.0"/>
+        </call>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.1/@constraints.0/@src //@patterns.6/@bodies.1/@constraints.1/@call/@parameters.0" name="host2" referredParam="//@patterns.6/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.1/@constraints.0/@dst" name="ip" referredParam="//@patterns.6/@parameters.1"/>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PatternCompositionConstraint">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.3">
+          <parameters expression="//@patterns.6/@bodies.2/@nodes.0" calledParameter="//@patterns.3/@parameters.0"/>
+          <parameters expression="//@patterns.6/@bodies.2/@nodes.1" calledParameter="//@patterns.3/@parameters.1"/>
+        </call>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.2/@constraints.0/@call/@parameters.0" name="host2" referredParam="//@patterns.6/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.6/@bodies.2/@constraints.0/@call/@parameters.1" name="ip" referredParam="//@patterns.6/@parameters.1"/>
+    </bodies>
+  </patterns>
+  <patterns name="allocatedApplications" private="true">
+    <parameters name="host" parameterReferences="//@patterns.7/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="app" parameterReferences="//@patterns.7/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//ApplicationInstance"/>
+      </types>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance/applications"/>
+        </edgeType>
+        <src expression="//@patterns.7/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.7/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.7/@bodies.0/@constraints.0/@src" name="host" referredParam="//@patterns.7/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.7/@bodies.0/@constraints.0/@dst" name="app" referredParam="//@patterns.7/@parameters.1"/>
+    </bodies>
+  </patterns>
+  <patterns name="countApplications">
+    <parameters name="host" parameterReferences="//@patterns.8/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//HostInstance"/>
+      </types>
+    </parameters>
+    <parameters name="m" parameterReferences="//@patterns.8/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="Integer"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:CompareConstraint">
+        <leftOperand expression="//@patterns.8/@bodies.0/@nodes.2"/>
+        <rightOperand expression="//@patterns.8/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.8/@bodies.0/@nodes.2/@call/@parameters.0" name="host" referredParam="//@patterns.8/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.8/@bodies.0/@constraints.0/@rightOperand" name="m" referredParam="//@patterns.8/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:AggregatedValue" references="//@patterns.8/@bodies.0/@constraints.0/@leftOperand" aggregatorClassName="count">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.7">
+          <parameters expression="//@patterns.8/@bodies.0/@nodes.0" calledParameter="//@patterns.7/@parameters.0"/>
+          <parameters calledParameter="//@patterns.7/@parameters.1"/>
+        </call>
+      </nodes>
+    </bodies>
+  </patterns>
+  <patterns name="reachableState">
+    <parameters name="sm" parameterReferences="//@patterns.9/@bodies.0/@nodes.0 //@patterns.9/@bodies.1/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//StateMachine"/>
+      </types>
+    </parameters>
+    <parameters name="state" parameterReferences="//@patterns.9/@bodies.0/@nodes.1 //@patterns.9/@bodies.1/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//State"/>
+      </types>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//StateMachine/initial"/>
+        </edgeType>
+        <src expression="//@patterns.9/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.9/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.9/@bodies.0/@constraints.0/@src" name="sm" referredParam="//@patterns.9/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.9/@bodies.0/@constraints.0/@dst" name="state" referredParam="//@patterns.9/@parameters.1"/>
+    </bodies>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//StateMachine/initial"/>
+        </edgeType>
+        <src expression="//@patterns.9/@bodies.1/@nodes.0"/>
+        <dst expression="//@patterns.9/@bodies.1/@nodes.2"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//StateMachine/states"/>
+        </edgeType>
+        <src expression="//@patterns.9/@bodies.1/@nodes.0"/>
+        <dst expression="//@patterns.9/@bodies.1/@nodes.1"/>
+      </constraints>
+      <constraints xsi:type="GraphPatternLanguage:PatternCompositionConstraint">
+        <call xsi:type="GraphPatternLanguage:PatternCall" transitive="TRANSITIVE" patternRef="//@patterns.5">
+          <parameters expression="//@patterns.9/@bodies.1/@nodes.2" calledParameter="//@patterns.5/@parameters.0"/>
+          <parameters expression="//@patterns.9/@bodies.1/@nodes.1" calledParameter="//@patterns.5/@parameters.1"/>
+        </call>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.9/@bodies.1/@constraints.0/@src //@patterns.9/@bodies.1/@constraints.1/@src" name="sm" referredParam="//@patterns.9/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.9/@bodies.1/@constraints.1/@dst //@patterns.9/@bodies.1/@constraints.2/@call/@parameters.1" name="state" referredParam="//@patterns.9/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:LocalVariable" references="//@patterns.9/@bodies.1/@constraints.0/@dst //@patterns.9/@bodies.1/@constraints.2/@call/@parameters.0" name="initial"/>
+    </bodies>
+  </patterns>
+  <patterns name="sumNumberOfInstances">
+    <parameters name="at" parameterReferences="//@patterns.10/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//ApplicationType"/>
+      </types>
+    </parameters>
+    <parameters name="n" parameterReferences="//@patterns.10/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:JavaClassReference" className="Integer"/>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:CompareConstraint">
+        <leftOperand expression="//@patterns.10/@bodies.0/@nodes.2"/>
+        <rightOperand expression="//@patterns.10/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.10/@bodies.0/@nodes.2/@call/@parameters.0" name="at" referredParam="//@patterns.10/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.10/@bodies.0/@constraints.0/@rightOperand" name="n" referredParam="//@patterns.10/@parameters.1"/>
+      <nodes xsi:type="GraphPatternLanguage:AggregatedValue" references="//@patterns.10/@bodies.0/@constraints.0/@leftOperand" aggregatorClassName="count">
+        <call xsi:type="GraphPatternLanguage:PatternCall" patternRef="//@patterns.11">
+          <parameters expression="//@patterns.10/@bodies.0/@nodes.0" calledParameter="//@patterns.11/@parameters.0"/>
+          <parameters calledParameter="//@patterns.11/@parameters.1"/>
+        </call>
+      </nodes>
+    </bodies>
+  </patterns>
+  <patterns name="instanceOfApplication">
+    <parameters name="at" parameterReferences="//@patterns.11/@bodies.0/@nodes.0">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//ApplicationType"/>
+      </types>
+    </parameters>
+    <parameters name="instance" parameterReferences="//@patterns.11/@bodies.0/@nodes.1">
+      <types xsi:type="GraphPatternLanguage:EClassifierReference">
+        <classifier xsi:type="ecore:EClass" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//ApplicationInstance"/>
+      </types>
+    </parameters>
+    <bodies>
+      <constraints xsi:type="GraphPatternLanguage:PathExpressionConstraint">
+        <edgeType>
+          <refname xsi:type="ecore:EReference" href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#//ApplicationType/instances"/>
+        </edgeType>
+        <src expression="//@patterns.11/@bodies.0/@nodes.0"/>
+        <dst expression="//@patterns.11/@bodies.0/@nodes.1"/>
+      </constraints>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.11/@bodies.0/@constraints.0/@src" name="at" referredParam="//@patterns.11/@parameters.0"/>
+      <nodes xsi:type="GraphPatternLanguage:ParameterRef" references="//@patterns.11/@bodies.0/@constraints.0/@dst" name="instance" referredParam="//@patterns.11/@parameters.1"/>
+    </bodies>
+  </patterns>
+  <packageImports href="../../../../plugin/org.eclipse.viatra.examples.cps.model/model/model.ecore#/"/>
+</GraphPatternLanguage:PatternPackage>
