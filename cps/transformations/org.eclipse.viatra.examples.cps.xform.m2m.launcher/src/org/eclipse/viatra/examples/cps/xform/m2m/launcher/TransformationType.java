@@ -12,6 +12,7 @@
 package org.eclipse.viatra.examples.cps.xform.m2m.launcher;
 
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.CyberPhysicalSystemPackage;
@@ -24,8 +25,10 @@ import org.eclipse.viatra.query.runtime.localsearch.planner.cost.IConstraintEval
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.StatisticsBasedConstraintCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
+import org.eclipse.viatra.query.runtime.matchers.planning.helpers.StatisticsHelper;
 import org.eclipse.viatra.query.runtime.matchers.tuple.TupleMask;
 import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
+import org.eclipse.viatra.query.runtime.matchers.util.Accuracy;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 
 import com.google.common.collect.Maps;
@@ -46,13 +49,15 @@ public enum TransformationType {
     BATCH_VIATRA_QUERY_LOCAL_SEARCH {
         public CPSTransformationWrapper getWrapper() {
 			QueryEvaluationHint hint = LocalSearchHints.getDefaultFlatten().build();
-			QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(new EndOfTransformationCostFunction()).build();
+			EndOfTransformationCostFunction costFunction = new EndOfTransformationCostFunction(StatisticsBasedConstraintCostFunction.INVERSE_NAVIGATION_PENALTY_DEFAULT);
+			QueryEvaluationHint traceHint = LocalSearchHints.getDefaultFlatten().setCostFunction(costFunction).build();
 			return new BatchQueryLocalSearch(hint, traceHint);
 	    }
     },
     BATCH_VIATRA_QUERY_LOCAL_SEARCH_GENERIC {
         public CPSTransformationWrapper getWrapper() {
-            QueryEvaluationHint hint = LocalSearchHints.getDefaultGeneric().setCostFunction(new EndOfTransformationCostFunction()).build();
+            EndOfTransformationCostFunction costFunction = new EndOfTransformationCostFunction(StatisticsBasedConstraintCostFunction.INVERSE_NAVIGATION_PENALTY_GENERIC);
+			QueryEvaluationHint hint = LocalSearchHints.getDefaultGeneric().setCostFunction(costFunction).build();
             return new BatchQueryLocalSearch(hint, hint);
         }
     },
@@ -91,8 +96,8 @@ public enum TransformationType {
     private final class EndOfTransformationCostFunction extends StatisticsBasedConstraintCostFunction {
         final Map<IInputKey, IInputKey> substitutions;
 
-        public EndOfTransformationCostFunction() {
-            super();
+        public EndOfTransformationCostFunction(double inverseNavigationPenalty) {
+            super(inverseNavigationPenalty);
             substitutions = Maps.newHashMap();
             substitutions.put(new EClassTransitiveInstancesKey(TraceabilityPackage.Literals.CPS2_DEPLOYMENT_TRACE), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
             substitutions.put(new EClassTransitiveInstancesKey(DeploymentPackage.Literals.DEPLOYMENT_ELEMENT), new EClassTransitiveInstancesKey(CyberPhysicalSystemPackage.Literals.IDENTIFIABLE));
@@ -102,19 +107,32 @@ public enum TransformationType {
         }
 
         @Override
-        public long countTuples(IConstraintEvaluationContext input, IInputKey supplierKey) {
+        public Optional<Long> projectionSize(IConstraintEvaluationContext input, IInputKey supplierKey, TupleMask groupMask, Accuracy requiredAccuracy) {
             if (supplierKey instanceof EClassTransitiveInstancesKey){
                 EClass eclass = ((EClassTransitiveInstancesKey) supplierKey).getEmfKey();
                 if (TraceabilityPackage.Literals.CPS_TO_DEPLOYMENT.equals(eclass)){
-                    return 1l;
+                    return Optional.of(1L);
                 }
             }
             if (substitutions.containsKey(supplierKey)){
-                return input.getRuntimeContext().countTuples(substitutions.get(supplierKey), TupleMask.empty(supplierKey.getArity()), Tuples.staticArityFlatTupleOf());
+            	IInputKey substituteType = substitutions.get(supplierKey);
+            	if (supplierKey.getArity() == substituteType.getArity()) 
+            		return input.getRuntimeContext().estimateCardinality(substituteType, groupMask, requiredAccuracy);
+            	// problem: the original and substitute types may have different arity, difficult to interpolate masks
+				Optional<Long> totalCount = input.getRuntimeContext().estimateCardinality(substituteType, TupleMask.identity(substituteType.getArity()), requiredAccuracy);
+				Optional<Long> existence = input.getRuntimeContext().estimateCardinality(substituteType, TupleMask.empty(substituteType.getArity()), requiredAccuracy);
+				if (groupMask.getSize() == groupMask.sourceWidth) return totalCount;
+				if (groupMask.getSize() == 0) return existence;
+				return totalCount.flatMap((total) -> 
+					existence.map((exists) -> 
+						// approximate with linear map
+						(groupMask.getSize() * (total - exists))/groupMask.sourceWidth + exists
+					));
             }
             
-            return input.getRuntimeContext().countTuples(supplierKey, TupleMask.empty(supplierKey.getArity()), Tuples.staticArityFlatTupleOf());
+        	return input.getRuntimeContext().estimateCardinality(supplierKey, groupMask, requiredAccuracy);
         }
+
     }
 
     public abstract CPSTransformationWrapper getWrapper();
