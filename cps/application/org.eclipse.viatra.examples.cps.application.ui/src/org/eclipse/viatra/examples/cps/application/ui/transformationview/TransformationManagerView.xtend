@@ -19,14 +19,14 @@ import org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin
 import static org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin.ICON_LOAD_QUERY
 import static org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin.ICON_STOP
 import static org.eclipse.viatra.examples.cps.application.ui.CPSApplicationUIPlugin.LOAD_XFORM_W_DEBUGGER
-import org.eclipse.viatra.query.tooling.ui.queryexplorer.adapters.AdapterUtil
-import org.eclipse.viatra.query.tooling.ui.queryexplorer.adapters.EMFModelConnector
+import org.eclipse.viatra.query.runtime.ui.modelconnector.AdapterUtil
+import org.eclipse.viatra.query.runtime.ui.modelconnector.EMFModelConnector
 import org.eclipse.viatra.query.runtime.api.IModelConnectorTypeEnum
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 
 import static extension com.google.common.collect.Iterables.getOnlyElement
-import org.eclipse.viatra.query.tooling.ui.util.IModelConnectorListener
-import org.eclipse.viatra.query.tooling.ui.queryexplorer.IModelConnector
+import org.eclipse.viatra.query.runtime.ui.modelconnector.IModelConnectorListener
+import org.eclipse.viatra.query.runtime.ui.modelconnector.IModelConnector
 import org.eclipse.ui.IEditorPart
 import org.eclipse.emf.edit.domain.IEditingDomainProvider
 import org.eclipse.emf.common.command.IdentityCommand

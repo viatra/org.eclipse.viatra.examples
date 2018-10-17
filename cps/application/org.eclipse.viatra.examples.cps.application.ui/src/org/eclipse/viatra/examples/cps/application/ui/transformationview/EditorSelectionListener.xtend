@@ -19,7 +19,7 @@ import org.eclipse.ui.INullSelectionListener
 import org.eclipse.ui.IPartListener
 import org.eclipse.ui.IWorkbenchPart
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
-import org.eclipse.viatra.query.tooling.ui.queryexplorer.IModelConnector
+import org.eclipse.viatra.query.runtime.ui.modelconnector.IModelConnector
 
 /**
  * @author Marton Elekes

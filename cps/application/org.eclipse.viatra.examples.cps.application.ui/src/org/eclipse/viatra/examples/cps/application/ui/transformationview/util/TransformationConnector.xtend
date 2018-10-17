@@ -13,7 +13,7 @@ package org.eclipse.viatra.examples.cps.application.ui.transformationview.util
 import org.eclipse.viatra.examples.cps.traceability.CPSToDeployment
 import org.eclipse.viatra.examples.cps.xform.m2m.launcher.CPSTransformationWrapper
 import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
-import org.eclipse.viatra.query.tooling.ui.queryexplorer.adapters.EMFModelConnector
+import org.eclipse.viatra.query.runtime.ui.modelconnector.EMFModelConnector
 import org.eclipse.xtend.lib.annotations.Data
 
 /**
