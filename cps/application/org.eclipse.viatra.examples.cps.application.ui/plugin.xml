@@ -8,7 +8,7 @@
          class="org.eclipse.viatra.examples.cps.application.ui.transformationview.TransformationManagerView"
          id="org.eclipse.viatra.examples.cps.application.ui.transformationview.TransformationManagerView"
          name="CPS Transformations"
-         icon="platform:/plugin/org.eclipse.viatra.query.tooling.ui/icons/logo2.png"></view>
+         icon="platform:/plugin/org.eclipse.viatra.query.patternlanguage.emf.ui/icons/logo2.png"></view>
   </extension>
   <extension
         point="org.eclipse.ui.newWizards">
