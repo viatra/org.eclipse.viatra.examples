@@ -60,7 +60,7 @@ class RuleProvider {
 	
 	public def getHostRule() {
 		if (hostRule === null) {
-			hostRule = createRule.name("HostRule").precondition(HostInstance.Matcher.querySpecification).action[
+			hostRule = createRule(HostInstance.instance).name("HostRule").action[
 				val cpsHostInstance = it.hostInstance
 				val nodeIp = it.hostInstance.nodeIp
 				debug('''Mapping host with IP: «nodeIp»''')
@@ -79,7 +79,7 @@ class RuleProvider {
 	
 	public def getApplicationRule() {
 		if (applicationRule === null) {
-			applicationRule = createRule.name("ApplicationRule").precondition(ApplicationInstance.Matcher.querySpecification).action[
+			applicationRule = createRule(ApplicationInstance.instance).name("ApplicationRule").action[
 				val cpsApplicationInstance = it.appInstance
 				val appId = it.appInstance.identifier
 				
@@ -105,7 +105,7 @@ class RuleProvider {
 	
 	public def getStateMachineRule() {
 		if (stateMachineRule === null) {
-			stateMachineRule = createRule.name("StateMachineRule").precondition(AppInstanceWithStateMachine.Matcher.querySpecification).action[
+			stateMachineRule = createRule(AppInstanceWithStateMachine.instance).name("StateMachineRule").action[
 				val cpsApplicationInstance = it.appInstance
 				val cpsStateMachine = it.stateMachine
 				
@@ -133,7 +133,7 @@ class RuleProvider {
 	
 	public def getStateRule() {
 		if (stateRule === null) {
-			stateRule = createRule.name("StateRule").precondition(State.Matcher.querySpecification).action[
+			stateRule = createRule(State.instance).name("StateRule").action[
 				val cpsStateMachine = it.stateMachine
 				val cpsAppInstance = it.appInstance
 				val cpsState = it.state
@@ -168,7 +168,7 @@ class RuleProvider {
 	
 	public def getTransitionRule() {
 		if (transitionRule === null) {
-			transitionRule = createRule.name("TransitionRule").precondition(Transition.Matcher.querySpecification).action[
+			transitionRule = createRule(Transition.instance).name("TransitionRule").action[
 				val cpsAppInstance = it.appInstance
 				val cpsState = it.sourceState
 				val cpsTargetState = it.targetState
@@ -206,7 +206,7 @@ class RuleProvider {
 	
 	public def getActionRule() {
 		if (actionRule === null) {
-			actionRule = createRule.name("ActionRule").precondition(ActionPair.Matcher.querySpecification).action[
+			actionRule = createRule(ActionPair.instance).name("ActionRule").action[
 				val cpsSendTransition = sendTransition
 				val cpsSendAppInstance = sendAppInstance
 				val cpsWaitTransition = waitTransition
