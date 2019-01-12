@@ -95,21 +95,21 @@
       label="Demo">
     <requirement
         name="org.eclipse.viatra.query.sdk.feature.source.feature.group"
-        versionRange="[2.0.0,3.0.0)"/>
+        versionRange="[2.2.0,3.0.0)"/>
     <requirement
         name="org.eclipse.viatra.query.testing.sdk.feature.feature.group"/>
     <requirement
         name="org.eclipse.viatra.addon.viewers.tooling.feature.feature.group"
-        versionRange="[2.0.0,3.0.0)"/>
+        versionRange="[2.2.0,3.0.0)"/>
     <requirement
         name="org.eclipse.xtext.sdk.feature.group"
-        versionRange="[2.13.0,3.0.0)"/>
+        versionRange="[2.16.0,3.0.0)"/>
     <requirement
         name="com.google.inject.multibindings"
         versionRange="[3.0.0,4.0.0)"/>
     <requirement
         name="org.eclipse.viatra.transformation.runtime.emf.feature.feature.group"
-        versionRange="[2.0.0,3.0.0)"/>
+        versionRange="[2.2.0,3.0.0)"/>
     <requirement
         name="org.eclipse.emf.sdk.feature.group"/>
     <requirement
@@ -125,7 +125,7 @@
     <repository
         url="${viatra.repository.url}"/>
     <repository
-        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
+        url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0"/>
     <repository
         url="http://download.eclipse.org/tools/gef/updates/releases/5.0.0_gef-master_4403"/>
     <repository
@@ -141,7 +141,7 @@
           name="org.eclipse.sdk.feature.group"/>
       <requirement
           name="org.eclipse.xtext.sdk.feature.group"
-          versionRange="[2.13.0,3.0.0)"/>
+          versionRange="[2.16.0,3.0.0)"/>
       <requirement
           name="org.eclipse.emf.sdk.feature.group"
           versionRange="[2.9.0,3.0.0)"/>
@@ -169,7 +169,7 @@
           name="org.eclipse.gef.layout.sdk.feature.group"/>
       <requirement
           name="org.eclipse.viatra.transformation.debug.feature.feature.group"
-          versionRange="[0.20.0,0.22.0)"/>
+          versionRange="[0.22.0,0.23.0)"/>
       <requirement
           name="org.eclipse.draw2d.feature.group"/>
       <requirement
@@ -181,7 +181,7 @@
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
         <repository
-            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0"/>
+            url="http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.16.0"/>
         <repository
             url="${viatra.repository.url}"/>
         <repository
