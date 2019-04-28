@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.viatra.examples.petrinet.model/src/main/java"
-    modelPluginID="org.eclipse.viatra.examples.petrinet.model" modelName="Petrinet"
-    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
-    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2010-2015, Zoltan Ujhelyi, Gabor Szarnyas&#xA;This program and the accompanying materials are made available under the&#xA;terms of the Eclipse Public License v. 2.0 which is available at&#xA;http://www.eclipse.org/legal/epl-v20.html.&#xA;&#xA;SPDX-License-Identifier: EPL-2.0"
+    modelDirectory="/org.eclipse.viatra.examples.petrinet.model/src/main/java" modelPluginID="org.eclipse.viatra.examples.petrinet.model"
+    modelName="Petrinet" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
   <foreignModel>petrinet.ecore</foreignModel>
   <genPackages prefix="PetriNet" basePackage="org.eclipse.viatra.examples" disposableProviderFactory="true"
       interfacePackageSuffix="model" metaDataPackageSuffix="model" classPackageSuffix="model.impl"
