@@ -28,7 +28,7 @@ import org.eclipse.viatra.examples.cps.planexecutor.api.IPhase
 
 class CPSPhaseApplicationAllocation implements IPhase<CPSFragment>{
 	
-	private extension RandomUtils randUtil = new RandomUtils;
+	extension RandomUtils randUtil = new RandomUtils;
 	protected extension Logger logger = Logger.getLogger("cps.generator.impl.CPSPhaseApplicationAllocation")
 	
 	override getOperations(CPSFragment fragment) {

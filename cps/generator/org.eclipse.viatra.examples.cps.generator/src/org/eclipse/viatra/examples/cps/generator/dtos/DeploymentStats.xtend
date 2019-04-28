@@ -18,7 +18,7 @@ import org.eclipse.viatra.query.runtime.base.api.ViatraBaseFactory
 
 class DeploymentStats extends ModelStats {
 	
-	private Logger logger = Logger.getLogger("cps.generator.StatsUtil.DeploymentStats")
+	Logger logger = Logger.getLogger("cps.generator.StatsUtil.DeploymentStats")
 	
 	public int deploymentHosts = 0;
 	public int deploymentApps = 0;

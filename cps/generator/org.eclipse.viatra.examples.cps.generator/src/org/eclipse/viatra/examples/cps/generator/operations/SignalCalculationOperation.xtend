@@ -15,7 +15,7 @@ import org.eclipse.viatra.examples.cps.planexecutor.api.IOperation
 
 class SignalCalculationOperation implements IOperation<CPSFragment> {
 	
-	private extension RandomUtils randUtil
+	extension RandomUtils randUtil
 	
 	new(){
 		randUtil = new RandomUtils;

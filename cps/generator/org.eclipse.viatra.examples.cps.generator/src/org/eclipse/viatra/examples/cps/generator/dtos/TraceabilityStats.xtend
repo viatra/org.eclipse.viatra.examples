@@ -18,7 +18,7 @@ import org.eclipse.viatra.examples.cps.generator.utils.StatsUtil
 
 class TraceabilityStats extends ModelStats {
 	
-	private Logger logger = Logger.getLogger("cps.generator.StatsUtil.TraceabilityStats")
+	Logger logger = Logger.getLogger("cps.generator.StatsUtil.TraceabilityStats")
 	
 	public int traceabilityCPSDepTrace = 0;
 	public int traceabilityCPSDepTraceCPSElements = 0;

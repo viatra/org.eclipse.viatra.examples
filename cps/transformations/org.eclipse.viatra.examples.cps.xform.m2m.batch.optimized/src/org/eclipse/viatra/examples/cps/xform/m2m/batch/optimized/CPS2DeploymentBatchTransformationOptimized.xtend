@@ -181,9 +181,9 @@ class CPS2DeploymentBatchTransformationOptimized {
 		traceEnd('''findReceivers(«senderTrace.name»)''')
 	}
 
-	private val transitionToAppId = Maps.newHashMap
-	private val transitionToActionId = Maps.newHashMap
-	private Map<BehaviorTransition, HostInstance> transitionToHost = Maps.newHashMap
+	val transitionToAppId = Maps.newHashMap
+	val transitionToActionId = Maps.newHashMap
+	Map<BehaviorTransition, HostInstance> transitionToHost = Maps.newHashMap
 
 	private def void createTransitionCache(CPS2DeploymentTrace transitionTrace) {
 		transitionMappingCachingPerformance.start

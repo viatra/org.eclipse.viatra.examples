@@ -54,7 +54,7 @@ class GeneratorTest extends TestBase {
 	 ///////////////
 	// Unit tests
 	
-	private extension CPSModelBuilderUtil modelBuilder = new CPSModelBuilderUtil
+	extension CPSModelBuilderUtil modelBuilder = new CPSModelBuilderUtil
 	
 	// Test Actions
 	@Test

@@ -12,7 +12,7 @@ import org.eclipse.viatra.examples.cps.generator.exceptions.ModelGeneratorExcept
 
 class Percentage {
 	
-	private double fraction = 0.0;
+	double fraction = 0.0;
 	
 	new(double percentage) throws ModelGeneratorException {
 		// XXX percentage <= 100 ? 

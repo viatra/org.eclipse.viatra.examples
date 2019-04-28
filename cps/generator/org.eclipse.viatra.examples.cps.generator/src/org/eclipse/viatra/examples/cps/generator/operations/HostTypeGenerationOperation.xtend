@@ -16,8 +16,8 @@ import org.eclipse.viatra.examples.cps.planexecutor.api.IOperation
 
 class HostTypeGenerationOperation implements IOperation<CPSFragment> {
 	val HostClass hostClass;
-	private extension CPSModelBuilderUtil modelBuilder;
-	private extension RandomUtils randUtil
+	extension CPSModelBuilderUtil modelBuilder;
+	extension RandomUtils randUtil
 	
 	
 	new(HostClass applicationClass){

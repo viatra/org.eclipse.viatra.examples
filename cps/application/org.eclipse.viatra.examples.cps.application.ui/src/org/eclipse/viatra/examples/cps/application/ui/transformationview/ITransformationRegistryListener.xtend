@@ -12,7 +12,7 @@ import org.eclipse.viatra.examples.cps.application.ui.transformationview.util.Tr
 import org.eclipse.viatra.examples.cps.xform.m2m.launcher.TransformationType
 
 /**
- * Interface for listening for changes in {@link ManageTransformationsModel}.
+ * Interface for listening for changes in {@link TransformationRegistry}.
  * @author Marton Elekes
  */
 interface ITransformationRegistryListener {

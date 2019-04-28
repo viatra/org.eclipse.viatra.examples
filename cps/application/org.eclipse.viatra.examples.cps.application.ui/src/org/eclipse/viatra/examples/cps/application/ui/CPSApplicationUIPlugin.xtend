@@ -23,24 +23,24 @@ class CPSApplicationUIPlugin extends AbstractUIPlugin {
 
     public static val String PLUGIN_ID = "org.eclipse.viatra.examples.cps.application.ui"
 
-    private static CPSApplicationUIPlugin plugin
+    static CPSApplicationUIPlugin plugin
 
     public static val ICON_LOAD_QUERY = "load_query"
     public static val ICON_STOP = "stop"
     public static val CPS_NEW = "NewCyberPhysicalSystem"
     public static val LOAD_XFORM_W_DEBUGGER = "load_xform_w_debugger"
 
-    public override void start(BundleContext context) throws Exception {
+    override void start(BundleContext context) throws Exception {
         super.start(context)
         plugin = this
     }
 
-    public override void stop(BundleContext context) throws Exception {
+    override void stop(BundleContext context) throws Exception {
         plugin = null
         super.stop(context)
     }
 
-    public def static CPSApplicationUIPlugin getDefault() {
+    def static CPSApplicationUIPlugin getDefault() {
         return plugin
     }
 

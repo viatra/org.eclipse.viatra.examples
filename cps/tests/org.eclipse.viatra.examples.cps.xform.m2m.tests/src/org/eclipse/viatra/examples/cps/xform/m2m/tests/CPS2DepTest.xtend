@@ -22,7 +22,7 @@ class CPS2DepTest extends CPS2DepTestWithoutParameters {
     }
 
     @Parameters(name="{index}: {1}")
-    public static def transformations() {
+    static def transformations() {
         xforms.map [
             #[it.wrapper, it.name].toArray
         ]

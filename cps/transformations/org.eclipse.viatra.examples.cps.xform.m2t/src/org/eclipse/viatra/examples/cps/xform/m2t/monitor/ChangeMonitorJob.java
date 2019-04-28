@@ -56,10 +56,10 @@ public class ChangeMonitorJob<Match extends IPatternMatch> extends StatelessJob<
 		Map<DeploymentElement, String> map = (Map<DeploymentElement, String>) context.get(OUTDATED_ELEMENTS);
 		// Store the old data in the values of the map
 		if(changedElement instanceof DeploymentHost){
-			map.put(changedElement, ((Map<DeploymentHost,String>)context.get(HOSTS)).get((DeploymentHost)changedElement));						
+			map.put(changedElement, ((Map<DeploymentHost,String>)context.get(HOSTS)).get(changedElement));						
 		}
 		else if(changedElement instanceof DeploymentApplication){
-			map.put(changedElement, ((Map<DeploymentApplication,String>)context.get(APPLICATIONS)).get((DeploymentApplication)changedElement));						
+			map.put(changedElement, ((Map<DeploymentApplication,String>)context.get(APPLICATIONS)).get(changedElement));						
 		}
 	}
 

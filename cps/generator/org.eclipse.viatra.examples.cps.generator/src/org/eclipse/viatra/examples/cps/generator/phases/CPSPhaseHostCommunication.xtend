@@ -20,7 +20,7 @@ import org.eclipse.viatra.examples.cps.generator.utils.CPSModelBuilderUtil
 
 class CPSPhaseHostCommunication implements IPhase<CPSFragment>{
 	
-	private extension RandomUtils randUtil = new RandomUtils;
+	extension RandomUtils randUtil = new RandomUtils;
 	
 	override getOperations(CPSFragment fragment) {
 		val operations = Lists.newArrayList();

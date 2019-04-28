@@ -20,8 +20,8 @@ import org.eclipse.viatra.examples.cps.planexecutor.api.IPhase
 
 class CPSPhaseActionGeneration implements IPhase<CPSFragment>{
 	
-	private extension RandomUtils randUtil = new RandomUtils;
-	private extension Logger logger = Logger.getLogger("cps.generator.impl.CPSPhaseActionGeneration");
+	extension RandomUtils randUtil = new RandomUtils;
+	extension Logger logger = Logger.getLogger("cps.generator.impl.CPSPhaseActionGeneration");
 	
 	public static String WAIT_METHOD_NAME = "waitForSignal";
 	public static String SEND_METHOD_NAME = "sendSignal";

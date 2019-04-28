@@ -15,10 +15,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 
 class DeleteTransitionWithoutAction implements IOperation<CPSFragment> {
 	
-	CPSFragment fragment
-	
 	new(CPSFragment fragment){
-		this.fragment = fragment;
 	}
 	
 	override execute(CPSFragment fragment) {

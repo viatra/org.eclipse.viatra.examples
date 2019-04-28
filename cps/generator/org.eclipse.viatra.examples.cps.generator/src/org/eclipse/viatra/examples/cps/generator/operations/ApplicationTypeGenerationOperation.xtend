@@ -20,8 +20,8 @@ import org.eclipse.viatra.examples.cps.planexecutor.api.IOperation
 
 class ApplicationTypeGenerationOperation implements IOperation<CPSFragment> {
 	val AppClass applicationClass;
-	private extension CPSModelBuilderUtil modelBuilder;
-	private extension RandomUtils randUtil
+	extension CPSModelBuilderUtil modelBuilder;
+	extension RandomUtils randUtil
 	
 	
 	new(AppClass applicationClass){

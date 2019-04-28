@@ -23,9 +23,7 @@ import org.eclipse.viatra.query.runtime.localsearch.planner.cost.IConstraintEval
 import org.eclipse.viatra.query.runtime.localsearch.planner.cost.impl.StatisticsBasedConstraintCostFunction;
 import org.eclipse.viatra.query.runtime.matchers.backend.QueryEvaluationHint;
 import org.eclipse.viatra.query.runtime.matchers.context.IInputKey;
-import org.eclipse.viatra.query.runtime.matchers.planning.helpers.StatisticsHelper;
 import org.eclipse.viatra.query.runtime.matchers.tuple.TupleMask;
-import org.eclipse.viatra.query.runtime.matchers.tuple.Tuples;
 import org.eclipse.viatra.query.runtime.matchers.util.Accuracy;
 import org.eclipse.viatra.query.runtime.rete.matcher.ReteBackendFactory;
 

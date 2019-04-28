@@ -73,7 +73,7 @@ class TransformationManagerView extends ViewPart {
                 val selection = getSelection
                 if (selection instanceof IStructuredSelection) {
 
-                    val Iterable iterable = [selection.iterator]
+                    val Iterable<?> iterable = [selection.iterator]
 
                     val enabled = selection.size >= 1 && iterable.forall[it instanceof TransformationConnector]
                     stopTransformationAction.enabled = enabled
@@ -137,7 +137,7 @@ class TransformationManagerView extends ViewPart {
             override void run() {
                 super.run()
 
-                val Iterable iterable = [listViewer.structuredSelection.iterator];
+                val Iterable<?> iterable = [listViewer.structuredSelection.iterator];
 
                 for (Object connector : iterable) {
                     if (connector instanceof TransformationConnector) {

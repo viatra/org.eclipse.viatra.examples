@@ -25,7 +25,7 @@ import org.eclipse.viatra.examples.cps.generator.operations.DeleteTransitionWith
 
 class CPSPhaseActionStatisticsBasedGeneration implements IPhase<CPSFragment>{
 	
-	private extension Logger logger = Logger.getLogger("cps.generator.impl.CPSPhaseActionGeneration");
+	extension Logger logger = Logger.getLogger("cps.generator.impl.CPSPhaseActionGeneration");
 	
 	public static String WAIT_METHOD_NAME = CPSPhaseActionGeneration.WAIT_METHOD_NAME;
 	public static String SEND_METHOD_NAME = CPSPhaseActionGeneration.SEND_METHOD_NAME;

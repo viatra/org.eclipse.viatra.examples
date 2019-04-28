@@ -19,7 +19,7 @@ import org.junit.Ignore
 
 @Ignore
 class SampleModelGenerator extends TestBase {
-	private String name = "model"
+	String name = "model"
 
 	@Test
 	def void generateDemo() {

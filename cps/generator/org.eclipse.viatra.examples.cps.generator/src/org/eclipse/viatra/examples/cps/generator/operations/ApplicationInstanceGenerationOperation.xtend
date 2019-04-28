@@ -21,8 +21,8 @@ class ApplicationInstanceGenerationOperation implements IOperation<CPSFragment> 
 	
 	val AppClass applicationClass;
 	val ApplicationType appType;
-	private extension CPSModelBuilderUtil modelBuilder;
-	private extension RandomUtils randUtil
+	extension CPSModelBuilderUtil modelBuilder;
+	extension RandomUtils randUtil
 	
 	new(AppClass applicationClass, ApplicationType appType){
 		this.applicationClass = applicationClass;

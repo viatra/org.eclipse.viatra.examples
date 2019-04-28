@@ -22,8 +22,8 @@ class HostInstanceGenerationOperation implements IOperation<CPSFragment> {
 	
 	val HostClass hostClass;
 	val HostType hostType;
-	private extension CPSModelBuilderUtil modelBuilder;
-	private extension RandomUtils randUtil
+	extension CPSModelBuilderUtil modelBuilder;
+	extension RandomUtils randUtil
 	
 	new(HostClass hostClass, HostType type){
 		this.hostClass = hostClass;

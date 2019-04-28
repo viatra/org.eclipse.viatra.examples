@@ -31,7 +31,7 @@ import org.eclipse.viatra.query.runtime.base.api.ViatraBaseFactory
 
 class CPSStats extends ModelStats {
 	
-	private Logger logger = Logger.getLogger("cps.generator.StatsUtil.CPSStats")
+	Logger logger = Logger.getLogger("cps.generator.StatsUtil.CPSStats")
 	
 	public int appTypeCount = 0;
 	public int appInstanceCount = 0;
@@ -65,10 +65,9 @@ class CPSStats extends ModelStats {
 		val sp2 = new SumProcessor
 		baseIndex.processAllFeatureInstances(CyberPhysicalSystemPackage.Literals.TRANSITION__ACTION, [source,target |
 				if (source instanceof Transition){
-					val Transition t = source as Transition
-					if(t.action.startsWith(CPSPhaseActionGeneration.SEND_METHOD_NAME)){
+					if(source.action.startsWith(CPSPhaseActionGeneration.SEND_METHOD_NAME)){
 						sendActions++
-					}else if(t.action.startsWith(CPSPhaseActionGeneration.WAIT_METHOD_NAME)){
+					}else if(source.action.startsWith(CPSPhaseActionGeneration.WAIT_METHOD_NAME)){
 						waitActions++
 					}
 				}
