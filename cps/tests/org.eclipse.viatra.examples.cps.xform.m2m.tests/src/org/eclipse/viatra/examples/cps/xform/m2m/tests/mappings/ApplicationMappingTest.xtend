@@ -171,7 +171,7 @@ class ApplicationMappingTest extends CPS2DepTest {
 		
 		cps2dep.assertApplicationMapping(instance)
 		
-		info("Changing host IP")
+		info("Changing application identifier")
 		instance.identifier = "simple.cps.app.instance2"
 		executeTransformation
 
