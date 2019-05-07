@@ -1,0 +1,407 @@
+/*******************************************************************************
+ * Copyright (c) 2014-2019 Geza Kulcsar, Akos Horvath, Abel Hegedus, Zoltan Ujhelyi, Peter Lunk, Istvan David, IncQuery Labs Ltd.
+ * This program and the accompanying materials are made available under the
+ * terms of the Eclipse Public License v. 2.0 which is available at
+ * http://www.eclipse.org/legal/epl-v20.html.
+ * 
+ * SPDX-License-Identifier: EPL-2.0
+ *******************************************************************************/
+ package org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries
+
+import "http://org.eclipse.viatra/model/cps"
+import "http://org.eclipse.viatra/model/deployment"
+import "http://org.eclipse.viatra/model/cps-traceability"
+
+import java org.eclipse.viatra.examples.cps.xform.m2m.util.SignalUtil
+
+/* General-Use Patterns */
+
+pattern cps2depTrace(cps2dep : CPSToDeployment, trace : CPS2DeploymentTrace, cpsElement : Identifiable, depElement : DeploymentElement) {
+    CPSToDeployment.traces(cps2dep, trace);
+    CPS2DeploymentTrace.cpsElements(trace, cpsElement);
+    CPS2DeploymentTrace.deploymentElements(trace, depElement);
+}
+
+pattern applicationInstanceOnHost(appType : ApplicationType, appInstance : ApplicationInstance, hostInstance : HostInstance) {
+    HostInstance.applications(hostInstance, appInstance);
+    ApplicationType.instances(appType, appInstance);
+}
+
+pattern danglingCps2DepTrace(cps2dep : CPSToDeployment, trace : CPS2DeploymentTrace) {
+	CPSToDeployment.traces(cps2dep, trace);
+	neg CPS2DeploymentTrace.deploymentElements(trace, _);
+}
+
+/* Host Rule Patterns (Spec 1) */
+
+pattern hostInstance(hostInstance : HostInstance) {
+    neg find cps2depTrace(_, _, hostInstance, _);
+}
+
+pattern changeHostIp(hostInstance: HostInstance, depHost: DeploymentHost) {
+    find cps2depTrace(_, _, hostInstance, depHost);
+    HostInstance.nodeIp(hostInstance,hostIp);
+    DeploymentHost.ip(depHost,depIp);
+    hostIp != depIp;
+}
+
+private pattern hostToBeRemoved(depHost : DeploymentHost, trace : CPS2DeploymentTrace) {
+    CPS2DeploymentTrace.deploymentElements(trace,depHost);
+    neg find cps2depTrace(_, trace, _, depHost);
+}
+
+pattern missingDepHost(depHost : DeploymentHost, trace : CPS2DeploymentTrace) {
+    find hostToBeRemoved(depHost, trace);
+    neg find incomingTriggers(depHost, _, _);
+}
+
+/* AppInstance Rule Patterns (Spec 2) */
+
+pattern appInstanceWithDepHost(appInstance : ApplicationInstance, depHost : DeploymentHost) {
+    HostInstance.applications(hostInstance, appInstance);
+    find cps2depTrace(_, _, hostInstance, depHost);
+    neg CPS2DeploymentTrace.cpsElements(_, appInstance);
+} 
+
+pattern appInstanceWithChangedHost(appInstance : ApplicationInstance, depHost1 : DeploymentHost, depHost2 : DeploymentHost, depApp : DeploymentApplication) {
+    find cps2depTrace(_,_,appInstance,depApp);
+    DeploymentHost.applications(depHost1,depApp);
+    find cps2depTrace(_,_,hostInstance1,depHost1);
+    neg HostInstance.applications(hostInstance1,appInstance);
+    HostInstance.applications(hostInstance2,appInstance);
+    find cps2depTrace(_,_,hostInstance2,depHost2);
+}
+
+private pattern appInstanceToBeRemoved(depApp : DeploymentApplication, trace : CPS2DeploymentTrace) {
+	CPS2DeploymentTrace.deploymentElements(trace,depApp);
+    neg find cps2depTrace(_, trace, _, depApp);
+}
+
+pattern missingAppInstance(depApp : DeploymentApplication, trace : CPS2DeploymentTrace) {
+    find appInstanceToBeRemoved(depApp, trace);
+    neg find incomingTriggers(depApp, _, _);
+}
+
+private pattern missingAppInstanceToBeRemoved(appInstance : ApplicationInstance, depApp : DeploymentApplication, trace : CPS2DeploymentTrace) {
+    find cps2depTrace(_, trace, appInstance, depApp);
+    neg HostInstance.applications(_, appInstance);
+} or {
+    find cps2depTrace(_, trace, appInstance, depApp);
+    HostInstance.applications(hostInstance,appInstance);
+    neg HostType.instances(_, hostInstance);
+}
+
+pattern missingHostForAppInstance(appInstance : ApplicationInstance, depApp : DeploymentApplication, trace : CPS2DeploymentTrace) {
+    find missingAppInstanceToBeRemoved(appInstance, depApp, trace);
+    neg find incomingTriggers(depApp, _, _);
+}
+
+pattern renamedApplication(cpsElement : Identifiable, depApplication : DeploymentApplication, expectedId : java String) {
+    find cps2depTrace(_, _, cpsElement, depApplication);
+    Identifiable.identifier(cpsElement, expectedId);
+    DeploymentApplication.id(depApplication, actualId);
+    
+    expectedId != actualId;
+} or {
+	find cps2depTrace(_, _, cpsElement, depApplication);
+    Identifiable.identifier(cpsElement, expectedId);
+    neg DeploymentApplication.id(depApplication, _);
+}
+
+/* State Machine Rule Patterns (Spec 3) */
+
+private pattern appInstanceWithStateMachine(appType : ApplicationType, appInstance : ApplicationInstance, stateMachine : StateMachine) {
+    find applicationInstanceOnHost(appType, appInstance, _);
+    ApplicationType.behavior(appType, stateMachine);
+}
+
+pattern appInstanceWithStateMachine_noTrace(appInstance : ApplicationInstance, 
+                    stateMachine : StateMachine, depApp : DeploymentApplication
+) {
+    find appInstanceWithStateMachine(_, appInstance, stateMachine);
+    find cps2depTrace(_, _, appInstance, depApp);
+    
+    neg find cps2depTrace(_, _, stateMachine, _);
+    neg CPS2DeploymentTrace.cpsElements(_, stateMachine);
+}
+
+pattern appInstanceWithStateMachine_withTrace(appType : ApplicationType, appInstance : ApplicationInstance, 
+    stateMachine : StateMachine, depApp : DeploymentApplication, trace: CPS2DeploymentTrace
+) {
+    find appInstanceWithStateMachine(appType, appInstance, stateMachine);
+    find cps2depTrace(_, _, appInstance, depApp);
+    
+    CPS2DeploymentTrace.cpsElements(trace, stateMachine);
+    neg find mappedOwnedBehavior(trace, depApp);
+}
+
+private pattern mappedOwnedBehavior(trace: CPS2DeploymentTrace, depApp : DeploymentApplication) {
+	DeploymentApplication.behavior(depApp, depBehavior);
+	CPS2DeploymentTrace.deploymentElements(trace, depBehavior);
+}
+
+pattern stateMachineToBeDeleted(depBehavior : DeploymentBehavior, trace : CPS2DeploymentTrace) {
+    CPS2DeploymentTrace.deploymentElements(trace, depBehavior);
+    neg find cps2depTrace(_, trace, _, depBehavior);
+} or {
+    find cps2depTrace(_, trace, SM, depBehavior);
+    neg find appInstanceWithStateMachine(_, _, SM);
+} or {
+	// Application instance moved
+    find cps2depTrace(_,trace, SM, depBehavior);
+    ApplicationType.behavior(AT1,SM);
+    neg ApplicationInstance.type(_,AT1);
+}
+
+pattern stateMachineDel(depBehavior : DeploymentBehavior, trace : CPS2DeploymentTrace) {
+	find stateMachineToBeDeleted(depBehavior, trace);
+	neg find incomingTriggers(depBehavior, _, _);
+}
+
+/* State Rule Patterns (Spec 4)  */
+
+pattern appInstanceWithState_noTrace(appType : ApplicationType, appInstance : ApplicationInstance, 
+                    state : State, depBehavior : DeploymentBehavior
+) {
+    find appInstanceWithStateMachine(appType, appInstance, stateMachine);
+    find cps2depTrace(_, _, stateMachine, depBehavior);
+    
+    StateMachine.states(stateMachine, state);
+    
+    neg find cps2depTrace(_, _, state, _);
+}
+
+pattern appInstanceWithState_withTrace(appType : ApplicationType, appInstance : ApplicationInstance, 
+                    state : State, depBehavior : DeploymentBehavior, trace: CPS2DeploymentTrace
+) {
+	find appInstanceWithStateMachine(appType, appInstance, stateMachine);
+    find cps2depTrace(_, _, stateMachine, depBehavior);
+    
+    StateMachine.states(stateMachine, state);
+    
+    CPS2DeploymentTrace.cpsElements(trace, state);
+    neg find mappedOwnedState(trace, depBehavior);
+}
+
+private pattern mappedOwnedState(trace: CPS2DeploymentTrace, depBehavior : DeploymentBehavior) {
+	DeploymentBehavior.states(depBehavior, depState);
+	CPS2DeploymentTrace.deploymentElements(trace, depState);
+}
+
+pattern incorrectlyMappedInitialState(depBehavior : DeploymentBehavior, expectedCurrentState : BehaviorState) {
+	find cps2depTrace(_, _, stateMachine, depBehavior);
+	StateMachine.initial(stateMachine, initialState);
+	DeploymentBehavior.states(depBehavior, expectedCurrentState);
+	find cps2depTrace(_, _, initialState, expectedCurrentState);
+	
+	DeploymentBehavior.current(depBehavior, currentState);
+	expectedCurrentState != currentState;
+} or {
+	find cps2depTrace(_, _, stateMachine, depBehavior);
+	StateMachine.initial(stateMachine, initialState);
+	DeploymentBehavior.states(depBehavior, expectedCurrentState);
+	find cps2depTrace(_, _, initialState, expectedCurrentState);
+	
+	neg DeploymentBehavior.current(depBehavior, _);
+}
+
+pattern incorrectlyMappedUnsetInitialState(stateMachine : StateMachine, depBehavior : DeploymentBehavior) {
+	find cps2depTrace(_, _, stateMachine, depBehavior);
+	neg StateMachine.initial(stateMachine, _initialState);
+	DeploymentBehavior.current(depBehavior, _);
+}
+
+pattern stateDel(behState : BehaviorState, trace : CPS2DeploymentTrace) {
+    CPS2DeploymentTrace.deploymentElements(trace,behState);
+    neg find cps2depTrace(_, trace, _, behState);
+}
+
+pattern renamedElement(cpsElement : Identifiable, depElement : DeploymentElement, expectedId : java String) {
+    find cps2depTrace(_, _, cpsElement, depElement);
+    neg DeploymentApplication(depElement); neg DeploymentHost(depElement); 
+    Identifiable.identifier(cpsElement, expectedId);
+    DeploymentElement.description(depElement, actualId);
+    
+    expectedId != actualId;
+} or {
+	find cps2depTrace(_, _, cpsElement, depElement);
+    neg DeploymentApplication(depElement); neg DeploymentHost(depElement); 
+    Identifiable.identifier(cpsElement, expectedId);
+    neg DeploymentElement.description(depElement, _);
+}
+
+
+/* Transition Rule Patterns (Spec 5)  */
+
+pattern transition_noTrace(depBehavior : DeploymentBehavior, depSource : BehaviorState, transition : Transition, depTarget : BehaviorState) {
+    State.outgoingTransitions(src,transition);
+    Transition.targetState(transition,trg);
+    
+    DeploymentBehavior.states(depBehavior, depSource);
+    find cps2depTrace(_, _, src, depSource);
+    DeploymentBehavior.states(depBehavior, depTarget);
+    find cps2depTrace(_, _, trg, depTarget);
+    
+    neg find cps2depTrace(_, _, transition, _);
+}
+
+pattern transition_withTrace(depBehavior : DeploymentBehavior, depSource : BehaviorState, transition : Transition, depTarget : BehaviorState, trace : CPS2DeploymentTrace) {
+    State.outgoingTransitions(src,transition);
+    Transition.targetState(transition,trg);
+    
+    DeploymentBehavior.states(depBehavior, depSource);
+    find cps2depTrace(_, _, src, depSource);
+    DeploymentBehavior.states(depBehavior, depTarget);
+    find cps2depTrace(_, _, trg, depTarget);
+    
+    CPS2DeploymentTrace.cpsElements(trace, transition);
+    neg find mappedOutgoingTransition(trace, depSource);
+    neg find transitionWithMovedSource(transition, depBehavior, _, _, _);
+}
+
+pattern mappedOutgoingTransition(trace: CPS2DeploymentTrace, depState : BehaviorState) {
+	BehaviorState.outgoing(depState, depTransition);
+	CPS2DeploymentTrace.deploymentElements(trace, depTransition);
+}
+
+pattern transitionWithMovedSource(transition : Transition, depBehavior : DeploymentBehavior, behTransition : BehaviorTransition, expectedSource : BehaviorState, actualSource : BehaviorState) {
+	find cps2depTrace(cps2dep, _, transition, behTransition);
+	State.outgoingTransitions(source, transition);
+	find cps2depTrace(cps2dep, _, source, expectedSource);
+	DeploymentBehavior.states(depBehavior, actualSource);
+	BehaviorState.outgoing(actualSource, behTransition);
+	
+    DeploymentBehavior.states(depBehavior, expectedSource);
+    DeploymentBehavior.states(depBehavior, actualSource);
+	expectedSource != actualSource;
+}
+
+pattern transitionWithMovedTarget(behTransition : BehaviorTransition, transition : Transition, expectedTarget : BehaviorState, actualTarget : BehaviorState) {
+	find cps2depTrace(cps2dep, _, transition, behTransition);
+	Transition.targetState(transition, target);
+	find cps2depTrace(cps2dep, _, target, expectedTarget);
+	BehaviorTransition.to(behTransition, actualTarget);
+	
+    DeploymentBehavior.states(depBehavior, expectedTarget);
+    DeploymentBehavior.states(depBehavior, actualTarget);
+	expectedTarget != actualTarget;
+}
+
+private pattern transitionToBeDeleted(behTransition : BehaviorTransition, trace : CPS2DeploymentTrace) {
+    CPS2DeploymentTrace.deploymentElements(trace, behTransition);
+    neg find cps2depTrace(_, trace, _, behTransition);
+} or {
+	neg BehaviorTransition.to(behTransition, _);
+    CPS2DeploymentTrace.deploymentElements(trace, behTransition);
+} or {
+	neg BehaviorState.outgoing(_, behTransition);
+    CPS2DeploymentTrace.deploymentElements(trace, behTransition);
+}
+
+pattern transitionDel(behTransition : BehaviorTransition, trace : CPS2DeploymentTrace) {
+	find transitionToBeDeleted(behTransition, trace);
+	neg find incomingTriggers(behTransition, _, _);
+}
+
+/* Action Rule Patterns (Spec 6) */
+
+private pattern reachableHosts(source : HostInstance, target : HostInstance) {
+    HostInstance.communicateWith*(source, target);
+}
+
+pattern communicatingAppInstances(sourceAppInstance : ApplicationInstance, targetAppInstance : ApplicationInstance) {
+    find applicationInstanceOnHost(_, sourceAppInstance, sourceHostInstance);
+    find applicationInstanceOnHost(_, targetAppInstance, targetHostInstance);
+    find reachableHosts(sourceHostInstance, targetHostInstance);
+}
+
+pattern sendTransitionAppSignal(transition : Transition, app : java String, signal : java String) {
+    Transition.action(transition, action);
+    app == eval(SignalUtil.getAppId(action));
+    signal == eval(SignalUtil.getSignalId(action));
+}
+
+pattern waitTransitionAppSignal(transition : Transition, signal : java String) {
+    Transition.action(transition, action);
+    check(SignalUtil.isWait(action));
+    signal == eval(SignalUtil.getSignalId(action));
+}
+
+pattern hostFromTransition(hostInstance : HostInstance, appType : ApplicationType, appInstance : ApplicationInstance, transition : Transition) {
+    ApplicationType.behavior.states.outgoingTransitions(appType, transition);
+    find applicationInstanceOnHost(appType, appInstance, hostInstance);
+}
+
+private pattern triggerPair(triggerApp : ApplicationInstance, targetApp : ApplicationInstance, cpsTrigger : Transition, cpsTarget : Transition) {
+    find sendTransitionAppSignal(cpsTrigger, targetAppId, signal);
+    find waitTransitionAppSignal(cpsTarget, signal);
+    ApplicationType.identifier(targetAppType, targetAppId);
+    
+    find hostFromTransition(triggerHost, _triggerAppType, triggerApp, cpsTrigger);    
+    find hostFromTransition(targetHost, targetAppType, targetApp, cpsTarget);
+    
+    find reachableHosts(triggerHost, targetHost);
+}
+
+pattern behTriggerPair(cpsTrigger : Transition, cpsTarget : Transition, behTrigger : BehaviorTransition, behTarget : BehaviorTransition) {
+   find triggerPair(triggerApp, targetApp,cpsTrigger,cpsTarget);
+    
+   find cps2depTrace(_, _, cpsTrigger, behTrigger);
+   find cps2depTrace(_, _, triggerApp, depTriggerApplication);
+   DeploymentApplication.behavior.transitions(depTriggerApplication, behTrigger);
+   
+   find cps2depTrace(_, _, cpsTarget, behTarget);
+   find cps2depTrace(_, _, targetApp, depTargetApplication);
+   DeploymentApplication.behavior.transitions(depTargetApplication, behTarget);
+   
+   neg BehaviorTransition.trigger(behTrigger, behTarget);
+}
+
+pattern behTriggerToRemove(behTrigger : BehaviorTransition, behTarget : BehaviorTransition) {
+    BehaviorTransition.trigger(behTrigger, behTarget);
+    neg find cps2depTrace(_, _, _, behTarget);
+} or {
+    BehaviorTransition.trigger(behTrigger, behTarget);
+    neg find cps2depTrace(_, _, _, behTrigger);
+} or {
+    BehaviorTransition.trigger(behTrigger, behTarget);
+    
+    find cps2depTrace(cps2dep, _, cpsTrigger, behTrigger);
+    find cps2depTrace(_, _, triggerApp, depTriggerApplication);
+   	DeploymentApplication.behavior.transitions(depTriggerApplication, behTrigger);
+   
+    find cps2depTrace(cps2dep, _, cpsTarget, behTarget);
+    find cps2depTrace(_, _, targetApp, depTargetApplication);
+    DeploymentApplication.behavior.transitions(depTargetApplication, behTarget);
+   
+    neg find triggerPair( triggerApp, targetApp, cpsTrigger, cpsTarget);
+}
+
+private pattern includedTransitions(depElement : DeploymentElement, behTransition : BehaviorTransition) {
+	depElement == behTransition;
+} or {
+	DeploymentBehavior.transitions(depElement, behTransition);
+} or {
+	DeploymentApplication.behavior.transitions(depElement, behTransition);
+} or {
+	DeploymentHost.applications.behavior.transitions(depElement, behTransition);
+}
+
+private pattern incomingTriggers(depElement : DeploymentElement, behTrigger : BehaviorTransition, behTarget : BehaviorTransition) {
+	find includedTransitions(depElement, behTarget);
+	BehaviorTransition.trigger(behTrigger, behTarget);
+}
+
+pattern behTriggerToBeRemoved(behTrigger : BehaviorTransition, behTarget : BehaviorTransition) {
+	find incomingTriggers(depElement, behTrigger, behTarget);
+	find hostToBeRemoved(depElement, _);
+} or {
+	find incomingTriggers(depElement, behTrigger, behTarget);
+	find missingAppInstance(depElement, _);
+} or {
+	find incomingTriggers(depElement, behTrigger, behTarget);
+	find missingAppInstanceToBeRemoved(_, depElement, _);
+} or {
+	find incomingTriggers(depElement, behTrigger, behTarget);
+	find stateMachineToBeDeleted(depElement, _);
+}

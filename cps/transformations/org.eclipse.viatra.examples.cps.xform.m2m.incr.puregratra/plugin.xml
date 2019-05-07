@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><plugin>
+  <extension id="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.CpsXformM2M" point="org.eclipse.viatra.query.runtime.queryspecification">
+    <group group="org.eclipse.viatra.query.runtime.extensibility.SingletonExtensionFactory:org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.CpsXformM2M" id="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.CpsXformM2M">
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.cps2depTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.applicationInstanceOnHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.danglingCps2DepTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.hostInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.changeHostIp"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.missingDepHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithDepHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithChangedHost"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.missingAppInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.missingHostForAppInstance"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.renamedApplication"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithStateMachine_noTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithStateMachine_withTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.stateMachineToBeDeleted"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.stateMachineDel"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithState_noTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.appInstanceWithState_withTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.incorrectlyMappedInitialState"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.incorrectlyMappedUnsetInitialState"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.stateDel"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.renamedElement"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.transition_noTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.transition_withTrace"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.mappedOutgoingTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.transitionWithMovedSource"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.transitionWithMovedTarget"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.transitionDel"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.communicatingAppInstances"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.sendTransitionAppSignal"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.waitTransitionAppSignal"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.hostFromTransition"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.behTriggerPair"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.behTriggerToRemove"/>
+      <query-specification fqn="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra.queries.behTriggerToBeRemoved"/>
+    </group>
+  </extension>
+</plugin>

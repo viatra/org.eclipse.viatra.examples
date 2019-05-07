@@ -87,6 +87,10 @@ public enum TransformationType {
         public boolean isDebuggable() {
             return true;
         }
+    
+    },
+    INCR_VIATRA_PUREGRATRA {
+        public CPSTransformationWrapper getWrapper() {return new IncrPureGraTra();}
     };
 
     private final class EndOfTransformationCostFunction extends StatisticsBasedConstraintCostFunction {

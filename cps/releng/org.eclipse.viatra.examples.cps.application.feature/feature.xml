@@ -134,4 +134,11 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>

@@ -38,6 +38,7 @@
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr</module>
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra</module>
+		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra</module>
 
 		<!-- M2T Transformations -->
 		<module>transformations/org.eclipse.viatra.examples.cps.xform.m2t</module>
