@@ -244,11 +244,14 @@
 	</repositories>
 	<pluginRepositories>
 		<pluginRepository>
-			<id>viatra-snapshots</id>
+			<id>viatra-repository</id>
+			<releases>
+			     <enabled>true</enabled>
+			</releases>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
-			<url>https://repo.eclipse.org/content/repositories/viatra-snapshots/</url>
+			<url>https://repo.eclipse.org/content/groups/viatra/</url>
 		</pluginRepository>
 	</pluginRepositories>
 </project>
