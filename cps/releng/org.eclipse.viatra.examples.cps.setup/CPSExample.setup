@@ -177,7 +177,7 @@
       <repositoryList
           name="Dependencies">
         <repository
-            url="http://download.eclipse.org/releases/mars"/>
+            url="http://download.eclipse.org/releases/2019-06"/>
         <repository
             url="http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository/"/>
         <repository
