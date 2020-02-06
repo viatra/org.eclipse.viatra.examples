@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator JDT M2T Generator
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2t.jdt
-Bundle-Version: 2.3.0.qualifier
+Bundle-Version: 2.4.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2t.jdt
 Require-Bundle: org.eclipse.core.runtime,
