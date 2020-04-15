@@ -44,8 +44,6 @@
       <feature id="org.eclipse.ecf.core.feature"/>
       <feature id="org.eclipse.ecf.core.ssl.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.feature"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient4.feature"/>
-      <feature id="org.eclipse.ecf.filetransfer.httpclient4.ssl.feature"/>
       <feature id="org.eclipse.ecf.filetransfer.ssl.feature"/>
       <feature id="org.eclipse.emf.codegen"/>
       <feature id="org.eclipse.emf.codegen.ecore"/>
@@ -144,7 +142,6 @@
       <feature id="org.eclipse.xtext.examples"/>
       <feature id="org.eclipse.xtext.redist"/>
       <feature id="org.eclipse.xtext.runtime"/>
-      <feature id="org.eclipse.xtext.sdk"/>
       <feature id="org.eclipse.xtext.ui"/>
       <feature id="org.eclipse.xtext.xbase"/>
       <feature id="org.eclipse.xtext.xbase.lib"/>
@@ -155,9 +152,9 @@
    </features>
 
    <configurations>
+      <plugin id="org.apache.felix.scr" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
       <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="2" />
-      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.event" autoStart="true" startLevel="2" />
       <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="1" />
       <property name="org.eclipse.update.reconcile" value="false" />

@@ -82,7 +82,7 @@ private pattern nodeIpOfHost(host : HostInstance, ip : java String){
 )
 pattern idContainsWhitespace(identifiable : Identifiable) {
 	find identifiableId(identifiable, id);
-	check(com.google.common.base.CharMatcher.WHITESPACE.matchesAnyOf(id));
+	check(com.google.common.base.CharMatcher.whitespace.matchesAnyOf(id));
 }
 
 @Constraint(

@@ -78,14 +78,14 @@
 	   </pluginRepository>
     </pluginRepositories>
 	<properties>
-		<tycho.version>1.0.0</tycho.version>
-		<xtend.compiler.version>2.13.0</xtend.compiler.version>
+		<tycho.version>1.6.0</tycho.version>
+		<xtend.compiler.version>2.20.0</xtend.compiler.version>
 		<viatra.repository.url>http://download.eclipse.org/viatra/updates/integration</viatra.repository.url>
-		<ec.repository.url>http://download.eclipse.org/collections/9.2.0.M1/repository</ec.repository.url>
-		<xtext.repository.url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.13.0</xtext.repository.url>
-		<eclipse.repository.release.url>http://download.eclipse.org/releases/neon</eclipse.repository.release.url>
-		<eclipse.repository.url>http://download.eclipse.org/eclipse/updates/4.6</eclipse.repository.url>
-		<orbit.repository.url>http://download.eclipse.org/tools/orbit/downloads/drops/R20160520211859/repository/</orbit.repository.url>
+		<ec.repository.url>http://download.eclipse.org/collections/10.2.0/repository</ec.repository.url>
+		<xtext.repository.url>http://download.eclipse.org/modeling/tmf/xtext/updates/releases/2.20.0</xtext.repository.url>
+		<eclipse.repository.release.url>http://download.eclipse.org/releases/2019-06</eclipse.repository.release.url>
+		<eclipse.repository.url>http://download.eclipse.org/eclipse/updates/4.12</eclipse.repository.url>
+		<orbit.repository.url>https://download.eclipse.org/releases/2019-06/201906191000/</orbit.repository.url>
 		<viatra.compiler.version>2.0.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jacoco.version>0.7.6.201602180812</jacoco.version>
