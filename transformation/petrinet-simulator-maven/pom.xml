@@ -11,8 +11,8 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<emf.version>2.10.1.v20140901-1043</emf.version>
-		<viatra.version>2.0.0.M4</viatra.version>
-		<xtend.version>2.13.0</xtend.version>
+		<viatra.version>2.3.2</viatra.version>
+		<xtend.version>2.21.0</xtend.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
