@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.8"?>
-<target name="Generated from Demo Targlet Platform" sequenceNumber="21">
+<target name="Generated from Demo Targlet Platform" sequenceNumber="22">
     <locations>
         <location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="planner" includeSource="true" type="InstallableUnit">
             <unit id="com.google.inject.multibindings" version="3.0.0.v201605172100"/>
-            <unit id="org.eclipse.emf.sdk.feature.group" version="2.21.0.v20200205-0529"/>
+            <unit id="org.eclipse.emf.sdk.feature.group" version="2.22.0.v20200519-1135"/>
             <unit id="org.eclipse.emf.transaction.feature.group" version="1.12.0.201805140824"/>
             <unit id="org.eclipse.emf.validation.feature.group" version="1.12.1.201812070911"/>
-            <unit id="org.eclipse.equinox.sdk.feature.group" version="3.20.100.v20200303-1901"/>
-            <unit id="org.eclipse.sdk.feature.group" version="4.15.0.v20200305-0155"/>
+            <unit id="org.eclipse.equinox.sdk.feature.group" version="3.20.200.v20200528-0603"/>
+            <unit id="org.eclipse.sdk.feature.group" version="4.16.0.v20200604-0951"/>
             <unit id="org.eclipse.draw2d.feature.group" version="3.10.100.201606061308"/>
-            <unit id="org.eclipse.gef.graph.sdk.feature.group" version="5.1.0.202001140303"/>
-            <unit id="org.eclipse.gef.zest.sdk.feature.group" version="5.1.1.202001140303"/>
-            <unit id="org.eclipse.gef.layout.sdk.feature.group" version="5.0.0.202001140303"/>
-            <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.11.2.v20200224-0816"/>
-            <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="2.11.2.v20200224-0816"/>
-            <unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.11.2.v20200224-0816"/>
-            <unit id="org.eclipse.xtext.sdk.feature.group" version="2.21.0.v20200302-1509"/>
-            <unit id="org.eclipse.xtext.redist.feature.group" version="2.21.0.v20200302-1509"/>
+            <unit id="org.eclipse.gef.graph.sdk.feature.group" version="5.1.0.202006020202"/>
+            <unit id="org.eclipse.gef.zest.sdk.feature.group" version="5.1.2.202006020202"/>
+            <unit id="org.eclipse.gef.layout.sdk.feature.group" version="5.0.0.202006020202"/>
+            <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="2.11.3.v20200520-0756"/>
+            <unit id="org.eclipse.emf.mwe2.launcher.feature.group" version="2.11.3.v20200520-0756"/>
+            <unit id="org.eclipse.emf.mwe2.runtime.sdk.feature.group" version="2.11.3.v20200520-0756"/>
+            <unit id="org.eclipse.xtext.sdk.feature.group" version="2.22.0.v20200602-1533"/>
+            <unit id="org.eclipse.xtext.redist.feature.group" version="2.22.0.v20200602-1533"/>
             <unit id="org.eclipse.fx.runtime.min.feature.feature.group" version="3.6.0.201907240103"/>
             <unit id="org.eclipse.collections" version="10.1.0.v20191204-1814"/>
-            <repository location="https://download.eclipse.org/releases/2020-03/202003181000/"/>
+            <repository location="https://download.eclipse.org/releases/2020-06/202006171000/"/>
         </location>
         <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
           <unit id="org.eclipse.license.feature.group" version="1.0.1.v20140414-1359"/>
