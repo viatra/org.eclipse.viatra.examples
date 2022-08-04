@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Simple
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.batch.simple;singleton:=true
-Bundle-Version: 2.6.0.qualifier
+Bundle-Version: 2.8.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.batch.simple
 Require-Bundle: com.google.guava,

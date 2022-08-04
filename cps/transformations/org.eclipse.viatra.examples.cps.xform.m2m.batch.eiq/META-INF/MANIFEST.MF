@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.examples.cps.xfrom.m2m.batch.eiq
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq;singleton:=true
-Bundle-Version: 2.6.0.qualifier
+Bundle-Version: 2.8.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq,
   org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq.queries
