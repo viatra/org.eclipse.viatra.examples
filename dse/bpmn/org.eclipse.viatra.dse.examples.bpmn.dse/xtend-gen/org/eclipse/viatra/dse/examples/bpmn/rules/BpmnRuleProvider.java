@@ -32,23 +32,23 @@ import org.eclipse.xtext.xbase.lib.Extension;
 public class BpmnRuleProvider {
   @Extension
   private BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory();
-  
+
   public BatchTransformationRule<?, ?> allocateRule;
-  
+
   public BatchTransformationRule<?, ?> createResourceRule;
-  
+
   public BatchTransformationRule<?, ?> makeParallelRule;
-  
+
   public BatchTransformationRule<?, ?> makeSequentialRule;
-  
+
   public BatchTransformationRule<?, ?> allocateRuleFilteredExample;
-  
+
   public BpmnRuleProvider() {
     final Consumer<AllocateTaskToVariant.Match> _function = (AllocateTaskToVariant.Match it) -> {
       Task _t = it.getT();
       _t.setVariant(it.getRTV());
     };
-    this.allocateRule = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule().name("AllocateTaskToVariantRule").precondition(AllocateTaskToVariant.instance()).action(_function).build();
+    this.allocateRule = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule(AllocateTaskToVariant.instance()).name("AllocateTaskToVariantRule").action(_function).build();
     final Consumer<AllocateTaskToVariant.Match> _function_1 = (AllocateTaskToVariant.Match it) -> {
       Task _t = it.getT();
       _t.setVariant(it.getRTV());
@@ -60,13 +60,13 @@ public class BpmnRuleProvider {
       }
       return true;
     };
-    this.allocateRuleFilteredExample = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule().name("FilteredAllocateTaskToVariantRule").precondition(AllocateTaskToVariant.instance()).action(_function_1).filter(_function_2).build();
+    this.allocateRuleFilteredExample = this.factory.<AllocateTaskToVariant.Match, AllocateTaskToVariant.Matcher>createRule(AllocateTaskToVariant.instance()).name("FilteredAllocateTaskToVariantRule").action(_function_1).filter(_function_2).build();
     final Consumer<CreateResource.Match> _function_3 = (CreateResource.Match it) -> {
       EList<ResourceInstance> _instances = it.getRTV().getInstances();
       ResourceInstance _createResourceInstance = SimplifiedbpmnFactory.eINSTANCE.createResourceInstance();
       _instances.add(_createResourceInstance);
     };
-    this.createResourceRule = this.factory.<CreateResource.Match, CreateResource.Matcher>createRule().name("CreateResourceRule").precondition(CreateResource.instance()).action(_function_3).build();
+    this.createResourceRule = this.factory.<CreateResource.Match, CreateResource.Matcher>createRule(CreateResource.instance()).name("CreateResourceRule").action(_function_3).build();
     final Consumer<MakeParallel.Match> _function_4 = (MakeParallel.Match it) -> {
       SimplifiedBPMN _root = it.getRoot();
       final SimplifiedBpmnBuilder builder = new SimplifiedBpmnBuilder(_root);
@@ -96,7 +96,7 @@ public class BpmnRuleProvider {
       builder.createFlow(it.getT1(), convergingGateway);
       builder.createFlow(it.getT2(), convergingGateway);
     };
-    this.makeParallelRule = this.factory.<MakeParallel.Match, MakeParallel.Matcher>createRule().name("MakeParallelRule").precondition(MakeParallel.instance()).action(_function_4).build();
+    this.makeParallelRule = this.factory.<MakeParallel.Match, MakeParallel.Matcher>createRule(MakeParallel.instance()).name("MakeParallelRule").action(_function_4).build();
     final Consumer<MakeSequential.Match> _function_5 = (MakeSequential.Match it) -> {
       EList<SequenceFlow> flows = it.getT1().getInFlows();
       final BaseElement divergingGateway = flows.get(0).getSource();
@@ -131,6 +131,6 @@ public class BpmnRuleProvider {
       SimplifiedBPMN _root = it.getRoot();
       new SimplifiedBpmnBuilder(_root).createFlow(it.getT1(), it.getT2());
     };
-    this.makeSequentialRule = this.factory.<MakeSequential.Match, MakeSequential.Matcher>createRule().name("MakeSequentialRule").precondition(MakeSequential.instance()).action(_function_5).build();
+    this.makeSequentialRule = this.factory.<MakeSequential.Match, MakeSequential.Matcher>createRule(MakeSequential.instance()).name("MakeSequentialRule").action(_function_5).build();
   }
 }

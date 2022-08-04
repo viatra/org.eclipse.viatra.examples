@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.viatra.dse.examples.bpmn.patterns
 Bundle-SymbolicName: org.eclipse.viatra.dse.examples.bpmn.patterns;singleton:=true
-Bundle-Version: 0.26.0.qualifier
+Bundle-Version: 0.28.0.qualifier
 Export-Package: org.eclipse.viatra.dse.examples.bpmn.patterns
 Require-Bundle: org.eclipse.viatra.dse.examples.bpmn.model,
   org.eclipse.emf.ecore,

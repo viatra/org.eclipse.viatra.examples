@@ -19,7 +19,7 @@ import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransforma
 import org.eclipse.viatra.transformation.runtime.emf.rules.batch.BatchTransformationRuleFactory
 
 class BpmnRuleProvider {
-    private extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
+    extension BatchTransformationRuleFactory factory = new BatchTransformationRuleFactory
 
     public BatchTransformationRule<?, ?> allocateRule
     public BatchTransformationRule<?, ?> createResourceRule
@@ -29,17 +29,15 @@ class BpmnRuleProvider {
     
 
     new() {
-        allocateRule = createRule
+        allocateRule = createRule(AllocateTaskToVariant.instance())
             .name("AllocateTaskToVariantRule")
-            .precondition(AllocateTaskToVariant.instance())
             .action[
                 t.variant = RTV
             ]
             .build
 
-        allocateRuleFilteredExample = createRule
+        allocateRuleFilteredExample = createRule(AllocateTaskToVariant.instance())
             .name("FilteredAllocateTaskToVariantRule")
-            .precondition(AllocateTaskToVariant.instance())
             .action[
                 t.variant = RTV
             ]
@@ -52,17 +50,15 @@ class BpmnRuleProvider {
             ]
             .build
 
-        createResourceRule = createRule
+        createResourceRule = createRule(CreateResource.instance())
             .name("CreateResourceRule")
-            .precondition(CreateResource.instance())
             .action[
                 RTV.instances += SimplifiedbpmnFactory.eINSTANCE.createResourceInstance()
             ]
             .build
 
-        makeParallelRule = createRule
+        makeParallelRule = createRule(MakeParallel.instance())
             .name("MakeParallelRule")
-            .precondition(MakeParallel.instance())
             .action[
                 val builder = new SimplifiedBpmnBuilder(root)
 
@@ -92,9 +88,8 @@ class BpmnRuleProvider {
             ]
             .build
 
-        makeSequentialRule = createRule
+        makeSequentialRule = createRule(MakeSequential.instance())
             .name("MakeSequentialRule")
-            .precondition(MakeSequential.instance())
             .action[
                 var flows = t1.inFlows
                 val divergingGateway = flows.get(0).getSource()
