@@ -12,7 +12,7 @@ import java.util.Random;
 
 import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
-import org.eclipse.jface.databinding.swt.WidgetProperties;
+import org.eclipse.jface.databinding.swt.typed.WidgetProperties;
 import org.eclipse.jface.viewers.ArrayContentProvider;
 import org.eclipse.jface.viewers.ComboViewer;
 import org.eclipse.jface.viewers.LabelProvider;
@@ -224,35 +224,35 @@ public class ConstraintTypePage extends WizardPage {
     private DataBindingContext initDataBindings() {
         DataBindingContext bindingContext = new DataBindingContext();
 
-        IObservableValue<?> observeEnabledLblSimpleTypeObserveWidget = WidgetProperties.enabled()
+        IObservableValue<Boolean> observeEnabledLblSimpleTypeObserveWidget = WidgetProperties.enabled()
                 .observe(simpleTypeLabel);
-        IObservableValue<?> observeSelectionSimpleRadioButtonObserveWidget = WidgetProperties.selection()
+        IObservableValue<Boolean> observeSelectionSimpleRadioButtonObserveWidget = WidgetProperties.buttonSelection()
                 .observe(simpleRadioButton);
         bindingContext.bindValue(observeEnabledLblSimpleTypeObserveWidget,
                 observeSelectionSimpleRadioButtonObserveWidget, null, null);
 
-        IObservableValue<?> observeEnabledSimpleTypeComboObserveWidget = WidgetProperties.enabled()
+        IObservableValue<Boolean> observeEnabledSimpleTypeComboObserveWidget = WidgetProperties.enabled()
                 .observe(simpleType.getCombo());
         bindingContext.bindValue(observeEnabledSimpleTypeComboObserveWidget,
                 observeSelectionSimpleRadioButtonObserveWidget, null, null);
 
-        IObservableValue<?> observeEnabledScalableTypeComboObserveWidget = WidgetProperties.enabled()
+        IObservableValue<Boolean> observeEnabledScalableTypeComboObserveWidget = WidgetProperties.enabled()
                 .observe(scalableType.getCombo());
-        IObservableValue<?> observeSelectionScalableRadioButtonObserveWidget = WidgetProperties.selection()
+        IObservableValue<Boolean> observeSelectionScalableRadioButtonObserveWidget = WidgetProperties.buttonSelection()
                 .observe(scalableRadioButton);
         bindingContext.bindValue(observeEnabledScalableTypeComboObserveWidget,
                 observeSelectionScalableRadioButtonObserveWidget, null, null);
 
-        IObservableValue<?> observeEnabledScaleTextObserveWidget = WidgetProperties.enabled().observe(scaleText);
+        IObservableValue<Boolean> observeEnabledScaleTextObserveWidget = WidgetProperties.enabled().observe(scaleText);
         bindingContext.bindValue(observeEnabledScaleTextObserveWidget, observeSelectionScalableRadioButtonObserveWidget,
                 null, null);
 
-        IObservableValue<?> observeEnabledLblScalableTypeObserveWidget = WidgetProperties.enabled()
+        IObservableValue<Boolean> observeEnabledLblScalableTypeObserveWidget = WidgetProperties.enabled()
                 .observe(scalableTypeLabel);
         bindingContext.bindValue(observeEnabledLblScalableTypeObserveWidget,
                 observeSelectionScalableRadioButtonObserveWidget, null, null);
 
-        IObservableValue<?> observeEnabledLblScaleObserveWidget = WidgetProperties.enabled().observe(scaleLabel);
+        IObservableValue<Boolean> observeEnabledLblScaleObserveWidget = WidgetProperties.enabled().observe(scaleLabel);
         bindingContext.bindValue(observeEnabledLblScaleObserveWidget, observeSelectionScalableRadioButtonObserveWidget,
                 null, null);
 

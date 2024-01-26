@@ -12,8 +12,6 @@ import java.util.Collection;
 import java.util.Objects;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.gef.layout.ILayoutAlgorithm;
-import org.eclipse.gef.layout.algorithms.SpaceTreeLayoutAlgorithm;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.IEditorPart;
@@ -28,18 +26,20 @@ import org.eclipse.viatra.addon.viewers.runtime.model.ViewerState;
 import org.eclipse.viatra.addon.viewers.runtime.model.ViewerState.ViewerStateFeature;
 import org.eclipse.viatra.addon.viewers.runtime.zest.ViatraGraphViewers;
 import org.eclipse.viatra.examples.cps.cyberPhysicalSystem.presentation.CyberPhysicalSystemEditor;
-import org.eclipse.viatra.integration.zest.viewer.ModifiableZestContentViewer;
+import org.eclipse.viatra.integration.zest.viewer.ViatraGraphViewer;
 import org.eclipse.viatra.query.runtime.api.IQuerySpecification;
 import org.eclipse.viatra.query.runtime.api.ViatraQueryEngine;
 import org.eclipse.viatra.query.runtime.emf.EMFScope;
 import org.eclipse.viatra.query.runtime.matchers.ViatraQueryRuntimeException;
+import org.eclipse.zest.layouts.LayoutAlgorithm;
+import org.eclipse.zest.layouts.algorithms.TreeLayoutAlgorithm;
 
 import com.google.common.collect.ImmutableSet;
 
 
 public abstract class AbstractCpsViewPart extends ViewPart implements IPartListener2 {
 
-		private ModifiableZestContentViewer viewer;
+		private ViatraGraphViewer viewer;
 		private ViatraQueryEngine engine = null;
 		protected IEditorPart activeEditor;
 		
@@ -62,8 +62,7 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 		
 		@Override
 		public void createPartControl(Composite parent) {
-	        this.viewer = new ModifiableZestContentViewer();
-	        viewer.createControl(parent, SWT.BORDER);
+	        this.viewer = new ViatraGraphViewer(parent, SWT.BORDER);
 		}
 
 		@Override
@@ -82,8 +81,8 @@ public abstract class AbstractCpsViewPart extends ViewPart implements IPartListe
 			}
 		}
 
-		protected ILayoutAlgorithm getLayout() {
-			return new SpaceTreeLayoutAlgorithm();
+		protected LayoutAlgorithm getLayout() {
+			return new TreeLayoutAlgorithm();
 		}
 		
 		@Override

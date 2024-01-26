@@ -2,23 +2,23 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: CPS Demonstrator M2M Transformation Launcher
 Bundle-SymbolicName: org.eclipse.viatra.examples.cps.xform.m2m.launcher
-Bundle-Version: 2.8.0.qualifier
+Bundle-Version: 2.9.0.qualifier
 Bundle-Vendor: IncQueryLabs Ltd.
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.eclipse.viatra.examples.cps.xform.m2m.launcher
 Import-Package: org.apache.log4j
-Require-Bundle: org.eclipse.viatra.examples.cps.traceability;bundle-version="0.1.0",
+Require-Bundle: org.eclipse.viatra.examples.cps.traceability;bundle-version="[2.9.0,3.0.0)",
  org.eclipse.xtend.lib,
- org.eclipse.viatra.query.runtime.rete,
- org.eclipse.viatra.query.runtime.localsearch,
- org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.batch.simple;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.incr.expl;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra;bundle-version="0.1.0",
- org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra;bundle-version="0.0.1",
- org.eclipse.viatra.query.runtime
+ org.eclipse.viatra.query.runtime.rete;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.query.runtime.localsearch;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.batch.eiq;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.batch.optimized;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.batch.simple;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.batch.viatra;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.incr.aggr;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.incr.expl;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.incr.qrt;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.incr.viatra;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.examples.cps.xform.m2m.incr.puregratra;bundle-version="[2.9.0,3.0.0)",
+ org.eclipse.viatra.query.runtime;bundle-version="[2.9.0,3.0.0)"
 Automatic-Module-Name: org.eclipse.viatra.examples.cps.xform.m2m.launcher
