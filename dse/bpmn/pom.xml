@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.viatra.examples.dse.bpmn</groupId>
 	<artifactId>bpmn</artifactId>
-	<version>0.28.0-SNAPSHOT</version>
+	<version>0.29.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<modules>
 		<module>org.eclipse.viatra.dse.examples.bpmn.dse</module>
@@ -86,7 +86,7 @@
 		<eclipse.repository.release.url>http://download.eclipse.org/releases/2020-06</eclipse.repository.release.url>
 		<eclipse.repository.url>http://download.eclipse.org/eclipse/updates/4.16</eclipse.repository.url>
 		<orbit.repository.url>https://download.eclipse.org/releases/2020-06/202006171000/</orbit.repository.url>
-		<viatra.compiler.version>2.8.0-SNAPSHOT</viatra.compiler.version>
+		<viatra.compiler.version>2.9.0-SNAPSHOT</viatra.compiler.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jacoco.version>0.7.6.201602180812</jacoco.version>
 		<jacoco.targetdir>${project.basedir}/..</jacoco.targetdir>
